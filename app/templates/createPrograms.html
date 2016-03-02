@@ -1,0 +1,17 @@
+<!--The below line of code is jinja which is a template engine for python-->
+{% extends "base.html" %} 
+{% set currentPage = "start" %}
+
+{# An example first page #}
+
+{% block body %}
+<p>{{fv}} yo</p>
+<p>Example of a Form</p>
+<form method="post">
+  programName
+  <input type = "text" name = "progName">
+  abbreviation
+  <input type = "text" name = "abb">
+  <input type = "submit" value = "Submit">
+</form>
+{% endblock %}

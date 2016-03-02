@@ -1,0 +1,27 @@
+
+# The log file location   
+log:
+filename: "urcpp.log"
+
+# All the databases used by the system
+databases:
+  dev: "data/db.sqlite"
+  stage: ""
+  prod: ""
+
+# For every table in the database, add an item here
+models:
+  mainDB:
+    - Programs
+    - Users
+    - Courses
+# this makes the navigation bar
+mainMenu:
+  - title: "Home"
+    link: "/"
+  - title: "Program Display"
+    link: "readPrograms"
+  - title: "Course Display"
+    link: "readCourses"
+  - title: "Relational Table"
+    link: "aRelationalTable"
