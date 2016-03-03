@@ -53,16 +53,32 @@ Once you are done making changes to this file run create_db.py to make the chang
 * start.py - This file is a very quick example of a python file that will render a page. This file processes and renders the start.html file located under templates.
 
 ## Example for creating a new view ##
-If I wanted to create a new page with a picture on it  then I would do the following.
+If I wanted to create a new webpage then I would do the following.
 
-1. Create your python file inside of the app/ directory. Here you will include the decorator @app.route as seen in other files
+* Create your python file inside of the app/ directory. Here you will include the decorator @app.route as seen in other files
 ```python
         from allImports import *
         @app.route("/example", methods = ["GET"])
         def example():
             return render_template("example.html", cfg = cfg)
 ```
-2. Include this file in the \_\_init\_\_.py file.
+*Create HTML file inside of the templates folder and make sure to give it the same name as the one you used in the python file.
+```HTML
+{% extends "base.html" %}
+
+{% block body %}
+
+<h1> Header 1 </h1>
+<p> Example Paragraph </p>
+
+{% endblock %}
+```
+* Import the python file you created inside the \_\_init\_\_.py file.
+```Python
+from app import example.py
+```
+
+
     
 
 ## documentation links ##
