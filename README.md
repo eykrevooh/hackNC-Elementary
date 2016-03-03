@@ -79,7 +79,13 @@ from app import example.py
 ```
 
 ## Reading and Writing to the database ##
-    
+
+In order to read from a database you will need to make a query to get the data. You can find out more about queries at [the peewee site](http://docs.peewee-orm.com/en/latest/peewee/querying.html)
+one quick example of a query would be the following:
+```python
+query = tableName.get( condition = something )
+```
+This will return a python object that will have the data as attributes. You can pass this object to the html file. You can access this data by typing query.Column. 
 
 ## documentation links ##
 
