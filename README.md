@@ -42,11 +42,14 @@ if you are succesful you can point to 0.0.0.0:8080
    - setup.sh
 ```
 Above you will find the file structure for the flask template. You will be mostly working with the app/ directory.
-some important files and directories:
+some important files and directories.
+
 * models.py - This file contains the database schema or the tables and columns that will be in database.
 If you want to make a new table then you will add a class to this file, see the example in the models.py file.
 Once you are done making changes to this file run create_db.py to make the changes in the database.
+
 * App/ directory - This directory will contain a python module. In order for python files to be recognized they must be added to the __init__.py file in this directory.
+
 * start.py - This file is a very quick example of a python file that will render a page. This file processes and renders the start.html file located under templates.
 
 
