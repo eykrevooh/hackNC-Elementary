@@ -24,18 +24,19 @@ if you are succesful you can point to 0.0.0.0:8080
 # Working with the flask template #
 ## File Hierarchy ##
 ```
--- Project Name
-   -- App
-      --static
-      --templates
-       - __init__.py
-       - allImports.py
-       - config.yaml
-       - models.py
-       - start.py # this an example of a python file that renders a page
-   -- Data
+- Project Name
+   - App
+      -static
+      -templates
+        -start.html
+      - __init__.py
+      - allImports.py
+      - config.yaml
+      - models.py
+      - start.py # this an example of a python file that renders a page
+   - Data
        - db.sqlite
-   -- Venv
+   - Venv
    - app.py
    - create_db.py
    - setup.sh
