@@ -1,5 +1,5 @@
-<<toc / >>
-## Requirements ##
+[TOC]
+## requirement ##
 * python 2.7
 * linux, unix, mac, windows(with attachments)
 * git 
