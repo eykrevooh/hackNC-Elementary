@@ -27,7 +27,7 @@ if you write a new python file then it will need to be included here
 
 ## documentation links ##
 
-[jinja documentation](http://jinja.pocoo.org/)
-[Peewee Documentation](http://docs.peewee-orm.com/en/latest/)
-[Git documentation](https://git-scm.com/documentation)
-[Flask Documentation](http://flask.pocoo.org/docs/0.10/)
+* [jinja documentation](http://jinja.pocoo.org/)
+* [Peewee Documentation](http://docs.peewee-orm.com/en/latest/)
+* [Git documentation](https://git-scm.com/documentation)
+* [Flask Documentation](http://flask.pocoo.org/docs/0.10/)
