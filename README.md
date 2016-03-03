@@ -56,12 +56,12 @@ Once you are done making changes to this file run create_db.py to make the chang
 If I wanted to create a new page with a picture on it  then I would do the following.
 
 1. Create your python file inside of the app/ directory. Here you will include the decorator @app.route as seen in other files
-   * ```python
+```python
         from allImports import *
         @app.route("/example", methods = ["GET"])
         def example():
             return render_template("example.html", cfg = cfg)
-     ```
+```
 2. Include this file in the \_\_init\_\_.py file.
     
 
