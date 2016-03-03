@@ -48,10 +48,22 @@ some important files and directories.
 If you want to make a new table then you will add a class to this file, see the example in the models.py file.
 Once you are done making changes to this file run create_db.py to make the changes in the database.
 
-* App/ directory - This directory will contain a python module. In order for python files to be recognized they must be added to the __init__.py file in this directory.
+* App/ directory - This directory will contain a python module. In order for python files to be recognized they must be added to the \_\_init\_\_.py file in this directory.
 
 * start.py - This file is a very quick example of a python file that will render a page. This file processes and renders the start.html file located under templates.
 
+## Example for creating a new view ##
+If I wanted to create a new page with a picture on it  then I would do the following.
+
+1. Create your python file inside of the app/ directory. Here you will include the decorator @app.route as seen in other files
+   * ```python
+        from allImports import *
+        @app.route("/example", methods = ["GET"])
+        def example():
+            return render_template("example.html", cfg = cfg)
+     ```
+2. Include this file in the \_\_init\_\_.py file.
+    
 
 ## documentation links ##
 
