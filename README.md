@@ -4,7 +4,7 @@
 * git 
 
 ## install ##
-If working on a local machine then Fork, rename to project name and clone.
+If working on a local machine then **Fork**, rename to project name and clone.
 
 ``` bash
 git clone https://username@bitbucket.org/username/repositoryname.git
