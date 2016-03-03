@@ -1,5 +1,5 @@
 [TOC]
-#install#
+#Install#
 ## requirements ##
 * python 2.7
 * linux, unix, mac, windows(with attachments)
