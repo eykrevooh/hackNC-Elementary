@@ -41,6 +41,7 @@ if you are succesful you can point to 0.0.0.0:8080
    - create_db.py
    - setup.sh
 ```
+Above you will find the file structure for the flask template. You will be mostly working with the app/ directory.
 
 ## documentation links ##
 
