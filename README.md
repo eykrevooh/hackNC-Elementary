@@ -62,7 +62,7 @@ If I wanted to create a new webpage then I would do the following.
         def example():
             return render_template("example.html", cfg = cfg)
 ```
-*Create HTML file inside of the templates folder and make sure to give it the same name as the one you used in the python file.
+* Create HTML file inside of the templates folder and make sure to give it the same name as the one you used in the python file.
 ```HTML
 {% extends "base.html" %}
 
