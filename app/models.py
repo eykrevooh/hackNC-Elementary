@@ -1,6 +1,6 @@
 from peewee import *
 import os
-#from allImports import *   #Don't believe this import is needed for this file
+
 # Create a database
 from app.loadConfig import *
 
@@ -11,9 +11,21 @@ mainDB    = SqliteDatabase(cfg['databases']['dev'])
 class dbModel (Model):
   class Meta: 
     database = mainDB
+    
+"""
+When adding new tables to the DB, add a new class here 
+Also, you must add the table to the config.yaml file
 
-# When adding new tables to the DB, add a new class here (also add 
-# to the config.yaml file)
+Example of creating a Table
+
+class tableName (dbModel):
+  column1       = PrimaryKeyField()
+  column2       = TextField()
+  column3       = IntegerField()
+
+For more information look at peewee documentation
+"""
+
 class Programs (dbModel):
   pid           = PrimaryKeyField()
   programName   = TextField()
