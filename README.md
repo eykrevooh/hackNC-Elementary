@@ -18,10 +18,10 @@ python app.py
 ```
 You can now check your localhost to see if it deployed correctly.
 
-3. If working on a **cloud9** account follow instructions bewlow to create a new workspace
+3. If working on a **cloud9** account follow instructions below to create a new workspace
     1. Input your project name and description
-    2. Get the git URL by going to your reposistory in BitBucket that you just created
-    3. Get the SSH URL, it should look something like: git@bitbucket.org:username/example.git
+    2. Get the git URL of your forked reposistory from BitBucket
+    3. You should get the SSH URL, it should look something like: git@bitbucket.org:username/repositoryname.git
     4. Now paste the git URL into "Clone from Git URL" field in cloud9
 ``` bash
 source setup.sh
@@ -55,7 +55,7 @@ Click the link in your terminal to check if it deployed correctly.
    - setup.sh
 ```
 Above you will find the file structure for the flask template. You will be mostly working with the app/ directory.
-some important files and directories.
+Some **important** files and directories.
 
 * models.py - This file contains the database schema or the tables and columns that will be in database.
 If you want to make a new table then you will add a class to this file, see the example in the models.py file.

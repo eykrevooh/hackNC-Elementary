@@ -22,6 +22,6 @@ mainMenu:
   - title: "Program Display"
     link: "readPrograms"
   - title: "Web Form"
-    link: "createDatabase"
+    link: "createPrograms"
   - title: "Relational Table"
     link: "readCourses"
