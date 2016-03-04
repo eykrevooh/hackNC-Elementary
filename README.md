@@ -1,25 +1,38 @@
 [TOC]
-#Install#
-## requirements ##
+#Installation#
+## Requirements ##
 * python 2.7
 * linux, unix, mac, windows(with attachments)
 * git 
 
 ## Creating Development Environment ##
-If working on a local machine then **Fork**, rename to project name and clone.
+
+1. **Fork** the reposistory from BitBucket and rename to your project.
+
+2. If working on a **local machine**, then clone the repo from your terminal
 
 ``` bash
 git clone https://username@bitbucket.org/username/repositoryname.git
 source setup.sh
 python app.py
 ```
-you can check your localhost to see if it deployed correctly.
-if working on a c9 account follow instructions [here](https://docs.google.com/document/d/17GK7uKqdma5DMnHZXlMJwnAn63HdU9446fV1lAcxxus/edit)
+You can now check your localhost to see if it deployed correctly.
+
+3. If working on a **cloud9** account follow instructions bewlow to create a new workspace
+    1. Input your project name and description
+    2. Get the git URL by going to your reposistory in BitBucket that you just created
+    3. Get the SSH URL, it should look something like: git@bitbucket.org:username/example.git
+    4. Now paste the git URL into "Clone from Git URL" field in cloud9
 ``` bash
 source setup.sh
 python app.py
 ``` 
-if you are succesful you can point to 0.0.0.0:8080
+If you are succesful you will see something like:
+``` bash
+Starting application
+Running server at http://0.0.0.0:8080/
+```
+Click the link in your terminal to check if it deployed correctly.
 
 # Working with the flask template #
 ## File Hierarchy ##
@@ -87,9 +100,9 @@ query = tableName.get( condition = something )
 ```
 This will return a python object that will have the data as attributes. You can pass this object to the html file. You can access this data by typing query.Column. 
 
-## documentation links ##
+## Documentation links ##
 
-* [jinja documentation](http://jinja.pocoo.org/)
+* [Jinja Documentation](http://jinja.pocoo.org/)
 * [Peewee Documentation](http://docs.peewee-orm.com/en/latest/)
 * [Git documentation](https://git-scm.com/documentation)
 * [Flask Documentation](http://flask.pocoo.org/docs/0.10/)
