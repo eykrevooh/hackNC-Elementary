@@ -9,7 +9,7 @@ from allImports import *
 
 
 # Decorator for the home page (www.myapp.com/)
-@app.route("/createDatabase", methods = ["GET" , "POST"])
+@app.route("/createPrograms", methods = ["GET" , "POST"])
 
 # The function after the decorator is always run
 def firstView():
