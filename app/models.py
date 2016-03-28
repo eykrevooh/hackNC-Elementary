@@ -3,8 +3,8 @@ import os
 
 # Create a database
 from app.loadConfig import *
-
-cfg       = load_config('app/config.yaml')
+here = os.path.dirname(__file__)
+cfg       = load_config(os.path.join(here, 'config.yaml'))
 mainDB    = SqliteDatabase(cfg['databases']['dev'])
 
 # Creates the class that will be used by Peewee to store the database

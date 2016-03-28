@@ -12,6 +12,7 @@ from flask import url_for
 
 import pprint
 from app import models
+from app import logtool
 from models import *                # all the database models
 from app.switch import switch       # implements switch/case statements
 
@@ -25,7 +26,7 @@ returns a replacement function. See start.py for an example"
 '''
 app = Flask(__name__)
 #from app import app
-
+log = logtool.Log()
 # Builds all the database connections on app run
 # Don't panic, if you need clarification ask.
 @app.before_request

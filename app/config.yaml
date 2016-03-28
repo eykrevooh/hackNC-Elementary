@@ -5,7 +5,7 @@ filename: "urcpp.log"
 
 # All the databases used by the system
 databases:
-  dev: "data/db.sqlite"
+  dev: "/var/www/html/flask_template/data/db.sqlite"
   stage: ""
   prod: ""
 
