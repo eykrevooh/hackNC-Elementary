@@ -26,24 +26,76 @@ class tableName (dbModel):
 For more information look at peewee documentation
 """
 
-class Programs (dbModel):
-  pid           = PrimaryKeyField()
-  programName   = TextField()
-  abbreviation  = TextField()
+class User(dbModel):
+  username     = CharField(primary_key=True)
+  firstName    = CharField()
+  lastName     = CharField()
+  email        = CharField()
+  isAdmin      = BooleanField()
+
+class Division(dbModel):
+  dID           = PrimaryKeyField()
+  name          = CharField()
+
+class Program(dbModel):
+  pID           = PrimaryKeyField()
+  name          = CharField()
+  division      = ForeignKeyField(Division)
   
+class Subject(dbModel):
+  prefix        = CharField(primary_key=True)
+  pid           = ForeignKeyField(Program, related_name='subjects')
+  webname       = TextField()
   
-class Users (dbModel):
-  uid           = PrimaryKeyField()
-  firstName     = TextField()
-  lastName      = TextField()
-  username      = TextField(unique = True)
-  age           = IntegerField(null = True)
-  program       = ForeignKeyField(Programs)     # refers to the Programs table by pid
+class BannerSchedule(dbModel):
+  letter        = CharField()
+  days          = CharField()
+  startTime     = TimeField()
+  endTime       = TimeField()
+  sid           = CharField()
+  order         = IntegerField(unique = True)
+
+class BannerCourses(dbModel):
+  reFID         = PrimaryKeyField()
+  subject       = ForeignKeyField(Subject)
+  number        = IntegerField(null = False)
+  section       = CharField(null = True)
+  ctitle        = CharField(null = False)
+
+class Term(dbModel):
+  tID               = PrimaryKeyField()
+  name              = CharField()
+  termCode          = IntegerField()
+  editable          = BooleanField()
+
+class Course(dbModel):
+  cId               = PrimaryKeyField()
+  bannerRef         = ForeignKeyField(BannerCourses)
+  term              = ForeignKeyField(Term, null = False)
+  schedule          = ForeignKeyField(BannerSchedule, null = False)
+  capacity          = IntegerField(null = False)
+  roomAssign        = IntegerField(null = True)
+  specialTopicName  = CharField(null = True)
+  status            = IntegerField(default = 0)
+  reason            = TextField(null = True)
+  roomPref          = TextField(null = False)
+  lastEditBy        = CharField(null = True)
+
+class ProgramChair(dbModel):
+  username     = ForeignKeyField(User)
+  pid          = ForeignKeyField(Program)
+
+class DivisionChair(dbModel):
+  username     = ForeignKeyField(User)
+  did          = ForeignKeyField(Division)
+
+class InstructorCourse(dbModel):
+  username     = ForeignKeyField(User)
+  course       = ForeignKeyField(Course)
   
-class Courses (dbModel):
-  cid           = PrimaryKeyField()
-  courseName    = TextField()
-  coursePrefix  = TextField()
-  courseNumber  = IntegerField(null = True)
-  pid           = ForeignKeyField(Programs)
-  instructor    = ForeignKeyField(Users)
+
+  
+
+  
+
+

@@ -5,6 +5,7 @@ Update this file as you update your database.
 '''
 import os, sys
 import importlib
+import datetime
 
 # Don't forget to import your own models!
 from app.models import *
@@ -51,38 +52,112 @@ def get_classes (db):
 mainDB.create_tables(get_classes('mainDB'))
 
 # Adding dummy data
-users = Users(  firstName = "Scott",
+users = User(  firstName = "Scott",
                 lastName  = "Heggen",
                 username  = "heggens",
-                age       = 33,
-                program   = "1"
-             ).save()
+                email     = "heggens@berea.edu"
+             ).save(force_insert=True)
 
-users = Users(  firstName = "Matt",
+users = User(  firstName = "Matt",
                 lastName  = "Jadud",
                 username  = "jadudm",
-                age       = 39,
-                program   = "2"
-             ).save()           
+                email     = "jadudm@berea.edu"
+             ).save(force_insert=True)
+
+division = Division(  name = "Division I"
+              ).save()
+
+division = Division(  name = "Division II"
+              ).save()
+
+program  = Program( name = "Computer Science",
+                    division = 2
+              ).save()
+              
+program  = Program( name = "Mathematics",
+                    division = 1
+              ).save()
              
-prog = Programs ( programName = "Computer and Information Science",
-                  abbreviation = "CSC"
+subject = Subject(  prefix  = "CSC",
+                    pid     = 1,
+                    webname = "cs.berea.edu"
+                    ).save(force_insert=True)
+                    
+subject = Subject(  prefix  = "MAT",
+                    pid     = 2,
+                    webname = "math.berea.edu"
+                  ).save(force_insert=True)
+
+banner = BannerSchedule(  letter        = "Standard A",
+                          days          = "MWF",
+                          startTime     = datetime.time(8, 0, 0),
+                          endTime       = datetime.time(9, 10, 0),
+                          sid           = "A",
+                          order         = 1
+                        ).save()
+
+banner = BannerSchedule(  letter        = "Standard B",
+                          days          = "MWF",
+                          startTime     = datetime.time(9, 20, 0),
+                          endTime       = datetime.time(10, 30, 0),
+                          sid           = "B",
+                          order         = 2
+                        ).save()
+
+bannercourse =  BannerCourses(  subject       = "CSC",
+                                number        = 236,
+                                ctitle        = "Data Structures"
+                              ).save()
+
+bannercourse =  BannerCourses(  subject       = "MAT",
+                                number        = 135,
+                                ctitle        = "Calculus I"
+                              ).save()
+
+term = Term(  name              = "Fall 2016",
+              termCode          = 201611,
+              editable          = 0
+            ).save()
+            
+term = Term(  name              = "Spring 2017",
+              termCode          = 201612,
+              editable          = 0
+            ).save()            
+
+course = Course(  bannerRef         = 1,
+                  term              = 1,
+                  schedule          = 1,
+                  capacity          = 20,
+                  roomPref          = "Preference1"
                 ).save()
+                
+course = Course(  bannerRef         = 2,
+                  term              = 2,
+                  schedule          = 2,
+                  capacity          = 20,
+                  roomPref          = "Preference2"
+                ).save()                
+                  
+pchair = ProgramChair(  username  = "heggens",
+                        pid       = 1
+                    ).save()
+                    
+pchair = ProgramChair(  username  = "jadudm",
+                        pid       = 2
+                    ).save()
 
-prog = Programs ( programName = "Technology and Applied Design",
-                  abbreviation = "TAD"
-                ).save()
+dchair = DivisionChair( username  = "heggens",
+                        did       = 1
+                      ).save()
+                    
+dchair = DivisionChair(  username  = "jadudm",
+                        did       = 2
+                      ).save()
 
-course =  Courses ( courseName = "Software Design and Implementation",
-                    coursePrefix = "CSC",
-                    courseNumber = 226,
-                    pid = 1,
-                    instructor = 1
-                  ).save()
-
-course =  Courses ( courseName = "Electricity and Electronics",
-                    coursePrefix = "TAD",
-                    courseNumber = 265,
-                    pid = 2,
-                    instructor = 2
-                  ).save()
+instructor = InstructorCourse(  username = "heggens",
+                                course   = 1
+                              ).save()
+                              
+instructor = InstructorCourse(  username = "jadudm",
+                                course   = 2
+                              ).save()                              

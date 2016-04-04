@@ -5,16 +5,24 @@ filename: "urcpp.log"
 
 # All the databases used by the system
 databases:
-  dev: "/var/www/html/flask_template/data/db.sqlite"
+  dev: "data/db.sqlite"
   stage: ""
   prod: ""
 
 # For every table in the database, add an item here
 models:
   mainDB:
-    - Programs
-    - Users
-    - Courses
+    - User
+    - Division
+    - Program
+    - Subject
+    - BannerSchedule
+    - BannerCourses
+    - Term
+    - Course
+    - ProgramChair
+    - DivisionChair
+    - InstructorCourse
 # this makes the navigation bar
 mainMenu:
   - title: "Home"

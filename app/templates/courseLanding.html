@@ -1,0 +1,10 @@
+{% expands "base.html" %}
+{% block body %}
+<form>
+<select name="termSelect">
+    {% for term in terms %}
+     <option value='{{term.tID}}'>{{term.name}}</option>
+</select>
+<input type="submit" class="btn btn-primary" value="submit"/>
+</form>
+{% endblock %}
