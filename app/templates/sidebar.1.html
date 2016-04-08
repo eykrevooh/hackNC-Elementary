@@ -1,0 +1,40 @@
+ <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Programs
+                    </a>
+                </li>
+                <br />
+                {% for division in divisions %}
+                <div class="accordion">
+                  <li>
+                    {{division.name}}
+                    {% for program in programs %}
+                      {% if program.division.dID == division.dID %}
+                      <ul>
+                        <li>
+                          {{program.name}}
+                          <ul>
+                          {% for subject in subjects %}
+                            {% if subject.pid.pID == program.pID %}
+                            <li>{{subject.prefix}}</li>
+                            {% endif %}
+                          {% endfor %}
+                          </ul>
+                        </li>
+                      </ul>
+                      {% endif %}
+                    {% endfor %}
+                  </li>
+                  </div>
+                {% endfor %}
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+      <script type="text/javascript">
+        $(function(){
+          $(".accordion").accordion();
+        });
+      </script>

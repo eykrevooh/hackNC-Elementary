@@ -33,3 +33,6 @@ mainMenu:
     link: "createPrograms"
   - title: "Relational Table"
     link: "readCourses"
+
+DEBUG:
+  user: "heggens"

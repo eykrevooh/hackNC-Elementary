@@ -24,6 +24,18 @@ from: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
 "A decorator is just a callable that takes a function as an argument and 
 returns a replacement function. See start.py for an example"
 '''
+def authUser(env):
+  envK = "eppn"  
+  # app.logger.info("Found remote user: " + env.get("HTTP_X_REMOTE_USER") + env.get("PHP_AUTH_USER"))
+  if (envK in env):
+    # print("We're live"+  env[envK].split("@")[0]+ ";")
+    return env[envK].split("@")[0]
+  elif ("DEBUG" in app.config) and app.config["DEBUG"]:
+    # print("We're in debug: " + cfg["DEBUG"]["user"])
+    return cfg["DEBUG"]["user"]
+  else:
+    return None
+
 app = Flask(__name__)
 #from app import app
 log = logtool.Log()

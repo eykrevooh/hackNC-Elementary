@@ -26,12 +26,7 @@ class tableName (dbModel):
 For more information look at peewee documentation
 """
 
-class User(dbModel):
-  username     = CharField(primary_key=True)
-  firstName    = CharField()
-  lastName     = CharField()
-  email        = CharField()
-  isAdmin      = BooleanField()
+
 
 class Division(dbModel):
   dID           = PrimaryKeyField()
@@ -39,8 +34,17 @@ class Division(dbModel):
 
 class Program(dbModel):
   pID           = PrimaryKeyField()
+  prefix        = CharField()
   name          = CharField()
   division      = ForeignKeyField(Division)
+
+class User(dbModel):
+  username     = CharField(primary_key=True)
+  firstName    = CharField()
+  lastName     = CharField()
+  email        = CharField()
+  isAdmin      = BooleanField()
+  program      = ForeignKeyField(Program)
   
 class Subject(dbModel):
   prefix        = CharField(primary_key=True)
@@ -63,13 +67,13 @@ class BannerCourses(dbModel):
   ctitle        = CharField(null = False)
 
 class Term(dbModel):
-  tID               = PrimaryKeyField()
   name              = CharField()
-  termCode          = IntegerField()
+  termCode          = IntegerField(unique = True)
   editable          = BooleanField()
 
 class Course(dbModel):
   cId               = PrimaryKeyField()
+  prefix            = ForeignKeyField(Subject)
   bannerRef         = ForeignKeyField(BannerCourses)
   term              = ForeignKeyField(Term, null = False)
   schedule          = ForeignKeyField(BannerSchedule, null = False)

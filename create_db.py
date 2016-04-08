@@ -55,13 +55,17 @@ mainDB.create_tables(get_classes('mainDB'))
 users = User(  firstName = "Scott",
                 lastName  = "Heggen",
                 username  = "heggens",
-                email     = "heggens@berea.edu"
+                email     = "heggens@berea.edu",
+                isAdmin   = 1,
+                program   = 1
              ).save(force_insert=True)
 
 users = User(  firstName = "Matt",
                 lastName  = "Jadud",
                 username  = "jadudm",
-                email     = "jadudm@berea.edu"
+                email     = "jadudm@berea.edu",
+                isAdmin   = 0,
+                program   = 2
              ).save(force_insert=True)
 
 division = Division(  name = "Division I"
@@ -71,11 +75,13 @@ division = Division(  name = "Division II"
               ).save()
 
 program  = Program( name = "Computer Science",
-                    division = 2
+                    division = 2,
+                    prefix   = "CSC"
               ).save()
               
 program  = Program( name = "Mathematics",
-                    division = 1
+                    division = 1,
+                    prefix   = "MAT"
               ).save()
              
 subject = Subject(  prefix  = "CSC",
@@ -125,18 +131,28 @@ term = Term(  name              = "Spring 2017",
             ).save()            
 
 course = Course(  bannerRef         = 1,
-                  term              = 1,
+                  prefix            = "CSC",
+                  term              = 201611,
                   schedule          = 1,
                   capacity          = 20,
                   roomPref          = "Preference1"
                 ).save()
                 
 course = Course(  bannerRef         = 2,
-                  term              = 2,
+                  prefix            = "MAT",
+                  term              = 201612,
                   schedule          = 2,
                   capacity          = 20,
                   roomPref          = "Preference2"
                 ).save()                
+
+course = Course(  bannerRef         = 1,
+                  prefix            = "CSC",
+                  term              = 201612,
+                  schedule          = 1,
+                  capacity          = 20,
+                  roomPref          = "Preference1"
+                  ).save()
                   
 pchair = ProgramChair(  username  = "heggens",
                         pid       = 1

@@ -20,3 +20,4 @@ from app import RelationalExample
 from app import readCourses
 from app import start
 from app import courseLanding
+from app import course
