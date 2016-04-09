@@ -12,12 +12,6 @@ from app import allImports
 # Include an import for every python file that is serving a webpage
 #import your new python files here. It is not a part of the module until it is imported
 print("Starting application") #I don't see this print - Cody Myers
-from app import createPrograms
-from app import readPrograms
-from app import editPrograms
-from app import deletePrograms
-from app import RelationalExample
-from app import readCourses
-from app import start
+
 from app import courseLanding
 from app import course
