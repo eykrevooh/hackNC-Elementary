@@ -34,7 +34,6 @@ class Division(dbModel):
 
 class Program(dbModel):
   pID           = PrimaryKeyField()
-  prefix        = CharField()
   name          = CharField()
   division      = ForeignKeyField(Division)
 

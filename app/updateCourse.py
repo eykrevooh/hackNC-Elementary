@@ -57,7 +57,7 @@ class DataUpdate():
           professors.remove(oldInstructor.username.username)
       
       for professor in professors:
-        newInstructor = InstructorCourse(username = professor, course = data['cid'])
+        newInstructor = InstructorCourse(username = professor, course = int(data['cid']))
         newInstructor.save()
   
   def deleteCourse(self, data, prefix):

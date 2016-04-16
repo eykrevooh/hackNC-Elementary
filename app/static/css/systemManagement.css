@@ -1,0 +1,11 @@
+.glyphicon {
+    color: #AAA;
+    margin: 5px;
+}
+.glyphicon:hover {
+    color: #404040;
+}
+
+.glyphicon.disabled {
+    color: #d3d3d3;
+}

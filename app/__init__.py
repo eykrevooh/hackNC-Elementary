@@ -20,3 +20,8 @@ from app import editCourse
 from app import deleteCourse
 from app import adminPanel
 from app import NotFound
+from app import editProgram
+from app import editDivision
+from app import editTerm
+from app import newTerm
+from app import changeAdmin

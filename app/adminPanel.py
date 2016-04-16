@@ -21,7 +21,7 @@ def admin():
       for division in divisions:
         divisionChairs[division.dID] = DivisionChair.select().where(DivisionChair.did == division.dID) 
       
-      users = User.select()
+      users = User.select().order_by(User.firstName)
     
     
       return render_template("adminPanel.html",

@@ -8,14 +8,15 @@
         <h4 class="modal-title">Edit division</h4>
         </div>
         <div class="modal-body">
-        <form action="\editdivision" method="post" id="divisionEditForm{{division.dID}}">
+        <form action="\editDivision" method="post" id="divisionEditForm{{division.dID}}">
           <h4>Change division Name</h4>
-          <input type="text" class="form-control" name="divisionName"/>
+          <input type="hidden" name="divisionId" value="{{division.dID}}"/>
+          <input type="text" class="form-control" name="divisionName" value="{{division.name}}"/>
           <h4>Change division Chair(s)</h4>
         <select class="chosen-select" id="professors"  name="professors[]" multiple>
           {% for user in users %}
             <option value="{{user.username}}" {% if (division is defined)  %}
-                                                {%for chair in divisionChairs[division.pID] %}
+                                                {%for chair in divisionChairs[division.dID] %}
                                                   {% if chair.username.username == user.username %}
                                                     selected
                                                   {% endif %}
@@ -30,7 +31,7 @@
         </div>
        
        <div class="modal-footer">
-           <input class="btn  btn-sm btn-success pull-right"type="submit" form="divisionEditForm{{division.pID}}"value="Submit"/>
+           <input class="btn  btn-sm btn-success pull-right"type="submit" form="divisionEditForm{{division.dID}}"value="Submit"/>
         </div>
 
     </div>

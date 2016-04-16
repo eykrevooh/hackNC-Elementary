@@ -10,7 +10,8 @@
         <div class="modal-body">
         <form action="\editProgram" method="post" id="programEditForm{{program.pID}}">
           <h4>Change Program Name</h4>
-          <input type="text" class="form-control" name="programName"/>
+          <input type="hidden" name="programId" value="{{program.pID}}"/>
+          <input type="text" class="form-control" name="programName" value="{{program.name}}"/>
           <h4>Change Program Chair(s)</h4>
         <select class="chosen-select" id="professors"  name="professors[]" multiple>
           {% for user in users %}
