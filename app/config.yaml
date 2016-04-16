@@ -28,7 +28,7 @@ mainMenu:
   - title: "Home"
     link: "/"
   - title: "Program Display"
-    link: "readPrograms"
+    link: "/courses"
   - title: "Web Form"
     link: "createPrograms"
   - title: "Relational Table"

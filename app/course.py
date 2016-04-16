@@ -1,30 +1,44 @@
 from allImports import *
+from updateCourse import DataUpdate
 
 
 @app.route("/courses/<tID>/<prefix>", methods=["GET", "POST"])
 def courses(tID, prefix):
   if (request.method == "GET"):
+      username = authUser(request.environ)
+      admin = User.get(User.username == username)
+      print username
+      
+      
+      # These are the necessary components of the sidebar. Should we move them somewhere else?
       divisions = Division.select()
       programs = Program.select()
       subjects = Subject.select()
       
+      terms = Term.select()
+      
+      
+      # we need the subject to know if someone if a division chair or a program chair
       subject = Subject.get(Subject.prefix == prefix)
+      users   = User.select(User.username, User.firstName, User.lastName)
+       # We need these for populating add course
+      courseInfo = BannerCourses.select().where(BannerCourses.subject == prefix).order_by(BannerCourses.number)
+      
+      schedules = BannerSchedule.select()
+      
+      # Checking if person is division chair or program chair
+      divisionChair = DivisionChair.select().where(DivisionChair.username == username).where(DivisionChair.did == subject.pid.division.dID)
+      programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
+      
+      
       courses = Course.select().where(Course.prefix == prefix).where(Course.term == tID)
+     
       
       instructors = {}
       for course in courses:
         instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
       
-      username = authUser(request.environ)
-      print username
-      # admin = User.select(User.isAdmin).where(User.username == username)
-      admin = User.get(User.username == username)
-      divisionChair = DivisionChair.select().where(DivisionChair.username == username).where(DivisionChair.did == subject.pid.division.dID)
-      programChair = ProgramChair.select().where(ProgramChair.username == username)
-      if admin.isAdmin:
-        print "isAdmin: True"
-      elif divisionChair.exists():
-        print "we are here division chair"
+      if admin.isAdmin or divisionChair.exists():
         return render_template("programAdmin.html",
                               cfg      = cfg,
                               courses = courses,
@@ -32,8 +46,14 @@ def courses(tID, prefix):
                               programs = programs,
                               divisions = divisions,
                               subjects = subjects,
-                              term = tID
+                              currentTerm = tID,
+                              courseInfo = courseInfo,
+                              users = users,
+                              schedules = schedules,
+                              allTerms = terms
                             )
+                            
+                            
       elif programChair.exists():
         print("we are here")
         return render_template("programAdmin.html",
@@ -43,7 +63,12 @@ def courses(tID, prefix):
                               programs = programs,
                               divisions = divisions,
                               subjects = subjects,
-                              term = tID
+                              currentTerm = tID,
+                              courseInfo = courseInfo,
+                              users = users,
+                              schedules = schedules,
+                              allTerms = terms
+
                             )
       else:
         print 'false'
@@ -55,9 +80,11 @@ def courses(tID, prefix):
                               programs = programs,
                               divisions = divisions,
                               subjects = subjects,
-                              term = tID
+                              currentTerm = tID
                             )
   data   = request.form
-  termId = data["termSelect"]
-  return "hello"
+  instructors = request.form.getlist('professors[]')
   
+  newCourse = DataUpdate()
+  newCourse.addCourse(data, tID, instructors, prefix)
+  return redirect(url_for("courses", tID = tID, prefix = prefix))

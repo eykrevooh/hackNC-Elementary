@@ -1,0 +1,38 @@
+
+<div class="modal fade" id="newProgram" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-md">
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">New Program</h4>
+        </div>
+        <div class="modal-body">
+        <form action="\editProgram" method="post" id="newProgramForm">
+          <h4>Program Name</h4>
+          <input type="text" class="form-control" name="programName"/>
+          <h4>Program Chair(s)</h4>
+        <select class="chosen-select" id="professors"  name="professors[]" multiple>
+          {% for user in users %}
+            <option value="{{user.username}}" {% if (program is defined)  %}
+                                                {%for chair in programChairs[program.pID] %}
+                                                  {% if chair.username.username == user.username %}
+                                                    selected
+                                                  {% endif %}
+                                                {% endfor %}
+                                              {% endif %}>
+              {{user.firstName}} {{user.lastName}} ({{user.username}})
+              </option>
+          {% endfor %}
+        </select>
+
+        </form>
+        </div>
+       <div class="modal-footer">
+           <input class="btn  btn-sm btn-success pull-right"type="submit" form="newProgramForm"value="Submit"/>
+        </div>
+
+
+    </div>
+  </div>
+</div>

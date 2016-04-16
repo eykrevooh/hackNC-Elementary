@@ -1,0 +1,24 @@
+<table class="table">
+    <tr>
+        <th>Current Division</th>
+    </tr>
+    {%for division in divisions %}
+    <tr>
+      <td>{{division.name}} <br>
+          Division Chair(s):
+          {% for chair in divisionChairs[division.dID] %}
+              {{chair.username.firstName}} {{chair.username.lastName}}
+          {% endfor %}
+          <a href ="#" data-toggle="modal" data-target="#divisionEditModal{{division.dID}}"><span class="badge pull-right">edit</span></a>
+          {% include "divisionEdit.html"%}
+      </td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>
+        Create New division 
+        <a href ="#" data-toggle="modal" data-target="#newDivision"><span class="badge pull-right">new</span></a>
+        {% include "newDivision.html"%}
+      </td>
+    </tr>
+</table>

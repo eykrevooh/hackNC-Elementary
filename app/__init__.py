@@ -15,3 +15,8 @@ print("Starting application") #I don't see this print - Cody Myers
 
 from app import courseLanding
 from app import course
+from app import adminCourses
+from app import editCourse
+from app import deleteCourse
+from app import adminPanel
+from app import NotFound

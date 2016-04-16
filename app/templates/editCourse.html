@@ -1,0 +1,56 @@
+<div class="modal fade" id="editModal{{course.cId}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-md">
+    <form method="post" action="\editcourse\{{course.prefix.prefix}}">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit course</h4>
+        </div>
+        <div class="modal-body">
+          <h2 class="text-center">{{course.prefix.prefix}} {{course.bannerRef.number}}</h2>
+        
+          <input type="hidden" name="cid" value="{{course.cId}}" >
+        <h5>Schedule Block</h5>
+        <select class="form-control" name="schedule">
+          {% for schedule in schedules %}
+          <option value="{{schedule.order}}" {% if course.schedule.order == schedule.order %} selected {% endif %}>
+            {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
+          </option>
+            {% endfor %}
+         </select>
+         <h5>Term</h5>
+        <select class="form-control" name="term">
+          {% for term in allTerms %}
+          <option value="{{term.termCode}}" {% if currentTerm == term.termCode %} selected {% endif %}>
+            {{term.name}}
+          </option>
+            {% endfor %}
+        </select>
+        <h5>Capacity</h5>
+        <input type="number" name ="capacity" class="form-control" min="1" value ="{{course.capacity}}" />
+        <h5>Notes</h5>
+         <textarea class="form-control" name="notes">{{course.roomPref}}</textarea>
+        <h5>Edit Instructor</h5>
+       <select class="chosen-select" id="professors"  name="professors[]" multiple>
+          {% for user in users %}
+            <option value="{{user.username}}" {% if (course is defined)  %}
+                                                {%for instructor in instructors[course.cId] %}
+                                                  {% if instructor.username.username == user.username %}
+                                                    selected
+                                                  {% endif %}
+                                                {% endfor %}
+                                              {% endif %}>
+              {{user.firstName}} {{user.lastName}} ({{user.username}})
+              </option>
+          {% endfor %}
+        </select>
+       <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+          <input  class="btn btn-success btn-sm pull-right" type="submit" value="Save"/>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

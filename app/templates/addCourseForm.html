@@ -1,0 +1,37 @@
+<form method="post">
+  <td>
+    <select class="form-control" name="ctitle">
+      <option value="">---</option>
+      {% for ctitle in courseInfo %}
+      <option>
+        {{ctitle.subject.prefix}} {{ctitle.number}} {{ctitle.ctitle}}
+      </option>
+      {% endfor %}
+    </select>
+  </td>
+  <td>
+    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#instructorModal">Add Instructor(s)</button>
+    {% include "addInstructors.html" %}
+  </td>
+  <td>
+    <select class="form-control" name="schedule">
+      <option value="">---</option>
+      {% for schedule in schedules %}
+      <option value="{{schedule.order}}">
+        {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
+      </option>
+        {% endfor %}
+     </select>
+   </td>
+   <td>
+    <input type="number" name ="capacity" class="form-control" min="1" value ="" /> <input value="" name="program" hidden/>
+   </td>
+   <td>
+     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#notesModal">Add Notes</button>
+   {% include "addNotes.html" %}
+   </td>
+   <td></td>
+   <td>                                 
+      <input  class="btn btn-success btn-sm" type="submit" value="submit"/>
+   </td>
+</form>

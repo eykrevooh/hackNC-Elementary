@@ -1,0 +1,24 @@
+<table class="table">
+    <tr>
+        <th>Current Programs</th>
+    </tr>
+    {%for program in programs %}
+    <tr>
+      <td>{{program.name}} <br>
+          Program Chair(s):
+          {% for chair in programChairs[program.pID] %}
+              {{chair.username.firstName}} {{chair.username.lastName}}
+          {% endfor %}
+          <a href ="#" data-toggle="modal" data-target="#programEditModal{{program.pID}}"><span class="badge pull-right">edit</span></a>
+          {% include "programEdit.html"%}
+      </td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>
+        Create New Program 
+        <a href ="#" data-toggle="modal" data-target="#newProgram"><span class="badge pull-right">new</span></a>
+        {% include "newProgram.html"%}
+      </td>
+    </tr>
+</table>

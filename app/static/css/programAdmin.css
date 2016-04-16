@@ -1,0 +1,7 @@
+.glyphicon {
+    color: #AAA;
+    margin: 2px;
+}
+.glyphicon:hover {
+    color: #404040;
+}
