@@ -55,13 +55,13 @@ class BannerSchedule(dbModel):
   days          = CharField()
   startTime     = TimeField()
   endTime       = TimeField()
-  sid           = CharField()
+  sid           = CharField(primary_key = True)
   order         = IntegerField(unique = True)
 
 class BannerCourses(dbModel):
   reFID         = PrimaryKeyField()
   subject       = ForeignKeyField(Subject)
-  number        = IntegerField(null = False)
+  number        = CharField(null = False)
   section       = CharField(null = True)
   ctitle        = CharField(null = False)
 

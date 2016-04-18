@@ -9,9 +9,9 @@ def home(username):
                             cfg      = cfg,
                             terms = terms
                           )
-  data      = request.form
-  termId    = data["termSelect"]
-  username = authUser(request.environ)
-  myProgram = User.get(User.username == username)
-  return redirect(url_for("courses", tID = termId, prefix= myProgram.program.prefix))
+  data       = request.form
+  termId     = data["termSelect"]
+  username   = authUser(request.environ)
+  myProgram  = User.get(User.username == username)
+  return redirect(url_for("courses", tID = termId, prefix = "AFR"))
   
