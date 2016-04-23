@@ -1,0 +1,12 @@
+<div id="sidebar-wrapper">
+  <ul class="nav nav-list sidebar-nav">
+    <li class="sidebar-brand">Programs</li>
+    {% for division in divisions %}
+      <li><label class="tree-toggler nav-header"><a href="/admin/divisionManagement/{{division.dID}}">{{division.name}}</a></label></li>
+    {% endfor %}
+    <li><a href="/admin/newDivision"><span style="margin: 5px" class="glyphicon glyphicon-plus" aria-hidden="true"></span>New Division</a></li>
+  </ul>
+</div>
+
+
+<script type="text/javascript" src="/static/js/local/sidebar.js"></script>

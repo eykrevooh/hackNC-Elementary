@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" 
+        {% if request.path.split('/')[2] == "programManagement" %}
+           class="active"
+        {% endif %} ><a href="/admin/programManagement/11">Program Management</a></li>
+  <li role="presentation"
+        {%if request.path.split('/')[2] == "divisionManagement" %}
+           class = "active"
+         {% endif %}
+         ><a href="#">Division Management</a></li>
+  <li role="presentation"><a href="#">System Management</a></li>
+</ul>

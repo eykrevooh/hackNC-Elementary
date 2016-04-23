@@ -17,7 +17,7 @@
     <select class="form-control" name="schedule">
       <option value="">---</option>
       {% for schedule in schedules %}
-      <option value="{{schedule.order}}">
+      <option value="{{schedule.sid}}">
         {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
       </option>
         {% endfor %}

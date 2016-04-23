@@ -39,7 +39,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: relative;
 }
 
 #page-content-wrapper {
@@ -71,14 +71,16 @@
 
 .sidebar-nav li a {
     display: block;
+    color: #666666;
     text-decoration: none;
-    color: #999999;
+    padding: 0px;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #333333;
     background: rgba(255,255,255,0.2);
+    padding: 0px;
 }
 
 .sidebar-nav li a:active,
@@ -126,5 +128,9 @@
     #wrapper.toggled #page-content-wrapper {
         position: relative;
         margin-right: 0;
+    }
+    
+    #termChange {
+        position: left;
     }
 }

@@ -27,7 +27,7 @@ class DataUpdate():
       course = Course(bannerRef     = bannerCourse.reFID,
                   prefix            = prefix,
                   term              = int(term),
-                  schedule          = int(data['schedule']),
+                  schedule          = data['schedule'],
                   capacity          = int(data['capacity']),
                   roomPref          = data['requests']
                 )
@@ -46,6 +46,7 @@ class DataUpdate():
       course.capacity = data['capacity']
       course.schedule = data['schedule']
       course.roomPref = data['notes']
+      course.lastEditBy = authUser(request.environ)
       
       course.save()
       

@@ -1,9 +1,12 @@
+{% extends "base.html" %}
+{% set currentPage = "editModal" %}
+{% block body %}
 <div class="modal fade" id="editModal{{course.cId}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-md">
-    <form method="post" action="\editcourse\{{course.prefix.prefix}}">
+    <form method="post" action="\editcourse\{{currentTerm}}\{{course.prefix.prefix}}">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <a href="/courses/{{currentTerm}}/{{course.prefix.prefix}}"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
         <h4 class="modal-title">Edit course</h4>
         </div>
         <div class="modal-body">
@@ -13,14 +16,14 @@
         <h5>Schedule Block</h5>
         <select class="form-control" name="schedule">
           {% for schedule in schedules %}
-          <option value="{{schedule.order}}" {% if course.schedule.order == schedule.order %} selected {% endif %}>
+          <option value="{{schedule.sid}}" {% if course.schedule.order == schedule.order %} selected {% endif %}>
             {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
           </option>
             {% endfor %}
          </select>
          <h5>Term</h5>
         <select class="form-control" name="term">
-          {% for term in allTerms %}
+          {% for term in terms %}
           <option value="{{term.termCode}}" {% if currentTerm == term.termCode %} selected {% endif %}>
             {{term.name}}
           </option>
@@ -47,10 +50,15 @@
        <br>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+          <a type="button" class="btn btn-primary btn-sm" href="/courses/{{currentTerm}}/{{course.prefix.prefix}}">Close</a>
           <input  class="btn btn-success btn-sm pull-right" type="submit" value="Save"/>
         </div>
       </div>
     </form>
   </div>
 </div>
+
+<script type="text/javascript">
+   var cid = {{course.cId}};
+</script>
+{% endblock %}

@@ -21,7 +21,22 @@
         {% endfor %}
       </li>
       {% endfor %}
+      <li class="sidebar-brand">Current Term</li>
+      <li>
+      <form id="termChange"class="navbar-form" method="post" action="/redirect/courses">
+          <select class="form-control" name="term" onchange="this.form.submit()">
+            {% for term in allTerms %}
+              
+              <option value ="{{term.termCode}}"
+              {% if term.termCode == currentTerm %}
+              selected
+              {% endif %}>{{term.name}}</option>
+            {% endfor %}
+          </select>
+      </form>
+      </li>
   </ul>
+    
 </div>
 
 

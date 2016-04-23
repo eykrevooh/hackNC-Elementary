@@ -25,3 +25,13 @@ from app import editDivision
 from app import editTerm
 from app import newTerm
 from app import changeAdmin
+from app import programManagement
+from app import divisionManagement
+from app import systemManagement
+from app import redirect_courses
+from app import redirectAdminProgram
+from app import deadlineManagement
+from app import deadlineDisplay
+from app import addProgram
+from app import addDivision
+from app import deleteDeadline

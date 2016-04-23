@@ -1,0 +1,12 @@
+.month {
+   color: #0073e6;
+   font-size: 2em ;
+}
+
+.glyphicon {
+    color: #AAA;
+    margin: 2px;
+}
+.glyphicon:hover {
+    color: #404040;
+}

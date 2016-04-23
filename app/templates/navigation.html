@@ -1,13 +1,47 @@
 <!--This is the navigation bar that is found at the top of the page-->
 <nav class="navbar navbar-default">
-  <div class="container">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">CAS</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav"> 
     {% for menuItem in cfg['mainMenu'] %}
-      <li class="active">
+      <li 
+        {% if currentPage == menuItem['title'] %}
+        class="active"
+        {% endif %}
+      >
         <a href="{{menuItem['link']}}">{{menuItem['title']}}</a>
       </li>
-    {% endfor %} 
-    </ul>
+    {% endfor %}
+    {% if isAdmin %}
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+    
+    {% for item in cfg['adminMenu'] %}
+      <li
+        {% if currentPage == item['title'] %}
+        class ="active"
+        {% endif %}
+        >
+        <a href={{item['link']}}>{{item['title']}}</a>
+      </li>
+    {% endfor %}
+      {% endif %}
+     </ul>
+     </li>
+     </ul>
+     
+    
+    </div>
   </div>
 </nav>
 

@@ -23,16 +23,21 @@ models:
     - ProgramChair
     - DivisionChair
     - InstructorCourse
+    - Deadline
 # this makes the navigation bar
 mainMenu:
   - title: "Home"
     link: "/"
-  - title: "Program Display"
-    link: "/courses"
-  - title: "Web Form"
-    link: "createPrograms"
-  - title: "Relational Table"
-    link: "readCourses"
+  - title: "Courses"
+    link: "/redirect/courses"
+
+adminMenu:
+  - title: "Program Management"
+    link: "/redirect/program_management"
+  - title: "Division Management"
+    link: "/redirect/division_management"
+  - title: "System Management"
+    link: "/admin/systemManagement"
 
 DEBUG:
   user: "heggens"

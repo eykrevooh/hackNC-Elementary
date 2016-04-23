@@ -9,6 +9,8 @@ from flask import redirect
 from flask import request
 from flask import g
 from flask import url_for
+from flask import flash
+
 
 import pprint
 from app import models
@@ -38,6 +40,7 @@ def authUser(env):
 
 app = Flask(__name__)
 #from app import app
+app.secret_key = "SUPER DUPER SECRET KEY"
 log = logtool.Log()
 # Builds all the database connections on app run
 # Don't panic, if you need clarification ask.

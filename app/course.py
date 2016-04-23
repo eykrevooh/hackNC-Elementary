@@ -38,7 +38,7 @@ def courses(tID, prefix):
       for course in courses:
         instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
       
-      if admin.isAdmin or divisionChair.exists():
+      if admin.isAdmin or divisionChair.exists() or programChair.exists():
         return render_template("programAdmin.html",
                               cfg      = cfg,
                               courses = courses,
@@ -46,33 +46,14 @@ def courses(tID, prefix):
                               programs = programs,
                               divisions = divisions,
                               subjects = subjects,
-                              currentTerm = tID,
+                              currentTerm = int(tID),
                               courseInfo = courseInfo,
                               users = users,
                               schedules = schedules,
-                              allTerms = terms
+                              allTerms = terms,
+                              isAdmin  = admin.isAdmin
                             )
-                            
-                            
-      elif programChair.exists():
-        print("we are here")
-        return render_template("programAdmin.html",
-                              cfg      = cfg,
-                              courses = courses,
-                              instructors = instructors,
-                              programs = programs,
-                              divisions = divisions,
-                              subjects = subjects,
-                              currentTerm = tID,
-                              courseInfo = courseInfo,
-                              users = users,
-                              schedules = schedules,
-                              allTerms = terms
 
-                            )
-      else:
-        print 'false'
-        
       return render_template("program.html",
                               cfg      = cfg,
                               courses = courses,
@@ -80,7 +61,8 @@ def courses(tID, prefix):
                               programs = programs,
                               divisions = divisions,
                               subjects = subjects,
-                              currentTerm = tID
+                              currentTerm = tID,
+                              allTerms = terms
                             )
   data   = request.form
   instructors = request.form.getlist('professors[]')

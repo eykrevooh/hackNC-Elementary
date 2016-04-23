@@ -1,0 +1,54 @@
+<!--The below line of code is jinja which is a template engine for python-->
+<!-- If you want to learn more about jinja, refer to jinja documentation-->
+{% extends "base.html" %} 
+{% set currentPage = "start" %}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-success alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+<table class = "table table-bordered">
+  <thead>
+   <tr>
+    <td>Date</td>
+    <td>Deadline</td> 
+    
+  </tr>
+  </thead>
+  
+  {% for deadline in deadlines %}
+  {% if deadline[0] >= today %}
+  <tr>
+    <td>
+      {% if deadline[0] == today %}
+       <p>today</p>
+      {% endif %}
+      <div class="day">{{deadline[0].strftime('%d')}}</div>
+    <div class="month">{{deadline[0].strftime('%b')}}</div></td>
+    <td>
+      <table class="table table-hover table-bordered">
+      {% for description in deadline[1] %}
+      <tr><td>{{description.description}}
+        {% if isAdmin %} 
+        <a href="" data-toggle="modal" data-id="{{description.id}}" data-target="#deleteDeadline"><span class="glyphicon glyphicon glyphicon glyphicon-trash pull-right" aria-hidden="true"></span></a>
+        <a href="" data-toggle="modal" data-description="{{description.description}}" data-id="{{description.id}}" data-target="#editDeadline"><span  class="glyphicon glyphicon glyphicon-edit pull-right" aria-hidden="true"></span></a>
+        {% endif %}
+      </td></tr>
+      {% endfor %}
+      </table>
+      {% include "deleteDeadline.html" %}
+      {% include "editDeadline.html" %}
+    </td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+</table>
+
+{% endblock %}

@@ -96,6 +96,11 @@ class InstructorCourse(dbModel):
   username     = ForeignKeyField(User)
   course       = ForeignKeyField(Course)
   
+class Deadline(dbModel):
+  term         = ForeignKeyField(Term)
+  description  = TextField()
+  date         = DateField()
+  
 
   
 
