@@ -1,1 +1,1 @@
-secret_key = "SCOTT SHOULD WRITE A BETTER KEY"
+secret_key = "I accidentally put our last key in public"
