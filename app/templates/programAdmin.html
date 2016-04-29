@@ -3,7 +3,7 @@
 {% block body %}
 
 <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
-<link rel="stylesheet" href="/static/css/programAdmin.css" type="text/css" />
+<link rel="stylesheet" href="/static/css/Courses.css" type="text/css" />
 <body>
 
     <div id="wrapper">
@@ -29,13 +29,18 @@
                         <tbody>
                         {% for course in courses %}
                          <tr>
-                             <td>{{course.prefix.prefix}} {{course.bannerRef.number}} {{course.bannerRef.ctitle}}</td>
+                             <td>{{course.prefix.prefix}} {{course.bannerRef.number}}
+                             {% if course.specialTopicName is not none %}
+                                {{course.specialTopicName}}
+                             {% else %}
+                                {{course.bannerRef.ctitle}}
+                             {%endif%}</td>
                              <td>{% for instructor in instructors[course.cId] %}
                               {{instructor.username.username}}{% endfor %}
                              </td>
                              <td>{{course.schedule.days}} {{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}</td>
                              <td>{{course.capacity}}</td>
-                             <td><a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.roomPref}}'>Notes</a></td>
+                             <td><a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a></td>
                              <td>{{course.lastEditBy}}</td>
                              <td>
                               <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
@@ -47,7 +52,9 @@
                            {% endfor %}
                         </tbody>
                         <tfoot>
+                          <form method="post" id="addCourseForm">
                            {% include "addCourseForm.html" %}
+                           </form>
                         </tfoot>
                        </table>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
@@ -71,8 +78,6 @@
     
     </script>
     <script type="text/javascript" src="/static/js/ext/chosen.jquery.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/local/programAdmin.js') }}"></script>
-
 </body>
 
 {% endblock %}

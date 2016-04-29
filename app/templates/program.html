@@ -22,7 +22,14 @@
                          </tr> 
                         {% for course in courses %}
                          <tr>
-                             <td>{{course.prefix.prefix}} {{course.bannerRef.number}} {{course.bannerRef.ctitle}}</td>
+                             <td>{{course.prefix.prefix}} {{course.bannerRef.number}}
+                             {% if course.specialTopicName is not none %}
+                                {{course.specialTopicName}}
+                             {% else %}
+                                {{course.bannerRef.ctitle}}
+                             {%endif%}
+                             
+                             </td>
                              <td>{% for instructor in instructors[course.cId] %}
                               {{instructor.username.username}}{% endfor %}
                              </td>

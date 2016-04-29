@@ -25,15 +25,22 @@ def editCourseModal(tid, prefix, cid):
                             course    = course,
                             users = users,
                             instructors = instructors,
-                            currentTerm = tid
+                            currentTerm = int(tid)
                             )
 
 @app.route("/editcourse/<tid>/<prefix>", methods=["POST"])
 def editcourse(tid, prefix):
+  page = request.path
   data = request.form
   professors = request.form.getlist('professors[]')
   editcourse = DataUpdate()
   editcourse.editCourse(data, prefix, professors)
+  if not editcourse.isTermEditable(tid):
+      created = editcourse.addCourseChange(data['cid'], prefix, "update")
+      if not created:
+        editcourse.editCourseChange(data['cid'], prefix, "update")
+  message = "Course: course {} has been edited".format(data['cid'])
+  log.writer("INFO", page, message)
   return redirect(url_for("courses", tID=tid, prefix=prefix))
   
   #Stop hating ishwar, lol

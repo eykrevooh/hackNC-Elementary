@@ -10,11 +10,12 @@ from flask import request
 from flask import g
 from flask import url_for
 from flask import flash
+from flask import abort
 
 
 import pprint
 from app import models
-from app import logtool
+
 from models import *                # all the database models
 from app.switch import switch       # implements switch/case statements
 
@@ -37,11 +38,12 @@ def authUser(env):
     return cfg["DEBUG"]["user"]
   else:
     return None
+    
+from app import logtool
+log = logtool.Log()
 
 app = Flask(__name__)
-#from app import app
 app.secret_key = "SUPER DUPER SECRET KEY"
-log = logtool.Log()
 # Builds all the database connections on app run
 # Don't panic, if you need clarification ask.
 @app.before_request

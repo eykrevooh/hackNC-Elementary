@@ -4,9 +4,10 @@ from updateCourse import DataUpdate
 
 @app.route("/courses/<tID>/<prefix>", methods=["GET", "POST"])
 def courses(tID, prefix):
+  username = authUser(request.environ)
+  admin = User.get(User.username == username)
   if (request.method == "GET"):
-      username = authUser(request.environ)
-      admin = User.get(User.username == username)
+      
       print username
       
       
@@ -64,9 +65,19 @@ def courses(tID, prefix):
                               currentTerm = tID,
                               allTerms = terms
                             )
-  data   = request.form
-  instructors = request.form.getlist('professors[]')
-  
-  newCourse = DataUpdate()
-  newCourse.addCourse(data, tID, instructors, prefix)
-  return redirect(url_for("courses", tID = tID, prefix = prefix))
+  if (request.method == "POST"):
+    if admin.isAdmin:
+      page = request.path
+      data   = request.form
+      print data
+      instructors = request.form.getlist('professors[]')
+      newCourse = DataUpdate()
+      cid = newCourse.addCourse(data, tID, instructors, prefix)
+      if not newCourse.isTermEditable(tID):
+        newCourse.addCourseChange(cid, prefix, "create")
+      
+      message = "Course: #{0} has been added".format(cid)
+      log.writer("INFO", page, message)
+      return redirect(url_for("courses", tID = tID, prefix = prefix))
+    else:
+      return render_template("404.html", cfg=cfg)

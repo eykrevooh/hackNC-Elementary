@@ -5,8 +5,9 @@ import os
 
 class Log():
     
-    def __init__(self, logfile = '/var/www/html/flask_template/urcpp.log'):
+    def __init__(self, logfile = 'urcpp.log'):
         self.logfile = logfile
+        self.lowPrivilege = "User does not have enough access privileges for this operation"
     
     
     def writer(self, level, page, message):

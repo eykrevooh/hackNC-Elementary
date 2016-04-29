@@ -1319,7 +1319,7 @@ CREATE TABLE IF NOT EXISTS `course` (
   `specialtopicsname` varchar(300) DEFAULT NULL,
   `status` int(11) DEFAULT NULL COMMENT 'Originally "not null"',
   `reason` longtext,
-  `roomPref` longtext COMMENT 'originally "not null"',
+  `notes` longtext COMMENT 'originally "not null"',
   `lastEditBy` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`CID`),
   KEY `term_idx` (`term`),
@@ -1331,7 +1331,7 @@ CREATE TABLE IF NOT EXISTS `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomAsn`, `specialtopicsname`, `status`, `reason`, `roomPref`, `lastEditBy`) VALUES
+INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomAsn`, `specialtopicsname`, `status`, `reason`, `notes`, `lastEditBy`) VALUES
 (533, 8, 6, 'P', 20, NULL, NULL, 1, NULL, '16 seats reserved for incoming freshmen.', NULL),
 (534, 526, 6, 'B', 16, NULL, NULL, 1, NULL, 'Section A, in addition to Std B will have lab time at 9-11:30 on Thurs', NULL),
 (535, 526, 6, 'B', 16, NULL, NULL, 1, NULL, 'Section B, in addition to Std B will meet for lab Thurs 12-12:30 ', NULL),
@@ -1967,7 +1967,7 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1329, 1249, 7, 'ZZZ', 10, NULL, NULL, 0, NULL, 'Meeting with faculty once a week. Time to be determined with student and faculty.', NULL),
 (1330, 1235, 6, 'D', 20, NULL, NULL, 0, NULL, 'lecture is in room 101 \nlab on R 9:00 - 11:30\nroom 027  of SC', 'veillettem'),
 (1331, 390, 7, 'E', 24, NULL, NULL, 0, NULL, 'Lab on T from 9:00 to 11:30 \nroom 027 SC', 'veillettem');
-INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomAsn`, `specialtopicsname`, `status`, `reason`, `roomPref`, `lastEditBy`) VALUES
+INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomAsn`, `specialtopicsname`, `status`, `reason`, `notes`, `lastEditBy`) VALUES
 (1332, 1232, 6, 'A1', 24, NULL, NULL, 0, NULL, 'lecture in room 027\nlab on R from 12:00 to 2:30 in room 027\ntaught by albert dearden\n', 'veillettem'),
 (1333, 1249, 6, 'ZZZ', 10, NULL, NULL, 0, NULL, 'Time to be arranged with student and faculty\nNo room is allocated', 'veillettem'),
 (1334, 1374, 6, 'C', 17, NULL, NULL, 0, NULL, '', 'steeles'),

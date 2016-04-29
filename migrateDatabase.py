@@ -80,7 +80,7 @@ for row in cur.fetchall():
   print row[0], row[1], row[2], row[3]
   term = Term(name = row[1],
               termCode = row[2],
-              editable = row[3]).save()
+              editable = row[3]).save(force_insert=True)
 cur.execute("select * from course")
 cur2 = db.cursor()
 
@@ -111,10 +111,8 @@ for row in cur.fetchall():
                   term = int(termCode),
                   schedule = schedule,
                   capacity = capacity,
-                  roomAssign = row[5],
                   specialTopicName = row[6],
-                  status = status,
-                  roomPref = room,
+                  notes = room,
                   lastEditBy = row[10],
                   prefix = str(sub)).save(force_insert = True) 
 

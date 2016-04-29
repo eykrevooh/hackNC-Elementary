@@ -32,7 +32,7 @@
         <h5>Capacity</h5>
         <input type="number" name ="capacity" class="form-control" min="1" value ="{{course.capacity}}" />
         <h5>Notes</h5>
-         <textarea class="form-control" name="notes">{{course.roomPref}}</textarea>
+         <textarea class="form-control" name="notes">{{course.notes}}</textarea>
         <h5>Edit Instructor</h5>
        <select class="chosen-select" id="professors"  name="professors[]" multiple>
           {% for user in users %}

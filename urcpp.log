@@ -1,2 +1,16 @@
-[2016-03-28 19:51:37.508273] [INFO] [192.68.112.172] [studentlabor] [/createPrograms] This a test log 
-[2016-03-28 19:56:14.225482] [INFO] [192.68.112.172] [studentlabor] [/deletePrograms/3] This is another test of a log in the deletePrograms file 
+[2016-04-25 20:50:59.746083] [INFO] [10.240.0.179] [None] [/admin/newDivision] Division: This is a new test has been added 
+[2016-04-25 21:17:02.882902] [INFO] [10.240.0.207] [None] [/admin/newDivision] Division: Test Division 1 has been added 
+[2016-04-25 21:35:31.574044] [INFO] [10.240.0.208] [None] [/changeAdmin] User: studentlabor is now  an admin 
+[2016-04-25 21:36:50.014658] [INFO] [10.240.0.110] [None] [/changeAdmin] User: studentlabor is now not an admin 
+[2016-04-25 22:47:34.386894] [INFO] [10.240.0.165] [None] [/admin/newProgram] Program: pid = 42 This is a test program has been added 
+[2016-04-25 22:49:40.642535] [INFO] [10.240.0.192] [None] [/admin/newProgram] Program: pid = 43 'This is a test program' has been added 
+[2016-04-28 00:57:48.038707] [INFO] [10.240.0.208] [None] [/courses/201611/SENS] Course: #908 has been added 
+[2016-04-28 19:52:23.506759] [INFO] [10.240.0.203] [None] [/courses/201611/SENS] Course: #906 has been added 
+[2016-04-29 00:52:29.678202] [INFO] [10.240.0.187] [None] [/deadline/create] Deadline: new deadline has been added 
+[2016-04-29 05:52:57.647020] [INFO] [10.240.0.165] [None] [/courses/201611/SENS] Course: #907 has been added 
+[2016-04-29 06:08:14.022620] [INFO] [10.240.0.157] [None] [/courses/201611/SENS] Course: #908 has been added 
+[2016-04-29 06:43:25.208468] [INFO] [10.240.0.197] [None] [/courses/201611/SENS] Course: #909 has been added 
+[2016-04-29 06:55:34.448081] [INFO] [10.240.0.207] [None] [/courses/201611/SENS] Course: #910 has been added 
+[2016-04-29 06:57:42.428152] [INFO] [10.240.0.167] [None] [/courses/201611/SENS] Course: #911 has been added 
+[2016-04-29 07:05:19.367027] [INFO] [10.240.0.157] [None] [/editcourse/201611/SENS] Course: course 292 has been edited 
+[2016-04-29 07:06:31.947930] [INFO] [10.240.0.179] [None] [/editcourse/201611/SENS] Course: course 779 has been edited 

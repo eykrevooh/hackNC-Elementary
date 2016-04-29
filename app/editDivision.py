@@ -21,5 +21,6 @@ def editDivision():
       for professor in professors:
         newDivisionChair = DivisionChair(username = professor, did = data['divisionId'])
         newDivisionChair.save()
-        
-    return "hello"
+      message = "Division: division {} has been edited"
+      log.writer("INFO", page, message)
+    return redirect(url_for("adminDivisionManagement", did=data['divisionId']))

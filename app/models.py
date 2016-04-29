@@ -67,7 +67,7 @@ class BannerCourses(dbModel):
 
 class Term(dbModel):
   name              = CharField()
-  termCode          = IntegerField(unique = True)
+  termCode          = IntegerField(primary_key = True)
   editable          = BooleanField()
 
 class Course(dbModel):
@@ -76,12 +76,9 @@ class Course(dbModel):
   bannerRef         = ForeignKeyField(BannerCourses)
   term              = ForeignKeyField(Term, null = False)
   schedule          = ForeignKeyField(BannerSchedule, null = False)
-  capacity          = IntegerField(null = False)
-  roomAssign        = IntegerField(null = True)
+  capacity          = IntegerField(null = False, default=0)
   specialTopicName  = CharField(null = True)
-  status            = IntegerField(default = 0)
-  reason            = TextField(null = True)
-  roomPref          = TextField(null = False)
+  notes             = TextField(null = False)
   lastEditBy        = CharField(null = True)
 
 class ProgramChair(dbModel):
@@ -101,9 +98,22 @@ class Deadline(dbModel):
   description  = TextField()
   date         = DateField()
   
-
+class CourseChange(dbModel):
+  cId               = IntegerField(primary_key = True)
+  prefix            = ForeignKeyField(Subject)
+  bannerRef         = ForeignKeyField(BannerCourses)
+  term              = ForeignKeyField(Term, null = False)
+  schedule          = ForeignKeyField(BannerSchedule, null = False)
+  capacity          = IntegerField(null = False)
+  specialTopicName  = CharField(null = True)
+  notes             = TextField(null = False)
+  lastEditBy        = CharField(null = True)
+  changeType        = CharField(null = True)
+  verified          = BooleanField(default = False)
   
-
+class InstructorCourseChange(dbModel):
+  username     = ForeignKeyField(User)
+  course       = ForeignKeyField(CourseChange)
   
 
 

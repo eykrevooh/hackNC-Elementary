@@ -24,6 +24,8 @@ models:
     - DivisionChair
     - InstructorCourse
     - Deadline
+    - CourseChange
+    - InstructorCourseChange
 # this makes the navigation bar
 mainMenu:
   - title: "Home"
@@ -38,6 +40,9 @@ adminMenu:
     link: "/redirect/division_management"
   - title: "System Management"
     link: "/admin/systemManagement"
+  - title: "Change Tracker"
+    link:  "/courses/changes"
+  
 
 DEBUG:
   user: "heggens"

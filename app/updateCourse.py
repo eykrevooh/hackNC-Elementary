@@ -20,22 +20,30 @@ class DataUpdate():
           
   def addCourse(self, data, term, instructors, prefix):
     if self.checkUserLevel(prefix):
-      prefix, number, title = data['ctitle'].split(None, 2)
-      bannerCourse = BannerCourses.get(BannerCourses.subject == prefix)
-                      
-      # course.save()
+      subject, number, title = data['ctitle'].split(None, 2)
+      bannerCourse = BannerCourses.select().where(BannerCourses.subject == subject).where(BannerCourses.number == number)
+      bannerCourse = bannerCourse[0]
+      if int(number) % 100 ==86:
+        specialTopicName = data['specialTopicName']
+      else:
+        specialTopicName = None
+      if data['capacity'] == "":
+        capacity = 0
+      else:
+        capacity = data['capacity']
       course = Course(bannerRef     = bannerCourse.reFID,
                   prefix            = prefix,
                   term              = int(term),
                   schedule          = data['schedule'],
-                  capacity          = int(data['capacity']),
-                  roomPref          = data['requests']
+                  capacity          = capacity,
+                  specialTopicName  = specialTopicName,
+                  notes          = data['requests']
                 )
       course.save()
-      print course.cId
       for professor in instructors:
         instructor = InstructorCourse(username = professor, course = course.cId)
         instructor.save()
+    return course.cId
   
   
   def editCourse(self, data, prefix, professors):
@@ -45,7 +53,7 @@ class DataUpdate():
       course.term     = data['term']
       course.capacity = data['capacity']
       course.schedule = data['schedule']
-      course.roomPref = data['notes']
+      course.notes = data['notes']
       course.lastEditBy = authUser(request.environ)
       
       course.save()
@@ -68,4 +76,66 @@ class DataUpdate():
       instructors = InstructorCourse.select().where(InstructorCourse.course == int(data['cid']))
       for instructor in instructors:
         instructor.delete_instance()
+  
+######################################################################################
+  def isTermEditable(self, tid):
+    term = Term.get(Term.termCode == int(tid))
+    return term.editable
+  
+  def addCourseChange(self, cid, prefix, changeType):
+    if self.checkUserLevel(prefix):
+      course = Course.get(Course.cId == cid)
+      print "This is the term.code", course.term, type(course.term)
+      instructors = InstructorCourse.select().where(InstructorCourse.course == cid)
       
+      newcourse, created = CourseChange.create_or_get( cId               = course.cId,
+                                bannerRef         = course.bannerRef,
+                                prefix            = course.prefix,
+                                term              = course.term,
+                                schedule          = course.schedule,
+                                specialTopicName  = course.specialTopicName,
+                                capacity          = course.capacity,
+                                notes             = course.notes,
+                                lastEditBy        = course.lastEditBy,
+                                changeType        = changeType
+                              )
+      newcourse.save()
+      for professor in instructors:
+        instructor = InstructorCourseChange(username = professor.username, course = professor.course)
+        instructor.save()
+      
+      return created
+    
+  def editCourseChange(self, cid, prefix, changeType):
+    if self.checkUserLevel(prefix):
+      newcourse = Course.get(Course.cId == cid)
+      course = CourseChange.get(CourseChange.cId == cid)
+      
+      course.term     = newcourse.term
+      course.capacity = newcourse.capacity
+      course.schedule = newcourse.schedule
+      course.notes = newcourse.notes
+      course.lastEditBy = newcourse.lastEditBy
+      course.changeType = changeType
+    
+      course.save()
+      
+      newInstructors = InstructorCourse.select().where(InstructorCourse.course == cid)
+      professors = InstructorCourseChange.select().where(InstructorCourseChange.course == cid)
+      
+      instructors =[]
+      for professor in professors:
+        instructors.append(professor)
+      
+      for newInstructor in newInstructors:
+        professor = InstructorCourseChange.select().where(InstructorCourseChange.course == cid).where(InstructorCourseChange.username == newInstructor.username)
+        if professor.exists():
+          instructors.remove(professor[0])
+        else:
+          InstructorChange(username = oldInstructor.username, cid = cid).save()
+      
+      for instructor in instructors:
+        instructor.delete_instance()
+      
+      course.verified=False
+      course.save()

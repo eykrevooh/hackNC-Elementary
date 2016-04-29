@@ -135,7 +135,7 @@ mainDB.create_tables(get_classes('mainDB'))
 #                   term              = 201611,
 #                   schedule          = 1,
 #                   capacity          = 20,
-#                   roomPref          = "Preference1"
+#                   notes          = "Preference1"
 #                 ).save()
                 
 # course = Course(  bannerRef         = 2,
@@ -143,7 +143,7 @@ mainDB.create_tables(get_classes('mainDB'))
 #                   term              = 201612,
 #                   schedule          = 2,
 #                   capacity          = 20,
-#                   roomPref          = "Preference2"
+#                   notes          = "Preference2"
 #                 ).save()                
 
 # course = Course(  bannerRef         = 1,
@@ -151,7 +151,7 @@ mainDB.create_tables(get_classes('mainDB'))
 #                   term              = 201612,
 #                   schedule          = 1,
 #                   capacity          = 20,
-#                   roomPref          = "Preference1"
+#                   notes          = "Preference1"
 #                   ).save()
                   
 # pchair = ProgramChair(  username  = "heggens",

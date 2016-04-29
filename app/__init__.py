@@ -13,12 +13,9 @@ from app import allImports
 #import your new python files here. It is not a part of the module until it is imported
 print("Starting application") #I don't see this print - Cody Myers
 
-from app import courseLanding
 from app import course
-from app import adminCourses
 from app import editCourse
 from app import deleteCourse
-from app import adminPanel
 from app import NotFound
 from app import editProgram
 from app import editDivision
@@ -34,4 +31,4 @@ from app import deadlineManagement
 from app import deadlineDisplay
 from app import addProgram
 from app import addDivision
-from app import deleteDeadline
+from app import courseChange

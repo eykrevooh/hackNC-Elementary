@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% set currentPage = "Course Changes" %}
+{% block body %}
+<div class="jumbotron">
+  <p>After the deadline for submitting courses has passed 
+     and division chairs and program chairs still need to add or edit courses then those changes
+     will appear here so that they can be updated in any other database that needs to be updated</p>
+</div>
+	{% for term in data %}
+    <div class="panel panel-default">
+		<div class="panel-heading">{{term.name}}</div>
+		<!-- Table -->
+		{% for changeType in data[term] %}
+		{% if data[term][changeType] %}
+		<table class="table">
+			<thead>
+            <tr><td colspan="7" class = "text-center">{{changeType.upper() + "D"}}</td></tr>
+				<tr>
+					<th>Course Name</th>
+              <th>Taught By</th>
+              <th>Schedule</th>
+              <th>Capacity</th>
+              <th>Notes</th>
+              <th>Last Edited By</th>
+              <th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for course in data[term][changeType] %}
+				<tr>
+				 <td>{{course.prefix.prefix}} {{course.bannerRef.number}}
+                             {% if course.specialTopicName is not none %}
+                                {{course.specialTopicName}}
+                             {% else %}
+                                {{course.bannerRef.ctitle}}
+                             {%endif%}
+                             </td>
+              <td>{% for instructor in instructors[course.cId] %}
+               {{instructor.username.username}}{% endfor %}
+              </td>
+              <td>{{course.schedule.days}} {{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}</td>
+              <td>{{course.capacity}}</td>
+              <td><a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a></td>
+              <td>{{course.lastEditBy}}</td>
+              <td>
+               <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+              </td>
+          	</tr>
+            {% endfor %}
+			</tbody> 
+		</table>
+		{% endif %}
+		{% endfor %}
+	</div>
+	{% endfor %}
+{% endblock %}
