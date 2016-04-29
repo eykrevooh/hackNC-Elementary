@@ -15,7 +15,7 @@ class DataUpdate():
     
     programChair  = ProgramChair.select().where(ProgramChair.username == self.username).where(ProgramChair.pid == subject.pid.pID)
     
-    if admin.isAdmin or divisionChair or programChair:
+    if admin.isAdmin or divisionChair.exists() or programChair.exists():
       return True
           
   def addCourse(self, data, term, instructors, prefix):
@@ -139,3 +139,11 @@ class DataUpdate():
       
       course.verified=False
       course.save()
+  
+  def verifyCourseChange(self, data):
+    if self.checkUserLevel('CSC'):
+      course = CourseChange.get(CourseChange.cId == int(data['id']))
+      course.delete_instance()
+      instructors = InstructorCourseChange.select().where(InstructorCourseChange.course == int(data['id']))
+      for instructor in instructors:
+        instructor.delete_instance()

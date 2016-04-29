@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% set currentPage = "Course Changes" %}
+{% set currentPage = "courseChanges" %}
 {% block body %}
 <div class="jumbotron">
   <p>After the deadline for submitting courses has passed 
@@ -28,6 +28,7 @@
 			</thead>
 			<tbody>
 				{% for course in data[term][changeType] %}
+				{% if not course.verified %}
 				<tr>
 				 <td>{{course.prefix.prefix}} {{course.bannerRef.number}}
                              {% if course.specialTopicName is not none %}
@@ -44,12 +45,14 @@
               <td><a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a></td>
               <td>{{course.lastEditBy}}</td>
               <td>
-               <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+               <a href="" data-toggle="modal" data-id="{{course.cId}}" data-target="#verifyCourseChange"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>
               </td>
           	</tr>
+          	{% endif %}
             {% endfor %}
 			</tbody> 
 		</table>
+		{% include "verifiedCourseChange.html" %}
 		{% endif %}
 		{% endfor %}
 	</div>

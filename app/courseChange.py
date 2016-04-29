@@ -40,3 +40,14 @@ def courseChange():
                             )
     else:
       return render_template("404.html", cfg=cfg)
+  
+@app.route("/courses/changes/verified", methods=["POST"])
+def verifycourseChange():
+  if (request.method == "POST"):
+    username = authUser(request.environ)
+    admin = User.get(User.username == username)
+    if admin.isAdmin:
+      data = request.form
+      verify = DataUpdate()
+      verify.verifyCourseChange(data)
+      return redirect(url_for("courseChange"))

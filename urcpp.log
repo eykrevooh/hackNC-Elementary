@@ -14,3 +14,7 @@
 [2016-04-29 06:57:42.428152] [INFO] [10.240.0.167] [None] [/courses/201611/SENS] Course: #911 has been added 
 [2016-04-29 07:05:19.367027] [INFO] [10.240.0.157] [None] [/editcourse/201611/SENS] Course: course 292 has been edited 
 [2016-04-29 07:06:31.947930] [INFO] [10.240.0.179] [None] [/editcourse/201611/SENS] Course: course 779 has been edited 
+[2016-04-29 16:46:10.023445] [INFO] [10.240.0.166] [None] [/editcourse/201611/SENS] Course: course 292 has been edited 
+[2016-04-29 16:46:49.062558] [INFO] [10.240.0.186] [None] [/courses/201611/SENS] Course: #912 has been added 
+[2016-04-29 16:47:19.595979] [INFO] [10.240.0.203] [None] [/editcourse/201611/SENS] Course: course 912 has been edited 
+[2016-04-29 16:47:41.862785] [INFO] [10.240.0.167] [None] [/deletecourse/201611/SENS] Course: course 912 has been deleted 
