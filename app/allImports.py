@@ -43,7 +43,8 @@ from app import logtool
 log = logtool.Log()
 
 app = Flask(__name__)
-app.config.from_object('app.config')
+
+app.config.from_object('settings')
 # Builds all the database connections on app run
 # Don't panic, if you need clarification ask.
 @app.before_request

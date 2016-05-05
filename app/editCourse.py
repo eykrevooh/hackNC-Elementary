@@ -34,11 +34,12 @@ def editcourse(tid, prefix):
   data = request.form
   professors = request.form.getlist('professors[]')
   editcourse = DataUpdate()
-  editcourse.editCourse(data, prefix, professors)
+  
   if not editcourse.isTermEditable(tid):
       created = editcourse.addCourseChange(data['cid'], prefix, "update")
-      if not created:
-        editcourse.editCourseChange(data['cid'], prefix, "update")
+      
+  editcourse.editCourse(data, prefix, professors)
+  
   message = "Course: course {} has been edited".format(data['cid'])
   log.writer("INFO", page, message)
   return redirect(url_for("courses", tID=tid, prefix=prefix))

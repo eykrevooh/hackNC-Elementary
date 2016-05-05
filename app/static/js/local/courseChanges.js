@@ -4,3 +4,9 @@ $('#verifyCourseChange').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('#courseChangeId').val(id)
 });
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+        placement : 'top'
+    });
+});

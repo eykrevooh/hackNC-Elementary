@@ -18,3 +18,18 @@
 [2016-04-29 16:46:49.062558] [INFO] [10.240.0.186] [None] [/courses/201611/SENS] Course: #912 has been added 
 [2016-04-29 16:47:19.595979] [INFO] [10.240.0.203] [None] [/editcourse/201611/SENS] Course: course 912 has been edited 
 [2016-04-29 16:47:41.862785] [INFO] [10.240.0.167] [None] [/deletecourse/201611/SENS] Course: course 912 has been deleted 
+[2016-04-29 18:58:22.123957] [INFO] [10.240.0.207] [None] [/courses/changes/verified] Course Change: 909 has been verified 
+[2016-04-29 19:01:22.254414] [INFO] [10.240.0.179] [None] [/courses/changes/verified] Course Change: 293 has been verified 
+[2016-04-29 19:05:34.455045] [INFO] [10.240.0.166] [None] [/courses/changes/verified] Course Change: 779 has been verified 
+[2016-04-29 19:22:02.026166] [INFO] [10.240.0.197] [None] [/courses/changes/verified] Course Change: 908 has been verified 
+[2016-04-29 19:22:18.831590] [INFO] [10.240.0.165] [None] [/deletecourse/201611/SENS] Course: course 911 has been deleted 
+[2016-04-29 19:23:33.919411] [INFO] [10.240.0.166] [None] [/courses/changes/verified] Course Change: 911 has been verified 
+[2016-05-04 19:40:05.506820] [INFO] [10.240.0.167] [None] [/courses/201611/SENS] Course: #911 has been added 
+[2016-05-04 19:40:41.546999] [INFO] [10.240.0.165] [None] [/editcourse/201611/SENS] Course: course 911 has been edited 
+[2016-05-04 20:23:29.323493] [INFO] [10.240.0.110] [None] [/courses/changes/verified] Course Change: 911 has been verified 
+[2016-05-04 20:59:25.569635] [INFO] [10.240.0.179] [None] [/courses/201611/SENS] Course: #912 has been added 
+[2016-05-04 20:59:38.050399] [INFO] [10.240.0.186] [None] [/editcourse/201611/SENS] Course: course 779 has been edited 
+[2016-05-04 21:34:56.615409] [INFO] [10.240.0.75] [None] [/editcourse/201611/ANR] Course: course 1 has been edited 
+[2016-05-05 02:40:46.232232] [INFO] [10.240.0.204] [None] [/editcourse/201611/SENS] Course: course 779 has been edited 
+[2016-05-05 02:41:18.352164] [INFO] [10.240.0.179] [None] [/editcourse/201611/SENS] Course: course 292 has been edited 
+[2016-05-05 02:56:04.448835] [INFO] [10.240.0.186] [None] [/deletecourse/201611/SENS] Course: course 292 has been deleted 

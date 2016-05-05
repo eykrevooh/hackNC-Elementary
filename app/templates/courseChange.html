@@ -7,15 +7,23 @@
      and division chairs and program chairs still need to add or edit courses then those changes
      will appear here so that they can be updated in any other database that needs to be updated</p>
 </div>
+{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-success alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
 	{% for term in data %}
     <div class="panel panel-default">
 		<div class="panel-heading">{{term.name}}</div>
 		<!-- Table -->
-		{% for changeType in data[term] %}
-		{% if data[term][changeType] %}
 		<table class="table">
 			<thead>
-            <tr><td colspan="7" class = "text-center">{{changeType.upper() + "D"}}</td></tr>
+
 				<tr>
 					<th>Course Name</th>
               <th>Taught By</th>
@@ -27,34 +35,31 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for course in data[term][changeType] %}
-				{% if not course.verified %}
+				{% for course in data[term] %}
 				<tr>
-				 <td>{{course.prefix.prefix}} {{course.bannerRef.number}}
-                             {% if course.specialTopicName is not none %}
-                                {{course.specialTopicName}}
+				 <td class="{{course[0][0]}}">{{course[1].prefix.prefix}} {{course[1].bannerRef.number}}
+                             {% if course[1].specialTopicName is not none %}
+                                {{course[1].specialTopicName}}
                              {% else %}
-                                {{course.bannerRef.ctitle}}
+                                {{course[1].bannerRef.ctitle}}
                              {%endif%}
                              </td>
-              <td>{% for instructor in instructors[course.cId] %}
+              <td class='{{course[0][1]}}'>{% for instructor in instructors[course[1].cId] %}
                {{instructor.username.username}}{% endfor %}
               </td>
-              <td>{{course.schedule.days}} {{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}</td>
-              <td>{{course.capacity}}</td>
-              <td><a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a></td>
-              <td>{{course.lastEditBy}}</td>
+              <td class="{{course[0][2]}}">{{course[1].schedule.days}} {{course[1].schedule.startTime.strftime('%H:%M')}} - {{course[1].schedule.endTime.strftime('%H:%M')}}</td>
+              <td class="{{course[0][3]}}">{{course[1].capacity}}</td>
+              <td class="{{course[0][4]}}"><a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course[1].notes}}'>Notes</a></td>
+              <td>{{course[1].lastEditBy}}</td>
               <td>
-               <a href="" data-toggle="modal" data-id="{{course.cId}}" data-target="#verifyCourseChange"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>
+               <a href="" data-toggle="modal" data-id="{{course[1].cId}}" data-target="#verifycourseChange"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>
               </td>
           	</tr>
-          	{% endif %}
+
             {% endfor %}
 			</tbody> 
 		</table>
 		{% include "verifiedCourseChange.html" %}
-		{% endif %}
-		{% endfor %}
 	</div>
 	{% endfor %}
 {% endblock %}
