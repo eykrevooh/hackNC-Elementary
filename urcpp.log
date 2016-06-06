@@ -33,3 +33,31 @@
 [2016-05-05 02:40:46.232232] [INFO] [10.240.0.204] [None] [/editcourse/201611/SENS] Course: course 779 has been edited 
 [2016-05-05 02:41:18.352164] [INFO] [10.240.0.179] [None] [/editcourse/201611/SENS] Course: course 292 has been edited 
 [2016-05-05 02:56:04.448835] [INFO] [10.240.0.186] [None] [/deletecourse/201611/SENS] Course: course 292 has been deleted 
+[2016-06-06 19:07:55.708898] [INFO] [10.240.0.203] [None] [/courses/201611/CSC] Course: #4 has been added 
+[2016-06-06 19:09:26.899421] [INFO] [10.240.0.207] [None] [/courses/201611/MAT] Course: #5 has been added 
+[2016-06-06 19:12:18.798772] [INFO] [10.240.0.200] [None] [/deadline/create] Deadline: Cody finish this has been added 
+[2016-06-06 19:31:47.372019] [INFO] [10.240.0.110] [None] [/newTerm] Term: Term 2016 has been created 
+[2016-06-06 19:32:04.411707] [INFO] [10.240.0.179] [None] [/newTerm] Term: Term 2016 has been created 
+[2016-06-06 19:33:41.351219] [INFO] [10.240.0.179] [None] [/changeAdmin] User: jadudm is now  an admin 
+[2016-06-06 19:33:46.168699] [INFO] [10.240.0.203] [None] [/changeAdmin] User: jadudm is now not an admin 
+[2016-06-06 19:43:22.862652] [INFO] [10.240.0.200] [None] [/deadline/create] Deadline: dfadfasdf has been added 
+[2016-06-06 19:43:31.117275] [INFO] [10.240.0.110] [None] [/deleteDeadline] Deadline: dfadfasdf has been deleted 
+[2016-06-06 19:47:39.534315] [INFO] [10.240.0.192] [None] [/deadline/create] Deadline: Zach Sucks  has been added 
+[2016-06-06 19:48:06.267819] [INFO] [10.240.0.207] [None] [/newTerm] Term: Term 2016 has been created 
+[2016-06-06 19:48:36.821545] [INFO] [10.240.0.187] [None] [/deleteDeadline] Deadline: Zach Sucks  has been deleted 
+[2016-06-06 19:48:55.923008] [INFO] [10.240.0.189] [None] [/courses/201611/CSC] Course: #4 has been added 
+[2016-06-06 19:54:05.137640] [INFO] [10.240.0.192] [None] [/newTerm] Term: Term 522828 has been created 
+[2016-06-06 19:58:30.960840] [INFO] [10.240.0.197] [None] [/newTerm] Term: Term 73456367 has been created 
+[2016-06-06 20:06:14.459127] [INFO] [10.240.0.203] [None] [newTerm] <app.models.Term object at 0x7f4154092190> 
+[2016-06-06 20:06:14.461799] [INFO] [10.240.0.203] [None] [/newTerm] Term: Term 234 has been created 
+[2016-06-06 20:08:02.092778] [INFO] [10.240.0.186] [None] [newTerm] 3435 
+[2016-06-06 20:08:02.093550] [INFO] [10.240.0.186] [None] [/newTerm] Term: Term 3435 has been created 
+[2016-06-06 20:09:16.475841] [ERROR] [10.240.0.206] [None] [newTerm] 'Term' object has no attribute 'termName' 
+[2016-06-06 20:09:16.476106] [INFO] [10.240.0.206] [None] [/newTerm] Term: Term 4567 has been created 
+[2016-06-06 20:10:30.372208] [INFO] [10.240.0.197] [None] [newTerm] Summer 2017 
+[2016-06-06 20:10:30.372941] [INFO] [10.240.0.197] [None] [/newTerm] Term: Term 234 has been created 
+[2016-06-06 20:13:23.331253] [INFO] [10.240.0.207] [None] [/newTerm] Term: Term 234 has been created 
+[2016-06-06 20:14:42.779256] [ERROR] [10.240.0.203] [None] [newTerm] near ""term"": syntax error 
+[2016-06-06 20:14:42.780395] [INFO] [10.240.0.203] [None] [/newTerm] Term: Term 23414 has been created 
+[2016-06-06 20:15:30.903942] [INFO] [10.240.0.207] [None] [/newTerm] Term: Term 989789 has been created 
+[2016-06-06 20:17:37.218670] [INFO] [10.240.0.197] [None] [/newTerm] Term: Term 4523 has been created 
