@@ -14,6 +14,7 @@
 		{% endfor %}
 	  {% endif %}
 	{% endwith %}
+{% if deadlines %}
 <table class = "table table-bordered">
   <thead>
    <tr>
@@ -50,5 +51,10 @@
   {% endif %}
   {% endfor %}
 </table>
+{% else %}
+  <div class = "jumbotron">
+    Upcoming deadlines will be posted here.
+  </div>
+{% endif %}
 
 {% endblock %}
