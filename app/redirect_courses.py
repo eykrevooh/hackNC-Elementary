@@ -1,8 +1,12 @@
 from allImports import *
+import sys
 
 @app.route("/redirect/courses", methods=["GET", "POST"])
 def redirectCourses():
+   
    username = authUser(request.environ)
+
+
    user = User.get(User.username == username)
    
    if user.program != 0 and user.program is not None:
@@ -24,3 +28,5 @@ def redirectCourses():
    return redirect(url_for("courses", 
                            tID = termcode, 
                            prefix = subject.prefix))
+   
+  

@@ -2,10 +2,12 @@ from allImports import *
 from updateCourse import DataUpdate
 
 
+
 @app.route("/courses/<tID>/<prefix>", methods=["GET", "POST"])
 def courses(tID, prefix):
   username = authUser(request.environ)
   admin = User.get(User.username == username)
+  print admin
   if (request.method == "GET"):
       
       print username

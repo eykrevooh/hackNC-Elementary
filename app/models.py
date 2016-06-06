@@ -66,9 +66,10 @@ class BannerCourses(dbModel):
   ctitle        = CharField(null = False)
 
 class Term(dbModel):
+  termCode          = IntegerField(primary_key = True)     #This line will result in an autoincremented number, which will not allow us to enter in our own code
   name              = CharField()
-  termCode          = IntegerField(primary_key = True)
   editable          = BooleanField()
+  
 
 class Course(dbModel):
   cId               = PrimaryKeyField()
