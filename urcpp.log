@@ -61,3 +61,57 @@
 [2016-06-06 20:14:42.780395] [INFO] [10.240.0.203] [None] [/newTerm] Term: Term 23414 has been created 
 [2016-06-06 20:15:30.903942] [INFO] [10.240.0.207] [None] [/newTerm] Term: Term 989789 has been created 
 [2016-06-06 20:17:37.218670] [INFO] [10.240.0.197] [None] [/newTerm] Term: Term 4523 has been created 
+[2016-06-06 20:27:49.324762] [INFO] [10.240.0.189] [None] [/deadline/create] Deadline: Test has been added 
+[2016-06-06 20:33:31.296648] [INFO] [10.240.0.192] [None] [/deadline/create] Deadline: Test has been added 
+[2016-06-06 20:34:27.354798] [INFO] [10.240.0.110] [None] [/deleteDeadline] Deadline: Test has been deleted 
+[2016-06-06 20:34:30.250413] [INFO] [10.240.0.197] [None] [/deleteDeadline] Deadline: Test has been deleted 
+[2016-06-06 20:35:39.085925] [INFO] [10.240.0.208] [None] [/deadline/create] Deadline: Test has been added 
+[2016-06-06 20:36:14.772920] [INFO] [10.240.0.189] [None] [/deleteDeadline] Deadline: Test has been deleted 
+[2016-06-07 13:22:58.490936] [INFO] [10.240.0.241] [None] [/deadline/create] Deadline: How are you has been added 
+[2016-06-07 13:24:55.818612] [INFO] [10.240.0.241] [None] [/deleteDeadline] Deadline: How are you has been deleted 
+[2016-06-07 13:58:01.171290] [INFO] [10.240.0.204] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 13:58:07.026516] [INFO] [10.240.0.179] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 13:58:11.346704] [INFO] [10.240.0.207] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 13:58:52.538396] [INFO] [10.240.0.75] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 13:59:00.639250] [INFO] [10.240.0.200] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:01:45.568721] [INFO] [10.240.0.179] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:06:31.275637] [INFO] [10.240.0.179] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:13:38.444048] [INFO] [10.240.0.192] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:13:47.175746] [INFO] [10.240.0.179] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:19:46.539543] [INFO] [10.240.0.241] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:19:49.324390] [INFO] [10.240.0.179] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:21:49.455557] [INFO] [10.240.0.179] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:23:29.187904] [INFO] [10.240.0.110] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:24:47.360314] [INFO] [10.240.0.206] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:24:49.171067] [INFO] [10.240.0.186] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:29:28.461161] [INFO] [10.240.0.187] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:29:33.779121] [INFO] [10.240.0.186] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:29:36.415993] [INFO] [10.240.0.206] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:34:01.520166] [INFO] [10.240.0.200] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:36:30.311889] [INFO] [10.240.0.192] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:39:14.274788] [ERROR] [10.240.0.110] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] 'division_id' 
+[2016-06-07 14:39:14.276358] [INFO] [10.240.0.110] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:43:01.257719] [INFO] [10.240.0.186] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:44:28.544442] [INFO] [10.240.0.187] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Computational Sucking 
+[2016-06-07 14:44:28.544702] [INFO] [10.240.0.187] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] 1 
+[2016-06-07 14:44:28.559878] [INFO] [10.240.0.187] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:44:29.189747] [INFO] [10.240.0.241] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Computational Sucking 
+[2016-06-07 14:44:29.189980] [INFO] [10.240.0.241] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] 1 
+[2016-06-07 14:44:29.210598] [INFO] [10.240.0.241] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 14:53:35.544111] [INFO] [10.240.0.203] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Computational Sucking 
+[2016-06-07 14:53:35.544486] [INFO] [10.240.0.203] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] 1 
+[2016-06-07 14:53:35.562778] [INFO] [10.240.0.203] [None] [http://cas-flask-cody-myers.c9users.io:8080/editProgram] Program: program 1 has been edited 
+[2016-06-07 15:22:36.089852] [INFO] [10.240.0.197] [None] [editProgram] Program: program 1 has been edited 
+[2016-06-07 15:22:51.802049] [INFO] [10.240.0.75] [None] [editProgram] Program: program 1 has been edited 
+[2016-06-07 15:22:53.038482] [INFO] [10.240.0.197] [None] [editProgram] Program: program 1 has been edited 
+[2016-06-07 15:23:30.304437] [INFO] [10.240.0.110] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 15:23:32.646431] [INFO] [10.240.0.208] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 15:23:34.190650] [INFO] [10.240.0.208] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 15:23:35.126684] [INFO] [10.240.0.197] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 15:34:37.462396] [INFO] [10.240.0.207] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 15:34:47.679250] [INFO] [10.240.0.208] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 15:37:06.910498] [INFO] [10.240.0.192] [None] [/editDivision] Division: division {} has been edited 
+[2016-06-07 15:37:41.379128] [INFO] [10.240.0.186] [None] [/editDivision] Division: division {} has been edited 
+[2016-06-07 18:58:22.647468] [INFO] [10.240.0.187] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 19:00:41.107315] [INFO] [10.240.0.241] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 19:02:25.826166] [INFO] [10.240.0.197] [None] [/editProgram] Program: program 1 has been edited 
