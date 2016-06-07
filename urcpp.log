@@ -115,3 +115,22 @@
 [2016-06-07 18:58:22.647468] [INFO] [10.240.0.187] [None] [/editProgram] Program: program 1 has been edited 
 [2016-06-07 19:00:41.107315] [INFO] [10.240.0.241] [None] [/editProgram] Program: program 1 has been edited 
 [2016-06-07 19:02:25.826166] [INFO] [10.240.0.197] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-07 20:10:25.903244] [INFO] [10.240.0.186] [None] [/newTerm] Term: Term 567 has been created 
+[2016-06-07 20:10:40.189277] [INFO] [10.240.0.186] [None] [/newTerm] Term: Term 3423423 has been created 
+[2016-06-07 20:13:35.189350] [INFO] [10.240.0.207] [None] [/editTerm] Term: term 201612 has been editable 
+[2016-06-07 20:16:29.707267] [INFO] [10.240.0.206] [None] [/editTerm] Term: term 201611 has been editable 
+[2016-06-07 20:16:42.109214] [INFO] [10.240.0.192] [None] [/editTerm] Term: term 201611 has been editable 
+[2016-06-07 20:16:45.534463] [INFO] [10.240.0.187] [None] [/editTerm] Term: term 201611 has been editable 
+[2016-06-07 20:16:48.638144] [INFO] [10.240.0.200] [None] [/editTerm] Term: term 201612 has been editable 
+[2016-06-07 20:17:29.269751] [INFO] [10.240.0.75] [None] [/courses/567/MAT] Course: #4 has been added 
+[2016-06-07 20:17:44.723260] [INFO] [10.240.0.204] [None] [/editcourse/567/MAT] Course: course 4 has been edited 
+[2016-06-07 20:18:00.342298] [INFO] [10.240.0.192] [None] [/editcourse/567/MAT] Course: course 4 has been edited 
+[2016-06-07 20:19:18.867810] [INFO] [10.240.0.200] [None] [/editcourse/201611/CSC] Course: course 1 has been edited 
+[2016-06-07 20:19:42.126509] [INFO] [10.240.0.208] [None] [/editTerm] Term: term 201612 has been editable 
+[2016-06-07 20:20:04.211300] [INFO] [10.240.0.75] [None] [/editTerm] Term: term 567 has been editable 
+[2016-06-07 20:20:52.071483] [INFO] [10.240.0.208] [None] [/editTerm] Term: term 201611 has been editable 
+[2016-06-07 20:20:54.686738] [INFO] [10.240.0.208] [None] [/editTerm] Term: term 201612 has been editable 
+[2016-06-07 20:20:56.886187] [INFO] [10.240.0.187] [None] [/editTerm] Term: term 3423423 has been editable 
+[2016-06-07 20:21:34.418382] [INFO] [10.240.0.206] [None] [/courses/567/CSC] Course: #5 has been added 
+[2016-06-07 20:21:50.776896] [INFO] [10.240.0.203] [None] [/editTerm] Term: term 567 has been editable 
+[2016-06-07 20:22:01.373176] [INFO] [10.240.0.241] [None] [/editcourse/567/CSC] Course: course 5 has been edited 
