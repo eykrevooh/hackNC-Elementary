@@ -134,3 +134,9 @@
 [2016-06-07 20:21:34.418382] [INFO] [10.240.0.206] [None] [/courses/567/CSC] Course: #5 has been added 
 [2016-06-07 20:21:50.776896] [INFO] [10.240.0.203] [None] [/editTerm] Term: term 567 has been editable 
 [2016-06-07 20:22:01.373176] [INFO] [10.240.0.241] [None] [/editcourse/567/CSC] Course: course 5 has been edited 
+[2016-06-07 20:33:37.661673] [INFO] [10.240.0.206] [None] [/editTerm] Term: term 567 has been editable 
+[2016-06-07 20:34:29.269456] [INFO] [10.240.0.203] [None] [/editTerm] Term: term 567 has been editable 
+[2016-06-07 20:34:39.566580] [INFO] [10.240.0.207] [None] [/editTerm] Term: term 567 has been editable 
+[2016-06-07 20:35:13.761493] [INFO] [10.240.0.208] [None] [/editTerm] Term: term 567 has been editable 
+[2016-06-07 20:35:21.653685] [INFO] [10.240.0.241] [None] [/editTerm] Term: term 201611 has been editable 
+[2016-06-07 20:35:29.934661] [INFO] [10.240.0.192] [None] [/editTerm] Term: term 201611 has been editable 
