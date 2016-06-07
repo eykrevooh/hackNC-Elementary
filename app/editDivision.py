@@ -3,7 +3,9 @@ from allImports import *
 def editDivision():
     username = authUser(request.environ)
     admin = User.get(User.username == username)
+    
     if admin.isAdmin:
+      page = "/" + request.url.split("/")[-1]
       data = request.form
       professors = request.form.getlist('professors[]')
       division = Division.get(Division.dID == int(data['divisionId']))
