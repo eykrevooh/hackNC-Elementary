@@ -4,7 +4,7 @@ def editProgram():
     username = authUser(request.environ)
     admin = User.get(User.username == username)
     if admin.isAdmin:
-      page = request.page
+      page = request.url
       data = request.form
       professors = request.form.getlist('professors[]')
       program = Program.get(Program.pID == int(data['programId']))
