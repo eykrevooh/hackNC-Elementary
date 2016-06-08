@@ -148,3 +148,7 @@
 [2016-06-08 15:27:28.032859] [INFO] [10.240.0.197] [None] [/admin/newProgram] Program: pid = 6 '' has been added 
 [2016-06-08 15:46:24.447968] [INFO] [10.240.0.208] [None] [/editcourse/567/CSC] Course: course 5 has been edited 
 [2016-06-08 15:46:42.750065] [INFO] [10.240.0.110] [None] [/editTerm] Term: term 567 has been editable 
+[2016-06-08 18:45:10.886475] [INFO] [10.240.0.204] [None] [/editcourse/201611/CSC] Course: course 1 has been edited 
+[2016-06-08 18:46:24.890438] [INFO] [10.240.0.204] [None] [/editcourse/201612/CSC] Course: course 1 has been edited 
+[2016-06-08 18:46:58.915215] [INFO] [10.240.0.186] [None] [/editcourse/201611/CSC] Course: course 1 has been edited 
+[2016-06-08 18:51:16.421807] [INFO] [10.240.0.241] [None] [/editcourse/201611/CSC] Course: course 1 has been edited 

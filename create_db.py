@@ -56,9 +56,17 @@ users = User(  firstName = "Scott",
                 lastName  = "Heggen",
                 username  = "heggens",
                 email     = "heggens@berea.edu",
-                isAdmin   = 0,
+                isAdmin   = 1,
                 program   = 1
             ).save(force_insert=True)
+            
+users = User(  firstName = "Jan",
+                lastName  = "Pearce",
+                username  = "pearcej",
+                email     = "jadudm@berea.edu",
+                isAdmin   = 0,
+                program   = 2
+            ).save(force_insert=True)     
 
 users = User(  firstName = "Matt",
                 lastName  = "Jadud",
@@ -67,6 +75,16 @@ users = User(  firstName = "Matt",
                 isAdmin   = 0,
                 program   = 2
             ).save(force_insert=True)
+            
+users = User(  firstName = "Cody",
+                lastName  = "Myers",
+                username  = "myersco",
+                email     = "jadudm@berea.edu",
+                isAdmin   = 0,
+                program   = 2
+            ).save(force_insert=True)
+  
+     
 
 division = Division(  name = "Division I"
               ).save()
@@ -144,13 +162,13 @@ course = Course(  bannerRef         = 2,
                   term              = 201612,
                   schedule          = "B",
                   capacity          = 20,
-                  notes          = "Preference2"
+                  notes             = "Preference2"
                 ).save()                
 
 course = Course(  bannerRef         = 1,
                   prefix            = "CSC",
                   term              = 201612,
-                  schedule          = "A",
+                  schedule          = "B",
                   capacity          = 20,
                   notes          = "Preference1"
                   ).save()
@@ -159,15 +177,8 @@ pchair = ProgramChair(  username  = "jadudm",
                         pid       = 1
                     ).save()
                     
-pchair = ProgramChair(  username  = "jadudm",
-                        pid       = 2
-                    ).save()
-
-dchair = DivisionChair( username  = "jadudm",
-                        did       = 1
-                      ).save()
                     
-dchair = DivisionChair(  username  = "jadudm",
+dchair = DivisionChair(  username  = "pearcej",
                         did       = 2
                       ).save()
 
@@ -177,4 +188,8 @@ instructor = InstructorCourse(  username = "heggens",
                               
 instructor = InstructorCourse(  username = "jadudm",
                                 course   = 2
-                              ).save()                              
+                              ).save()
+                              
+instructor = InstructorCourse(  username = "myersco",
+                                course   = 3
+                              ).save()  
