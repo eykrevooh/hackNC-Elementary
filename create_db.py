@@ -56,7 +56,7 @@ users = User(  firstName = "Scott",
                 lastName  = "Heggen",
                 username  = "heggens",
                 email     = "heggens@berea.edu",
-                isAdmin   = 1,
+                isAdmin   = 0,
                 program   = 1
             ).save(force_insert=True)
 
@@ -155,7 +155,7 @@ course = Course(  bannerRef         = 1,
                   notes          = "Preference1"
                   ).save()
                   
-pchair = ProgramChair(  username  = "heggens",
+pchair = ProgramChair(  username  = "jadudm",
                         pid       = 1
                     ).save()
                     
@@ -163,7 +163,7 @@ pchair = ProgramChair(  username  = "jadudm",
                         pid       = 2
                     ).save()
 
-dchair = DivisionChair( username  = "heggens",
+dchair = DivisionChair( username  = "jadudm",
                         did       = 1
                       ).save()
                     

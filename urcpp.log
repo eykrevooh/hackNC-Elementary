@@ -146,3 +146,5 @@
 [2016-06-08 14:58:45.865192] [INFO] [10.240.0.179] [None] [/admin/newDivision] Division:  has been added 
 [2016-06-08 15:27:15.036642] [INFO] [10.240.0.197] [None] [/admin/newProgram] Program: pid = 5 '' has been added 
 [2016-06-08 15:27:28.032859] [INFO] [10.240.0.197] [None] [/admin/newProgram] Program: pid = 6 '' has been added 
+[2016-06-08 15:46:24.447968] [INFO] [10.240.0.208] [None] [/editcourse/567/CSC] Course: course 5 has been edited 
+[2016-06-08 15:46:42.750065] [INFO] [10.240.0.110] [None] [/editTerm] Term: term 567 has been editable 
