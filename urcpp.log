@@ -140,3 +140,9 @@
 [2016-06-07 20:35:13.761493] [INFO] [10.240.0.208] [None] [/editTerm] Term: term 567 has been editable 
 [2016-06-07 20:35:21.653685] [INFO] [10.240.0.241] [None] [/editTerm] Term: term 201611 has been editable 
 [2016-06-07 20:35:29.934661] [INFO] [10.240.0.192] [None] [/editTerm] Term: term 201611 has been editable 
+[2016-06-08 14:48:06.577456] [INFO] [10.240.0.200] [None] [/editProgram] Program: program 1 has been edited 
+[2016-06-08 14:57:03.982943] [INFO] [10.240.0.192] [None] [/admin/newProgram] Program: pid = 3 '' has been added 
+[2016-06-08 14:57:21.495135] [INFO] [10.240.0.208] [None] [/admin/newProgram] Program: pid = 4 '' has been added 
+[2016-06-08 14:58:45.865192] [INFO] [10.240.0.179] [None] [/admin/newDivision] Division:  has been added 
+[2016-06-08 15:27:15.036642] [INFO] [10.240.0.197] [None] [/admin/newProgram] Program: pid = 5 '' has been added 
+[2016-06-08 15:27:28.032859] [INFO] [10.240.0.197] [None] [/admin/newProgram] Program: pid = 6 '' has been added 
