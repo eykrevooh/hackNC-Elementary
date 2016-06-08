@@ -52,25 +52,25 @@ def courseChange():
               oldInstructors.append(instructor.username.username)
             
             if set(oldInstructors) == set(newInstructors):
-              courseInfo.append('update')
+              courseInfo.append('danger')
             else:
               courseInfo.append(None)
             
             # compare the schedule in old and new table
             if courseHistory.schedule != course.schedule:
-              courseInfo.append('update')
+              courseInfo.append('danger')
             else:
               courseInfo.append(None)
             
             # compare the capacity
             if courseHistory.capacity != course.capacity:
-              courseInfo.append('update')
+              courseInfo.append('danger')
             else:
               courseInfo.append(None)
             
             #compare the notes
             if courseHistory.notes != course.notes:
-              courseInfo.append('update')
+              courseInfo.append('danger')
             else:
               courseInfo.append(None)
 
