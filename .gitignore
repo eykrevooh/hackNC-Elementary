@@ -3,3 +3,4 @@ config.py
 *.log
 *.db
 .c9/*
+.c9/metadata/tab3
