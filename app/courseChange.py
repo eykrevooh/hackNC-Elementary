@@ -12,9 +12,9 @@ def courseChange():
       data = {}
       terms = Term.select().where(Term.editable == False)
       courses = CourseChange.select()
-        
+      courseList = []
+      
       for term in terms:
-        courseList = []
         coursesHistory = CourseChange.select().where(CourseChange.term == term.termCode).where(CourseChange.verified == False)
         for courseHistory in coursesHistory:
           courseInfo = []
