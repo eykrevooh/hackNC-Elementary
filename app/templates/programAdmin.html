@@ -5,10 +5,8 @@
 <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
 <link rel="stylesheet" href="/static/css/Courses.css" type="text/css" />
 <body>
-
     <div id="wrapper">
         {%include "sidebar.html" %}
-
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
@@ -44,7 +42,6 @@
                              <td>{{course.lastEditBy}}</td>
                              <td>
                               <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                              
                               <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                               {% include "deleteCourse.html" %}
                              </td>
@@ -63,19 +60,14 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
     <!-- /#wrapper -->
-
-
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-  
-    
     </script>
     <script type="text/javascript" src="/static/js/ext/chosen.jquery.min.js"></script>
 </body>

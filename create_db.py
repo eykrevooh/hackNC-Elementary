@@ -101,6 +101,11 @@ program  = Program( name = "Mathematics",
                     division = 1,
                     prefix   = "MAT"
               ).save()
+              
+program  = Program( name = "Technology and Design",
+                    division = 2,
+                    prefix   = "TAD"
+              ).save()
              
 subject = Subject(  prefix  = "CSC",
                     pid     = 1,
@@ -111,6 +116,11 @@ subject = Subject(  prefix  = "MAT",
                     pid     = 2,
                     webname = "math.berea.edu"
                   ).save(force_insert=True)
+                  
+subject = Subject(  prefix  = "TAD",
+                    pid     = 3,
+                    webname = "math.berea.edu"
+                  ).save(force_insert=True)                 
 
 banner = BannerSchedule(  letter        = "Standard A",
                           days          = "MWF",
@@ -136,6 +146,11 @@ bannercourse =  BannerCourses(  subject       = "CSC",
 bannercourse =  BannerCourses(  subject       = "MAT",
                                 number        = 135,
                                 ctitle        = "Calculus I"
+                              ).save()
+                        
+bannercourse =  BannerCourses(  subject       = "TAD",
+                                number        = 435,
+                                ctitle        = "Wood Shop"
                               ).save()
 
 term = Term(  name              = "Fall 2016",
@@ -165,10 +180,10 @@ course = Course(  bannerRef         = 2,
                   notes             = "Preference2"
                 ).save()                
 
-course = Course(  bannerRef         = 1,
-                  prefix            = "CSC",
+course = Course(  bannerRef         = 3,
+                  prefix            = "TAD",
                   term              = 201612,
-                  schedule          = "B",
+                  schedule          = "A",
                   capacity          = 20,
                   notes          = "Preference1"
                   ).save()
