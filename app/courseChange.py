@@ -51,26 +51,26 @@ def courseChange():
             for instructor in oldInstructor:
               oldInstructors.append(instructor.username.username)
             
-            if set(oldInstructors) == set(newInstructors):
-              courseInfo.append('update')
+            if set(oldInstructors) != set(newInstructors):
+              courseInfo.append('danger')
             else:
               courseInfo.append(None)
             
             # compare the schedule in old and new table
             if courseHistory.schedule != course.schedule:
-              courseInfo.append('update')
+              courseInfo.append('danger')
             else:
               courseInfo.append(None)
             
             # compare the capacity
             if courseHistory.capacity != course.capacity:
-              courseInfo.append('update')
+              courseInfo.append('danger')
             else:
               courseInfo.append(None)
             
             #compare the notes
             if courseHistory.notes != course.notes:
-              courseInfo.append('update')
+              courseInfo.append('danger')
             else:
               courseInfo.append(None)
 
@@ -91,9 +91,8 @@ def courseChange():
       
       instructors = {}
       for course in courses:
-        instructors[course.cId] = InstructorCourseChange.select().where(InstructorCourseChange.course == course.cId)
-      
-      
+        instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
+
       return render_template("courseChange.html",
                               courseList  = courseList,
                               cfg         = cfg,

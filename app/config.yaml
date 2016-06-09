@@ -45,7 +45,12 @@ adminMenu:
   
 
 DEBUG:
+<<<<<<< HEAD
   #user: "heggens" #Admin Access
   user: "pearcej" #Division Chair Access
+=======
+  user: "heggens" #Admin Access
+  #user: "pearcej" #Division Chair Access
+>>>>>>> a50342349d1e76a0474829cf1d4a33f7c371d489
   #user: "jadudm"  #Program Chair Access
   #user: "myersco" #Professor Access
