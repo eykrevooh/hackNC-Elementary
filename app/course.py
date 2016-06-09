@@ -71,7 +71,7 @@ def courses(tID, prefix):
     if admin.isAdmin:
       page = request.path
       data   = request.form
-      print data
+      print "Data is {0}".format(data)
       instructors = request.form.getlist('professors[]')
       newCourse = DataUpdate()
       cid = newCourse.addCourse(data, tID, instructors, prefix)
