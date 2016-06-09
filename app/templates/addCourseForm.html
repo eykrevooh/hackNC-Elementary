@@ -1,6 +1,6 @@
-
+<div data-toggle="valiator">
   <td id="courseSelect">
-    <select class="form-control" name="ctitle" id="courseInfo"  onchange="specialTopicsName()">
+    <select class="form-control" name="ctitle" id="courseInfo"  onchange="specialTopicsName()" required>
       <option value="">---</option>
       {% for ctitle in courseInfo %}
       <option>
@@ -14,7 +14,7 @@
     {% include "addInstructors.html" %}
   </td>
   <td>
-    <select class="form-control" name="schedule">
+    <select class="form-control" name="schedule" >
       <option value="">---</option>
       {% for schedule in schedules %}
       <option value="{{schedule.sid}}">
@@ -34,3 +34,4 @@
    <td>                                 
       <input  class="btn btn-success btn-sm" type="submit" value="submit"/>
    </td>
+</div>

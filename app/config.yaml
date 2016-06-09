@@ -45,7 +45,7 @@ adminMenu:
   
 
 DEBUG:
-  #user: "heggens" #Admin Access
-  user: "pearcej" #Division Chair Access
+  user: "heggens" #Admin Access
+  #user: "pearcej" #Division Chair Access
   #user: "jadudm"  #Program Chair Access
   #user: "myersco" #Professor Access
