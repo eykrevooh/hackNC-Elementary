@@ -7,9 +7,9 @@
         <h4 class="modal-title">Instructors</h4>
         </div>
         <div class="modal-body">
-        <select class="chosen-select" id="professors"  name="professors[]" multiple>
+        <select data-placeholder="Add Instructors" multiple class="chosen-select" id="professors"  name="professors[]"   >
           {% for user in users %}
-            <option value="{{user.username}}" {% if (course is defined)  %}
+            <option  value="{{user.username}}" {% if (course is defined)  %}
                                                 {%for instructor in instructors[course.cId] %}
                                                   {% if instructor.username.username == user.username %}
                                                     selected
