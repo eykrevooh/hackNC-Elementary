@@ -4,3 +4,4 @@ config.py
 *sqlite
 .c9/*
 .c9/metadata/tab3
+.venv/*
