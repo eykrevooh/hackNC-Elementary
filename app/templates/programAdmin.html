@@ -37,9 +37,11 @@
                                   {{instructor.username.username}}
                                  {% endfor %}
                              </td>
-                             <td>{{course.schedule.days}}{{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}
-                                     </td>
-                             <td> {% if course.capacity == 0  %}
+                             <td>{% if course.schedule != None %}
+                                     {{course.schedule.days}}{{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}
+                                 {% endif %}
+                             </td>
+                             <td> {% if course.capacity == None  %}
                                   {% else %}
                                      {{course.capacity}}
                                   {% endif %}
