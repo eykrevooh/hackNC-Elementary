@@ -69,12 +69,16 @@ def courses(tID, prefix):
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
       page = request.path
       data   = request.form
-      print data
+      if data["schedule"] == "":
+        schedule = None
+      else:
+        schedule = data["schedule"]
+      print "Data is {0}".format(data)
       instructors = request.form.getlist('professors[]')
       newCourse = DataUpdate()
-      cid = newCourse.addCourse(data, tID, instructors, prefix)
-      if not newCourse.isTermEditable(tID):
-        newCourse.addCourseChange(cid, prefix, "create")
+      cid = newCourse.addCourse(data, tID, instructors, prefix, schedule)
+      if not newCourse.isTermEditable(tID):     # If this is not an editable term
+        newCourse.addCourseChange(cid, prefix, "create")    # Add the course to the special table
       
       message = "Course: #{0} has been added".format(cid)
       log.writer("INFO", page, message)

@@ -30,7 +30,9 @@
               <option value ="{{term.termCode}}"
               {% if term.termCode == currentTerm %}
               selected
-              {% endif %}>{{term.name}}</option>
+              {% endif %} >
+              {{term.name}}
+              </option>
             {% endfor %}
           </select>
       </form>

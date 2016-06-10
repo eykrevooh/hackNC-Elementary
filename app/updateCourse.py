@@ -18,26 +18,28 @@ class DataUpdate():
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
       return True
           
-  def addCourse(self, data, term, instructors, prefix):
+  def addCourse(self, data, term, instructors, prefix, schedule):
     if self.checkUserLevel(prefix):
       subject, number, title = data['ctitle'].split(None, 2)
       bannerCourse = BannerCourses.select().where(BannerCourses.subject == subject).where(BannerCourses.number == number)
-      bannerCourse = bannerCourse[0]
-      if int(number) % 100 ==86:
+      bannerCourse = bannerCourse[0]  # grabs the first bannerCourse object with a name matching subject and course number (e.g. CSC 236)
+
+      if int(number) % 100 == 86:
         specialTopicName = data['specialTopicName']
       else:
         specialTopicName = None
       if data['capacity'] == "":
-        capacity = 0
+        capacity = None
       else:
         capacity = data['capacity']
+      
       course = Course(bannerRef     = bannerCourse.reFID,
                   prefix            = prefix,
                   term              = int(term),
-                  schedule          = data['schedule'],
+                  schedule          = schedule,
                   capacity          = capacity,
                   specialTopicName  = specialTopicName,
-                  notes          = data['requests']
+                  notes             = data['requests']
                 )
       course.save()
       for professor in instructors:
@@ -85,10 +87,9 @@ class DataUpdate():
   def addCourseChange(self, cid, prefix, changeType):
     if self.checkUserLevel(prefix):
       course = Course.get(Course.cId == cid)
-      print "This is the term.code", course.term, type(course.term)
       instructors = InstructorCourse.select().where(InstructorCourse.course == cid)
-      
-      newcourse, created = CourseChange.create_or_get( cId               = course.cId,
+      newcourse, created = CourseChange.create_or_get( 
+                                cId               = course.cId,
                                 bannerRef         = course.bannerRef,
                                 prefix            = course.prefix,
                                 term              = course.term,
