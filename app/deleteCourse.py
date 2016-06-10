@@ -1,17 +1,26 @@
 from allImports import *
 from updateCourse import DataUpdate
-@app.route("/deletecourse/<term>/<subject>", methods=["POST"])
-def deletecourse(subject, term):
+@app.route("/deletecourse/<term>/<prefix>", methods=["POST"])
+def deletecourse(prefix, term):
   page = request.path
   username = authUser(request.environ)
+  
   admin = User.get(User.username == username)
-  if admin.isAdmin:
+  
+  ## We need subject to check if the user is a program or division chair. 
+  subject = Subject.get(Subject.prefix == prefix)
+  
+  ## Check to see if the user is a program or divison chair.
+  divisionChair = DivisionChair.select().where(DivisionChair.username == username).where(DivisionChair.did == subject.pid.division.dID)
+  programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
+  
+  if admin.isAdmin or divisionChair.exists() or programChair.exists():
     data = request.form
     deleteCourse = DataUpdate()
-    created = deleteCourse.addCourseChange(int(data['cid']), subject, "delete")
+    created = deleteCourse.addCourseChange(int(data['cid']), prefix, "delete")
     if not created:
-      deleteCourse.editCourseChange(int(data['cid']), subject, "delete")
+      deleteCourse.editCourseChange(int(data['cid']), prefix, "delete")
     message = "Course: course {} has been deleted".format(data['cid'])
     log.writer("INFO", page, message)
-    deleteCourse.deleteCourse(data, subject)
-    return redirect(url_for("courses", tID = term, prefix = subject))
+    deleteCourse.deleteCourse(data, prefix)
+    return redirect(url_for("courses", tID = term, prefix = prefix))

@@ -15,12 +15,12 @@ def courses(tID, prefix):
   # we need the subject to know if someone if a division chair or a program chair
   subject = Subject.get(Subject.prefix == prefix)
   users   = User.select(User.username, User.firstName, User.lastName)
+
   
   # Checking if person is division chair or program chair
   admin = User.get(User.username == username)
   divisionChair = DivisionChair.select().where(DivisionChair.username == username).where(DivisionChair.did == subject.pid.division.dID)
   programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
-  
   terms = Term.select()
   print admin
   if (request.method == "GET"):
@@ -51,7 +51,9 @@ def courses(tID, prefix):
                               users = users,
                               schedules = schedules,
                               allTerms = terms,
-                              isAdmin  = admin.isAdmin
+                              isAdmin  = admin.isAdmin,
+                              isProgramChair = divisionChair.exists(),
+                              isDivisionChair = programChair.exists()
                             )
 
       else:

@@ -49,9 +49,11 @@
                              <td><a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a></td>
                              <td>{{course.lastEditBy}}</td>
                              <td>
-                              <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                              <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                              {% include "deleteCourse.html" %}
+                                {% if isAdmin or isDivisionChair or isProgramChair %}
+                                    <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                                    <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                    {% include "deleteCourse.html" %}
+                                {% endif %}
                              </td>
                          </tr>
                            {% endfor %}
