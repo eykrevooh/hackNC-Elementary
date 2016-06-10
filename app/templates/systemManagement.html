@@ -127,13 +127,13 @@
       <div class="form-group">
         <select class="form-control" name="term">
           {% for term in terms %}
-            <option value="{{term.termCode}}">
+            <option value="{{term.termCode}}" required>
               {{term.name}}
             </option>
           {% endfor %}
         </select>
-       <input placeholder="Description" class="form-control" type="text" name="deadlineDescription"/>
-    <input type="date" placeholder="Click Me" class="form-control" min="{{today}}" name="deadlineDate">
+         <textarea placeholder="Description" class="form-control" id="exampleTextarea" rows="1" name="deadlineDescription" required></textarea>
+    <input type="date" placeholder="Click Me" class="form-control" min="{{today}}" name="deadlineDate" required>
 
 
 </div>
