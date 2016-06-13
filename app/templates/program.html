@@ -7,7 +7,6 @@
 
     <div id="wrapper">
         {%include "sidebar.html" %}
-
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
@@ -20,7 +19,7 @@
                           <th>Schedule</th>
                           <th>Capacity</th>
                          </tr> 
-                        {% for course in courses %}
+                         {% for course in courses %}
                          <tr>
                              <td>{{course.prefix.prefix}} {{course.bannerRef.number}}
                              {% if course.specialTopicName is not none %}

@@ -25,8 +25,6 @@ def courses(tID, prefix):
   print admin
   if (request.method == "GET"):
       
-      print username
-      
       # We need these for populating add course
       courseInfo = BannerCourses.select().where(BannerCourses.subject == prefix).order_by(BannerCourses.number)
       
@@ -55,7 +53,6 @@ def courses(tID, prefix):
                               isProgramChair = divisionChair.exists(),
                               isDivisionChair = programChair.exists()
                             )
-
       else:
         return render_template("program.html",
                                 cfg      = cfg,
@@ -64,7 +61,7 @@ def courses(tID, prefix):
                                 programs = programs,
                                 divisions = divisions,
                                 subjects = subjects,
-                                currentTerm = tID,
+                                currentTerm = int(tID),
                                 allTerms = terms
                               )
   if (request.method == "POST"):

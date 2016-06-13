@@ -52,6 +52,9 @@ def get_classes (db):
 mainDB.create_tables(get_classes('mainDB'))
 
 #Adding dummy data
+#######
+#USERS#
+#######
 users = User(  firstName = "Scott",
                 lastName  = "Heggen",
                 username  = "heggens",
@@ -83,15 +86,17 @@ users = User(  firstName = "Cody",
                 isAdmin   = 0,
                 program   = 2
             ).save(force_insert=True)
-  
-     
-
-division = Division(  name = "Division I"
+##########
+#DIVISION#
+##########
+division = Division(  name = "Division One"
               ).save()
 
 division = Division(  name = "Division II"
               ).save()
-
+#########
+#PROGRAM#
+#########
 program  = Program( name = "Computer Science",
                     division = 2,
                     prefix   = "CSC"
@@ -106,7 +111,9 @@ program  = Program( name = "Technology and Design",
                     division = 2,
                     prefix   = "TAD"
               ).save()
-             
+#########         
+#SUBJECT#
+#########
 subject = Subject(  prefix  = "CSC",
                     pid     = 1,
                     webname = "cs.berea.edu"
@@ -120,8 +127,10 @@ subject = Subject(  prefix  = "MAT",
 subject = Subject(  prefix  = "TAD",
                     pid     = 3,
                     webname = "math.berea.edu"
-                  ).save(force_insert=True)                 
-
+                  ).save(force_insert=True)
+########                  
+#BANNER#
+########
 banner = BannerSchedule(  letter        = "Standard A",
                           days          = "MWF",
                           startTime     = datetime.time(8, 0, 0),
@@ -137,7 +146,9 @@ banner = BannerSchedule(  letter        = "Standard B",
                           sid           = "B",
                           order         = 2
                         ).save(force_insert=True)
-
+##############
+#BANNERCOURSE#
+##############
 bannercourse =  BannerCourses(  subject       = "CSC",
                                 number        = 236,
                                 ctitle        = "Data Structures"
@@ -152,7 +163,19 @@ bannercourse =  BannerCourses(  subject       = "TAD",
                                 number        = 435,
                                 ctitle        = "Wood Shop"
                               ).save()
-
+                    
+bannercourse =  BannerCourses(  subject       = "CSC",
+                                number        = 124,
+                                ctitle        = "Better Apps"
+                              ).save()
+                              
+bannercourse =  BannerCourses(  subject       = "CSC",
+                                number        = 226,
+                                ctitle        = "Software Design"
+                              ).save()                                
+######
+#TERM#
+######
 term = Term(  name              = "Fall 2016",
               termCode          = 201611,
               editable          = 0
@@ -163,7 +186,9 @@ term = Term(  name              = "Spring 2017",
               editable          = 0
             ).save(force_insert = True)      
             
-
+########
+#COURSE#
+########
 course = Course(  bannerRef         = 1,
                   prefix            = "CSC",
                   term              = 201611,
@@ -186,8 +211,10 @@ course = Course(  bannerRef         = 3,
                   schedule          = "A",
                   capacity          = 20,
                   notes          = "Preference1"
-                  ).save()
-                  
+                  ).save(
+########
+#PCHAIR#
+########
 pchair = ProgramChair(  username  = "jadudm",
                         pid       = 1
                     ).save()
@@ -196,7 +223,9 @@ pchair = ProgramChair(  username  = "jadudm",
 dchair = DivisionChair(  username  = "pearcej",
                         did       = 2
                       ).save()
-
+############
+#INSTRUCTOR#
+############
 instructor = InstructorCourse(  username = "heggens",
                                 course   = 1
                               ).save()

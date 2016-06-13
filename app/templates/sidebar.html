@@ -13,7 +13,6 @@
                       <li><a href="/courses/{{currentTerm}}/{{subject.prefix}}">{{subject.prefix}}</a></li>
                       {% endif %}
                     {% endfor %}
-    
                   </ul>
               </li>
           </ul>
@@ -26,7 +25,6 @@
       <form id="termChange"class="navbar-form" method="post" action="/redirect/courses">
           <select class="form-control" name="term" onchange="this.form.submit()">
             {% for term in allTerms %}
-              
               <option value ="{{term.termCode}}"
               {% if term.termCode == currentTerm %}
               selected
@@ -38,8 +36,5 @@
       </form>
       </li>
   </ul>
-    
 </div>
-
-
 <script type="text/javascript" src="/static/js/local/sidebar.js"></script>
