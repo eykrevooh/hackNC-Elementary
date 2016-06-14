@@ -48,23 +48,28 @@
     <!--CREATE A NEW TERM-->
     <label for="newTerm">Create a new term</label>
     <form action="\newTerm" method="post" id="newTerm" class="form-inline">
-      <select class="form-control" name="term">
-          {% for term in terms %}
-            <option value="{{term.termCode}}" required>
-              {{term.name}}
-            </option>
-          {% endfor %}
       <div class="form-group">
-          <input class="form-control" type="text" name="termName" placeholder="Term Name"/>
+        <select class="form-control" name="semesterName">
+            {% for semester in termSemesters %}
+              <option value="{{semester.semester}}" required>
+                {{semester.semester}}
+              </option>
+            {% endfor %}
+        </select>
       </div>
       <div class="form-group">
-          <input class="form-control" type="text" name="termCode" placeholder="Term Code"/>
+          <select class="form-control" name="year">
+            {% for year in years %}
+              <option value="{{year}}" required>
+                {{year}}
+              </option>
+            {% endfor %}
+          </select>
       </div>
       <div class="form-group">
         <input type="submit" class="btn btn-success" value="Save">
       </div>
     </form>
-    
     </div>
 </div>
 <!--ADMINISTRATIVE USER MANAGEMENT-->
