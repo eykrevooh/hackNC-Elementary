@@ -76,7 +76,8 @@ def courses(tID, prefix):
                                 subjects      = subjects,
                                 currentTerm   = int(tID),
                                 allTerms      = terms,
-                                currentProgram = currentProgram
+                                currentProgram = currentProgram,
+                                curTermName   = curTermName
                               )
   if (request.method == "POST"):
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
