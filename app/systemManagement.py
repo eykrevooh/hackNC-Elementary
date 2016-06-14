@@ -1,6 +1,6 @@
 from allImports import *
 from updateCourse import DataUpdate
-import datetime
+import datetime 
 
 
 @app.route("/admin/systemManagement", methods=["GET", "POST"])
@@ -9,14 +9,30 @@ def systemManagement():
       username = authUser(request.environ)
       admin = User.get(User.username == username)
       if admin.isAdmin:
-         terms = Term.select()
-         users = User.select()
-         program = Program.get()
-         today = datetime.date.today()
+         terms       = Term.select()
+         semesters   = Term.select(Term.semester).distinct()
+         users       = User.select()
+         program     = Program.get()
+         today       = datetime.date.today()
+         
+         #WE WANT THE USER TO HAVE THE ABILITY TO SELECT A YEAR AGO AND THREE YEARS PAST THE CURRENT YEAR
+         years       = []
+         year  = int(time.strftime("%Y")) - 1 #START WITH ONE YEAR AGO
+         for x in range(5):
+            if x == 0:
+               years.append(str(year)) #APPEND THE VALUE OF A YEAR PLUS ONE
+            else:
+               year += 1
+               years.append(str(year)) #APPEND  
+         print years
+         
          return render_template("systemManagement.html",
-                                 program       = program,
-                                 cfg           = cfg,
-                                 users         = users,
-                                 terms         = terms,
-                                 isAdmin       = admin.isAdmin,
-                                 today         = today)
+                                 terms          = terms,
+                                 semesters      = semesters,
+                              
+                                 program        = program,
+                                 cfg            = cfg,
+                                 users          = users,
+                                
+                                 isAdmin        = admin.isAdmin,
+                                 today          = today)
