@@ -182,11 +182,15 @@ bannercourse =  BannerCourses(  subject       = "CSC",
 #TERM#
 ######
 term = Term(  name              = "Fall 2016",
+              semester          = "Fall",
+              year              = 2016,
               termCode          = 201611,
               editable          = 0
             ).save(force_insert = True)
             
 term = Term(  name              = "Spring 2017",
+              semester          = "Spring",
+              year              = 2017,
               termCode          = 201612,
               editable          = 0
             ).save(force_insert = True)      
