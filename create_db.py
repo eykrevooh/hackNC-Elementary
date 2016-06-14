@@ -124,6 +124,11 @@ subject = Subject(  prefix  = "MAT",
                     webname = "math.berea.edu"
                   ).save(force_insert=True)
                   
+subject = Subject(  prefix  = "CODY",
+                    pid     = 1,
+                    webname = "math.berea.edu"
+                  ).save(force_insert=True)                 
+                  
 subject = Subject(  prefix  = "TAD",
                     pid     = 3,
                     webname = "math.berea.edu"
