@@ -211,7 +211,7 @@ course = Course(  bannerRef         = 3,
                   schedule          = "A",
                   capacity          = 20,
                   notes          = "Preference1"
-                  ).save(
+                  ).save()
 ########
 #PCHAIR#
 ########
@@ -219,7 +219,9 @@ pchair = ProgramChair(  username  = "jadudm",
                         pid       = 1
                     ).save()
                     
-                    
+########
+#DCHAIR#
+########
 dchair = DivisionChair(  username  = "pearcej",
                         did       = 2
                       ).save()
