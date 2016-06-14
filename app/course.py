@@ -21,15 +21,18 @@ def courses(tID, prefix):
   #THIS IS SO THAT WE CAN HAVE THE NAME OF THE PROGRAM AS A HEADER ON THE TOP OF EVERY PAGE
   currentProgram = Program.select().where(Program.pID     == subject.pid,
                                           subject.prefix  == prefix).get()
-                                                      
   
- 
+  #THIS IS SO THAT WE CAN HAVE THE TERM BEING VIEWED AT TEH TOP OF EVERY PAGE
+  curTermName = Term.get(Term.termCode == tID)
   
   # Checking if person is division chair or program chair
   admin = User.get(User.username == username)
   divisionChair = DivisionChair.select().where(DivisionChair.username == username).where(DivisionChair.did == subject.pid.division.dID)
   programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
   terms = Term.select()
+
+  
+
 
   if (request.method == "GET"):
       
@@ -60,7 +63,8 @@ def courses(tID, prefix):
                               isAdmin         = admin.isAdmin,
                               isProgramChair  = divisionChair.exists(),
                               isDivisionChair = programChair.exists(),
-                              currentProgram  = currentProgram
+                              currentProgram  = currentProgram,
+                              curTermName     = curTermName
                             )
       else:
         return render_template("program.html",
