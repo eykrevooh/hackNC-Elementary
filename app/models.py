@@ -67,6 +67,8 @@ class BannerCourses(dbModel):
 
 class Term(dbModel):
   termCode          = IntegerField(primary_key = True)     #This line will result in an autoincremented number, which will not allow us to enter in our own code
+  semester          = CharField(null = True)
+  year              = IntegerField(null = True)
   name              = CharField()
   editable          = BooleanField()
   
