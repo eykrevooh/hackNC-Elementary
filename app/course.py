@@ -2,6 +2,7 @@ from allImports import *
 from updateCourse import DataUpdate
 
 
+
 @app.route("/courses/<tID>/<prefix>", methods=["GET", "POST"])
 def courses(tID, prefix):
   username = authUser(request.environ)
@@ -15,14 +16,21 @@ def courses(tID, prefix):
   # we need the subject to know if someone if a division chair or a program chair
   subject = Subject.get(Subject.prefix == prefix)
   users   = User.select(User.username, User.firstName, User.lastName)
-
+  
+  
+  #THIS IS SO THAT WE CAN HAVE THE NAME OF THE PROGRAM AS A HEADER ON THE TOP OF EVERY PAGE
+  currentProgram = Program.select().where(Program.pID     == subject.pid,
+                                          subject.prefix  == prefix).get()
+                                                      
+  
+ 
   
   # Checking if person is division chair or program chair
   admin = User.get(User.username == username)
   divisionChair = DivisionChair.select().where(DivisionChair.username == username).where(DivisionChair.did == subject.pid.division.dID)
   programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
   terms = Term.select()
-  print admin
+
   if (request.method == "GET"):
       
       # We need these for populating add course
@@ -38,31 +46,33 @@ def courses(tID, prefix):
       
       if admin.isAdmin or divisionChair.exists() or programChair.exists():
         return render_template("programAdmin.html",
-                              cfg      = cfg,
-                              courses = courses,
-                              instructors = instructors,
-                              programs = programs,
-                              divisions = divisions,
-                              subjects = subjects,
-                              currentTerm = int(tID),
-                              courseInfo = courseInfo,
-                              users = users,
-                              schedules = schedules,
-                              allTerms = terms,
-                              isAdmin  = admin.isAdmin,
-                              isProgramChair = divisionChair.exists(),
-                              isDivisionChair = programChair.exists()
+                              cfg             = cfg,
+                              courses         = courses,
+                              instructors     = instructors,
+                              programs        = programs,
+                              divisions       = divisions,
+                              subjects        = subjects,
+                              currentTerm     = int(tID),
+                              courseInfo      = courseInfo,
+                              users           = users,
+                              schedules       = schedules,
+                              allTerms        = terms,
+                              isAdmin         = admin.isAdmin,
+                              isProgramChair  = divisionChair.exists(),
+                              isDivisionChair = programChair.exists(),
+                              currentProgram  = currentProgram
                             )
       else:
         return render_template("program.html",
-                                cfg      = cfg,
-                                courses = courses,
-                                instructors = instructors,
-                                programs = programs,
-                                divisions = divisions,
-                                subjects = subjects,
-                                currentTerm = int(tID),
-                                allTerms = terms
+                                cfg           = cfg,
+                                courses       = courses,
+                                instructors   = instructors,
+                                programs      = programs,
+                                divisions     = divisions,
+                                subjects      = subjects,
+                                currentTerm   = int(tID),
+                                allTerms      = terms,
+                                currentProgram = currentProgram
                               )
   if (request.method == "POST"):
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
