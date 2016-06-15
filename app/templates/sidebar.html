@@ -10,7 +10,7 @@
                   <ul class="nav nav-list tree col-md-offset-2" style="display: none;">
                     {% for subject in subjects %}
                       {% if subject.pid.pID == program.pID %}
-                      <li><a href="/courses/{{currentTerm}}/{{subject.prefix}}">{{subject.prefix}}</a></li>
+                        <li><a href="/courses/{{currentTerm}}/{{subject.prefix}}">{{subject.prefix}}</a></li>
                       {% endif %}
                     {% endfor %}
                   </ul>
@@ -23,7 +23,7 @@
       <li class="sidebar-brand">Current Term</li>
       <li>
       <form id="termChange"class="navbar-form" method="post" action="/redirect/courses">
-          <select class="form-control" name="term" onchange="this.form.submit()">
+          <select class="form-control col-md-1" name="term" onchange="this.form.submit()">
             {% for term in allTerms %}
               <option value ="{{term.termCode}}"
               {% if term.termCode == currentTerm %}

@@ -31,8 +31,6 @@ def courses(tID, prefix):
   programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
   terms = Term.select()
 
-  
-
 
   if (request.method == "GET"):
       
