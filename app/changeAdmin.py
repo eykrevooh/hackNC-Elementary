@@ -13,7 +13,10 @@ def changeAdmin():
     #log changes
     message = "User: {0} is now {1} an admin".format(user.username, (lambda:"not", lambda:"")[user.isAdmin]())
     log.writer("INFO", page, message)
-    flash("Administrator successfully added")
+    if "not" in message:
+      flash("Administrator {0} {1} successfully removed".format(user.firstName, user.lastName))
+    else:
+      flash("Administrator {0} {1} successfully added".format(user.firstName, user.lastName))
     if username == data['admin']: #IF THE USER DELETES THEMSELVES SEND THEM BACK TO THE HOME PAGE
       return redirect('/')
     else:
