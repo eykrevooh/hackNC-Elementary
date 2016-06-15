@@ -85,7 +85,7 @@
         <option>---</option>
         {% for user in users %}
           {% if not user.isAdmin %}
-          <option value="{{user.username}}"> {{user.firstName}} {{user.lastName}} ({{user.username}}) </option>
+            <option value="{{user.username}}"> {{user.firstName}} {{user.lastName}} ({{user.username}}) </option>
           {% endif %}
         {% endfor %}
         </select>
