@@ -96,6 +96,7 @@ def courses(tID, prefix):
       
       message = "Course: #{0} has been added".format(cid)
       log.writer("INFO", page, message)
+      flash("Course has successfully been added!")
       return redirect(url_for("courses", tID = tID, prefix = prefix))
     else:
       return render_template("404.html", cfg=cfg)

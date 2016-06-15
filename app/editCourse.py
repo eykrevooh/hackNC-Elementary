@@ -42,6 +42,7 @@ def editcourse(tid, prefix):
   
   message = "Course: course {} has been edited".format(data['cid'])
   log.writer("INFO", page, message)
+  flash("Course information has successfully been modified!")
   return redirect(url_for("courses", tID=tid, prefix=prefix))
   
   #Stop hating ishwar, lol
