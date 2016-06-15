@@ -7,61 +7,48 @@
 {% with messages = get_flashed_messages() %}
 	  {% if messages %}
 	    {% for message in messages %}
-		  <div class="alert alert-success alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-			{{message}}
-		  </div>
-		{% endfor %}
+		    <div class="alert alert-success alert-dismissible" role="alert">
+		      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			    {{message}}
+		    </div>
+		  {% endfor %}
 	  {% endif %}
-	{% endwith %}
+{% endwith %}
+
 <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
 <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
         <form action="\editProgram" method="post" id="programEditForm{{program.pID}}">
           <div class="form-group">
-          <h4>Change Program Name</h4>
-          <input type="hidden" name="programId" value="{{program.pID}}"/>
-          
-          <input type="text" class="form-control" name="programName" value="{{program.name}}"/>
-          <h4>Change Division</h4>
-          <select class="form-control"  name="division">
-          {% for division in divisions %}
-            <option value="{{division.dID}}" {% if program is defined  %}
-                                                
-                                                  {% if division.dID == program.division.dID %}
-                                                    selected
-                                                  {% endif %}
-                                                
-                                              {% endif %}>
-              {{division.name}}
-              </option>
-          {% endfor %}
-        </select>
-          <h4>Change Program Chair(s)</h4>
-        <select class="chosen-select" id="professors"  name="professors[]" multiple>
-          {% for user in users %}
-            <option value="{{user.username}}" {% if (program is defined)  %}
-                                                {%for chair in programChairs[program.pID] %}
-                                                  {% if chair.username.username == user.username %}
-                                                    selected
-                                                  {% endif %}
-                                                {% endfor %}
-                                              {% endif %}>
-              {{user.firstName}} {{user.lastName}} ({{user.username}})
-              </option>
-          {% endfor %}
-        </select>
-        </div>
-        <input type="submit" class="btn btn-success pull-right" value="Submit"/>
+            <h2>{{program.name}}</h2>
+            <h4>Change Program Chair(s)</h4>
+            <!--Make a hidden input to pass the program.pID-->
+            <input value={{program.pID}} id="pID" name="pID" hidden readonly="readonly"/> 
+            <select class="chosen-select" id="professors"  name="professors[]" multiple>
+              {% for user in users %}
+                <option value="{{user.username}}" 
+                  {% if (program is defined)  %}
+                    {%for chair in programChairs[program.pID] %}
+                      {% if chair.username.username == user.username %}
+                        selected
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                >
+                  {{user.firstName}} {{user.lastName}} ({{user.username}})
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <input type="submit" class="btn btn-success pull-right" value="Submit"/>
         </form>
-        </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
+      </div>
     </div>
-    <!-- /#wrapper -->
-      
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
 {% endblock %}

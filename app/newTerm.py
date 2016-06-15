@@ -24,7 +24,6 @@ def newterm():
       #I NEED TO ENSURE THAT THE TERM CODE DOES NOT ALREADY EXSIST IN THE DATABASE
       newTerm = Term.select().where(Term.termCode == term_code)
       if newTerm:
-        print "The data is already in the database!23452345"
         message = "Term: {} already exsists in the database.".format(term_name)
         log.writer("ERROR",page,message)
         flash(message,'error')
@@ -35,8 +34,6 @@ def newterm():
         message = "Term: Term {} has been created".format(data['year'])
         log.writer("INFO", page, message)
         flash("Term successfully created")
-        
   except Exception as e:
     log.writer("ERROR","newTerm",e)
-
   return redirect(url_for("systemManagement"))
