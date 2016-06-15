@@ -49,10 +49,10 @@
     <label for="newTerm">Create a new term</label>
     <form action="\newTerm" method="post" id="newTerm" class="form-inline">
       <div class="form-group">
-        <select class="form-control" name="semesterName">
-            {% for semester in termSemesters %}
-              <option value="{{semester.semester}}" required>
-                {{semester.semester}}
+        <select class="form-control" name="keyValue">
+            {% for key in cfg['termInfo'] %}
+              <option value="{{key}}" required>
+                {{cfg['termInfo'][key]}}
               </option>
             {% endfor %}
         </select>

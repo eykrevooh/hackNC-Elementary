@@ -10,7 +10,6 @@ def systemManagement():
       admin = User.get(User.username == username)
       if admin.isAdmin:
          terms          = Term.select()
-         termSemesters  = Term.select(Term.semester).distinct()
          users          = User.select()
          program        = Program.get()
          today          = datetime.date.today()
@@ -27,7 +26,6 @@ def systemManagement():
          
          return render_template("systemManagement.html",
                                  terms          = terms,
-                                 termSemesters  = termSemesters,
                                  years          = years,
                                  program        = program,
                                  cfg            = cfg,
