@@ -23,6 +23,8 @@
       <li class="sidebar-brand">Current Term</li>
       <li>
       <form id="termChange"class="navbar-form" method="post" action="/redirect/courses">
+          <!--SO THAT WHEN THE SEMESTER CHANGES THE PROGRAM STAYS THE SAME-->
+          <input value={{prefix}} id="prefix" name="prefix" hidden readonly="readonly"/> 
           <select class="form-control col-md-1" name="term" onchange="this.form.submit()">
             {% for term in allTerms %}
               <option value ="{{term.termCode}}"

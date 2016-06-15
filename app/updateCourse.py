@@ -55,7 +55,7 @@ class DataUpdate():
       course.term     = data['term']
       course.capacity = data['capacity']
       course.schedule = data['schedule']
-      course.notes = data['notes']
+      course.notes  = data['notes']
       course.lastEditBy = authUser(request.environ)
       
       course.save()
