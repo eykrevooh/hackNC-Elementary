@@ -2,48 +2,42 @@
 {% set currentPage = "Division Management" %}
 {% block body %}
 <div id="wrapper">
-  
 {% include "divisionManagementSidebar.html"%}
-
-
 <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
-
 <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                      
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
         <form action="\editDivision" method="post" id="divisionEditForm{{division.dID}}">
           <div class="form-group">
-          <h4>Change Division Name</h4>
-          <input type="hidden" name="divisionId" value="{{division.dID}}"/>
-          
-          <input type="text" class="form-control" name="divisionName" value="{{division.name}}"/>
-          <h4>Change Division Chair(s)</h4>
-        <select class="chosen-select" id="professors"  name="professors[]" multiple>
-          {% for user in users %}
-            <option value="{{user.username}}" {% if (division is defined)  %}
-                                                {%for chair in divisionChairs[division.dID] %}
-                                                  {% if chair.username.username == user.username %}
-                                                    selected
-                                                  {% endif %}
-                                                {% endfor %}
-                                              {% endif %}>
-              {{user.firstName}} {{user.lastName}} ({{user.username}})
-              </option>
-          {% endfor %}
-        </select>
-  </div>
-        <div>
-        <input type="submit" class ="btn btn-success pull-right" value="Submit"/>
-        </div>
+            <h2>{{division.name}}</h2>
+            <input value={{division.dID}} id="dID" name="dID" hidden readonly="readonly"/> 
+            <h4>Change Division Chair(s)</h4>
+            <select class="chosen-select" id="professors"  name="professors[]" multiple>
+              {% for user in users %}
+                <option value="{{user.username}}" 
+                  {% if (division is defined)  %}
+                    {%for chair in divisionChairs[division.dID] %}
+                      {% if chair.username.username == user.username %}
+                        selected
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                >
+                  {{user.firstName}} {{user.lastName}} ({{user.username}})
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <input type="submit" class ="btn btn-success pull-right" value="Submit"/>
+          </div>
         </form>
-        </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
+      </div>
     </div>
-    <!-- /#wrapper -->
-      
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
 {% endblock %}

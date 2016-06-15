@@ -3,26 +3,26 @@ from allImports import *
 def editDivision():
     username = authUser(request.environ)
     admin = User.get(User.username == username)
-    
     if admin.isAdmin:
-      page = "/" + request.url.split("/")[-1]
-      data = request.form
-      professors = request.form.getlist('professors[]')
-      division = Division.get(Division.dID == int(data['divisionId']))
+      page        = "/" + request.url.split("/")[-1]
+      data        = request.form
+      newChairs   = request.form.getlist('professors[]')
+      did         = data['dID']
       
-      division.name = data['divisionName']
-      division.save()
-      
-      oldDivisionChairs = DivisionChair.select().where(DivisionChair.did == int(data['divisionId']))
-      for oldDivisionChair in oldDivisionChairs:
-        if oldDivisionChair.username not in professors:
-          oldDivisionChair.delete_instance()
+      currentChairs = DivisionChair.select().where(DivisionChair.did == did)  #SELECT ALL OF THE CURRENT CHAIRS OF THE DIVISION
+      for currentChair in currentChairs:                                      #LOOP THROUGH ALL OF THE CURRENT CHAIRS
+        if currentChair.username.username not in newChairs:                   #IF A USER'S NAME IS NOT PART OF THE NEWCHAIR LIST THEN DELETE THEM
+          message = "USER: {0} has been removed as a Division chair for did: {1}".format(currentChair.username.username,did)
+          log.writer("INFO", page, message)
+          currentChair.delete_instance()
         else:
-          professors.remove(oldDivisionChair.username.username)
-      
-      for professor in professors:
-        newDivisionChair = DivisionChair(username = professor, did = data['divisionId'])
-        newDivisionChair.save()
-      message = "Division: division {} has been edited"
-      log.writer("INFO", page, message)
-    return redirect(url_for("adminDivisionManagement", did=data['divisionId']))
+          newChairs.remove(currentChair.username.username)                  #HOWEVER IF THEY ARE PART OF THE LIST, DELETE THEM FROM THE LIST
+          
+      for user_name in newChairs:                                           #LOOK THROUGH THE NEW CHAIR LIST
+        newChair  = DivisionChair(username = user_name, did = did)           #ADD THE USERNAMES TO THE Division CHAIR LIST
+        newChair.save()                                                     
+        message = "USER: {0} has been added as a Division chair for did: {1}".format(user_name,did)
+        log.writer("INFO", page, message)
+        
+      flash("Division succesfully changed")
+      return redirect(url_for("adminDivisionManagement", did = did))
