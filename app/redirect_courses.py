@@ -1,5 +1,6 @@
 from allImports import *
 import sys
+import pprint
 
 @app.route("/redirect/courses", methods=["GET", "POST"])
 def redirectCourses():
@@ -10,16 +11,18 @@ def redirectCourses():
    else:
       subject = Subject.get()
    prefix = subject.prefix
-   term = Term.get()
-   termcode = term.termCode
-   
+   currentTerm = 0
+   for t in Term.select():
+      if t.termCode > currentTerm:
+         currentTerm = t.termCode
+
    if request.method == "POST":
       data = request.form
       prefix   = data['prefix']
-      termcode = int(data["term"])
+      currentTerm = int(data["term"])
       
    return redirect(url_for("courses", 
-                           tID = termcode, 
+                           tID = currentTerm, 
                            prefix = prefix))
    
   
