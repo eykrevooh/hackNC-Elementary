@@ -1,5 +1,6 @@
 from allImports import *
 from switch import *
+import sys
 @app.route("/newTerm", methods=["POST"])
 def newterm():
   page        = request.path  
@@ -7,7 +8,6 @@ def newterm():
   admin       = User.get(User.username == username)
   try: 
     if admin.isAdmin:
-      #BASIC DATA
       data            = request.form
       info_key        = int(data['keyValue'])
       term_year       = data['year']
@@ -20,19 +20,23 @@ def newterm():
           term_code = term_year + str(info_key)
         else:
           term_code = str(int(term_year)-1) + str(info_key)
-      
-      
       #STOP DUPLICATES#
       #I NEED TO ENSURE THAT THE TERM CODE DOES NOT ALREADY EXSIST IN THE DATABASE
-      
-      
-      newTerm = Term(termCode=int(term_code), name=term_name, semester=semester_name, year=int(term_year), editable = True)
-      newTerm.save(force_insert=True)
-      
-      
+      newTerm = Term.select().where(Term.termCode == term_code)
+      if newTerm:
+        print "The data is already in the database!23452345"
+        message = "Term: {} already exsists in the database.".format(term_name)
+        log.writer("ERROR",page,message)
+        flash(message,'error')
+      else:
+        #ADD THE INFORMATION TO THE DATABASE
+        newTerm = Term(termCode=int(term_code), name=term_name, semester=semester_name, year=int(term_year), editable = True)
+        newTerm.save(force_insert=True)
+        message = "Term: Term {} has been created".format(data['year'])
+        log.writer("INFO", page, message)
+        flash("Term successfully created")
+        
   except Exception as e:
     log.writer("ERROR","newTerm",e)
-  message = "Term: Term {} has been created".format(data['year'])
-  log.writer("INFO", page, message)
-  flash("Term successfully created")
+
   return redirect(url_for("systemManagement"))
