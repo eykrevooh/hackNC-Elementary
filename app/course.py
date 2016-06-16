@@ -31,8 +31,6 @@ def courses(tID, prefix):
   programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
   terms = Term.select()
 
-  
-
 
   if (request.method == "GET"):
       
@@ -64,7 +62,8 @@ def courses(tID, prefix):
                               isProgramChair  = divisionChair.exists(),
                               isDivisionChair = programChair.exists(),
                               currentProgram  = currentProgram,
-                              curTermName     = curTermName
+                              curTermName     = curTermName,
+                              prefix          = prefix
                             )
       else:
         return render_template("program.html",
@@ -77,7 +76,8 @@ def courses(tID, prefix):
                                 currentTerm   = int(tID),
                                 allTerms      = terms,
                                 currentProgram = currentProgram,
-                                curTermName   = curTermName
+                                curTermName   = curTermName,
+                                prefix        = prefix
                               )
   if (request.method == "POST"):
     if admin.isAdmin or divisionChair.exists() or programChair.exists():

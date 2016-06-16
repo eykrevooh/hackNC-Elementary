@@ -47,9 +47,9 @@ termInfo:
 #the keys correlate to the last two digits in the term code eg: Fall 2016 = 201611 
     11: 'Fall'                    # e.g. Fall 2016 = 201611
     12: 'Spring'                  # e.g. Spring 2017 = 201612 (note the different year)
-    13: 'Eight Week Summer'       # e.g. 8 Week Summer 2017 = 201613 (note the different year)
-    14: '1st Four Week Summer'
-    15: '2nd Four Week Summer'
+    13: '8 Week Summer'       # e.g. 8 Week Summer 2017 = 201613 (note the different year)
+    14: '1st 4 Week Summer'
+    15: '2nd 4 Week Summer'
     #10: 'Berea Bridge Program'   # e.g. Berea Bridge Program 2016 = 201610    
     
   
