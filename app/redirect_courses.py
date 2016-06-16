@@ -12,6 +12,7 @@ def redirectCourses():
       subject = Subject.get()
    prefix = subject.prefix
    currentTerm = 0
+   
    for t in Term.select():
       if t.termCode > currentTerm:
          currentTerm = t.termCode
