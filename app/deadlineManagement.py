@@ -5,7 +5,7 @@ import datetime
 
 @app.route("/deadline/create", methods=[ "POST"])
 def deadlineCreate():
-   page = request.path
+   page = "/" + request.url.split("/")[-1]
    username = authUser(request.environ)
    admin = User.get(User.username == username)
    if admin.isAdmin:
@@ -20,7 +20,7 @@ def deadlineCreate():
    
 @app.route("/deadline/edit", methods=[ "POST"])
 def deadlineEdit():
-   page = request.path
+   page = "/" + request.url.split("/")[-1]
    username = authUser(request.environ)
    admin = User.get(User.username == username)
    if admin.isAdmin:
@@ -35,7 +35,7 @@ def deadlineEdit():
    
 @app.route("/deleteDeadline", methods=["POST"])
 def deleteDeadline():
-   page = request.path
+   page = r"/" + request.url.split("/")[-1]
    username = authUser(request.environ)
    admin = User.get(User.username == username)
    if admin.isAdmin:

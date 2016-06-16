@@ -2,7 +2,7 @@ from allImports import *
 from updateCourse import DataUpdate
 @app.route("/deletecourse/<term>/<prefix>", methods=["POST"])
 def deletecourse(prefix, term):
-  page = request.path
+  page = "/" + request.url.split("/")[-1]
   username = authUser(request.environ)
   
   admin = User.get(User.username == username)

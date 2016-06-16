@@ -81,13 +81,13 @@ def courses(tID, prefix):
                               )
   if (request.method == "POST"):
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
-      page = request.path
-      data   = request.form
+      page    = "/" + request.url.split("/")[-1]
+      data    = request.form
       if data["schedule"] == "":
         schedule = None
       else:
         schedule = data["schedule"]
-      print "Data is {0}".format(data)
+     
       instructors = request.form.getlist('professors[]')
       newCourse = DataUpdate()
       cid = newCourse.addCourse(data, tID, instructors, prefix, schedule)

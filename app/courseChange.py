@@ -106,7 +106,7 @@ def courseChange():
 @app.route("/courses/changes/verified", methods=["POST"])
 def verifycourseChange():
   if (request.method == "POST"):
-    page = request.path
+    page = "/" + request.url.split("/")[-1]
     username = authUser(request.environ)
     admin = User.get(User.username == username)
     if admin.isAdmin:

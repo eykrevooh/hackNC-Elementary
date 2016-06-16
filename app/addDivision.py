@@ -3,7 +3,7 @@ from allImports import *
 
 @app.route("/admin/newDivision", methods=["GET", "POST"])
 def addDivision():
-  page = request.path
+  page = "/" + request.url.split("/")[-1]
   if (request.method == "GET"):
       username = authUser(request.environ)
       admin = User.get(User.username == username)
