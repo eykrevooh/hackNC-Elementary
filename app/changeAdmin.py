@@ -1,7 +1,7 @@
 from allImports import *
 @app.route("/changeAdmin", methods=["POST"])
 def changeAdmin():
-  page = request.path
+  page = "/" + request.url.split("/")[-1]
   username = authUser(request.environ)
   admin = User.get(User.username == username)
   if admin.isAdmin:
