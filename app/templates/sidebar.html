@@ -2,19 +2,20 @@
   <ul class="nav nav-list sidebar-nav">
     <li class="sidebar-brand">Programs</li>
       {% for division in divisions %}
-      <li><label class="tree-toggler nav-header">{{division.name}}</label>
-        {% for program in programs %}
-          {%if program.division.dID == division.dID %}
-          <ul class="nav nav-list tree" style="display: none;">
-              <li><label class="tree-toggler nav-header col-md-offset-1">{{program.name}}</label>
-                  <ul class="nav nav-list tree col-md-offset-2" style="display: none;">
+        <li><label class="tree-toggler nav-header"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>{{division.name}}</label>
+          {% for program in programs %}
+            {%if program.division.dID == division.dID %}
+              <ul class="nav nav-list tree" style="display: none;">
+                <li>
+                  <label class="tree-toggler nav-header col-md-offset-1"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>{{program.name}}</label>
+                  <ul class="nav nav-list tree col-md-offset-2">   <!--style="display: none;">-->
                     {% for subject in subjects %}
                       {% if subject.pid.pID == program.pID %}
                         <li><a href="/courses/{{currentTerm}}/{{subject.prefix}}">{{subject.prefix}}</a></li>
                       {% endif %}
                     {% endfor %}
                   </ul>
-              </li>
+                </li>
           </ul>
           {% endif %}
         {% endfor %}
@@ -29,7 +30,7 @@
             {% for term in allTerms %}
               <option value ="{{term.termCode}}"
               {% if term.termCode == currentTerm %}
-              selected
+                selected
               {% endif %} >
               {{term.name}}
               </option>
