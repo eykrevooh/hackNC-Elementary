@@ -37,6 +37,7 @@
                             <tbody>
                                 {% for course in courses %}
                                     <tr>
+                                        <!--COURSE NAME-->
                                         <td>{{course.prefix.prefix}} {{course.bannerRef.number}}
                                             {% if course.specialTopicName is not none %}
                                                 {{course.specialTopicName}}
@@ -44,31 +45,38 @@
                                                 {{course.bannerRef.ctitle}}
                                             {%endif%}
                                         </td>
+                                        <!--TAUGHT BY-->
                                         <td>
                                             {% for instructor in instructors[course.cId] %}
                                                 {{instructor.username.username}}
                                             {% endfor %}
                                         </td>
+                                        <!--SCHEDULE-->
                                         <td>
                                             {% if course.schedule != None %}
                                                 {{course.schedule.days}}{{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}
                                             {% endif %}
                                         </td>
+                                        <!--CAPACITY-->
                                         <td> 
                                             {% if course.capacity == None  %}
                                             {% else %}
                                                 {{course.capacity}}
                                             {% endif %}
                                         </td>
+                                        <!--NOTES-->
                                         <td>
                                             <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a>
                                         </td>
+                                        <!--LAST EDITED BY-->
                                         <td>
                                             {{course.lastEditBy}}
                                         </td>
                                         <td>
                                             {% if isAdmin or isDivisionChair or isProgramChair %}
+                                                <!--EDIT MODAL-->
                                                 <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                                                <!--DELETE MODAL-->
                                                 <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                                                 {% include "deleteCourse.html" %}
                                             {% endif %}

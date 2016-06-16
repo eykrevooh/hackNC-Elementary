@@ -51,11 +51,11 @@ class DataUpdate():
   def editCourse(self, data, prefix, professors):
     if self.checkUserLevel(prefix):
       course = Course.get(Course.cId == int(data['cid']))
-      
       course.term     = data['term']
-      course.capacity = data['capacity']
+      if data['capacity']:
+        course.capacity = data['capacity']
       course.schedule = data['schedule']
-      course.notes  = data['notes']
+      course.notes    = data['notes']
       course.lastEditBy = authUser(request.environ)
       
       course.save()

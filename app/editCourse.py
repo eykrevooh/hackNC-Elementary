@@ -30,7 +30,7 @@ def editCourseModal(tid, prefix, cid):
 
 @app.route("/editcourse/<tid>/<prefix>", methods=["POST"])
 def editcourse(tid, prefix):
-  page = request.path
+  page =  "/" + request.url.split("/")[-1]
   data = request.form
   professors = request.form.getlist('professors[]')
   editcourse = DataUpdate()
