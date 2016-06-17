@@ -1,14 +1,18 @@
 <div id="sidebar-wrapper">
-  <ul class="nav nav-list sidebar-nav">
+  <ul class="nav nav-list sidebar-nav" >
     <li class="sidebar-brand">Programs</li>
       {% for division in divisions %}
-        <li><label class="tree-toggler nav-header"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>{{division.name}}</label>
+        <li><label class="tree-toggler nav-header" id="did{{division.dID}}">
+          <span  class="glyphicon glyphicon-menu-right" aria-hidden="true" onclick = "toggleArrowIcon(this,did{{division.dID}})"></span>{{division.name}}</label>
           {% for program in programs %}
-            {%if program.division.dID == division.dID %}
-              <ul class="nav nav-list tree" style="display: none;">
+            {% if program.division.dID == division.dID %}
+              <ul  class="nav nav-list tree" style="display: none;" >
                 <li>
-                  <label class="tree-toggler nav-header col-md-offset-1"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>{{program.name}}</label>
-                  <ul class="nav nav-list tree col-md-offset-2">   <!--style="display: none;">-->
+                  <label  class="tree-toggler nav-header col-md-offset-1" id="pid{{program.pID}}" >
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true" onclick = "toggleArrowIcon(this,pid{{program.pID}})"></span>
+                    {{program.name}}
+                  </label>
+                  <ul class="nav nav-list tree col-md-offset-2" style="display: none;"  >   
                     {% for subject in subjects %}
                       {% if subject.pid.pID == program.pID %}
                         <li><a href="/courses/{{currentTerm}}/{{subject.prefix}}">{{subject.prefix}}</a></li>
