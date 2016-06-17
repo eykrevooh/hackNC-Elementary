@@ -82,7 +82,7 @@
     <form action="\changeAdmin" method="post" id="newAdmin" class="form-inline">
       <div class="form-group">
         <select class="bootstrap-select form-control" name="admin">
-        <option>---</option>
+        <option value="None">---</option>
         {% for user in users %}
           {% if not user.isAdmin %}
             <option value="{{user.username}}"> {{user.firstName}} {{user.lastName}} ({{user.username}}) </option>
@@ -98,7 +98,7 @@
     <form action="\changeAdmin" method="post" id="removeAdmin" class="form-inline">
       <div class="form-group">
         <select class="bootstrap-select form-control" name="admin">
-        <option>---</option>
+        <option value="None">---</option>
         {% for user in users %}
           {% if user.isAdmin %}
           <option value="{{user.username}}"> {{user.firstName}} {{user.lastName}} ({{user.username}}) </option>
