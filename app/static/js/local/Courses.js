@@ -1,3 +1,4 @@
+
 $(".chosen-select").chosen();
 
 function getSelectedCourse(elementId) {
@@ -10,15 +11,21 @@ function getSelectedCourse(elementId) {
 }
 
 function specialTopicsName(){
-   $(".specialTopics").remove();
    var courseTitle = getSelectedCourse('courseInfo');
-   console.log(courseTitle);
-   
-   if (courseTitle == "---"){
-      console.log(courseTitle);
-   }else{
+   //DO THE WORK TO DISABLE AND ABLE THE BUTTON
+   if (courseTitle === "---"){
+      document.getElementById("submitAdd").disabled = true;
+      document.getElementById("submitAdd").className = "btn btn-default btn"; 
+   }
+   else{
+      document.getElementById("submitAdd").disabled = false;
+      document.getElementById("submitAdd").className = "btn btn-success btn"; 
+   }
+   //THEN DO THE WORK FOR SPECIAL TOPICS NAMES
+   $(".specialTopics").remove();
+   console.log(courseTitle)
+   if (courseTitle != "---"){
       var course = courseTitle.split(" ", 2);
-      console.log(course[1]);
       var courseNum = parseInt(course[1], 10);
       if ((courseNum % 100) == 86){
          $('#courseSelect').append('<input onchange="changeInput()" type="text" id="specialTopics" class="form-control specialTopics" placeholder="enter special topics name" value=""/>')
@@ -39,3 +46,5 @@ $(document).ready(function(){
         placement : 'top'
     });
 });
+
+
