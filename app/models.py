@@ -83,6 +83,7 @@ class Course(dbModel):
   specialTopicName  = CharField(null = True)
   notes             = TextField(null = False)
   lastEditBy        = CharField(null = True)
+  crossListed       = BooleanField()
 
 class ProgramChair(dbModel):
   username     = ForeignKeyField(User)
@@ -118,5 +119,10 @@ class InstructorCourseChange(dbModel):
   username     = ForeignKeyField(User)
   course       = ForeignKeyField(CourseChange)
   
-
+class Rooms(dbModel):
+  rID            = PrimaryKeyField()
+  building       = CharField(null=False)
+  number         = CharField(null=False)
+  maxCapacity    = IntegerField(null=True)
+  roomType       = CharField(null=False)
 

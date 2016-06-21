@@ -26,6 +26,7 @@ models:
     - Deadline
     - CourseChange
     - InstructorCourseChange
+    - Rooms
 # this makes the navigation bar
 mainMenu:
   - title: "Home"

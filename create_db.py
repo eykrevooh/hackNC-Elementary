@@ -85,11 +85,11 @@ users = User(  firstName = "Cody",
                 email     = "jadudm@berea.edu",
                 isAdmin   = 0,
                 program   = 2
-            ).save(force_insert=True)
+            ).save(force_insert=True) 
 ##########
 #DIVISION#
 ##########
-division = Division(  name = "Division One"
+division = Division(  name = "Division I"
               ).save()
 
 division = Division(  name = "Division II"
