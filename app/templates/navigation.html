@@ -11,41 +11,37 @@
       </button>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav"> 
-    {% for menuItem in cfg['mainMenu'] %}
-      <li 
-        {% if currentPage == menuItem['title'] %}
-        class="active"
+      <ul class="nav navbar-nav"> 
+        {% for menuItem in cfg['mainMenu'] %}
+          <li 
+            {% if currentPage == menuItem['title'] %}
+              class="active"
+            {% endif %}
+          >
+            <a href="{{menuItem['link']}}">{{menuItem['title']}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if isAdmin %}
+          {% for item in cfg['adminMenu'] %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{item}} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% for page in cfg['adminMenu'][item] %}
+                  <li
+                    {% if currentPage == page['title'] %}
+                      class ="active"
+                    {% endif %}
+                  >
+                    <a href={{page['link']}}>{{page['title']}}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
         {% endif %}
-      >
-        <a href="{{menuItem['link']}}">{{menuItem['title']}}</a>
-      </li>
-    {% endfor %}
-    
-     
-     </ul>
-     <ul class="nav navbar-nav navbar-right">
-       {% if isAdmin %}
-    <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-    
-    {% for item in cfg['adminMenu'] %}
-      <li
-        {% if currentPage == item['title'] %}
-        class ="active"
-        {% endif %}
-        >
-        <a href={{item['link']}}>{{item['title']}}</a>
-      </li>
-    {% endfor %}
-      
-     </ul>
-     </li>
-     {% endif %}
-     </ul>
-     
-    
+      </ul>
     </div>
   </div>
 </nav>

@@ -35,14 +35,20 @@ mainMenu:
     link: "/redirect/courses"
 
 adminMenu:
-  - title: "Program Management"
-    link: "/redirect/program_management"
-  - title: "Division Management"
-    link: "/redirect/division_management"
-  - title: "System Management"
-    link: "/admin/systemManagement"
-  - title: "Change Tracker"
-    link:  "/courses/changes"
+  Administration:
+    - title: "Program Management"
+      link:  "/redirect/program_management"
+    - title: "Division Management"
+      link:  "/redirect/division_management"
+    - title: "System Management"
+      link:  "/admin/systemManagement"
+  Course Management:
+    - title: "View Cross Listed"
+      link:  "/crossListed"
+    - title: "View Room Conflicts"
+      link:  "/conflicts"
+    - title: "Change Tracker"
+      link:  "/courses/changes"
   
 termInfo:
 #the keys correlate to the last two digits in the term code eg: Fall 2016 = 201611 
