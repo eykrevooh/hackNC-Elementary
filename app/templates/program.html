@@ -39,7 +39,8 @@
                          </tr>
                            {% endfor %}
                        </table>
-                        <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Toggle Menu</a>
+                        <!--if you change the name of this button it will break the javascript in toggleMenu.js-->
+                        <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Close Sidebar</a>
                     </div>
                 </div>
             </div>
@@ -51,12 +52,7 @@
 
 
     <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+    <script type="text/javascript" src="/static/js/local/toggleMenu.js"></script>
 
 </body>
 
