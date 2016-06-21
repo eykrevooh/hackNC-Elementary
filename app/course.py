@@ -29,7 +29,7 @@ def courses(tID, prefix):
   admin = User.get(User.username == username)
   divisionChair = DivisionChair.select().where(DivisionChair.username == username).where(DivisionChair.did == subject.pid.division.dID)
   programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
-  terms = Term.select()
+  terms = Term.select().order_by(-Term.termCode)
 
 
   if (request.method == "GET"):
