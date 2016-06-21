@@ -203,7 +203,8 @@ course = Course(  bannerRef         = 1,
                   term              = 201611,
                   schedule          = "A",
                   capacity          = 20,
-                  notes          = "Preference1"
+                  notes             = "Preference1",
+                  crossListed       = 0
                 ).save()
                 
 course = Course(  bannerRef         = 2,
@@ -211,7 +212,8 @@ course = Course(  bannerRef         = 2,
                   term              = 201612,
                   schedule          = "B",
                   capacity          = 20,
-                  notes             = "Preference2"
+                  notes             = "Preference2",
+                  crossListed       = 0
                 ).save()                
 
 course = Course(  bannerRef         = 3,
@@ -219,7 +221,8 @@ course = Course(  bannerRef         = 3,
                   term              = 201612,
                   schedule          = "A",
                   capacity          = 20,
-                  notes          = "Preference1"
+                  notes          = "Preference1",
+                  crossListed       = 0
                   ).save()
 ########
 #PCHAIR#
