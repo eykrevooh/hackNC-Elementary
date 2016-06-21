@@ -32,3 +32,5 @@ from app import deadlineDisplay
 from app import addProgram
 from app import addDivision
 from app import courseChange
+from app import conflicts
+from app import crossListed
