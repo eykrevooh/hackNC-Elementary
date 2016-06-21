@@ -2,14 +2,14 @@
   <ul class="nav nav-list sidebar-nav" >
     <li class="sidebar-brand">Programs</li>
       {% for division in divisions %}
-        <li><label class="tree-toggler nav-header" id="did{{division.dID}}">
-          <span  class="glyphicon glyphicon-menu-right" aria-hidden="true" onclick = "toggleArrowIcon(this,did{{division.dID}})"></span>{{division.name}}</label>
+        <li><label class="tree-toggler nav-header" id="did{{division.dID}}" onclick = "toggleArrowIcon(didarrow{{division.dID}},did{{division.dID}})">
+          <span  class="glyphicon glyphicon-menu-right" aria-hidden="true" id="didarrow{{division.dID}}" ></span>{{division.name}}</label>
           {% for program in programs %}
             {% if program.division.dID == division.dID %}
               <ul  class="nav nav-list tree" style="display: none;" >
                 <li>
-                  <label  class="tree-toggler nav-header col-md-offset-1" id="pid{{program.pID}}" >
-                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true" onclick = "toggleArrowIcon(this,pid{{program.pID}})"></span>
+                  <label  class="tree-toggler nav-header col-md-offset-1" id="pid{{program.pID}}" onclick = "toggleArrowIcon(pidarrow{{program.pID}},pid{{program.pID}})" >
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true" id="pidarrow{{program.pID}}" ></span>
                     {{program.name}}
                   </label>
                   <ul class="nav nav-list tree col-md-offset-2" style="display: none;"  >   
