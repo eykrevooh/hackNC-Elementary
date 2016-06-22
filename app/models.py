@@ -27,11 +27,34 @@ For more information look at peewee documentation
 """
 
 
-
+#MODELS WITHOUT A FOREIGN KEY
 class Division(dbModel):
   dID           = PrimaryKeyField()
   name          = CharField()
+  
+class BannerSchedule(dbModel):
+  letter        = CharField()
+  days          = CharField(null = True)
+  startTime     = TimeField(null = True)
+  endTime       = TimeField(null = True)
+  sid           = CharField(primary_key = True)
+  order         = IntegerField(unique = True)
 
+class Term(dbModel):
+  termCode          = IntegerField(primary_key = True)     #This line will result in an autoincremented number, which will not allow us to enter in our own code
+  semester          = CharField(null = True)
+  year              = IntegerField(null = True)
+  name              = CharField()
+  editable          = BooleanField()
+  
+class Rooms(dbModel):
+  rID            = PrimaryKeyField()
+  building       = CharField(null=False)
+  number         = CharField(null=False)
+  maxCapacity    = IntegerField(null=True)
+  roomType       = CharField(null=False)
+  
+#MODELS WITH A FOREIGN KEY
 class Program(dbModel):
   pID           = PrimaryKeyField()
   name          = CharField()
@@ -50,28 +73,12 @@ class Subject(dbModel):
   pid           = ForeignKeyField(Program, related_name='subjects')
   webname       = TextField()
   
-class BannerSchedule(dbModel):
-  letter        = CharField()
-  days          = CharField(null = True)
-  startTime     = TimeField(null = True)
-  endTime       = TimeField(null = True)
-  sid           = CharField(primary_key = True)
-  order         = IntegerField(unique = True)
-
 class BannerCourses(dbModel):
   reFID         = PrimaryKeyField()
   subject       = ForeignKeyField(Subject)
   number        = CharField(null = False)
   section       = CharField(null = True)
   ctitle        = CharField(null = False)
-
-class Term(dbModel):
-  termCode          = IntegerField(primary_key = True)     #This line will result in an autoincremented number, which will not allow us to enter in our own code
-  semester          = CharField(null = True)
-  year              = IntegerField(null = True)
-  name              = CharField()
-  editable          = BooleanField()
-  
 
 class Course(dbModel):
   cId               = PrimaryKeyField()
@@ -84,6 +91,7 @@ class Course(dbModel):
   notes             = TextField(null = False)
   lastEditBy        = CharField(null = True)
   crossListed       = BooleanField()
+  rid               = ForeignKeyField(Rooms, null = True)
 
 class ProgramChair(dbModel):
   username     = ForeignKeyField(User)
@@ -119,10 +127,4 @@ class InstructorCourseChange(dbModel):
   username     = ForeignKeyField(User)
   course       = ForeignKeyField(CourseChange)
   
-class Rooms(dbModel):
-  rID            = PrimaryKeyField()
-  building       = CharField(null=False)
-  number         = CharField(null=False)
-  maxCapacity    = IntegerField(null=True)
-  roomType       = CharField(null=False)
 

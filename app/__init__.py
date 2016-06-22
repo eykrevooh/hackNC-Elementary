@@ -11,7 +11,7 @@ from allImports import *
 
 # Include an import for every python file that is serving a webpage
 #import your new python files here. It is not a part of the module until it is imported
-print("Starting application") #I don't see this print - Cody Myers
+
 
 from app import course
 from app import editCourse
@@ -32,5 +32,4 @@ from app import deadlineDisplay
 from app import addProgram
 from app import addDivision
 from app import courseChange
-from app import conflicts
-from app import crossListed
+from app import courseManagement
