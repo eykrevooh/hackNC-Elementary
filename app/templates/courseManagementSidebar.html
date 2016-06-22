@@ -1,26 +1,25 @@
 <!--PURPOSE: THIS IS THE SIDEBAR FOR THE COURSEMANAGEMENT.HTML-->
 <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
+
 <div id="sidebar-wrapper">
     <ul class="nav nav-list sidebar-nav">
         <li class="sidebar-brand">Course Management</li>
         <li>
-            <label id="crossListed" onclick="buildURL(crossListed)">Cross Listed Courses</label>
+            <a id = "crossListedLink" href="courseManagement">Cross Listed Courses</a>
         </li>
         <li>
-            <label id="conflicts"   onclick="buildURL(conflicts)">Schedule and Room Conflicts</label>
+             <a id = "conflictsLink" href="courseManagement">Schedule and Room Conflicts</a>
         </li>
         <li>
-            <label id="tracker"     onclick="buildURL(tracker)">Change Tracker</label>
+            <a id = "trackerLink" href="courseManagement">Change Tracker</a>
         </li>
         <li class="sidebar-brand">Current Term</li>
         <li>
-            <form id="termChange"class="navbar-form" method="post" action="/redirect/courses">
-                <!--SO THAT WHEN THE SEMESTER CHANGES THE PROGRAM STAYS THE SAME-->
-                <input value={{prefix}} id="prefix" name="prefix" hidden readonly="readonly"/> 
-                <select class="form-control col-md-1" name="term" onchange="this.form.submit()">
+            <form class="navbar-form" method="post">
+                <select id="termSelect" class="form-control col-md-1" onchange="buildURL('{{page}}')">
                     {% for term in allTerms %}
                         <option value ="{{term.termCode}}"
-                            {% if term.termCode == currentTerm %}
+                            {% if term.termCode|int == currentTerm|int %}
                                 selected
                             {% endif %} 
                         >
@@ -32,4 +31,4 @@
         </li>
     </ul>
 </div>
-<script type="text/javascript" src="/static/js/local/sidebar.js"></script>
+<script type="text/javascript" src="/static/js/local/courseManagementSidebar.js"></script>
