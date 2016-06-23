@@ -8,9 +8,26 @@
     <div id="wrapper">
         {%include "courseManagementSidebar.html" %}
         <div id="page-content-wrapper">
-            <h2>Welcome to the Cross Listed Page</h2>
-            
+            {% for term in allTerms %}
+                {% if term.termCode == currentTerm|int %}
+                    <h2> {{term.name}}: Cross Listed Courses </h2>
+                {% endif %}
+            {% endfor %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {% include "snips/adminCourseTable.html" %}
+                        <!--if you change the name of this button it will break the javascript in toggleMenu.js-->
+                        <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Close Sidebar</a> 
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- /#page-content-wrapper -->
     </div>
+    <!-- /#wrapper -->
+    <!-- Menu Toggle Script -->
+    <script type="text/javascript" src="/static/js/local/toggleMenu.js"></script>
+    <script type="text/javascript" src="/static/js/ext/chosen.jquery.min.js"></script>
 </body>
 {% endblock %}

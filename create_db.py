@@ -204,7 +204,7 @@ course = Course(  bannerRef         = 1,
                   schedule          = "A",
                   capacity          = 20,
                   notes             = "Preference1",
-                  crossListed       = 0
+                  crossListed       = 1
                 ).save()
                 
 course = Course(  bannerRef         = 2,
@@ -213,7 +213,7 @@ course = Course(  bannerRef         = 2,
                   schedule          = "B",
                   capacity          = 20,
                   notes             = "Preference2",
-                  crossListed       = 0
+                  crossListed       = 1
                 ).save()                
 
 course = Course(  bannerRef         = 3,
