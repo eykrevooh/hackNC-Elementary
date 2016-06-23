@@ -1,4 +1,5 @@
 <div data-toggle="validator">
+  <!--COURSE NAME-->
   <td id="courseSelect">
     <select class="form-control" name="ctitle" id="courseInfo"  onchange="specialTopicsName()" required>
       <option value="">---</option>
@@ -9,28 +10,57 @@
       {% endfor %}
     </select>
   </td>
+  <!--TAUGHT BY-->
   <td>
     <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#instructorModal">Add Instructor(s)</button>
-    {% include "addInstructors.html" %}
+    {% include "snips/addInstructors.html" %}
   </td>
+  <!--SCHEDULE-->
   <td>
     <select class="form-control" name="schedule" >
       <option value="">---</option>
       {% for schedule in schedules %}
-      <option value="{{schedule.sid}}">
-        {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
-      </option>
-        {% endfor %}
+        <option value="{{schedule.sid}}">
+          {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
+        </option>
+      {% endfor %}
      </select>
    </td>
+   <!--CAPACITY-->
    <td>
     <input type="number" name ="capacity" class="form-control" min="0"  /> 
    </td>
+   <!--ROOM-->
+   <td>
+     <select class="form-control" name="room">
+       <option value="">---</option>
+        {% for room in rooms %}
+          <option value={{room.rid}}> 
+             {{room.building}}-{{room.number}} 
+          </option>
+        {% endfor %}
+     </select>
+   </td>
+   <!--CROSS LISTED-->
+   <td>
+      <div class="radio">
+        <label>
+          <input type="radio" name="crossListed" id="exampleRadios1" value=1 required>
+          Yes
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="crossListed" id="exampleRadios1" value=0 required>
+          No
+        </label>
+      </div>
+   </td>
+   <!-- NOTES -->
    <td>
      <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#notesModal">Add Notes</button>
    {% include "addNotes.html" %}
    </td>
-   <td></td>
    <td>                                 
       <input  id="submitAdd" class="btn btn-default btn" type="submit" value="Submit" disabled=true/>
    </td>

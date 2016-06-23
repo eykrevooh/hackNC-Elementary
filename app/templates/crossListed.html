@@ -2,8 +2,10 @@
 <!--The below line of code is jinja which is a template engine for python-->
 <!-- If you want to learn more about jinja, refer to jinja documentation-->
 {% extends "base.html" %} 
-{% set currentPage = "crossLIsted" %}
+{% set currentPage = "crossListed" %}
 {% block body %}
+<link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
+<link rel="stylesheet" href="/static/css/Courses.css" type="text/css" />
 <body>
     <div id="wrapper">
         {%include "courseManagementSidebar.html" %}
@@ -29,5 +31,7 @@
     <!-- Menu Toggle Script -->
     <script type="text/javascript" src="/static/js/local/toggleMenu.js"></script>
     <script type="text/javascript" src="/static/js/ext/chosen.jquery.min.js"></script>
+    <!--WE NEED THIS FOR THE ADD INSTRUCTORS PORTION OF THE addCourseForm.html-->
+    <script type="text/javascript" src="/static/js/local/Courses.js"
 </body>
 {% endblock %}

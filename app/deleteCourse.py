@@ -1,8 +1,8 @@
 from allImports import *
 from updateCourse import DataUpdate
-@app.route("/deletecourse/<term>/<prefix>", methods=["POST"])
-def deletecourse(prefix, term):
-  page = "/" + request.url.split("/")[-1]
+@app.route("/deletecourse/<tid>/<prefix>/<page>", methods=["POST"])
+def deletecourse(prefix, tid, page):
+  current_page = "/" + request.url.split("/")[-1]
   username = authUser(request.environ)
   
   admin = User.get(User.username == username)
@@ -17,10 +17,9 @@ def deletecourse(prefix, term):
   if admin.isAdmin or divisionChair.exists() or programChair.exists():
     data = request.form
     deleteCourse = DataUpdate()
-    created = deleteCourse.addCourseChange(int(data['cid']), prefix, "delete")
-    if not created:
-      deleteCourse.editCourseChange(int(data['cid']), prefix, "delete")
-    message = "Course: course {} has been deleted".format(data['cid'])
-    log.writer("INFO", page, message)
     deleteCourse.deleteCourse(data, prefix)
-    return redirect(url_for("courses", tID = term, prefix = prefix))
+    if page == 'courses':
+      return redirect(url_for("courses", tID=tid, prefix=prefix))
+    else:
+      url = "courseManagement/" + page + "/" + tid
+      return redirect(url)

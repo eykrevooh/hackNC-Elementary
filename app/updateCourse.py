@@ -18,8 +18,9 @@ class DataUpdate():
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
       return True
           
-  def addCourse(self, data, term, instructors, prefix, schedule):
+  def addCourse(self, data, term, instructors, prefix):
     if self.checkUserLevel(prefix):
+      #SPLIT UP THE COURSE TITLE e.g.: CSC 126 robotics into subject = CSC, number = 126, title = robotics
       subject, number, title = data['ctitle'].split(None, 2)
       bannerCourse = BannerCourses.select().where(BannerCourses.subject == subject).where(BannerCourses.number == number)
       bannerCourse = bannerCourse[0]  # grabs the first bannerCourse object with a name matching subject and course number (e.g. CSC 236)
@@ -28,10 +29,20 @@ class DataUpdate():
         specialTopicName = data['specialTopicName']
       else:
         specialTopicName = None
+      #CHECK CAPACITY
       if data['capacity'] == "":
         capacity = None
       else:
         capacity = data['capacity']
+      #CHECK SCHEDULE
+      if data["schedule"] == "":
+        schedule = None
+      else:
+        schedule = data["schedule"]
+      if data["room"] == "":
+        room = None
+      else:
+        room = data["room"]
       
       course = Course(bannerRef     = bannerCourse.reFID,
                   prefix            = prefix,
@@ -39,7 +50,9 @@ class DataUpdate():
                   schedule          = schedule,
                   capacity          = capacity,
                   specialTopicName  = specialTopicName,
-                  notes             = data['requests']
+                  notes             = data['requests'],
+                  crossListed       = int(data['crossListed']),
+                  rid               = room
                 )
       course.save()
       for professor in instructors:

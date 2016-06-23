@@ -3,7 +3,7 @@
 {% block body %}
 <div class="modal fade" id="editModal{{course.cId}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-md">
-    <form method="post" action="\editcourse\{{currentTerm}}\{{course.prefix.prefix}}">
+    <form method="post" action="\editcourse\{{currentTerm}}\{{course.prefix.prefix}}\{{page}}">
     <div class="modal-content">
       <div class="modal-header">
         <a href="/courses/{{currentTerm}}/{{course.prefix.prefix}}"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
@@ -50,7 +50,12 @@
        <br>
         </div>
         <div class="modal-footer">
-          <a type="button" class="btn btn-primary btn-sm" href="/courses/{{currentTerm}}/{{course.prefix.prefix}}">Close</a>
+          <!--DIFFERENT URL'S DEPENDING ON THE PAGE-->
+          {% if page == "courses" %}
+            <a type="button" class="btn btn-primary btn-sm" href="/courses/{{currentTerm}}/{{course.prefix.prefix}}">Close</a>
+          {% else %}
+            <a type="button" class="btn btn-primary btn-sm" href="/courseManagement/{{page}}/{{currentTerm}}">Close</a>
+          {% endif %}            
           <input  class="btn btn-success btn-sm pull-right" type="submit" value="Save"/>
         </div>
       </div>

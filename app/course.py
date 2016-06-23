@@ -8,6 +8,7 @@ def courses(tID, prefix):
   username = authUser(request.environ)
   
   # These are the necessary components of the sidebar. Should we move them somewhere else?
+  page      = "courses"
   divisions = Division.select()
   programs = Program.select()
   subjects = Subject.select()
@@ -63,7 +64,8 @@ def courses(tID, prefix):
                               isDivisionChair = programChair.exists(),
                               currentProgram  = currentProgram,
                               curTermName     = curTermName,
-                              prefix          = prefix
+                              prefix          = prefix,
+                              page            = page
                             )
       else:
         return render_template("program.html",
@@ -83,14 +85,9 @@ def courses(tID, prefix):
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
       page    = "/" + request.url.split("/")[-1]
       data    = request.form
-      if data["schedule"] == "":
-        schedule = None
-      else:
-        schedule = data["schedule"]
-     
       instructors = request.form.getlist('professors[]')
       newCourse = DataUpdate()
-      cid = newCourse.addCourse(data, tID, instructors, prefix, schedule)
+      cid = newCourse.addCourse(data, tID, instructors, prefix)
       if not newCourse.isTermEditable(tID):     # If this is not an editable term
         newCourse.addCourseChange(cid, prefix, "create")    # Add the course to the special table
       
