@@ -33,3 +33,4 @@ from app import addProgram
 from app import addDivision
 from app import courseChange
 from app import courseManagement
+from app import addCourse

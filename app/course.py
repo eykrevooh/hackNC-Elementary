@@ -33,67 +33,56 @@ def courses(tID, prefix):
   terms = Term.select().order_by(-Term.termCode)
 
 
-  if (request.method == "GET"):
+  
       
-      # We need these for populating add course
-      courseInfo = BannerCourses.select().where(BannerCourses.subject == prefix).order_by(BannerCourses.number)
-      
-      schedules = BannerSchedule.select()
-      
-      courses = Course.select().where(Course.prefix == prefix).where(Course.term == tID)
-     
-      instructors = {}
-      for course in courses:
-        instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
-      
-      if admin.isAdmin or divisionChair.exists() or programChair.exists():
-        return render_template("programAdmin.html",
-                              cfg             = cfg,
-                              courses         = courses,
-                              instructors     = instructors,
-                              programs        = programs,
-                              divisions       = divisions,
-                              subjects        = subjects,
-                              currentTerm     = int(tID),
-                              courseInfo      = courseInfo,
-                              users           = users,
-                              schedules       = schedules,
-                              allTerms        = terms,
-                              isAdmin         = admin.isAdmin,
-                              isProgramChair  = divisionChair.exists(),
-                              isDivisionChair = programChair.exists(),
-                              currentProgram  = currentProgram,
-                              curTermName     = curTermName,
-                              prefix          = prefix,
-                              page            = page
-                            )
-      else:
-        return render_template("program.html",
-                                cfg           = cfg,
-                                courses       = courses,
-                                instructors   = instructors,
-                                programs      = programs,
-                                divisions     = divisions,
-                                subjects      = subjects,
-                                currentTerm   = int(tID),
-                                allTerms      = terms,
-                                currentProgram = currentProgram,
-                                curTermName   = curTermName,
-                                prefix        = prefix
-                              )
-  if (request.method == "POST"):
-    if admin.isAdmin or divisionChair.exists() or programChair.exists():
-      page    = "/" + request.url.split("/")[-1]
-      data    = request.form
-      instructors = request.form.getlist('professors[]')
-      newCourse = DataUpdate()
-      cid = newCourse.addCourse(data, tID, instructors, prefix)
-      if not newCourse.isTermEditable(tID):     # If this is not an editable term
-        newCourse.addCourseChange(cid, prefix, "create")    # Add the course to the special table
-      
-      message = "Course: #{0} has been added".format(cid)
-      log.writer("INFO", page, message)
-      flash("Course has successfully been added!")
-      return redirect(url_for("courses", tID = tID, prefix = prefix))
-    else:
-      return render_template("404.html", cfg=cfg)
+  # We need these for populating add course
+  courseInfo = BannerCourses.select().where(BannerCourses.subject == prefix).order_by(BannerCourses.number)
+  
+  schedules = BannerSchedule.select()
+  
+  courses = Course.select().where(Course.prefix == prefix).where(Course.term == tID)
+  
+  rooms     = Rooms.select()
+  
+  
+ 
+  instructors = {}
+  for course in courses:
+    instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
+  
+  if admin.isAdmin or divisionChair.exists() or programChair.exists():
+    return render_template("programAdmin.html",
+                          cfg             = cfg,
+                          courses         = courses,
+                          instructors     = instructors,
+                          programs        = programs,
+                          divisions       = divisions,
+                          subjects        = subjects,
+                          currentTerm     = int(tID),
+                          courseInfo      = courseInfo,
+                          users           = users,
+                          schedules       = schedules,
+                          allTerms        = terms,
+                          isAdmin         = admin.isAdmin,
+                          isProgramChair  = divisionChair.exists(),
+                          isDivisionChair = programChair.exists(),
+                          currentProgram  = currentProgram,
+                          curTermName     = curTermName,
+                          prefix          = prefix,
+                          page            = page,
+                          rooms            = rooms
+                        )
+  else:
+    return render_template("program.html",
+                            cfg           = cfg,
+                            courses       = courses,
+                            instructors   = instructors,
+                            programs      = programs,
+                            divisions     = divisions,
+                            subjects      = subjects,
+                            currentTerm   = int(tID),
+                            allTerms      = terms,
+                            currentProgram = currentProgram,
+                            curTermName   = curTermName,
+                            prefix        = prefix
+                          )

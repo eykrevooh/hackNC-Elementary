@@ -77,7 +77,7 @@
         {% endfor %}
     </tbody>
     <tfoot>
-        <form method="post" id="addCourseForm">
+        <form method="post" id="addCourseForm" action="/addCourse/{{currentTerm}}/{{page}}/{{prefix}}">
             {% include "snips/addCourseForm.html" %}
         </form>
     </tfoot>

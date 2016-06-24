@@ -5,7 +5,7 @@ from updateCourse import DataUpdate
 #CROSS LISTED COURSES#
 ######################
 @app.route("/courseManagement/crossListed/", defaults={'tid':0}, methods=["GET", "POST"])
-@app.route("/courseManagement/crossListed/<tid>", methods = ["GET"])
+@app.route("/courseManagement/crossListed/<tid>", methods = ["GET","POST"])
 def crossListed(tid):
     #DATA FOR THE NAVBAR AND SIDE BAR
     terms = Term.select().order_by(-Term.termCode)
@@ -33,7 +33,7 @@ def crossListed(tid):
                             isAdmin          = admin.isAdmin,
                             allTerms         = terms,
                             page             = page,
-                            currentTerm      = tid,
+                            currentTerm      = int(tid),
                             courses          = crossListedCourses,
                             instructors      = instructors,
                             courseInfo       = courseInfo,

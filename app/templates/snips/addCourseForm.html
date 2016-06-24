@@ -4,9 +4,9 @@
     <select class="form-control" name="ctitle" id="courseInfo"  onchange="specialTopicsName()" required>
       <option value="">---</option>
       {% for ctitle in courseInfo %}
-      <option>
-        {{ctitle.subject.prefix}} {{ctitle.number}} {{ctitle.ctitle}}
-      </option>
+        <option>
+          {{ctitle.subject.prefix}} {{ctitle.number}} {{ctitle.ctitle}}
+        </option>
       {% endfor %}
     </select>
   </td>
@@ -61,7 +61,14 @@
      <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#notesModal">Add Notes</button>
    {% include "addNotes.html" %}
    </td>
-   <td>                                 
-      <input  id="submitAdd" class="btn btn-default btn" type="submit" value="Submit" disabled=true/>
+   <td>
+      <input  id="submitAdd" class="btn btn-default btn" type="submit" value="Submit" disabled=true >
+      
+      <!--{% if page == "courses" %}                                 -->
+      <!--  <input  id="submitAdd" class="btn btn-default btn" type="submit" value="Submit" disabled=true/ action="addCourse/{{currentTerm}}/{{page}}/{{prefix}}">-->
+      <!--{% else %}-->
+      <!--  <input  id="submitAdd" class="btn btn-default btn" type="submit" value="Submit" disabled=true action="courseManagement/{{page}}/{{currentTerm}}">-->
+      <!--{% endif %}-->
+      
    </td>
 </div>

@@ -46,7 +46,7 @@ def editcourse(tid, prefix, page):
   if page == 'courses':
     return redirect(url_for("courses", tID=tid, prefix=prefix))
   else:
-    url = "courseManagement/" + page + "/" + tid
+    url = "/courseManagement/" + page + "/" + tid
     return redirect(url)
   
   #Stop hating ishwar, lol
