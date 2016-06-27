@@ -7,68 +7,26 @@ class DataUpdate():
       
   def checkUserLevel(self, prefix):
     admin = User.get(User.username == self.username)
-    subject = Subject.get(Subject.prefix == prefix)
-    divisionChair = (DivisionChair.select()
-                      .where(DivisionChair.username == self.username)
-                      .where(DivisionChair.did == subject.pid.division.dID))
-    
-    
-    programChair  = ProgramChair.select().where(ProgramChair.username == self.username).where(ProgramChair.pid == subject.pid.pID)
-    
+    if admin.isAdmin != True:
+      subject = Subject.get(Subject.prefix == prefix)
+      divisionChair = (DivisionChair.select()
+                        .where(DivisionChair.username == self.username)
+                        .where(DivisionChair.did      == subject.pid.division.dID))
+      programChair  = ProgramChair.select().where(ProgramChair.username == self.username).where(ProgramChair.pid == subject.pid.pID)
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
       return True
           
-  def addCourse(self, data, term, instructors, prefix):
-    if self.checkUserLevel(prefix):
-      #SPLIT UP THE COURSE TITLE e.g.: CSC 126 robotics into subject = CSC, number = 126, title = robotics
-      subject, number, title = data['ctitle'].split(None, 2)
-      bannerCourse = BannerCourses.select().where(BannerCourses.subject == subject).where(BannerCourses.number == number)
-      bannerCourse = bannerCourse[0]  # grabs the first bannerCourse object with a name matching subject and course number (e.g. CSC 236)
-
-      if int(number) % 100 == 86:
-        specialTopicName = data['specialTopicName']
-      else:
-        specialTopicName = None
-      #CHECK CAPACITY
-      if data['capacity'] == "":
-        capacity = None
-      else:
-        capacity = data['capacity']
-      #CHECK SCHEDULE
-      if data["schedule"] == "":
-        schedule = None
-      else:
-        schedule = data["schedule"]
-      if data["room"] == "":
-        room = None
-      else:
-        room = data["room"]
-      
-      course = Course(bannerRef     = bannerCourse.reFID,
-                  prefix            = prefix,
-                  term              = int(term),
-                  schedule          = schedule,
-                  capacity          = capacity,
-                  specialTopicName  = specialTopicName,
-                  notes             = data['requests'],
-                  crossListed       = int(data['crossListed']),
-                  rid               = room
-                )
-      course.save()
-      for professor in instructors:
-        instructor = InstructorCourse(username = professor, course = course.cId)
-        instructor.save()
-    return course.cId
+  
   
   
   def editCourse(self, data, prefix, professors):
     if self.checkUserLevel(prefix):
       course = Course.get(Course.cId == int(data['cid']))
-      course.term     = data['term']
+      course.term       = data['term']
       if data['capacity']:
         course.capacity = data['capacity']
-      course.schedule = data['schedule']
-      course.notes    = data['notes']
+      course.schedule   = data['schedule']
+      course.notes      = data['notes']
       course.lastEditBy = authUser(request.environ)
       
       course.save()
@@ -122,13 +80,12 @@ class DataUpdate():
     
   def editCourseChange(self, cid, prefix, changeType):
     if self.checkUserLevel(prefix):
-      newcourse = Course.get(Course.cId == cid)
-      course = CourseChange.get(CourseChange.cId == cid)
-      
-      course.term     = newcourse.term
-      course.capacity = newcourse.capacity
-      course.schedule = newcourse.schedule
-      course.notes = newcourse.notes
+      newcourse         = Course.get(Course.cId == cid)
+      course            = CourseChange.get(CourseChange.cId == cid)
+      course.term       = newcourse.term
+      course.capacity   = newcourse.capacity
+      course.schedule   = newcourse.schedule
+      course.notes      = newcourse.notes
       course.lastEditBy = newcourse.lastEditBy
       course.changeType = changeType
     

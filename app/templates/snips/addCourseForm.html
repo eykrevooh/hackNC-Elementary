@@ -35,7 +35,7 @@
      <select class="form-control" name="room">
        <option value="">---</option>
         {% for room in rooms %}
-          <option value={{room.rid}}> 
+          <option value="{{room.rID}}"> 
              {{room.building}}-{{room.number}} 
           </option>
         {% endfor %}
