@@ -48,50 +48,51 @@ def crossListed(tid):
 @app.route("/courseManagement/conflicts/<tid>", methods = ["GET"])
 def conflictsListed(tid):
     #DATA FOR THE NAVEBAR AND SIDEBAR#
-    page = "conflicts"
-    terms = Term.select().order_by(-Term.termCode)
-    username = authUser(request.environ)
-    admin = User.get(User.username == username)
+    page      = "conflicts"
+    terms     = Term.select().order_by(-Term.termCode)
+    username  = authUser(request.environ)
+    admin     = User.get(User.username == username)
     #DATA FOR THE CONFLICTS PAGE#
     cid = 0 #COURSE ID INDEX KEY
     sid = 1 #SCHEDULE ID INDEX KEY
-    roomConflicts = []  #CREATE AN EMPTY CONFLICTS PAGE
+    roomConflicts = []      #CREATE AN EMPTY CONFLICTS PAGE
     rooms = Rooms.select()  #SELECT ALL OF THE ROOMS
     for room in rooms:      #LOOP THOUGH ALL OF THE ROOMS
       courseList = []       #CREATE AN EMPTY COURSE LIST
-      courseCID  = []       #CREATE AN EMPTY LIST FOR CID TO BE STORED IN
+      courseConflicts = []  #CREATE AN EMPTY LIST FOR CID TO BE STORED IN
       courses = Course.select().where(room.rID == Course.rid, Course.term == tid) #FIND COURSES IN ROOM FOR THAT TERM
-      if courses:           #MAKE SURE THE ROOM CONTAINS COURSES --> THIS PREVENTS ERRORS ON TRYING TO ACCESS ERRORS THAT DON'T EXSIST
+      if courses:           #MAKE SURE THE ROOM CONTAINS COURSES ==> THIS PREVENTS ERRORS ON TRYING TO ACCESS ERRORS THAT DON'T EXSIST
           for course in courses:
               if course.schedule != "ZZZ": #ZZZ IS A CUSTOM TIME SLOT THAT SHOULDN'T BE INCLUDED BECAUSE IT'S NOT IN CONFLICTS.YAML
-                  courseList.append((course.cId,course.schedule.sid)) 
-          while courseList != []: #TODO: check to ensure that it is okay to use a while loop here
+                  #courseList.append((course.cId,course.schedule.sid)) 
+                  courseList.append(course)#APPEND THE WHOLE COURSE OBJECT TO THE LIST
+          while courseList != []: 
               current_course = courseList.pop()
-              if courseList != []: #CHECK TO SEE IF NOW EMPTY--> NEEDED TO PREVENT SEG FAULT
+              if courseList != []: #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
                 for course in courseList:
-                  result = conflicts[current_course[sid]][course[sid]]
+                  result = conflicts[current_course.schedule.sid][course.schedule.sid] #ACCESS THE SID THROUGH THE COURSE OBJECT
                   if result == 1:
                     #APPEND BOTH COURSE ID'S TO A LIST
-                    courseCID.append(current_course[cid]) 
-                    courseCID.append(course[cid])         
-          if courseCID != []:
+                    courseConflicts.append(current_course) 
+                    courseConflicts.append(course)         
+          if courseConflicts != []:
             #REMOVE THE DUPLICATES IN courseCID
             seen = set()
             seen_add = seen.add
-            courseCID = [x for x in courseCID if not (x in seen or seen_add(x))]
-            roomConflicts.append([room.rID,courseCID]) 
-            #CREATE THIS DATA STRUCTURE ---> [rid,[cid,cid,cid]]
+            courseConflicts = [x for x in courseConflicts if not (x in seen or seen_add(x))]
+            roomConflicts.append([room,courseConflicts]) 
+            #CREATE THIS DATA STRUCTURE ---> [x1,[y1,y2,y3]]
             #rid = ROOM ID
             #[cid,cid,cid] = A LIST OF UNIQUE CID THAT CONFLICT WITH THAT RID
-            #LAST EDITED: Cody Myers 6/27/16
-    print roomConflicts  
+    print roomConflicts
+    #courses = Course.select().order_by(+Course.schedule)
     return render_template("conflicts.html",
                             cfg              = cfg,
                             isAdmin          = admin.isAdmin,
-                            allTerms      = terms,
-                            page = page,
-                            currentTerm     = tid,
-                            
+                            allTerms         = terms,
+                            page             = page,
+                            currentTerm      = int(tid),
+                            conflicts        = roomConflicts,
                           )
 ################
 #CHANGE TRACKER#
