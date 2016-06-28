@@ -4,27 +4,117 @@
 {% extends "base.html" %} 
 {% set currentPage = "conflicts" %}
 {% block body %}
-<link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
-<body>
-  <div id="wrapper">
-    {%include "courseManagementSidebar.html" %}
-    <div id="page-content-wrapper">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
+  <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
+  <link rel="stylesheet" href="/static/css/Courses.css" type="text/css" />
+  <body>
+    <div id="wrapper">
+      {%include "courseManagementSidebar.html" %}
+      <div id="page-content-wrapper">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    {{message}}
-                </div>
+              <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                {{message}}
+              </div>
             {% endfor %}
+          {% endif %}
+        {% endwith %}
+        {% for term in allTerms %}
+          {% if term.termCode == currentTerm|int %}
+              <h2> {{term.name}}: Schedule and Room Conflicts </h2>
+          {% endif %}
+        {% endfor %}
+        {% if dict_keys != [] %}
+          {% for key in dict_keys %}
+            <h2>{{key}}</h2>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th>Course Name</th> 
+                        <th>Taught By</th>
+                        <th>Schedule</th>
+                        <th>Capacity</th>
+                        <th>Room</th>
+                        <th>Cross-Listed</th>
+                        <th>Notes</th>
+                        <th>Last Edited By</th>
+                      </tr> 
+                    </thead>
+                    {% for course in conflicts_dict[key] %}
+                      <tr>
+                        <!--COURSE NAME-->
+                        <td>
+                          {{course.prefix.prefix}} {{course.bannerRef.number}}
+                            {% if course.specialTopicName is not none %}
+                                {{course.specialTopicName}}
+                            {% else %}
+                                {{course.bannerRef.ctitle}}
+                            {%endif%}
+                        </td>
+                        <!--TAUGHT BY-->
+                        <td>
+                          {% for instructor in instructors[course.cId] %}
+                            {{instructor.username.username}}
+                          {% endfor %}
+                        </td>
+                        <!--SCHEDULE-->
+                        <td>
+                          {% if course.schedule is not none %}
+                            {{course.schedule.days}}{{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}
+                          {% endif %}
+                        </td>
+                        <!--CAPACITY-->
+                        <td> 
+                          {% if course.capacity is not none  %}
+                            {{course.capacity}}
+                          {% endif %}
+                        </td>
+                        <!-- ROOM -->
+                        <td>
+                          {% if course.rid is not none %}
+                            {{course.rid.building}}:{{course.rid.number}}
+                          {% else %}
+                            <p>No room listed</p>
+                          {% endif %}
+                        </td>
+                        <!--CROSS LISTED-->
+                        <td>
+                          {% if course.crossListed is not none %}
+                            <p>yes</p>
+                          {% else %}
+                            <p>no</p>
+                          {% endif %}
+                        </td>
+                        <!--NOTES-->
+                        <td>
+                            <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a>
+                        </td>
+                        <!--LAST EDITED BY-->
+                        <td>
+                            {{course.lastEditBy}}
+                        </td>
+                        <td>
+                            {% if isAdmin or isDivisionChair or isProgramChair %}
+                                <!--EDIT MODAL-->
+                                <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}/{{page}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                                <!--DELETE MODAL-->
+                                <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                {% include "snips/deleteCourse.html" %}
+                            {% endif %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </table>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
         {% endif %}
-      {% endwith %}
-      {% for term in allTerms %}
-        {% if term.termCode == currentTerm|int %}
-            <h2> {{term.name}}: Schedule and Room Conflicts </h2>
-        {% endif %}
-      {% endfor %}
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 {% endblock %}

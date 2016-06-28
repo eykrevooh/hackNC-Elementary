@@ -52,49 +52,55 @@ def conflictsListed(tid):
     terms     = Term.select().order_by(-Term.termCode)
     username  = authUser(request.environ)
     admin     = User.get(User.username == username)
-    #DATA FOR THE CONFLICTS PAGE#
-    roomConflicts = []      #CREATE AN EMPTY ROOM CONFLICTS LIST
-    rooms = Rooms.select()  #SELECT ALL OF THE ROOMS
-    for room in rooms:      #LOOP THOUGH ALL OF THE ROOMS
-      courseList = []       #CREATE AN EMPTY COURSE LIST
-      courseConflicts = []  #CREATE AN EMPTY LIST FOR COURSE OBJECTS TO BE STORED IN
-      courses = Course.select().where(room.rID == Course.rid, Course.term == tid) #FIND COURSES IN ROOM FOR THAT TERM
-      if courses:           #MAKE SURE THE ROOM CONTAINS COURSES ==> THIS PREVENTS ERRORS ON TRYING TO ACCESS ERRORS THAT DON'T EXSIST
-          for course in courses:
-              if course.schedule != "ZZZ": #ZZZ IS A CUSTOM TIME SLOT THAT SHOULDN'T BE INCLUDED IN THE COURSE LIST BECAUSE IT'S NOT IN CONFLICTS.YAML
-                  courseList.append(course)#APPEND THE WHOLE COURSE OBJECT TO THE LIST
-              else:
-                  courseConflicts.append(course) 
-                  #SINCE ZZZ IS A SPECIAL TIME ENTRY
-                  #WE WILL APPEND IT TO THE CONFLICTS LIST SO THAT SHE CAN MANUALLY CHECK IT 
-          while courseList != []: 
-              current_course = courseList.pop()
-              if courseList != []: #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
-                for course in courseList:
-                  result = conflicts[current_course.schedule.sid][course.schedule.sid] #ACCESS THE SID THROUGH THE COURSE OBJECT
-                  if result == 1:
-                    #APPEND BOTH COURSE OBJECTS TO THE CONFLICTS LIST
-                    courseConflicts.append(current_course) 
-                    courseConflicts.append(course)         
-          if courseConflicts != []:
-            #REMOVE THE DUPLICATE OBJECTS IN courseConflicts
-            seen = set()
-            seen_add = seen.add
-            courseConflicts = [x for x in courseConflicts if not (x in seen or seen_add(x))]
-            roomConflicts.append([room,courseConflicts]) 
-            #CREATE THIS DATA STRUCTURE ---> [x1,[y1,y2,y3]]
-            #x1 = a peewee object for the room
-            #[y1,y2,y3] = A LIST OF UNIQUE COURSE OBJECTS
-            #WE PASS THE OBJECTS SO THA THE DATA STRUCTURE CAN EASIABLY LOOPED THROUGH WITH JINJA ON CONFLICTS.YAML
-            #MORE INFORMATION CAN BE FOUND ON ISSUE #46
-    print roomConflicts
+    #DATA FOR THE ROOM AND SCHEDULING CONFLICTS#
+    instructors   = dict()
+    conflict_dict = dict()  #CREATE A CONFLICT DICTIONARY TO HOLD ALL OF THE CONFLICTS
+                            #THE KEY WILL BE BUILDING NAMES
+                            #THE VALUE WILL BE A LIST OF COURSE OBJECTS THAT CONFLICT
+    dict_keys = []          #STORE THE DICT KEYS SO WE CAN EASILY LOOP THROUGH THEM ON THE VIEW
+    buildings = Rooms.select(Rooms.building).distinct()               # GRAB ALL OF THE DISTINCT BUILDING NAMES
+    print buildings
+    for element in buildings:                                         # LOOP THROUGH ELEMENTS IN THE QUERY
+      buildingConflicts = []                                          # RESET THE BUIDLING CONFLICTS
+      rooms = Rooms.select().where(Rooms.building==element.building)  # GET ALL OF THE ROOMS FOR THAT BUILDING
+      for room in rooms:          
+        courseList = [] #WE NEED TO CREATE A LIST SO THAT WE CAN SORT OUT THE 'ZZZ' SCHEDULE AND SO THAT WE CAN POP() FROM THE LIST      
+        courses = Course.select().where(room.rID == Course.rid, Course.term == tid).order_by(Course.rid) 
+        if courses:           
+            for course in courses:
+                if course.schedule != "ZZZ":         #DON'T ADD 'ZZZ' TO COURSE LIST BECAUSE ITS NOT PRESENT IN CONFLICTS.YAML 
+                    courseList.append(course)        #APPEND THE COURSE OBJECT TO THE COURSELIST FOR SCHEDULE CHECKING
+                else:                                #THEN WE GO AHEAD AND APPEND THE COURSE OBJECT FOR 'ZZZ' SCHEDULES TO CONFLICTS
+                    buildingConflicts.append(course) #BECAUSE THEY HAVE SPECIAL TIME ENTRIES THAT NEEED TO BE CHECKED MANUALLY
+            while courseList != []: 
+                current_course = courseList.pop()
+                if courseList != []:                 #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
+                  for course in courseList:
+                    result = conflicts[current_course.schedule.sid][course.schedule.sid] #ACCESS THE SID THROUGH THE COURSE OBJECT
+                    if result == 1:
+                      #APPEND BOTH COURSE OBJECTS TO THE CONFLICTS LIST
+                      buildingConflicts.append(current_course) 
+                      buildingConflicts.append(course)         
+      if buildingConflicts != []:
+        #REMOVE DUPLICATE COURSE OBJECTS FROM THE CONFLICTS LIST
+        seen = set()
+        seen_add = seen.add
+        buildingConflicts = [x for x in buildingConflicts if not (x in seen or seen_add(x))]
+        
+        dict_keys.append(element.building)                      #ADD THE KEY TO THE LIST
+        conflict_dict[element.building] = buildingConflicts     #SET THE KEY(building name) TO THE VALUE(list of course objects)
+        #DATA FOR THE CONFLICTS TABLE
+        for course in buildingConflicts:
+          instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
     return render_template("conflicts.html",
                             cfg              = cfg,
                             isAdmin          = admin.isAdmin,
                             allTerms         = terms,
                             page             = page,
                             currentTerm      = int(tid),
-                            conflicts        = roomConflicts,
+                            conflicts_dict   = conflict_dict,
+                            dict_keys        = dict_keys,
+                            instructors      = instructors
                           )
 ################
 #CHANGE TRACKER#
