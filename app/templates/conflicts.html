@@ -4,13 +4,27 @@
 {% extends "base.html" %} 
 {% set currentPage = "conflicts" %}
 {% block body %}
+<link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
 <body>
-    <div id="wrapper">
-        {%include "courseManagementSidebar.html" %}
-        <div id="page-content-wrapper">
-            <h2>Welcome to the Conflicts Page</h2>
-            
-        </div>
+  <div id="wrapper">
+    {%include "courseManagementSidebar.html" %}
+    <div id="page-content-wrapper">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {% for term in allTerms %}
+        {% if term.termCode == currentTerm|int %}
+            <h2> {{term.name}}: Schedule and Room Conflicts </h2>
+        {% endif %}
+      {% endfor %}
     </div>
+  </div>
 </body>
 {% endblock %}

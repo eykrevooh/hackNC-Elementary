@@ -53,39 +53,41 @@ def conflictsListed(tid):
     username  = authUser(request.environ)
     admin     = User.get(User.username == username)
     #DATA FOR THE CONFLICTS PAGE#
-    cid = 0 #COURSE ID INDEX KEY
-    sid = 1 #SCHEDULE ID INDEX KEY
-    roomConflicts = []      #CREATE AN EMPTY CONFLICTS PAGE
+    roomConflicts = []      #CREATE AN EMPTY ROOM CONFLICTS LIST
     rooms = Rooms.select()  #SELECT ALL OF THE ROOMS
     for room in rooms:      #LOOP THOUGH ALL OF THE ROOMS
       courseList = []       #CREATE AN EMPTY COURSE LIST
-      courseConflicts = []  #CREATE AN EMPTY LIST FOR CID TO BE STORED IN
+      courseConflicts = []  #CREATE AN EMPTY LIST FOR COURSE OBJECTS TO BE STORED IN
       courses = Course.select().where(room.rID == Course.rid, Course.term == tid) #FIND COURSES IN ROOM FOR THAT TERM
       if courses:           #MAKE SURE THE ROOM CONTAINS COURSES ==> THIS PREVENTS ERRORS ON TRYING TO ACCESS ERRORS THAT DON'T EXSIST
           for course in courses:
-              if course.schedule != "ZZZ": #ZZZ IS A CUSTOM TIME SLOT THAT SHOULDN'T BE INCLUDED BECAUSE IT'S NOT IN CONFLICTS.YAML
-                  #courseList.append((course.cId,course.schedule.sid)) 
+              if course.schedule != "ZZZ": #ZZZ IS A CUSTOM TIME SLOT THAT SHOULDN'T BE INCLUDED IN THE COURSE LIST BECAUSE IT'S NOT IN CONFLICTS.YAML
                   courseList.append(course)#APPEND THE WHOLE COURSE OBJECT TO THE LIST
+              else:
+                  courseConflicts.append(course) 
+                  #SINCE ZZZ IS A SPECIAL TIME ENTRY
+                  #WE WILL APPEND IT TO THE CONFLICTS LIST SO THAT SHE CAN MANUALLY CHECK IT 
           while courseList != []: 
               current_course = courseList.pop()
               if courseList != []: #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
                 for course in courseList:
                   result = conflicts[current_course.schedule.sid][course.schedule.sid] #ACCESS THE SID THROUGH THE COURSE OBJECT
                   if result == 1:
-                    #APPEND BOTH COURSE ID'S TO A LIST
+                    #APPEND BOTH COURSE OBJECTS TO THE CONFLICTS LIST
                     courseConflicts.append(current_course) 
                     courseConflicts.append(course)         
           if courseConflicts != []:
-            #REMOVE THE DUPLICATES IN courseCID
+            #REMOVE THE DUPLICATE OBJECTS IN courseConflicts
             seen = set()
             seen_add = seen.add
             courseConflicts = [x for x in courseConflicts if not (x in seen or seen_add(x))]
             roomConflicts.append([room,courseConflicts]) 
             #CREATE THIS DATA STRUCTURE ---> [x1,[y1,y2,y3]]
-            #rid = ROOM ID
-            #[cid,cid,cid] = A LIST OF UNIQUE CID THAT CONFLICT WITH THAT RID
+            #x1 = a peewee object for the room
+            #[y1,y2,y3] = A LIST OF UNIQUE COURSE OBJECTS
+            #WE PASS THE OBJECTS SO THA THE DATA STRUCTURE CAN EASIABLY LOOPED THROUGH WITH JINJA ON CONFLICTS.YAML
+            #MORE INFORMATION CAN BE FOUND ON ISSUE #46
     print roomConflicts
-    #courses = Course.select().order_by(+Course.schedule)
     return render_template("conflicts.html",
                             cfg              = cfg,
                             isAdmin          = admin.isAdmin,
