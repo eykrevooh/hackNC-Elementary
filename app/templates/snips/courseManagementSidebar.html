@@ -5,30 +5,34 @@
     <ul class="nav nav-list sidebar-nav">
         <li class="sidebar-brand">Course Management</li>
         <li>
-            <a id = "crossListedLink" href="courseManagement">Cross Listed Courses</a>
+            <a id = "crossListedLink" href="">Cross Listed Courses</a>
         </li>
         <li>
-             <a id = "conflictsLink" href="courseManagement">Schedule and Room Conflicts</a>
+             <a id = "conflictsLink" href="">Schedule and Room Conflicts</a>
         </li>
         <li>
-            <a id = "trackerLink" href="courseManagement">Change Tracker</a>
+            <a id = "trackerLink" href="">Change Tracker</a>
         </li>
-        {% if page != "tracker" %}<li class="sidebar-brand">Current Term</li>
-        <li>
-            <form class="navbar-form" method="post">
-                <select id="termSelect" class="form-control col-md-1" onchange="buildURL('{{page}}')">
-                    {% for term in allTerms %}
-                        <option value ="{{term.termCode}}"
-                            {% if term.termCode|int == currentTerm|int %}
-                                selected
-                            {% endif %} 
-                        >
-                            {{term.name}}
-                        </option>
-                    {% endfor %}
-                </select>
-            </form>
-        </li>
+        {% if page == "tracker" %}
+            {# We need a hidden input for our javascript #}
+            <input type="hidden" value="{{currentTerm}}" id="termSelect"> 
+        {% else %}
+            <li class="sidebar-brand">Current Term</li>
+            <li>
+                <form class="navbar-form" method="post">
+                    <select id="termSelect" class="form-control col-md-1" onchange="buildURL('{{page}}')">
+                        {% for term in allTerms %}
+                            <option value ="{{term.termCode}}"
+                                {% if term.termCode|int == currentTerm|int %}
+                                    selected
+                                {% endif %} 
+                            >
+                                {{term.name}}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </li>
         {% endif %}
     </ul>
 </div>
