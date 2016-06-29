@@ -107,16 +107,118 @@ def conflictsListed(tid):
 ################
 @app.route("/courseManagement/tracker/<tid>", methods = ["GET"])
 def trackerListed(tid):
-    # do stuff
+    #DATA FOR THE NAVBAR AND SIDE BAR
     page = "tracker"
     terms = Term.select().order_by(-Term.termCode)
     username = authUser(request.environ)
     admin = User.get(User.username == username)
-    return render_template("tracker.html",
-                            cfg              = cfg,
-                            isAdmin          = admin.isAdmin,
-                            allTerms      = terms,
-                            page = page,
-                            currentTerm     = tid
-                          )
+    #DATA FOR THE CHANGE TRACKER PAGE
+    # ALL OF THIS CAME FROMT HE COURSECHANGE.PY
+    if (request.method == "GET"):
+      username = authUser(request.environ)
+      admin = User.get(User.username == username)
+      if admin.isAdmin:
+        
+        data = {}
+        terms = Term.select().where(Term.editable == False)
+        courses = CourseChange.select()
+        courseList = []
+        
+        for term in terms:
+          coursesHistory = CourseChange.select().where(CourseChange.term == term.termCode).where(CourseChange.verified == False)
+          for courseHistory in coursesHistory:
+            courseInfo = []
+            
+            
+            if courseHistory.changeType == 'delete':
+              for i in range(5):
+                courseInfo.append('delete')
+              course = courseHistory
+              
+            
+            if courseHistory.changeType == 'create':
+              for i in range(5):
+                courseInfo.append('create')
+              course = Course.get(Course.cId == courseHistory.cId)
+  
+            if courseHistory.changeType == 'update':
+              course = Course.get(Course.cId == courseHistory.cId)
+              
+              courseInfo.append(None)
+              
+              # compare the instructors in old and new table
+              oldInstructors = []
+              newInstructors = []
+              
+              newInstructor = (InstructorCourse.select()
+                                               .where(InstructorCourse.course == course.cId))
+                                              
+              oldInstructor = (InstructorCourseChange.select()
+                                              .where(InstructorCourseChange.course == course.cId))
+              
+              for instructor in newInstructor:
+                newInstructors.append(instructor.username.username)
+              for instructor in oldInstructor:
+                oldInstructors.append(instructor.username.username)
+              
+              if set(oldInstructors) != set(newInstructors):
+                courseInfo.append('danger')
+              else:
+                courseInfo.append(None)
+              
+              # compare the schedule in old and new table
+              if courseHistory.schedule != course.schedule:
+                courseInfo.append('danger')
+              else:
+                courseInfo.append(None)
+              
+              # compare the capacity
+              if courseHistory.capacity != course.capacity:
+                courseInfo.append('danger')
+              else:
+                courseInfo.append(None)
+              
+              #compare the notes
+              if courseHistory.notes != course.notes:
+                courseInfo.append('danger')
+              else:
+                courseInfo.append(None)
+  
+            courseList.append((courseInfo, course))
+            data[term] = courseList
+        
+        instructors = {}
+        for course in courses:
+          instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
+      return render_template("tracker.html",
+                              cfg              = cfg,
+                              isAdmin          = admin.isAdmin,
+                              allTerms         = terms,
+                              page             = page,
+                              currentTerm      = int(tid),
+                              courseList       = courseList,
+                              data             = data,
+                              instructors      = instructors,
+                            )
+    else:
+      return render_template("404.html", cfg=cfg)
+
+
+@app.route("/courseManagement/tracker/<tid>/verified", methods=["POST"])
+def verifyChange(tid):
+  if (request.method == "POST"):
+    page = "/" + request.url.split("/")[-1]
+    username = authUser(request.environ)
+    admin = User.get(User.username == username)
+    if admin.isAdmin:
+      data = request.form
+      verify = DataUpdate()
+      verify.verifyCourseChange(data)
+      message = "Course Change: {0} has been verified".format(data['id'])
+      log.writer("INFO", page, message)
+      flash("Your course has been marked verified")
+      return url_for("/courseManagement/tracker/<tid>")
+    
+    
+    
 

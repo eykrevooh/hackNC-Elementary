@@ -13,7 +13,7 @@
         <li>
             <a id = "trackerLink" href="courseManagement">Change Tracker</a>
         </li>
-        <li class="sidebar-brand">Current Term</li>
+        {% if page != "tracker" %}<li class="sidebar-brand">Current Term</li>
         <li>
             <form class="navbar-form" method="post">
                 <select id="termSelect" class="form-control col-md-1" onchange="buildURL('{{page}}')">
@@ -29,6 +29,7 @@
                 </select>
             </form>
         </li>
+        {% endif %}
     </ul>
 </div>
 <script type="text/javascript" src="/static/js/local/courseManagementSidebar.js"></script>
