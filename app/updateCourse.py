@@ -55,9 +55,9 @@ class DataUpdate():
     term = Term.get(Term.termCode == int(tid))
     return term.editable
   
-  def addCourseChange(self, cid, prefix, changeType):
-    if self.checkUserLevel(prefix):
-      course = Course.get(Course.cId == cid)
+  def addCourseChange(self, cid, changeType):
+    course      = Course.get(Course.cId == cid)
+    if self.checkUserLevel(course.prefix):
       instructors = InstructorCourse.select().where(InstructorCourse.course == cid)
       newcourse, created = CourseChange.create_or_get( 
                                 cId               = course.cId,
@@ -69,13 +69,12 @@ class DataUpdate():
                                 capacity          = course.capacity,
                                 notes             = course.notes,
                                 lastEditBy        = course.lastEditBy,
-                                changeType        = changeType
+                                changeType        = changeType,
+                                rid               = course.rid,
+                                crossListed       = course.crossListed,
+                                tdcolors          = 'success,success,success,success,success'
                               )
       newcourse.save()
-      for professor in instructors:
-        instructor = InstructorCourseChange(username = professor.username, course = professor.course)
-        instructor.save()
-      
       return created
     
   def editCourseChange(self, cid, prefix, changeType):

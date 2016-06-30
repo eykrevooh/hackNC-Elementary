@@ -17,7 +17,8 @@ def editCourseModal(tid, prefix, cid, page):
     # Select instructors for the course
     instructors = {}
     instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
-    
+    # SELECT ALL ROOMS
+    rooms     = Rooms.select()
     return render_template("snips/editCourse.html",
                             schedules = schedules,
                             cfg = cfg,
@@ -26,7 +27,8 @@ def editCourseModal(tid, prefix, cid, page):
                             users = users,
                             instructors = instructors,
                             currentTerm = int(tid),
-                            page        = page
+                            page        = page,
+                            rooms       = rooms
                             )
 
 @app.route("/editcourse/<tid>/<prefix>/<page>", methods=["POST"])

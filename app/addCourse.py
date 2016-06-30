@@ -53,8 +53,11 @@ def addCourses(tid,page,prefix):
       for professor in instructors:
         instructor = InstructorCourse(username = professor, course = course.cId)
         instructor.save()
-      if not newCourse.isTermEditable(tid):     # If this is not an editable term
-         newCourse.addCourseChange(cid, prefix, "create")    # Add the course to the special table
+        if not newCourse.isTermEditable(tid): #IF THE TERM IS NOT EDITABLE WE WANT TO ADD THE INSTRUCTORS TO THE OTHER TABLE
+          instructorHistory = InstructorCourseChange(username = professor, course = course.cId)
+          instructorHistory.save()
+      if not newCourse.isTermEditable(tid):                   # IF THE TERM IS NOT EDITABLE
+         newCourse.addCourseChange(cid, "create")     # ADD THE COURSE TO THE COURSECHANGE TABLE
       message = "Course: #{0} has been added".format(cid)
       log.writer("INFO", current_page, message)
       flash("Course has successfully been added!")

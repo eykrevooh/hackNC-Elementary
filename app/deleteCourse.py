@@ -17,6 +17,7 @@ def deletecourse(prefix, tid, page):
   if admin.isAdmin or divisionChair.exists() or programChair.exists():
     data = request.form
     deleteCourse = DataUpdate()
+    # TODO Add change tracker code stuff
     deleteCourse.deleteCourse(data, prefix)
     if page == 'courses':
       return redirect(url_for("courses", tID=tid, prefix=prefix))

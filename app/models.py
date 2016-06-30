@@ -6,7 +6,13 @@ from app.loadConfig import *
 here = os.path.dirname(__file__)
 cfg       = load_config(os.path.join(here, 'config.yaml'))
 
-mainDB    = SqliteDatabase(cfg['databases']['dev'])
+# mainDB    = SqliteDatabase(cfg['databases']['dev'])
+mainDB    = SqliteDatabase(cfg['databases']['dev'],
+                          pragmas = ( ('busy_timeout',  100),
+                                      ('journal_mode', 'WAL')
+                                  ),
+                          threadlocals = True
+                          )
 
 # Creates the class that will be used by Peewee to store the database
 class dbModel (Model):
@@ -123,6 +129,9 @@ class CourseChange(dbModel):
   lastEditBy        = CharField(null = True)
   changeType        = CharField(null = True)
   verified          = BooleanField(default = False)
+  crossListed       = BooleanField()
+  rid               = ForeignKeyField(Rooms, null = True)
+  tdcolors          = CharField(null =True)
   
 class InstructorCourseChange(dbModel):
   username     = ForeignKeyField(User)

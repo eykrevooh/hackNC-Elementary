@@ -4,53 +4,114 @@
 <div class="modal fade" id="editModal{{course.cId}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-md">
     <form method="post" action="\editcourse\{{currentTerm}}\{{course.prefix.prefix}}\{{page}}">
-    <div class="modal-content">
-      <div class="modal-header">
-        <a href="/courses/{{currentTerm}}/{{course.prefix.prefix}}"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
-        <h4 class="modal-title">Edit course</h4>
+      <div class="modal-content">
+        <div class="modal-header">
+          <a href="/courses/{{currentTerm}}/{{course.prefix.prefix}}">
+            <button type="button" class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </a>
+          <h4 class="modal-title">Edit course</h4>
         </div>
         <div class="modal-body">
-          <h2 class="text-center">{{course.prefix.prefix}} {{course.bannerRef.number}}</h2>
-        
+          {# Modal Title #}
+          <h2 class="text-center">
+            {{course.prefix.prefix}} {{course.bannerRef.number}}
+          </h2>
+          {# Pass in a hidden input to record the course ID #}
           <input type="hidden" name="cid" value="{{course.cId}}" >
-        <h5>Schedule Block</h5>
-        <select class="form-control" name="schedule">
-          {% for schedule in schedules %}
-          <option value="{{schedule.sid}}" {% if course.schedule.order == schedule.order %} selected {% endif %}>
-            {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
-          </option>
-            {% endfor %}
-         </select>
-         <h5>Term</h5>
-        <select class="form-control" name="term">
-          {% for term in terms %}
-          <option value="{{term.termCode}}" {% if currentTerm == term.termCode %} selected {% endif %}>
-            {{term.name}}
-          </option>
-            {% endfor %}
-        </select>
-        <h5>Capacity</h5>
-        <input type="number" name ="capacity" class="form-control" min="1" value ="{{course.capacity}}" />
-        <h5>Notes</h5>
-         <textarea class="form-control" name="notes">{{course.notes}}</textarea>
-        <h5>Edit Instructor</h5>
-       <select class="chosen-select" id="professors"  name="professors[]" multiple>
-          {% for user in users %}
-            <option value="{{user.username}}" {% if (course is defined)  %}
-                                                {%for instructor in instructors[course.cId] %}
-                                                  {% if instructor.username.username == user.username %}
-                                                    selected
-                                                  {% endif %}
-                                                {% endfor %}
-                                              {% endif %}>
-              {{user.firstName}} {{user.lastName}} ({{user.username}})
+          {# --Room Location-- #}
+          <h5>Room Requested</h5>
+          <select class="form-control" name="room">
+            <option value="">---</option>
+            {% for room in rooms %}
+              <option value="{{room.rID}}"
+                {% if course.rid == room.rID %}
+                  selected
+                {% endif %} 
+              >
+                {{ room.building }} : {{room.number}}
               </option>
-          {% endfor %}
-        </select>
-       <br>
+            {% endfor %}
+          </select>
+          {# --Schedule Block-- #}
+          <h5>Schedule Block</h5>
+          <select class="form-control" name="schedule">
+            <option value="">---</option>
+            {% for schedule in schedules %}
+              <option value="{{schedule.sid}}" 
+                {% if course.schedule.order == schedule.order %} 
+                  selected 
+                {% endif %}
+              >
+                {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
+              </option>
+            {% endfor %}
+          </select>
+          {# --Term-- #}
+          <h5>Term</h5>
+          <select class="form-control" name="term">
+            {% for term in terms %}
+              <option value="{{term.termCode}}" 
+                {% if currentTerm == term.termCode %} 
+                  selected 
+                {% endif %}
+              >
+                {{term.name}}
+              </option>
+            {% endfor %}
+          </select>
+          {# --Capacity-- #}
+          <h5>Capacity</h5>
+          <input type="number" name ="capacity" class="form-control" min="1" value ="{{course.capacity}}" />
+          {# --Cross Listed-- #}
+          <h5>Cross Listed</h5>
+          <div class="radio">
+            <label>
+              <input type="radio" name="crossListed" id="exampleRadios1" value=1 required
+                {% if course.crossListed is not none %}
+                  checked="checked"
+                {% endif %}
+              >
+                Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="crossListed" id="exampleRadios1" value=0 required
+                {% if course.crossListed == none %}
+                  checked="checked"
+                {% endif %}
+              >
+                No
+            </label>
+          </div>
+          {# --Notes-- #}
+          <h5>Notes</h5>
+          <textarea class="form-control" name="notes">
+            {{course.notes}}
+          </textarea>
+          {# --Instructors-- #}
+          <h5>Edit Instructor</h5>
+          <select class="chosen-select" id="professors"  name="professors[]" multiple>
+            {% for user in users %}
+              <option value="{{user.username}}" 
+                {% if (course is defined)  %}
+                  {%for instructor in instructors[course.cId] %}
+                    {% if instructor.username.username == user.username %}
+                      selected
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              >
+                {{user.firstName}} {{user.lastName}} ({{user.username}})
+              </option>
+            {% endfor %}
+          </select>
+          <br>
         </div>
         <div class="modal-footer">
-          <!--DIFFERENT URL'S DEPENDING ON THE PAGE-->
+          {# DIFFERENT URL'S DEPENDING ON THE PAGE #}
           {% if page == "courses" %}
             <a type="button" class="btn btn-primary btn-sm" href="/courses/{{currentTerm}}/{{course.prefix.prefix}}">Close</a>
           {% else %}
@@ -62,8 +123,7 @@
     </form>
   </div>
 </div>
-
 <script type="text/javascript">
-   var cid = {{course.cId}};
+  var cid = {{course.cId}};
 </script>
 {% endblock %}

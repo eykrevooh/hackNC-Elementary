@@ -2,6 +2,7 @@
 from allImports import *
 from updateCourse import DataUpdate
 conflicts       = load_config(os.path.join(here, 'conflicts.yaml'))
+import pprint
 ######################
 #CROSS LISTED COURSES#
 ######################
@@ -118,87 +119,27 @@ def trackerListed(tid):
       username = authUser(request.environ)
       admin = User.get(User.username == username)
       if admin.isAdmin:
-        
-        data = {}
-        terms = Term.select().where(Term.editable == False)
-        courses = CourseChange.select()
-        courseList = []
-        
-        for term in terms:
-          coursesHistory = CourseChange.select().where(CourseChange.term == term.termCode).where(CourseChange.verified == False)
-          for courseHistory in coursesHistory:
-            courseInfo = []
-            
-            
-            if courseHistory.changeType == 'delete':
-              for i in range(5):
-                courseInfo.append('delete')
-              course = courseHistory
-              
-            
-            if courseHistory.changeType == 'create':
-              for i in range(5):
-                courseInfo.append('create')
-              course = Course.get(Course.cId == courseHistory.cId)
-  
-            if courseHistory.changeType == 'update':
-              course = Course.get(Course.cId == courseHistory.cId)
-              
-              courseInfo.append(None)
-              
-              # compare the instructors in old and new table
-              oldInstructors = []
-              newInstructors = []
-              
-              newInstructor = (InstructorCourse.select()
-                                               .where(InstructorCourse.course == course.cId))
-                                              
-              oldInstructor = (InstructorCourseChange.select()
-                                              .where(InstructorCourseChange.course == course.cId))
-              
-              for instructor in newInstructor:
-                newInstructors.append(instructor.username.username)
-              for instructor in oldInstructor:
-                oldInstructors.append(instructor.username.username)
-              
-              if set(oldInstructors) != set(newInstructors):
-                courseInfo.append('danger')
-              else:
-                courseInfo.append(None)
-              
-              # compare the schedule in old and new table
-              if courseHistory.schedule != course.schedule:
-                courseInfo.append('danger')
-              else:
-                courseInfo.append(None)
-              
-              # compare the capacity
-              if courseHistory.capacity != course.capacity:
-                courseInfo.append('danger')
-              else:
-                courseInfo.append(None)
-              
-              #compare the notes
-              if courseHistory.notes != course.notes:
-                courseInfo.append('danger')
-              else:
-                courseInfo.append(None)
-  
-            courseList.append((courseInfo, course))
-            data[term] = courseList
-        
-        instructors = {}
+        courses = CourseChange.select().where(CourseChange.verified == False)
+        pprint.pprint(courses)
+        classDict = dict()
+        instructorsDict = dict()
         for course in courses:
-          instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
+          instructorsDict[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
+          tdClass = course.tdcolors
+          tdClassList = tdClass.split(",")
+          classDict[course.cId] = tdClassList
+      pprint.pprint(classDict)
+      pprint.pprint(instructorsDict)
       return render_template("tracker.html",
                               cfg              = cfg,
                               isAdmin          = admin.isAdmin,
                               allTerms         = terms,
                               page             = page,
                               currentTerm      = int(tid),
-                              courseList       = courseList,
-                              data             = data,
-                              instructors      = instructors,
+                              courses          = courses,
+                              instructorsDict  = instructorsDict,
+                              classDict        = classDict
+                              
                             )
     else:
       return render_template("404.html", cfg=cfg)
