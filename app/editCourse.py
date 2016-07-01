@@ -39,7 +39,7 @@ def editcourse(tid, prefix, page):
   editcourse = DataUpdate()
   
   if not editcourse.isTermEditable(tid):
-      created = editcourse.addCourseChange(data['cid'], prefix, "update")
+      created = editcourse.addCourseChange(data['cid'], "update")
       
   editcourse.editCourse(data, prefix, professors)
   message = "Course: course {} has been edited".format(data['cid'])

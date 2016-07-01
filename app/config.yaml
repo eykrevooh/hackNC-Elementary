@@ -58,7 +58,11 @@ termInfo:
     15: '2nd 4 Week Summer'
     #10: 'Berea Bridge Program'   # e.g. Berea Bridge Program 2016 = 201610    
     
-  
+changeType:
+  create: 'create'
+  delete: 'delete'
+  update: 'update'
+  create/update: 'create/update'
 
 DEBUG:
   user: "heggens" #Admin Access

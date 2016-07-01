@@ -44,8 +44,6 @@
             </thead>
             <tbody>
               {% for course in courses %}
-                <!--TEST PRINTS IN HTML-->
-                {{course.cId}}
                 <tr>
                   <td class="{{classDict[course.cId][0]}}">
                     {{course.prefix.prefix}} {{course.bannerRef.number}}
@@ -57,7 +55,7 @@
                   </td>
                   <td class="{{classDict[course.cId][1]}}">
                     {% for instructor in instructorsDict[course.cId] %}
-                      {{instructor.username.username}}
+                      {# {{instructor.username}} #}
                     {% endfor %}
                   </td>
                   <td class="{{classDict[course.cId][2]}}">

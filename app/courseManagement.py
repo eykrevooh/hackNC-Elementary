@@ -124,12 +124,18 @@ def trackerListed(tid):
         classDict = dict()
         instructorsDict = dict()
         for course in courses:
-          instructorsDict[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
+          instructorsDict[course.cId] = InstructorCourseChange.select().where(InstructorCourseChange.course == course.cId)
           tdClass = course.tdcolors
           tdClassList = tdClass.split(",")
           classDict[course.cId] = tdClassList
-      pprint.pprint(classDict)
-      pprint.pprint(instructorsDict)
+      '''
+      DATA STRUCTURES
+      NOTE: The keys for both dictionaries the course identification number
+        classDict[cId] = [className,className,className,className,className]
+        *Then it will return a list of classnames that can be accessed through an index
+        
+        instructorsDict[cid] = intructorCourseChange peewee object
+      '''
       return render_template("tracker.html",
                               cfg              = cfg,
                               isAdmin          = admin.isAdmin,
@@ -139,7 +145,6 @@ def trackerListed(tid):
                               courses          = courses,
                               instructorsDict  = instructorsDict,
                               classDict        = classDict
-                              
                             )
     else:
       return render_template("404.html", cfg=cfg)

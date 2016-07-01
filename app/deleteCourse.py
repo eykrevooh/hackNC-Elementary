@@ -2,25 +2,34 @@ from allImports import *
 from updateCourse import DataUpdate
 @app.route("/deletecourse/<tid>/<prefix>/<page>", methods=["POST"])
 def deletecourse(prefix, tid, page):
+  #DATA NEEDED FOR MANIPULATION
   current_page = "/" + request.url.split("/")[-1]
   username = authUser(request.environ)
-  
-  admin = User.get(User.username == username)
-  
-  ## We need subject to check if the user is a program or division chair. 
-  subject = Subject.get(Subject.prefix == prefix)
-  
-  ## Check to see if the user is a program or divison chair.
-  divisionChair = DivisionChair.select().where(DivisionChair.username == username).where(DivisionChair.did == subject.pid.division.dID)
-  programChair  = ProgramChair.select().where(ProgramChair.username == username).where(ProgramChair.pid == subject.pid.pID)
-  
-  if admin.isAdmin or divisionChair.exists() or programChair.exists():
-    data = request.form
-    deleteCourse = DataUpdate()
-    # TODO Add change tracker code stuff
-    deleteCourse.deleteCourse(data, prefix)
-    if page == 'courses':
-      return redirect(url_for("courses", tID=tid, prefix=prefix))
-    else:
-      url = "courseManagement/" + page + "/" + tid
-      return redirect(url)
+  tdcolors = 'danger,danger,danger,danger,danger'
+  dataUpdateObj = DataUpdate()
+  data = request.form
+  cid = int(data['cid'])
+  #START PROCESSING THE DELETION OF THE COURSE
+  course = Course.get(Course.cId == cid)
+  if dataUpdateObj.checkUserLevel(course.prefix): #MAKE SURE THE USER HAS THE CORRECT RIGHTS TO DELETE A COURSE
+    if not dataUpdateObj.isTermEditable(tid):
+      change = CourseChange.select().where(CourseChange.cId==cid)
+      #IF THE RECORD ALREADY EXSISTED THEN WE NEED TO UPDATE THE INFORMATION
+      if change.exists(): 
+        updateRecord = CourseChange.get(CourseChange.cId==cid)
+        updateRecord.changeType = cfg["changeType"]["delete"]
+        updateRecord.tdcolors   = tdcolors
+        updateRecord.lastEditBy = username 
+        updateRecord.save()
+      else:
+        dataUpdateObj.addCourseChange(course.cId,cfg["changeType"]['delete'])
+    instructors = InstructorCourseChange.select().where(InstructorCourseChange.course == cid)
+    for instructor in instructors:
+        instructor.delete_instance()
+    course.delete_instance()
+    
+  if page == 'courses':
+    return redirect(url_for("courses", tID=tid, prefix=prefix))
+  else:
+    url = "courseManagement/" + page + "/" + tid
+    return redirect(url)

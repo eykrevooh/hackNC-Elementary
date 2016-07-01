@@ -1,6 +1,6 @@
 from allImports import *
+from app.logic.NullCheck import NullCheck 
 class DataUpdate():
-    
   def __init__(self):
     self.username = authUser(request.environ)
     self.level    = 0
@@ -15,8 +15,11 @@ class DataUpdate():
       programChair  = ProgramChair.select().where(ProgramChair.username == self.username).where(ProgramChair.pid == subject.pid.pID)
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
       return True
+    return False
           
-  
+  def isTermEditable(self, tid):
+    term = Term.get(Term.termCode == int(tid))
+    return term.editable
   
   
   def editCourse(self, data, prefix, professors):
@@ -42,41 +45,49 @@ class DataUpdate():
         newInstructor = InstructorCourse(username = professor, course = int(data['cid']))
         newInstructor.save()
   
-  def deleteCourse(self, data, prefix):
-    if self.checkUserLevel(prefix):
-      course = Course.get(Course.cId == int(data['cid']))
-      course.delete_instance()
-      instructors = InstructorCourse.select().where(InstructorCourse.course == int(data['cid']))
-      for instructor in instructors:
-        instructor.delete_instance()
-  
+      
 ######################################################################################
-  def isTermEditable(self, tid):
-    term = Term.get(Term.termCode == int(tid))
-    return term.editable
+  
   
   def addCourseChange(self, cid, changeType):
+    #SET THE COLOR SCHEME FOR THE TD'S
+    tdcolors    = 'none,none,none,none,none' #SET A DEFAULT COLOR SCHEME
+    if changeType == cfg["changeType"]["create"]:
+      tdcolors = 'success,success,success,success,success'
+    elif changeType == cfg['changeType']["delete"]:
+      tdcolors = 'danger,danger,danger,danger,danger'
+    #ADD THE PROFESSORS TO INTRUCTORCOURSECHANGE
     course      = Course.get(Course.cId == cid)
     if self.checkUserLevel(course.prefix):
       instructors = InstructorCourse.select().where(InstructorCourse.course == cid)
-      newcourse, created = CourseChange.create_or_get( 
-                                cId               = course.cId,
-                                bannerRef         = course.bannerRef,
-                                prefix            = course.prefix,
-                                term              = course.term,
-                                schedule          = course.schedule,
-                                specialTopicName  = course.specialTopicName,
-                                capacity          = course.capacity,
-                                notes             = course.notes,
-                                lastEditBy        = course.lastEditBy,
-                                changeType        = changeType,
-                                rid               = course.rid,
-                                crossListed       = course.crossListed,
-                                tdcolors          = 'success,success,success,success,success'
-                              )
-      newcourse.save()
-      return created
-    
+      for instructor in instructors:
+        addInstructorChange = InstructorCourseChange(username = instructor  , course = course.cId)
+        addInstructorChange.save()
+      #ADD THE COURSE TO COURSECHANGE
+      #MORE INFO ABOUT THE NULL CHECK CAN BE FOUND
+      nullCheck = NullCheck()
+      values = nullCheck.add_course_change(course)
+      newcourse = CourseChange( 
+                              cId               = course.cId,
+                              prefix            = course.prefix.prefix, #WE DON'T HAVE TO CHECK THIS VALUE BECAUSE IT CAN NEVER BE NULL
+                              bannerRef         = values['bannerRef'],
+                              term              = course.term.termCode, #WE DON'T HAVE TO CHECK THIS VALUE BECAUSE IT CAN NEVER BE NULL
+                              schedule          = values['schedule'],
+                              specialTopicName  = course.specialTopicName,
+                              capacity          = course.capacity,
+                              notes             = course.notes,
+                              lastEditBy        = course.lastEditBy,
+                              changeType        = changeType,
+                              rid               = values['rid'],
+                              crossListed       = course.crossListed,
+                              tdcolors          = tdcolors
+                            )
+      number = newcourse.save(force_insert=True)
+      #WHENEVER YOU ENTER IN YOUR OWN PRIMARY KEY YOU NEED TO DO FORCE INSER = TRUE ON THE SAVE
+      return True
+    else:
+      print 'DONT HAVE ACCESS'
+      return False
   def editCourseChange(self, cid, prefix, changeType):
     if self.checkUserLevel(prefix):
       newcourse         = Course.get(Course.cId == cid)
@@ -111,7 +122,7 @@ class DataUpdate():
       course.save()
   
   def verifyCourseChange(self, data):
-    if self.checkUserLevel('CSC'):
+    if self.checkUserLevel('CSC'):    #WHY IN THE WORLD IS THIS HARD CODED
       course = CourseChange.get(CourseChange.cId == int(data['id']))
       course.delete_instance()
       instructors = InstructorCourseChange.select().where(InstructorCourseChange.course == int(data['id']))
