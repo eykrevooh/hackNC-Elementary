@@ -53,11 +53,45 @@ class DataUpdate():
       
 ######################################################################################
 
-  def addCourseEdit(self,cid, data):
-    ''' cid  = COURSE ID
-        data = THE DATA FROM THE FORM POST '''
+  def addCourseEdit(self, data, professors):
+    '''data        = THE DATA FROM THE FORM POST
+       professors  = A LIST OF INSTRUCTORS
+       KEYS IN DATA
+       [cid,room,schedule,term,capacity,notes,crossListed]
+       CHANGE TRACKER COLOR ORDER
+       [Course Name, Taught By, Schedule, Room, Capacity, Cross Listed, Notes]
+    '''
+    checkCourse = CourseChange.get(CourseChange.cId==data['cid'])
     # CHECK TO SEE IF THE CID IS IN THE COURSE CHANGE TABLE
-    checkCourse = CourseChange.select().where(CourseChange.cId==cid)
+    # IF COURSE ALREADY EXSIST IN TABLE
+    if checkCourse:
+      tdColors = '' #SET A DEFAULT TD COLOR
+      ####################
+      #INSTRUCTOR CHANGE?#
+      ####################
+      matchingUsernames = []
+      oldList = []
+      oldInstructors = InstructorCourse.select().where(course)
+      for instructor in oldInstructors:
+        oldList.append(instructor.username)
+      matchingProfs = set(professors) & set(oldList)
+      #I DO THIS TO PULL DUPLICATES FROM LIST NO MATTER THE ORDER THE LIST IS IN
+      #E.G. [myersco,heggens]=[myersco,heggens] & [heggens,myersco]
+      #NOW WE CAN COMPARE THE LENGTH OF THE MATCHING PROFESSORS WITH BOTH LIST TO SEE IF THEY ARE THE SAME
+      if len(matchingsProfs) != len(oldList) or len(matchingProfs) != len(professors):
+        #DELETE THE OLD ELEMENTS FROM INSTRUCTORCOURSECHANGE
+        InstructorCourseChange.delete().where(InstructorCourseChange.cId==data['cid']).execute()
+        for instr in professors:
+          newInstructor = InstructorCourseChange(
+                                                  cId = data['cid'],
+                                                  username = instr
+                                                )
+          newInstructor.save()
+        tdColors.append('danger,') #APPEND THE CLASS NAME DANGER TO INDICATE THE FIELD AS CHANGED
+      else:
+        tdColors.append('none,')   #APPEND NONE TO INDICATE THAT THE FIELD HASN'T CHANGED
+        
+      
     
   
   def addCourseChange(self, cid, changeType):
