@@ -1,21 +1,18 @@
-
 <div id="sidebar-wrapper">
   <ul class="nav nav-list sidebar-nav">
     <li class="sidebar-brand">Programs</li>
       {% for division in divisions %}
-      <li><label class="tree-toggler nav-header">{{division.name}}</label>
-        {% for program in programs %}
-          {%if program.division.dID == division.dID %}
-          <ul class="nav nav-list tree" style="display: none;">
-                      <li><a href="/admin/programManagement/{{program.pID}}">{{program.name}}</a></li>
+        <li><label class="tree-toggler nav-header" id="did{{division.dID}}" onclick = "toggleArrowIcon(didarrow{{division.dID}},did{{division.dID}})">
+          <span  class="glyphicon glyphicon-menu-right" aria-hidden="true" id="didarrow{{division.dID}}" ></span>{{division.name}}</label>
+          {% for program in programs %}
+            {% if program.division.dID == division.dID %}
+              <ul  class="nav nav-list tree" style="display: none;" >
+                  <li class="col-md-offset-3"><a href="/admin/programManagement/{{program.pID}}">{{program.name}}</a></li>
           </ul>
           {% endif %}
         {% endfor %}
       </li>
       {% endfor %}
-    <li><a href="/admin/newProgram"><span style="margin: 5px" class="glyphicon glyphicon-plus" aria-hidden="true"></span>New Program</a></li>
   </ul>
 </div>
-
-
 <script type="text/javascript" src="/static/js/local/sidebar.js"></script>
