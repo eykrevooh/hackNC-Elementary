@@ -90,7 +90,7 @@ class DataUpdate():
     ########################
     #INSTRUCTOR CHANGE DATA#
     ########################
-    oldInstructors = InstructorCourse.select().where(InstructorCourse.cId = cid)
+    oldInstructors = InstructorCourse.select().where(InstructorCourse.cId == cid)
     instructorChange = InstructorCourseChange.select().where(InstructorCourseChange.cId)
     if oldInstructors:
       oldList = []
