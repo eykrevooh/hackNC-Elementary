@@ -68,6 +68,7 @@ class DataUpdate():
     try:          #ENSURE THAT ALL THE DATA WE NEED HAS BEEN PASSED SUCCESSFULLY
       #CHECK DATA
       cId             = data['cid']
+      dataTerm        = data['term']
       dataSchedule    = data['schedule'] if data['schedule'] != '' else None
       dataRoom        = data['room'] if data['room'] != '' else None
       dataCapacity    = data['capacity'] if data['capacity'] != '' else None
