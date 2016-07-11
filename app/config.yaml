@@ -63,7 +63,13 @@ changeType:
   delete: 'delete'
   update: 'update'
   create/update: 'create/update'
-
+  
+tdColor:
+  order: ['className','professors','schedule','room','crossListed','notes']
+  red:     'danger'
+  green:   'success'
+  default: 'none'
+  
 DEBUG:
   user: "heggens" #Admin Access
   #user: "pearcej" #Division Chair Access

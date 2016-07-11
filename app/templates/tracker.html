@@ -45,7 +45,7 @@
             <tbody>
               {% for course in courses %}
                 <tr>
-                  <td class="{{classDict[course.cId][0]}}">
+                  <td id="className"class="{{classDict[course.cId][0]}}">
                     {{course.prefix.prefix}} {{course.bannerRef.number}}
                     {% if course.specialTopicName is not none %}
                       {{course.specialTopicName}}
@@ -53,20 +53,20 @@
                       {{course.bannerRef.ctitle}}
                     {%endif%}
                   </td>
-                  <td class="{{classDict[course.cId][1]}}">
+                  <td id="professors"class="{{classDict[course.cId][1]}}">
                     {% for instructor in instructorsDict[course.cId] %}
                       {# {{instructor.username}} #}
                     {% endfor %}
                   </td>
-                  <td class="{{classDict[course.cId][2]}}">
+                  <td id="schedule"class="{{classDict[course.cId][2]}}">
                     {% if  course.schedule is not none %}
                       {{course.schedule.days}} {{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}
                     {% endif %}
                   </td>
-                  <td class="{{classDict[course.cId][3]}}">
+                  <td id="capacity"class="{{classDict[course.cId][3]}}">
                     {{course.capacity}}
                   </td>
-                  <td class="{{classDict[course.cId][4]}}">
+                  <td id="notes"class="{{classDict[course.cId][4]}}">
                     <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>
                       Notes
                     </a>

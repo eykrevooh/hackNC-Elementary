@@ -64,39 +64,40 @@ class DataUpdate():
     ###################################
     #ENSURE THAT ESSENTIAL DATA EXSIST#
     ###################################
-    tdColors = '' #CREATE AN EMPTY STRING FOR COLORS TO BE APPENDED TO
+    newColorEntry = []
     try:          #ENSURE THAT ALL THE DATA WE NEED HAS BEEN PASSED SUCCESSFULLY
-      cId         = data['cid']
-      schedule    = data['schedule'] if data['schedule'] != '' else None
-      room        = data['room'] if data['room'] != '' else None
-      capacity    = data['capacity'] if data['capacity'] != '' else None
-      crossListed = data['crossListed']
-      notes       = data['notes'] if data['notes'] != '' else None
-      oldCourse = Course.get().where(Course.cId==cId)
+      #CHECK DATA
+      cId             = data['cid']
+      dataSchedule    = data['schedule'] if data['schedule'] != '' else None
+      dataRoom        = data['room'] if data['room'] != '' else None
+      dataCapacity    = data['capacity'] if data['capacity'] != '' else None
+      dataCrossListed = data['crossListed']
+      dataNotes       = data['notes'] if data['notes'] != '' else None
     except Exception as e:
       return 'Error' #TODO: LOG THE ERROR
-    # CREATE AN VARIABLE THAT WILL ALLOW US TO KNOW IF AN ENTRY FOR COURSE CHANGE ALREADY EXIST
-    try:  #WE NEED TO PUT THIS IN A TRY CATCH BECAUSE IT WILL THROW A DoesNotExist ERROR OTHERWISE
+          # CREATE AN VARIABLE THAT WILL ALLOW US TO KNOW IF AN ENTRY FOR COURSE CHANGE ALREADY EXIST
+    try:  # WE NEED TO PUT THIS IN A TRY CATCH BECAUSE IT WILL THROW A DoesNotExist ERROR OTHERWISE
       courseChangeExist = CourseChange.get().where(CourseChange.cId == cId)
+      # IF THE COURSE DOES EXIST WE WANT TO EDIT THE PREVIOUS COLORS
+      # THAT WAY THE COLORS WILL REFLECT MULTIPLE UPDATES
+      tdColorOrder    = []
+      courseColors    = CourseChange.tdcolors
+      courseColorList = courseColors.split(",")
+      
     except CourseChange.DoesNotExist:
-      courseChangeExist = None 
+      courseChangeExist = None
     ########################
     #INSTRUCTOR CHANGE DATA#
     ########################
-    #TODO: CHECK TO SEE WHAT HAPPENS WHEN EDIT FORM SUBMITS AN EMPTY LIST
-    #TODO: NEED TO THINK ABOUT WHAT HAPPENS IF A COURSE HAS ALREADY BEEN EDITED AND IF IT HAS NOT
     oldInstructors = InstructorCourse.select().where(InstructorCourse.cId = cid)
     instructorChange = InstructorCourseChange.select().where(InstructorCourseChange.cId)
     if oldInstructors:
       oldList = []
       for instructor in oldInstructors:
         oldList.append(instructor.username)
-      matchingUsernames = set(professors) & set(oldList)
-      '''
-      I DO THIS TO PULL DUPLICATES FROM LIST NO MATTER THE ORDER THE LIST IS IN
-      E.G. [myersco,heggens]=[myersco,heggens] & [heggens,myersco]
-      NOW WE CAN COMPARE THE LENGTH OF THE MATCHING PROFESSORS WITH BOTH LIST TO SEE IF THEY ARE THE SAME
-      '''
+      matchingUsernames = set(professors) & set(oldList) 
+      #THIS WILL GATHER DUPLICATES NO MATTER THE ORDER EG  = [myersco,heggens]=[myersco,heggens] & [heggens,myersco]
+      #THEN WE CAN CHECK THE LENGTH OF THE TWO LIST TO SEE IF THERE ARE ANY DIFFERENCES
       if len(matchingsUserNames) != len(oldList) or len(matchingUserNames) != len(professors):
         if instructorChange:
           InstructorCourseChange.delete().where(InstructorCourseChange.cId==cId).execute()
@@ -113,28 +114,30 @@ class DataUpdate():
         for instr in professors:
           newInstructor = InstructorCourseChange(cId = cId, username = instr)
           newInstructor.save()
-        
+          
+          
     ####################
     #COURSE CHANGE DATA#
     ####################
-    #START CHECKING ALL OF THE FIELDS FOR DIFFERENCES FROM THE OLD COURSE
-    #WE ALSO NEED TO CHECK TO SEE IF COURSE ALREADY EXSISTS
-    
-    ################  
-    #CHECK SCHEDULE#
-    ################
-    scheduleCheck = None
-    if oldCourse.schedule != None:
-      scheduleCheck == oldCourse.schedule.sid
-    if schedule != oldCourse.schedule:
-      if courseChange == None:
+    #CHECK COURSE INFO
+      course          = Course.get().where(Course.cId==cId)
+      courseSchedule  = Course.schedule.sid if Course.schedule != None else None
+      courseRoom      = course.rid.rID if course.rid != None else None
+    #SCHEDULE#
+    color = 'danger,' if dataSchedule != courseSchedule else 'none,'
+    tdColors.append(color)
+    #ROOM#
+    color = 'danger,' if dataRoom != courseRoom else  'none,'
+    tdColors.append(color)
+    #CAPACITY 
+
+      
           
       
       
         
       
     
-  
   def addCourseChange(self, cid, changeType):
     #SET THE COLOR SCHEME FOR THE TD'S
     tdcolors    = 'none,none,none,none,none' #SET A DEFAULT COLOR SCHEME
