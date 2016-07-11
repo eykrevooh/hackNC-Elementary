@@ -5,9 +5,7 @@ class NullCheck():
   def __init__(self):
     self.username = authUser(request.environ)
     self.level    = 0
-#################
-#ADD_COURSE_FORM#
-#################
+  #ADD_COURSE_FORM#
   def add_course_form(self,data):
     '''Purpose:WHENEVER A COURSE IS ADDED WE NEED TO CHECK THE VALUES POSTED BY 
        THE ADD COURSE IF AN EMPTY STRING EXISTS, IF IT DOES WE NEED TO REPLACE IT WITH NONE SO THAT 
@@ -30,7 +28,8 @@ class NullCheck():
     else:
        value['specialTopicName'] = None
     #CHECK DATA FOR EMPTY STRING
-    checkList = ['capacity','schedule','rid'] #THESE ARE ALL OF THE VALUES THAT COULD CONTAIN AN EMPTY STRING
+    #THESE ARE ALL OF THE VALUES THAT COULD CONTAIN AN EMPTY STRING
+    checkList = ['capacity','schedule','rid'] 
     for item in checkList:
       if data[item]=="":
         value[item]=None
@@ -38,9 +37,7 @@ class NullCheck():
         value[item]=data[item]
     '''CURRENT DICTIONARY KEYS:['subject','bannerRef','specialTopicName','capacity','schedule','rid']'''
     return value
-####################
-#_ADD_COURSE_CHANGE#
-####################
+  #_ADD_COURSE_CHANGE#
   def add_course_change(self,course):
     '''PURPOSE: 
     WHENEVER A COURSE IS ADDED TO THE COURSECHANGES TABLE, 

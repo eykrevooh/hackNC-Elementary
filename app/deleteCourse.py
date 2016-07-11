@@ -11,7 +11,8 @@ def deletecourse(prefix, tid, page):
   cid = int(data['cid'])
   #START PROCESSING THE DELETION OF THE COURSE
   course = Course.get(Course.cId == cid)
-  if dataUpdateObj.checkUserLevel(course.prefix): #MAKE SURE THE USER HAS THE CORRECT RIGHTS TO DELETE A COURSE
+  #MAKE SURE THE USER HAS THE CORRECT RIGHTS TO DELETE A COURSE
+  if dataUpdateObj.checkUserLevel(course.prefix): 
     if not dataUpdateObj.isTermEditable(tid):
       change = CourseChange.select().where(CourseChange.cId==cid)
       #IF THE RECORD ALREADY EXSISTED THEN WE NEED TO UPDATE THE INFORMATION

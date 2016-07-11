@@ -12,7 +12,8 @@ def newterm():
       info_key        = int(data['keyValue'])
       term_year       = data['year']
       same_year       = [11]
-      semester_name   = cfg['termInfo'][info_key]   #USE THE VALUE OF THE POST TO GET THE NAME
+      #USE THE VALUE OF THE POST TO GET THE NAME
+      semester_name   = cfg['termInfo'][info_key]   
       term_name       = semester_name + " " + term_year
       #LOOK AT CONFIG.YAML ANY KEY THAT REQUIRES THE SAME YEAR FOR THE TERM CODE PLACE INSIDE THE same_year LIST
       for x in same_year:

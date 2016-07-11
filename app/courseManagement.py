@@ -4,9 +4,7 @@ from updateCourse import DataUpdate
 conflicts       = load_config(os.path.join(here, 'conflicts.yaml'))
 import pprint
 
-######################
 #CROSS LISTED COURSES#
-######################
 @app.route("/courseManagement/crossListed/", defaults={'tid':0}, methods=["GET", "POST"])
 @app.route("/courseManagement/crossListed/<tid>", methods = ["GET","POST"])
 def crossListed(tid):
@@ -44,9 +42,7 @@ def crossListed(tid):
                             schedules        = schedules,
                             rooms            = rooms
                           )
-#############################
 #SCHEDULE AND ROOM CONFLICTS#
-#############################
 @app.route("/courseManagement/conflicts/<tid>", methods = ["GET"])
 def conflictsListed(tid):
     #DATA FOR THE NAVEBAR AND SIDEBAR#
@@ -56,30 +52,42 @@ def conflictsListed(tid):
     admin     = User.get(User.username == username)
     #DATA FOR THE ROOM AND SCHEDULING CONFLICTS#
     instructors   = dict()
-    conflict_dict = dict()  #CREATE A CONFLICT DICTIONARY TO HOLD ALL OF THE CONFLICTS
-                            #THE KEY WILL BE BUILDING NAMES
-                            #THE VALUE WILL BE A LIST OF COURSE OBJECTS THAT CONFLICT
-    dict_keys = []          #STORE THE DICT KEYS SO WE CAN EASILY LOOP THROUGH THEM ON THE VIEW
-    buildings = Rooms.select(Rooms.building).distinct()               # GRAB ALL OF THE DISTINCT BUILDING NAMES
-    print buildings
-    for element in buildings:                                         # LOOP THROUGH ELEMENTS IN THE QUERY
-      buildingConflicts = []                                          # RESET THE BUIDLING CONFLICTS
-      rooms = Rooms.select().where(Rooms.building==element.building)  # GET ALL OF THE ROOMS FOR THAT BUILDING
+    #CREATE A CONFLICT DICTIONARY TO HOLD ALL OF THE CONFLICTS
+    conflict_dict = dict()  
+    #THE KEY WILL BE BUILDING NAMES
+    #THE VALUE WILL BE A LIST OF COURSE OBJECTS THAT CONFLICT
+    #STORE THE DICT KEYS SO WE CAN EASILY LOOP THROUGH THEM ON THE VIEW
+    dict_keys = []          
+    # GRAB ALL OF THE DISTINCT BUILDING NAMES
+    buildings = Rooms.select(Rooms.building).distinct()               
+    # LOOP THROUGH ELEMENTS IN THE QUERY
+    for element in buildings:
+      # RESET THE BUIDLING CONFLICTS
+      buildingConflicts = []                                          
+      # GET ALL OF THE ROOMS FOR THAT BUILDING
+      rooms = Rooms.select().where(Rooms.building==element.building)  
       for room in rooms:
-          courseList = [] #WE NEED TO CREATE A LIST SO THAT WE CAN SORT OUT THE 'ZZZ' SCHEDULE AND SO THAT WE CAN POP() FROM THE LIST      
+          #WE NEED TO CREATE A LIST SO THAT WE CAN SORT OUT THE 'ZZZ' SCHEDULE AND SO THAT WE CAN POP() FROM THE LIST      
+          courseList = [] 
           courses = Course.select().where(room.rID == Course.rid, Course.term == tid).order_by(Course.rid) 
           if courses:           
               for course in courses:
-                  if course.schedule != "ZZZ":         #DON'T ADD 'ZZZ' TO COURSE LIST BECAUSE ITS NOT PRESENT IN CONFLICTS.YAML 
-                      courseList.append(course)        #APPEND THE COURSE OBJECT TO THE COURSELIST FOR SCHEDULE CHECKING
-                  else:                                #THEN WE GO AHEAD AND APPEND THE COURSE OBJECT FOR 'ZZZ' SCHEDULES TO CONFLICTS
-                      buildingConflicts.append(course) #BECAUSE THEY HAVE SPECIAL TIME ENTRIES THAT NEEED TO BE CHECKED MANUALLY
+                  #DON'T ADD 'ZZZ' TO COURSE LIST BECAUSE ITS NOT PRESENT IN CONFLICTS.YAML 
+                  if course.schedule != "ZZZ":         
+                      #APPEND THE COURSE OBJECT TO THE COURSELIST FOR SCHEDULE CHECKING
+                      courseList.append(course)        
+                  #THEN WE GO AHEAD AND APPEND THE COURSE OBJECT FOR 'ZZZ' SCHEDULES TO CONFLICTS
+                  else:                                
+                      #BECAUSE THEY HAVE SPECIAL TIME ENTRIES THAT NEEED TO BE CHECKED MANUALLY
+                      buildingConflicts.append(course) 
               while courseList != []: 
                   current_course = courseList.pop()
-                  if courseList != []:                 #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
+                  #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
+                  if courseList != []:                 
                     for course in courseList:
                       if course.schedule is not None and current_course.schedule is not None:
-                        result = conflicts[current_course.schedule.sid][course.schedule.sid] #ACCESS THE SID THROUGH THE COURSE OBJECT
+                        #ACCESS THE SID THROUGH THE COURSE OBJECT
+                        result = conflicts[current_course.schedule.sid][course.schedule.sid] 
                         if result == 1:
                           #APPEND BOTH COURSE OBJECTS TO THE CONFLICTS LIST
                           buildingConflicts.append(current_course) 
@@ -89,9 +97,10 @@ def conflictsListed(tid):
         seen = set()
         seen_add = seen.add
         buildingConflicts = [x for x in buildingConflicts if not (x in seen or seen_add(x))]
-        
-        dict_keys.append(element.building)                      #ADD THE KEY TO THE LIST
-        conflict_dict[element.building] = buildingConflicts     #SET THE KEY(building name) TO THE VALUE(list of course objects)
+        #ADD THE KEY TO THE LIST
+        dict_keys.append(element.building)                      
+        #SET THE KEY(building name) TO THE VALUE(list of course objects)
+        conflict_dict[element.building] = buildingConflicts     
         #DATA FOR THE CONFLICTS TABLE
         for course in buildingConflicts:
           instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)

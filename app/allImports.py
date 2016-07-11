@@ -15,9 +15,10 @@ import time
 
 import pprint
 from app import models
-
-from models import *                # all the database models
-from app.switch import switch       # implements switch/case statements
+# all the database models
+from models import *     
+# implements switch/case statements
+from app.switch import switch       
 
 
 

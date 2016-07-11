@@ -4,7 +4,7 @@ class DataUpdate():
   def __init__(self):
     self.username = authUser(request.environ)
     self.level    = 0
-      
+
   def checkUserLevel(self, prefix):
     admin = User.get(User.username == self.username)
     if admin.isAdmin != True:
@@ -16,19 +16,16 @@ class DataUpdate():
     if admin.isAdmin or divisionChair.exists() or programChair.exists():
       return True
     return False
-          
+
   def isTermEditable(self, tid):
     term = Term.get(Term.termCode == int(tid))
     return term.editable
-  
-  
+
   def editCourse(self, data, prefix, professors):
     '''This function edits the course in the databse'''
-    
     # check to see if the user has privileges to edit
     if self.checkUserLevel(prefix):
        # get the course object
-       
       course = Course.get(Course.cId == int(data['cid']))
       course.term       = data['term']
       if data['capacity']:
@@ -36,22 +33,16 @@ class DataUpdate():
       course.schedule   = data['schedule']
       course.notes      = data['notes']
       course.lastEditBy = authUser(request.environ)
-      
       course.save()
-      
       oldInstructors = InstructorCourse.select().where(InstructorCourse.course == int(data['cid']))
       for oldInstructor in oldInstructors:
         if oldInstructor.username.username not in professors:
           oldInstructor.delete_instance()
         else:
           professors.remove(oldInstructor.username.username)
-      
       for professor in professors:
         newInstructor = InstructorCourse(username = professor, course = int(data['cid']))
         newInstructor.save()
-  
-      
-######################################################################################
 
   def addCourseEdit(self, data, professors):
     '''data        = THE DATA FROM THE FORM POST
@@ -61,33 +52,28 @@ class DataUpdate():
        CHANGE TRACKER COLOR ORDER
        [Course Name, Taught By, Schedule, Room, Capacity, Cross Listed, Notes]
     '''
-    ###################################
     #ENSURE THAT ESSENTIAL DATA EXSIST#
-    ###################################
     newColorEntry = []
-    try:          #ENSURE THAT ALL THE DATA WE NEED HAS BEEN PASSED SUCCESSFULLY
-      #CHECK DATA
-      cId             = data['cid']
-      dataTerm        = data['term']
-      dataSchedule    = data['schedule'] if data['schedule'] != '' else None
-      dataRoom        = data['room'] if data['room'] != '' else None
-      dataCapacity    = data['capacity'] if data['capacity'] != '' else None
-      dataCrossListed = data['crossListed']
-      dataNotes       = data['notes'] if data['notes'] != '' else None
+    #ENSURE THAT ALL THE DATA WE NEED HAS BEEN PASSED SUCCESSFULLY
+    try:          
+      formData = {}
+      dataKeys = ['cid','term','schedule','room','capacity','crossListed','notes']
+      for key in dataKeys:
+        formData[key]=data[key] if data[key] != '' else None #REPLACES ALL EMPTY STRINGS WITH NONE
     except Exception as e:
-      return 'Error' #TODO: LOG THE ERROR
-          # CREATE AN VARIABLE THAT WILL ALLOW US TO KNOW IF AN ENTRY FOR COURSE CHANGE ALREADY EXIST
-    try:  # WE NEED TO PUT THIS IN A TRY CATCH BECAUSE IT WILL THROW A DoesNotExist ERROR OTHERWISE
+      #TODO: LOG THE ERROR
+      return 'Error' 
+    # CREATE AN VARIABLE THAT WILL ALLOW US TO KNOW IF AN ENTRY FOR COURSE CHANGE ALREADY EXIST
+    # WE NEED TO PUT THIS IN A TRY CATCH BECAUSE IT WILL THROW A DoesNotExist ERROR OTHERWISE
+    try:  
       courseChangeExist = CourseChange.get().where(CourseChange.cId == cId)
       # IF THE COURSE DOES EXIST WE WANT TO EDIT THE PREVIOUS COLORS
       # THAT WAY THE COLORS WILL REFLECT MULTIPLE UPDATES
       tdColorOrder    = []
       courseColors    = CourseChange.tdcolors
       courseColorList = courseColors.split(",")
-      
     except CourseChange.DoesNotExist:
       courseChangeExist = None
-    ########################
     #INSTRUCTOR CHANGE DATA#
     ########################
     oldInstructors = InstructorCourse.select().where(InstructorCourse.cId == cid)
@@ -105,9 +91,11 @@ class DataUpdate():
         for instr in professors:
           newInstructor = InstructorCourseChange(cId = cId, username = instr)
           newInstructor.save()
-        tdColors.append('danger,') #APPEND THE CLASS NAME DANGER TO INDICATE THE FIELD AS CHANGED
+        #APPEND THE CLASS NAME DANGER TO INDICATE THE FIELD AS CHANGED  
+        tdColors.append('danger,') 
       else:
-        tdColors.append('none,')   #APPEND NONE TO INDICATE THAT THE FIELD HASN'T CHANGED
+        #APPEND NONE TO INDICATE THAT THE FIELD HASN'T CHANGED
+        tdColors.append('none,')   
     else:
       if instructorChange:
         InstructorCourseChange.delete().where(InstructorCourseChange.cId==cId).execute()
@@ -115,11 +103,7 @@ class DataUpdate():
         for instr in professors:
           newInstructor = InstructorCourseChange(cId = cId, username = instr)
           newInstructor.save()
-          
-          
-    ####################
     #COURSE CHANGE DATA#
-    ####################
     #CHECK COURSE INFO
       course          = Course.get().where(Course.cId==cId)
       courseSchedule  = Course.schedule.sid if Course.schedule != None else None
@@ -132,16 +116,9 @@ class DataUpdate():
     tdColors.append(color)
     #CAPACITY 
 
-      
-          
-      
-      
-        
-      
-    
   def addCourseChange(self, cid, changeType):
     #SET THE COLOR SCHEME FOR THE TD'S
-    tdcolors    = 'none,none,none,none,none' #SET A DEFAULT COLOR SCHEME
+    tdcolors    = 'none,none,none,none,none' 
     if changeType == cfg["changeType"]["create"]:
       tdcolors = 'success,success,success,success,success'
     elif changeType == cfg['changeType']["delete"]:
@@ -159,9 +136,11 @@ class DataUpdate():
       values = nullCheck.add_course_change(course)
       newcourse = CourseChange( 
                               cId               = course.cId,
-                              prefix            = course.prefix.prefix, #WE DON'T HAVE TO CHECK THIS VALUE BECAUSE IT CAN NEVER BE NULL
+                              #WE DON'T HAVE TO CHECK THIS VALUE BECAUSE IT CAN NEVER BE NULL
+                              prefix            = course.prefix.prefix, 
                               bannerRef         = values['bannerRef'],
-                              term              = course.term.termCode, #WE DON'T HAVE TO CHECK THIS VALUE BECAUSE IT CAN NEVER BE NULL
+                              #WE DON'T HAVE TO CHECK THIS VALUE BECAUSE IT CAN NEVER BE NULL
+                              term              = course.term.termCode, 
                               schedule          = values['schedule'],
                               specialTopicName  = course.specialTopicName,
                               capacity          = course.capacity,
@@ -178,6 +157,7 @@ class DataUpdate():
     else:
       print 'DONT HAVE ACCESS'
       return False
+
   def editCourseChange(self, cid, prefix, changeType):
     if self.checkUserLevel(prefix):
       newcourse         = Course.get(Course.cId == cid)
@@ -188,29 +168,23 @@ class DataUpdate():
       course.notes      = newcourse.notes
       course.lastEditBy = newcourse.lastEditBy
       course.changeType = changeType
-    
       course.save()
-      
       newInstructors = InstructorCourse.select().where(InstructorCourse.course == cid)
       professors = InstructorCourseChange.select().where(InstructorCourseChange.course == cid)
-      
       instructors =[]
       for professor in professors:
         instructors.append(professor)
-      
       for newInstructor in newInstructors:
         professor = InstructorCourseChange.select().where(InstructorCourseChange.course == cid).where(InstructorCourseChange.username == newInstructor.username)
         if professor.exists():
           instructors.remove(professor[0])
         else:
           InstructorChange(username = oldInstructor.username, cid = cid).save()
-      
       for instructor in instructors:
         instructor.delete_instance()
-      
       course.verified=False
       course.save()
-  
+
   def verifyCourseChange(self, data):
     if self.checkUserLevel('CSC'):    #WHY IN THE WORLD IS THIS HARD CODED
       course = CourseChange.get(CourseChange.cId == int(data['id']))
