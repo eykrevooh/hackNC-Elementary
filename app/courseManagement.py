@@ -3,6 +3,7 @@ from allImports import *
 from updateCourse import DataUpdate
 conflicts       = load_config(os.path.join(here, 'conflicts.yaml'))
 import pprint
+
 ######################
 #CROSS LISTED COURSES#
 ######################
@@ -64,24 +65,25 @@ def conflictsListed(tid):
     for element in buildings:                                         # LOOP THROUGH ELEMENTS IN THE QUERY
       buildingConflicts = []                                          # RESET THE BUIDLING CONFLICTS
       rooms = Rooms.select().where(Rooms.building==element.building)  # GET ALL OF THE ROOMS FOR THAT BUILDING
-      for room in rooms:          
-        courseList = [] #WE NEED TO CREATE A LIST SO THAT WE CAN SORT OUT THE 'ZZZ' SCHEDULE AND SO THAT WE CAN POP() FROM THE LIST      
-        courses = Course.select().where(room.rID == Course.rid, Course.term == tid).order_by(Course.rid) 
-        if courses:           
-            for course in courses:
-                if course.schedule != "ZZZ":         #DON'T ADD 'ZZZ' TO COURSE LIST BECAUSE ITS NOT PRESENT IN CONFLICTS.YAML 
-                    courseList.append(course)        #APPEND THE COURSE OBJECT TO THE COURSELIST FOR SCHEDULE CHECKING
-                else:                                #THEN WE GO AHEAD AND APPEND THE COURSE OBJECT FOR 'ZZZ' SCHEDULES TO CONFLICTS
-                    buildingConflicts.append(course) #BECAUSE THEY HAVE SPECIAL TIME ENTRIES THAT NEEED TO BE CHECKED MANUALLY
-            while courseList != []: 
-                current_course = courseList.pop()
-                if courseList != []:                 #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
-                  for course in courseList:
-                    result = conflicts[current_course.schedule.sid][course.schedule.sid] #ACCESS THE SID THROUGH THE COURSE OBJECT
-                    if result == 1:
-                      #APPEND BOTH COURSE OBJECTS TO THE CONFLICTS LIST
-                      buildingConflicts.append(current_course) 
-                      buildingConflicts.append(course)         
+      for room in rooms:
+          courseList = [] #WE NEED TO CREATE A LIST SO THAT WE CAN SORT OUT THE 'ZZZ' SCHEDULE AND SO THAT WE CAN POP() FROM THE LIST      
+          courses = Course.select().where(room.rID == Course.rid, Course.term == tid).order_by(Course.rid) 
+          if courses:           
+              for course in courses:
+                  if course.schedule != "ZZZ":         #DON'T ADD 'ZZZ' TO COURSE LIST BECAUSE ITS NOT PRESENT IN CONFLICTS.YAML 
+                      courseList.append(course)        #APPEND THE COURSE OBJECT TO THE COURSELIST FOR SCHEDULE CHECKING
+                  else:                                #THEN WE GO AHEAD AND APPEND THE COURSE OBJECT FOR 'ZZZ' SCHEDULES TO CONFLICTS
+                      buildingConflicts.append(course) #BECAUSE THEY HAVE SPECIAL TIME ENTRIES THAT NEEED TO BE CHECKED MANUALLY
+              while courseList != []: 
+                  current_course = courseList.pop()
+                  if courseList != []:                 #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
+                    for course in courseList:
+                      if course.schedule is not None and current_course.schedule is not None:
+                        result = conflicts[current_course.schedule.sid][course.schedule.sid] #ACCESS THE SID THROUGH THE COURSE OBJECT
+                        if result == 1:
+                          #APPEND BOTH COURSE OBJECTS TO THE CONFLICTS LIST
+                          buildingConflicts.append(current_course) 
+                          buildingConflicts.append(course)         
       if buildingConflicts != []:
         #REMOVE DUPLICATE COURSE OBJECTS FROM THE CONFLICTS LIST
         seen = set()
