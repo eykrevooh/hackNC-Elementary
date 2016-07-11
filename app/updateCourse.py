@@ -23,7 +23,12 @@ class DataUpdate():
   
   
   def editCourse(self, data, prefix, professors):
+    '''This function edits the course in the databse'''
+    
+    # check to see if the user has privileges to edit
     if self.checkUserLevel(prefix):
+       # get the course object
+       
       course = Course.get(Course.cId == int(data['cid']))
       course.term       = data['term']
       if data['capacity']:
