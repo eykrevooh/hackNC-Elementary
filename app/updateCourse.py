@@ -47,7 +47,13 @@ class DataUpdate():
   
       
 ######################################################################################
-  
+
+  def addCourseEdit(self,cid, data):
+    ''' cid  = COURSE ID
+        data = THE DATA FROM THE FORM POST '''
+    # CHECK TO SEE IF THE CID IS IN THE COURSE CHANGE TABLE
+    checkCourse = CourseChange.select().where(CourseChange.cId==cid)
+    
   
   def addCourseChange(self, cid, changeType):
     #SET THE COLOR SCHEME FOR THE TD'S

@@ -33,6 +33,7 @@ def editCourseModal(tid, prefix, cid, page):
 
 @app.route("/editcourse/<tid>/<prefix>/<page>", methods=["POST"])
 def editcourse(tid, prefix, page):
+  "I HAVE ENTERED THIS PORTION OF THE CODE"
   page1 =  "/" + request.url.split("/")[-1]
   data = request.form
   professors = request.form.getlist('professors[]')
