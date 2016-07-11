@@ -61,7 +61,11 @@ class DataUpdate():
        CHANGE TRACKER COLOR ORDER
        [Course Name, Taught By, Schedule, Room, Capacity, Cross Listed, Notes]
     '''
-    try: #ENSURE THAT ALL THE DATA WE NEED HAS BEEN PASSED SUCCESSFULLY
+    ###################################
+    #ENSURE THAT ESSENTIAL DATA EXSIST#
+    ###################################
+    tdColors = '' #CREATE AN EMPTY STRING FOR COLORS TO BE APPENDED TO
+    try:          #ENSURE THAT ALL THE DATA WE NEED HAS BEEN PASSED SUCCESSFULLY
       cId         = data['cid']
       schedule    = data['schedule'] if data['schedule'] != '' else None
       room        = data['room'] if data['room'] != '' else None
@@ -70,51 +74,61 @@ class DataUpdate():
       notes       = data['notes'] if data['notes'] != '' else None
       oldCourse = Course.get().where(Course.cId==cId)
     except Exception as e:
-      #TODO: LOG THE ERROR
-      return 'Error'
-    checkCourse = CourseChange.get(CourseChange.cId==cId )
-    # CHECK TO SEE IF THE CID IS IN THE COURSE CHANGE TABLE
-    # IF COURSE ALREADY EXSIST IN TABLE
-    if checkCourse:
-      tdColors = '' #SET A DEFAULT TD COLOR
-      ####################
-      #INSTRUCTOR CHANGE?#
-      ####################
-      #TODO: CHECK TO SEE WHAT HAPPENS WHEN EDIT FORM SUBMITS AN EMPTY LIST
-      matchingUsernames = []
+      return 'Error' #TODO: LOG THE ERROR
+    # CREATE AN VARIABLE THAT WILL ALLOW US TO KNOW IF AN ENTRY FOR COURSE CHANGE ALREADY EXIST
+    try:  #WE NEED TO PUT THIS IN A TRY CATCH BECAUSE IT WILL THROW A DoesNotExist ERROR OTHERWISE
+      courseChangeExist = CourseChange.get().where(CourseChange.cId == cId)
+    except CourseChange.DoesNotExist:
+      courseChangeExist = None 
+    ########################
+    #INSTRUCTOR CHANGE DATA#
+    ########################
+    #TODO: CHECK TO SEE WHAT HAPPENS WHEN EDIT FORM SUBMITS AN EMPTY LIST
+    #TODO: NEED TO THINK ABOUT WHAT HAPPENS IF A COURSE HAS ALREADY BEEN EDITED AND IF IT HAS NOT
+    oldInstructors = InstructorCourse.select().where(InstructorCourse.cId = cid)
+    instructorChange = InstructorCourseChange.select().where(InstructorCourseChange.cId)
+    if oldInstructors:
       oldList = []
-      oldInstructors = InstructorCourse.select().where(course)
       for instructor in oldInstructors:
         oldList.append(instructor.username)
-      matchingProfs = set(professors) & set(oldList)
+      matchingUsernames = set(professors) & set(oldList)
       '''
       I DO THIS TO PULL DUPLICATES FROM LIST NO MATTER THE ORDER THE LIST IS IN
       E.G. [myersco,heggens]=[myersco,heggens] & [heggens,myersco]
       NOW WE CAN COMPARE THE LENGTH OF THE MATCHING PROFESSORS WITH BOTH LIST TO SEE IF THEY ARE THE SAME
       '''
-      if len(matchingsProfs) != len(oldList) or len(matchingProfs) != len(professors):
-        #DELETE THE OLD ELEMENTS FROM INSTRUCTORCOURSECHANGE
-        InstructorCourseChange.delete().where(InstructorCourseChange.cId==cId ).execute()
+      if len(matchingsUserNames) != len(oldList) or len(matchingUserNames) != len(professors):
+        if instructorChange:
+          InstructorCourseChange.delete().where(InstructorCourseChange.cId==cId).execute()
         for instr in professors:
           newInstructor = InstructorCourseChange(cId = cId, username = instr)
           newInstructor.save()
         tdColors.append('danger,') #APPEND THE CLASS NAME DANGER TO INDICATE THE FIELD AS CHANGED
       else:
         tdColors.append('none,')   #APPEND NONE TO INDICATE THAT THE FIELD HASN'T CHANGED
-      #START CHECKING ALL OF THE FIELDS FOR DIFFERENCES FROM THE OLD COURSE
-      #WE ALSO NEED TO CHECK TO SEE IF COURSE ALREADY EXSISTS
-      try:
-        currentChange = CourseChange.get().where(CourseChange.cId == cId)
-        #WE NEED TO PUT THIS IN A TRY CATCH BECAUSE IT WILL RAISE A DoesNotExist ERROR OTHERWISE
-      except CourseChange.DoesNotExist:
-        currentChange = None 
-      ################  
-      #CHECK SCHEDULE#
-      ################
-      scheduleCheck = None
-      if oldCourse.schedule != None:
-        scheduleCheck == oldCourse.schedule.sid
-      if schedule != 
+    else:
+      if instructorChange:
+        InstructorCourseChange.delete().where(InstructorCourseChange.cId==cId).execute()
+      if professors != []:
+        for instr in professors:
+          newInstructor = InstructorCourseChange(cId = cId, username = instr)
+          newInstructor.save()
+        
+    ####################
+    #COURSE CHANGE DATA#
+    ####################
+    #START CHECKING ALL OF THE FIELDS FOR DIFFERENCES FROM THE OLD COURSE
+    #WE ALSO NEED TO CHECK TO SEE IF COURSE ALREADY EXSISTS
+    
+    ################  
+    #CHECK SCHEDULE#
+    ################
+    scheduleCheck = None
+    if oldCourse.schedule != None:
+      scheduleCheck == oldCourse.schedule.sid
+    if schedule != oldCourse.schedule:
+      if courseChange == None:
+          
       
       
         
