@@ -33,23 +33,26 @@ def editCourseModal(tid, prefix, cid, page):
 
 @app.route("/editcourse/<tid>/<prefix>/<page>", methods=["POST"])
 def editcourse(tid, prefix, page):
-  "I HAVE ENTERED THIS PORTION OF THE CODE"
-  page1 =  "/" + request.url.split("/")[-1]
-  data = request.form
-  professors = request.form.getlist('professors[]')
-  editcourse = DataUpdate()
-  
-  if not editcourse.isTermEditable(tid):
-      created = editcourse.addCourseChange(data['cid'], "update")
-      
-  editcourse.editCourse(data, prefix, professors)
-  message = "Course: course {} has been edited".format(data['cid'])
-  log.writer("INFO", page1, message)
-  flash("Course information has successfully been modified!")
-  if page == 'courses':
-    return redirect(url_for("courses", tID=tid, prefix=prefix))
+  #WE NEED TO CHECK TO ENSURE THE USER HAS THE RIGHT TO EDIT PAGES
+  editCourse = DataUpdate()
+  if editCourse.checkUserLevel(prefix):
+    username = authUser(request.environ)
+    page1 =  "/" + request.url.split("/")[-1]
+    data = request.form
+    professors = request.form.getlist('professors[]')
+    if not editCourse.isTermEditable(tid):
+        created = editCourse.addCourseEdit(data,professors,username)
+        #created = editcourse.addCourseChange(data['cid'], "update")
+    editCourse.editCourse(data, prefix, professors)
+    message = "Course: course {} has been edited".format(data['cid'])
+    log.writer("INFO", page1, message)
+    flash("Course information has successfully been modified!")
+    if page == 'courses':
+      return redirect(url_for("courses", tID=tid, prefix=prefix))
+    else:
+      url = "/courseManagement/" + page + "/" + tid
+      return redirect(url)
   else:
-    url = "/courseManagement/" + page + "/" + tid
-    return redirect(url)
+    return render_template("404.html", cfg=cfg)
   
   #Stop hating ishwar, lol

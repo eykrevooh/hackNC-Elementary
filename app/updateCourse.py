@@ -1,5 +1,6 @@
 from allImports import *
 from app.logic.NullCheck import NullCheck
+import pprint
 
 
 class DataUpdate():
@@ -28,7 +29,7 @@ class DataUpdate():
         return term.editable
 
     def editCourse(self, data, prefix, professors):
-        '''This function edits the course in the databse'''
+        '''THIS FUNCTION EDITS THE COURSE DATA TABLE'''
         # check to see if the user has privileges to edit
         if self.checkUserLevel(prefix):
            # get the course object
@@ -51,8 +52,9 @@ class DataUpdate():
                 newInstructor = InstructorCourse(
                     username=professor, course=int(data['cid']))
                 newInstructor.save()
+##########################################################################
 
-    def addColor(self, color, courseChangeExist, colorList, index)
+    def addColor(self, color, courseChangeExist, colorList, index):
         if color == 'danger':
             if courseChangeExist is None:
                 colorList.append(color)
@@ -63,16 +65,12 @@ class DataUpdate():
                 colorList.append(color)
         return colorList
 
-    def addCourseEdit(self, data, professors):
+    def addCourseEdit(self, data, professors, username):
         '''data        = THE DATA FROM THE FORM POST
-           professors  = A LIST OF INSTRUCTORS
-           KEYS IN DATA
-           [cid,room,schedule,term,capacity,notes,crossListed]
-           CHANGE TRACKER COLOR ORDER
-           [Course Name, Taught By, Schedule, Room, Capacity, Cross Listed, Notes]
-        '''
-        #ENSURE THAT ESSENTIAL DATA EXSIST#
+           professors  = A LIST OF INSTRUCTORS'''
+        # ENSURE THAT ESSENTIAL DATA EXSIST#
         # ENSURE THAT ALL THE DATA WE NEED HAS BEEN PASSED SUCCESSFULLY
+
         try:
             formData = {}
             dataKeys = [
@@ -86,6 +84,8 @@ class DataUpdate():
             for key in dataKeys:
                 # REPLACES ALL EMPTY STRINGS WITH NONE
                 formData[key] = data[key] if data[key] != '' else None
+            print 'FORM DATA'
+            print formData
         except Exception as e:
             # TODO: LOG THE ERROR
             return 'Error'
@@ -93,37 +93,39 @@ class DataUpdate():
         # WE NEED TO PUT THIS IN A TRY CATCH BECAUSE IT WILL THROW A
         # DoesNotExist ERROR OTHERWISE
         try:
-            courseChangeExist = CourseChange.get().where(
-                CourseChange.cId == dataKeys['cid'])
-            # IF THE COURSE DOES EXIST WE WANT TO EDIT THE PREVIOUS COLORS
-            # THAT WAY THE COLORS WILL REFLECT MULTIPLE UPDATES
-            tdColorOrder = []
-            courseColors = CourseChange.tdcolors
+            courseChangeExist = CourseChange.get(
+                CourseChange.cId == formData['cid'])
+            # IF THE COURSE CHANGE EXSIST WE WANT TO UPDATE THE CURRENT TDCOLOR
+            courseColors = courseChangeExist.tdcolors
+            print "courseColors"
+            print courseColors
             colorList = courseColors.split(",")
         except CourseChange.DoesNotExist:
             colorList = []
             courseChangeExist = None
         #INSTRUCTOR CHANGE DATA#
         oldInstructors = InstructorCourse.select().where(
-            InstructorCourse.cId == dataKeys['cid'])
-        instructorChange = InstructorCourseChange.select().where(InstructorCourseChange.cId)
+            InstructorCourse.course == formData['cid'])
+        instructorChange = InstructorCourseChange.select().where(
+            InstructorCourseChange.course == formData['cid'])
         if oldInstructors:
             oldList = []
             for instructor in oldInstructors:
                 oldList.append(instructor.username)
-            matchingUsernames = set(professors) & set(oldList)
-            # THIS WILL GATHER DUPLICATES NO MATTER THE ORDER EG  = [myersco,heggens]=[myersco,heggens] & [heggens,myersco]
+            matchingUsers = set(professors) & set(oldList)
+            # THIS WILL GATHER DUPLICATES NO MATTER THE ORDER
+            # e.g.  = [myersco,heggens]=[myersco,heggens] & [heggens,myersco]
             # THEN WE CAN CHECK THE LENGTH OF THE TWO LIST TO SEE IF THERE ARE
             # ANY DIFFERENCES
-            if len(matchingsUserNames) != len(oldList) or len(
-                    matchingUserNames) != len(professors):
+            if len(matchingUsers) != len(oldList) or len(
+                    matchingUsers) != len(professors):
                 if instructorChange:
                     InstructorCourseChange.delete().where(
-                        InstructorCourseChange.cId == cId).execute()
+                        InstructorCourseChange.course == formData['cid']).execute()
                 for instr in professors:
                     newInstructor = InstructorCourseChange(
-                        cId=cId, username=instr)
-                    newInstructor.save()
+                        course=formData['cid'], username=instr)
+                    newInstructor.save(force_insert=True)
                 color = 'danger'
             else:
                 color = 'none'
@@ -132,7 +134,6 @@ class DataUpdate():
             index = cfg['tableLayout']['Taught By']
             colorList = self.addColor(
                 color, courseChangeExist, colorList, index)
-
         else:
             if instructorChange:
                 InstructorCourseChange.delete().where(
@@ -142,9 +143,9 @@ class DataUpdate():
                     newInstructor = InstructorCourseChange(
                         cId=cId, username=instr)
                     newInstructor.save()
-        #COURSE CHANGE DATA#
+        # COURSE CHANGE DATA#
         # CHECK COURSE INFO
-        course = Course.get().where(Course.cId == cId)
+        course = Course.get(Course.cId == formData['cid'])
         courseSchedule = course.schedule.sid if course.schedule is not None else None
         courseRoom = course.rid.rID if course.rid is not None else None
         #SCHEDULE#
@@ -187,6 +188,33 @@ class DataUpdate():
             courseChangeExist,
             colorList,
             cfg['tableLayout']['Notes'])
+        # CREATE A COMMA SEPERATED LIST
+        tdColors = ",".join(colorList)
+        # SET THE CHANGE TYPE
+        if courseChangeExist is None:
+            changeType = cfg['changeType']['update']
+        elif courseChangeExist.changeType == cfg['changeType']['create'] or courseChangeExist.changeType == cfg['changeType']['create/update']:
+            changeType = cfg['changeType']['create/update']
+        else:
+            # TODO: LOG THE ERROR
+            return "Error"
+        # UPSERT IS ONLY AVAILABLE FOR SQLITE AND MYSQL DATABASES
+        editEntry = CourseChange(
+            cId=formData['cid'],
+            prefix=course.prefix.prefix,
+            bannerRef=course.bannerRef,
+            term=formData['term'],
+            schedule=formData['schedule'],
+            capacity=formData['capacity'],
+            notes=formData['notes'],
+            # USERNAME IS PASSED INTO THE METHOD
+            lastEditBy=username,
+            changeType=changeType,
+            rid=formData['room'],
+            crossListed=['crossListed'],
+            tdcolors=tdColors)
+        result = editEntry.upsert(force_insert=True)
+##########################################################################
 
     def addCourseChange(self, cid, changeType):
         # SET THE COLOR SCHEME FOR THE TD'S
@@ -225,15 +253,14 @@ class DataUpdate():
                 changeType=changeType,
                 rid=values['rid'],
                 crossListed=course.crossListed,
-                tdcolors=tdcolors
-            )
+                tdcolors=tdcolors)
             number = newcourse.save(force_insert=True)
-            # WHENEVER YOU ENTER IN YOUR OWN PRIMARY KEY YOU NEED TO DO FORCE
-            # INSER = TRUE ON THE SAVE
+            # WHENEVER CERTAINING A NON AUTO INCREMENTED PRIMARY KEY
+            # IT IS REQUIRED TO PUT force_insert=True
             return True
         else:
             print 'DONT HAVE ACCESS'
-            return False
+            return "Error"
 
     def editCourseChange(self, cid, prefix, changeType):
         if self.checkUserLevel(prefix):

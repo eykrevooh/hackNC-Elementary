@@ -131,7 +131,7 @@ class CourseChange(dbModel):
   verified          = BooleanField(default = False)
   crossListed       = BooleanField()
   rid               = ForeignKeyField(Rooms, null = True)
-  tdcolors          = CharField(null =True)
+  tdcolors          = CharField(null = False)
   
 class InstructorCourseChange(dbModel):
   username     = ForeignKeyField(User)
