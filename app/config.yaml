@@ -64,10 +64,19 @@ changeType:
   update: 'update'
   create/update: 'create/update'
   
-tdColor:
-  order: ['className','professors','schedule','room','crossListed','notes']
-  red:     'danger'
-  green:   'success'
+tableLayout:
+  order: ['Course Name', 'Taught By', 'Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes']
+  Course Name:  0
+  Taught By:    1 
+  Schedule:     2
+  Room:         3
+  Capacity:     4
+  Cross Listed: 5
+  Notes:        6
+  
+columnColors:
+  change:     'danger'
+  added:   'success'
   default: 'none'
   
 DEBUG:
