@@ -1,33 +1,37 @@
 # ADD ANY IMPORTS HERE
 from allImports import *
 from updateCourse import DataUpdate
-from app.logic.databaseInterface import createInstructorDict
-from app.logic.functions import doesConflict
-conflicts = load_config(os.path.join(here, 'conflicts.yaml'))
+from app.logic.getAuthUser import AuthorizedUser
+from app.logic import databaseInterface
+from app.logic import functions
 import pprint
 
 #CROSS LISTED COURSES#
 
-@app.route("/courseManagement/crossListed/", defaults={'tid':0}, methods=["GET", "POST"])
-@app.route("/courseManagement/crossListed/<tid>", methods = ["GET","POST"])
+
+@app.route(
+    "/courseManagement/crossListed/",
+    defaults={
+        'tid': 0},
+    methods=[
+        "GET",
+        "POST"])
+@app.route("/courseManagement/crossListed/<tid>", methods=["GET", "POST"])
 def crossListed(tid):
     # DATA FOR THE NAVBAR AND SIDE BAR
     terms = Term.select().order_by(-Term.termCode)
     if tid == 0:
-        counter = 0
-        for term in terms:
-            if counter == 0:
-                tid = term.termCode
-            counter += 1
+        tid = terms[0].termCode
+
     page = "crossListed"
     username = authUser(request.environ)
-    admin = User.get(User.username == username)
+    authorizedUser = User.get(User.username == username)
     ##DATA FOR THE CROSS LISTED COURSE TABLE##
     crossListedCourses = Course.select().where(Course.crossListed == 1).where(
         Course.term == tid).order_by(+Course.schedule).order_by(+Course.rid)
-        
-    instructors = createInstructorDict(crossListedCourses)
-    
+
+    instructors = databaseInterface.createInstructorDict(crossListedCourses)
+
     ##DATA FOR THE ADD COURSE FORM##
     courseInfo = BannerCourses.select().order_by(
         BannerCourses.number).order_by(
@@ -38,7 +42,7 @@ def crossListed(tid):
     return render_template("crossListed.html",
 
                            cfg=cfg,
-                           isAdmin=admin.isAdmin,
+                           isAdmin=authorizedUser.isAdmin,
                            allTerms=terms,
                            page=page,
                            currentTerm=int(tid),
@@ -55,67 +59,57 @@ def crossListed(tid):
 
 
 @app.route("/courseManagement/conflicts/<tid>", methods=["GET"])
-
 def conflictsListed(tid):
     #DATA FOR THE NAVEBAR AND SIDEBAR#
     page = "conflicts"
     terms = Term.select().order_by(-Term.termCode)
     username = authUser(request.environ)
-    admin = User.get(User.username == username)
-    #DATA FOR THE ROOM AND SCHEDULING CONFLICTS#
-    #CREATE A CONFLICT DICTIONARY TO HOLD ALL OF THE CONFLICTS
-    conflict_dict = dict()  
-    #THE KEY WILL BE BUILDING NAMES
-    #THE VALUE WILL BE A LIST OF COURSE OBJECTS THAT CONFLICT
-    #STORE THE DICT KEYS SO WE CAN EASILY LOOP THROUGH THEM ON THE VIEW
-    dict_keys = []          
-    # GRAB ALL OF THE DISTINCT BUILDING NAMES
-    buildings = Rooms.select(Rooms.building).distinct()               
-    # LOOP THROUGH ELEMENTS IN THE QUERY
-    for element in buildings:
-      # RESET THE BUIDLING CONFLICTS
-      buildingConflicts = []                                          
-      # GET ALL OF THE ROOMS FOR THAT BUILDING
-      rooms = Rooms.select().where(Rooms.building==element.building)  
-      for room in rooms:
-          #WE NEED TO CREATE A LIST SO THAT WE CAN SORT OUT THE 'ZZZ' SCHEDULE AND SO THAT WE CAN POP() FROM THE LIST      
-          courseList = [] 
-          courses = Course.select().where(room.rID == Course.rid, Course.term == tid).order_by(Course.rid) 
-          if courses:           
-              for course in courses:
-                  #DON'T ADD 'ZZZ' TO COURSE LIST BECAUSE ITS NOT PRESENT IN CONFLICTS.YAML 
-                  if course.schedule != "ZZZ":         
-                      #APPEND THE COURSE OBJECT TO THE COURSELIST FOR SCHEDULE CHECKING
-                      courseList.append(course)        
-                  #THEN WE GO AHEAD AND APPEND THE COURSE OBJECT FOR 'ZZZ' SCHEDULES TO CONFLICTS
-                  else:                                
-                      #BECAUSE THEY HAVE SPECIAL TIME ENTRIES THAT NEEED TO BE CHECKED MANUALLY
-                      buildingConflicts.append(course) 
-              while courseList != []: 
-                  current_course = courseList.pop()
-                  #CHECK TO SEE IF NOW EMPTY ==> NEEDED TO PREVENT SEG FAULT
-                  if courseList != []:                 
-                    for course in courseList:
-                      if course.schedule is not None and current_course.schedule is not None:
-                        #ACCESS THE SID THROUGH THE COURSE OBJECT
-                        if doesConflict(current_course.schedule.sid, course.schedule.sid):
-                          #APPEND BOTH COURSE OBJECTS TO THE CONFLICTS LIST
-                          buildingConflicts.append(current_course) 
-                          buildingConflicts.append(course)         
-      if buildingConflicts != []:
-        #REMOVE DUPLICATE COURSE OBJECTS FROM THE CONFLICTS LIST
-        seen = set()
-        seen_add = seen.add
-        buildingConflicts = [x for x in buildingConflicts if not (x in seen or seen_add(x))]
-        #ADD THE KEY TO THE LIST
-        dict_keys.append(element.building)                      
-        #SET THE KEY(building name) TO THE VALUE(list of course objects)
-        conflict_dict[element.building] = buildingConflicts     
-        #DATA FOR THE CONFLICTS TABLE
-        instructors = createInstructorDict(buildingConflicts)
+    authorizedUser = AuthorizedUser(username)
+
+    # need a something to hold the conflicts
+    conflict_dict = dict()
+
+    # we need the dict keys to loop through in the view
+    dict_keys = []
+
+    buildings = databaseInterface.getAllBuildings()
+
+    for building in buildings:
+
+        # we want a clean conflicts list for each room
+        buildingConflicts = []
+
+        rooms = databaseInterface.getRoomsByBuilding(building)
+
+        for room in rooms:
+
+            # gets all of the courses by room where schedule is none
+            # and filters ones special scheduleID ZZZ
+            specialScheduleCourseList, courseList = functions.getCoursesByRoom(
+                room.rID, tid)
+
+            while len(courseList):
+                current_course = courseList.pop()
+
+                # NEEDED TO PREVENT SEG FAULT
+                if len(courseList):
+                    buildingConflicts += functions.getConflicts(
+                        current_course, courseList)
+
+        instructors = {}
+        if len(buildingConflicts):
+
+            buildingConflicts = functions.removeDuplicates(buildingConflicts)
+
+            dict_keys.append(building.building)
+            # SET THE KEY(building name) TO THE VALUE(list of course objects)
+            conflict_dict[building.building] = buildingConflicts
+            # DATA FOR THE CONFLICTS TABLE
+            instructors = databaseInterface.createInstructorDict(
+                buildingConflicts)
     return render_template("conflicts.html",
                            cfg=cfg,
-                           isAdmin=admin.isAdmin,
+                           isAdmin=authorizedUser.isAdmin(),
                            allTerms=terms,
                            page=page,
                            currentTerm=int(tid),
@@ -134,23 +128,18 @@ def trackerListed(tid):
     page = "tracker"
     terms = Term.select().order_by(-Term.termCode)
     username = authUser(request.environ)
-    admin = User.get(User.username == username)
+    authorizedUser = AuthorizedUser(username)
+
     # DATA FOR THE CHANGE TRACKER PAGE
     # ALL OF THIS CAME FROMT HE COURSECHANGE.PY
     if (request.method == "GET"):
-        username = authUser(request.environ)
-        admin = User.get(User.username == username)
-        if admin.isAdmin:
+        if authorizedUser.isAdmin():
+
             courses = CourseChange.select().where(CourseChange.verified == False)
-            pprint.pprint(courses)
-            classDict = dict()
-            instructorsDict = dict()
-            for course in courses:
-                instructorsDict[course.cId] = InstructorCourseChange.select().where(
-                    InstructorCourseChange.course == course.cId)
-                tdClass = course.tdcolors
-                tdClassList = tdClass.split(",")
-                classDict[course.cId] = tdClassList
+
+            instructorsDict = databaseInterface.createInstructorDict(courses)
+
+            colorClassDict = functions.getColorClassDict(courses)
         '''
       DATA STRUCTURES
       NOTE: The keys for both dictionaries the course identification number
@@ -161,13 +150,13 @@ def trackerListed(tid):
       '''
         return render_template("tracker.html",
                                cfg=cfg,
-                               isAdmin=admin.isAdmin,
+                               isAdmin=authorizedUser.isAdmin(),
                                allTerms=terms,
                                page=page,
                                currentTerm=int(tid),
                                courses=courses,
                                instructorsDict=instructorsDict,
-                               classDict=classDict
+                               classDict=colorClassDict
                                )
     else:
         return render_template("404.html", cfg=cfg)
@@ -178,8 +167,8 @@ def verifyChange(tid):
     if (request.method == "POST"):
         page = "/" + request.url.split("/")[-1]
         username = authUser(request.environ)
-        admin = User.get(User.username == username)
-        if admin.isAdmin:
+        authorizedUser = AuthorizedUser(username)
+        if authorizedUser.isAdmin():
             data = request.form
             verify = DataUpdate()
             verify.verifyCourseChange(data)
