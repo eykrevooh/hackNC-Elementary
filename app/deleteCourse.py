@@ -29,6 +29,8 @@ def deletecourse(prefix, tid, page):
         instructor.delete_instance()
     course.delete_instance()
     
+  flash("Course has been successfully deleted")
+    
   if page == 'courses':
     return redirect(url_for("courses", tID=tid, prefix=prefix))
   else:
