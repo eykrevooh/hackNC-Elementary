@@ -15,6 +15,13 @@ class AuthorizedUser:
         self.prefix = prefix
 
     '''
+    returns the username of the user
+    '''
+    def getUsername():
+        return self.username
+        
+        
+    '''
     checks to see if the user is an admin
     @public
     '''
