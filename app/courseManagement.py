@@ -2,6 +2,7 @@
 from allImports import *
 from updateCourse import DataUpdate
 from app.logic.databaseInterface import createInstructorDict
+from app.logic.functions import doesConflict
 conflicts = load_config(os.path.join(here, 'conflicts.yaml'))
 import pprint
 
@@ -97,8 +98,7 @@ def conflictsListed(tid):
                     for course in courseList:
                       if course.schedule is not None and current_course.schedule is not None:
                         #ACCESS THE SID THROUGH THE COURSE OBJECT
-                        result = conflicts[current_course.schedule.sid][course.schedule.sid] 
-                        if result == 1:
+                        if doesConflict(current_course.schedule.sid, course.schedule.sid):
                           #APPEND BOTH COURSE OBJECTS TO THE CONFLICTS LIST
                           buildingConflicts.append(current_course) 
                           buildingConflicts.append(course)         
@@ -112,7 +112,7 @@ def conflictsListed(tid):
         #SET THE KEY(building name) TO THE VALUE(list of course objects)
         conflict_dict[element.building] = buildingConflicts     
         #DATA FOR THE CONFLICTS TABLE
-        intructors = createInstructorDict(buildingConflicts)
+        instructors = createInstructorDict(buildingConflicts)
     return render_template("conflicts.html",
                            cfg=cfg,
                            isAdmin=admin.isAdmin,
