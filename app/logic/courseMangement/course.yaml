@@ -1,5 +1,0 @@
-changeType:
-  create: 'create'
-  delete: 'delete'
-  update: 'update'
-  create/update: 'create/update'

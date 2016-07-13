@@ -149,40 +149,40 @@ class DataUpdate():
         courseSchedule = course.schedule.sid if course.schedule is not None else None
         courseRoom = course.rid.rID if course.rid is not None else None
         #SCHEDULE#
-        color = cfg['columnColors']['change'] if formData[
-            'schedule'] != courseSchedule else cfg['columnColors']['default']
+        color = cfg['columnColor']['edit'] if formData[
+            'schedule'] != courseSchedule else cfg['columnColor']['default']
         colorList = self.addColor(
             color,
             courseChangeExist,
             colorList,
             cfg['tableLayout']['Schedule'])
         #ROOM#
-        color = cfg['columnColors']['change'] if formData[
-            'room'] != courseRoom else cfg['columnColors']['default']
+        color = cfg['columnColor']['edit'] if formData[
+            'room'] != courseRoom else cfg['columnColor']['default']
         colorList = self.addColor(
             color,
             courseChangeExist,
             colorList,
             cfg['tableLayout']['Room'])
         # CAPACITY
-        color = cfg['columnColors']['change'] if formData[
-            'capacity'] != course.capacity else cfg['columnColors']['default']
+        color = cfg['columnColor']['edit'] if formData[
+            'capacity'] != course.capacity else cfg['columnColor']['default']
         colorList = self.addColor(
             color,
             courseChangeExist,
             colorList,
             cfg['tableLayout']['Capacity'])
         # CROSS LISTED
-        color = cfg['columnColors']['change'] if formData[
-            'crossListed'] != course.crossListed else cfg['columnColors']['default']
+        color = cfg['columnColor']['edit'] if formData[
+            'crossListed'] != course.crossListed else cfg['columnColor']['default']
         colorList = self.addColor(
             color,
             courseChangeExist,
             colorList,
             cfg['tableLayout']['Cross Listed'])
         # NOTES
-        color = cfg['columnColors']['change'] if formData[
-            'notes'] != course.notes else cfg['columnColors']['default']
+        color = cfg['columnColor']['edit'] if formData[
+            'notes'] != course.notes else cfg['columnColor']['default']
         colorList = self.addColor(
             color,
             courseChangeExist,
@@ -213,7 +213,7 @@ class DataUpdate():
             rid=formData['room'],
             crossListed=['crossListed'],
             tdcolors=tdColors)
-        result = editEntry.upsert(force_insert=True)
+        result = editEntry.save(force_insert=True)
 ##########################################################################
 
     def createColorString(self, changeType):

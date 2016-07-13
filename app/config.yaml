@@ -57,7 +57,10 @@ termInfo:
     14: '1st 4 Week Summer'
     15: '2nd 4 Week Summer'
     #10: 'Berea Bridge Program'   # e.g. Berea Bridge Program 2016 = 201610    
-    
+
+editForm:
+  dataKeys: ['cid','term','schedule','room','capacity','crossListed','notes']
+
 changeType:
   create: 'create'
   delete: 'delete'
@@ -75,7 +78,7 @@ tableLayout:
   Notes:        6
   
 columnColor:
-  edit:   'danger'
+  edit:     'danger'
   delete:   'danger'
   create:   'success'
   default:  'none'
