@@ -61,7 +61,7 @@ class DataUpdate():
             else:
                 colorList[index] = color
         else:
-            if colorChangeExist is None:
+            if courseChangeExist is None:
                 colorList.append(color)
         return colorList
 
@@ -218,11 +218,11 @@ class DataUpdate():
 
     def addCourseChange(self, cid, changeType):
         # SET THE COLOR SCHEME FOR THE TD'S
-        tdcolors = 'none,none,none,none,none'
-        if changeType == cfg["changeType"]["create"]:
-            tdcolors = 'success,success,success,success,success'
-        elif changeType == cfg['changeType']["delete"]:
-            tdcolors = 'danger,danger,danger,danger,danger'
+        color = cfg["columnColor"]["create"] if cfg["changeType"]["create"] == changeType else cfg["columnColor"]["delete"]
+        colorList = []
+        for x in cfg["tableLayout"]["order"]:
+            colorList.append(color)
+        tdcolors = ",".join(colorList)
         # ADD THE PROFESSORS TO INTRUCTORCOURSECHANGE
         course = Course.get(Course.cId == cid)
 
