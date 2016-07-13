@@ -217,21 +217,22 @@ class DataUpdate():
 ##########################################################################
 
     def createColorString(self, changeType):
-      ''' Purpose: This method will create a comma seperated list depending on the changeType entered
-      @param -changeType {string} = This should only ever be a type located in the config.yaml
-      -->Author: CDM 20160713 '''
-      # SET THE COLOR SCHEME FOR THE TD'S
-      color = cfg["columnColor"]["create"] if cfg["columnColor"]["create"] == changeType else cfg["columnColor"]["delete"]
-      colorList = []
-      
-      for x in cfg["tableLayout"]["order"]:
-          colorList.append(color)
-      tdcolors = ",".join(colorList)
-      
-      return tdcolors
-    
+        ''' Purpose: This method will create a comma seperated list depending on the changeType entered
+        @param -changeType {string} = This should only ever be a type located in the config.yaml
+        -->Author: CDM 20160713 '''
+        # SET THE COLOR SCHEME FOR THE TD'S
+        color = cfg["columnColor"]["create"] if cfg["columnColor"][
+            "create"] == changeType else cfg["columnColor"]["delete"]
+        colorList = []
+
+        for x in cfg["tableLayout"]["order"]:
+            colorList.append(color)
+        tdcolors = ",".join(colorList)
+
+        return tdcolors
+
     def addCourseChange(self, cid, changeType):
-        
+
         tdcolors = self.createColorString(changeType)
         # ADD THE PROFESSORS TO INTRUCTORCOURSECHANGE
         course = Course.get(Course.cId == cid)
