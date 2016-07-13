@@ -1,5 +1,6 @@
 from allImports import *
 from updateCourse import DataUpdate
+from app.logic.TrackerEdit import TrackerEdit
 
 @app.route("/editCourseModal/<tid>/<prefix>/<cid>/<page>", methods=["GET"])
 def editCourseModal(tid, prefix, cid, page):
@@ -39,10 +40,11 @@ def editcourse(tid, prefix, page):
     username = authUser(request.environ)
     page1 =  "/" + request.url.split("/")[-1]
     data = request.form
+    trackerEdit = TrackerEdit(data)
     professors = request.form.getlist('professors[]')
     if not editCourse.isTermEditable(tid):
-        created = editCourse.addCourseEdit(data,professors,username)
-        #created = editcourse.addCourseChange(data['cid'], "update")
+      created = trackerEdit.make_edit(professors,username)
+      #created = editcourse.addCourseChange(data['cid'], "update")
     editCourse.editCourse(data, prefix, professors)
     message = "Course: course {} has been edited".format(data['cid'])
     log.writer("INFO", page1, message)
