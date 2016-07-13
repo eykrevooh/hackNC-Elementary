@@ -24,8 +24,7 @@ def crossListed(tid):
         tid = terms[0].termCode
 
     page = "crossListed"
-    username = authUser(request.environ)
-    authorizedUser = User.get(User.username == username)
+    authorizedUser = AuthorizedUser()
     ##DATA FOR THE CROSS LISTED COURSE TABLE##
     crossListedCourses = Course.select().where(Course.crossListed == 1).where(
         Course.term == tid).order_by(+Course.schedule).order_by(+Course.rid)
@@ -42,7 +41,7 @@ def crossListed(tid):
     return render_template("crossListed.html",
 
                            cfg=cfg,
-                           isAdmin=authorizedUser.isAdmin,
+                           isAdmin=authorizedUser.isAdmin(),
                            allTerms=terms,
                            page=page,
                            currentTerm=int(tid),
@@ -63,8 +62,7 @@ def conflictsListed(tid):
     #DATA FOR THE NAVEBAR AND SIDEBAR#
     page = "conflicts"
     terms = Term.select().order_by(-Term.termCode)
-    username = authUser(request.environ)
-    authorizedUser = AuthorizedUser(username)
+    authorizedUser = AuthorizedUser()
 
     # need a something to hold the conflicts
     conflict_dict = dict()
@@ -127,8 +125,7 @@ def trackerListed(tid):
     # DATA FOR THE NAVBAR AND SIDE BAR
     page = "tracker"
     terms = Term.select().order_by(-Term.termCode)
-    username = authUser(request.environ)
-    authorizedUser = AuthorizedUser(username)
+    authorizedUser = AuthorizedUser()
 
     # DATA FOR THE CHANGE TRACKER PAGE
     # ALL OF THIS CAME FROMT HE COURSECHANGE.PY
@@ -166,8 +163,7 @@ def trackerListed(tid):
 def verifyChange(tid):
     if (request.method == "POST"):
         page = "/" + request.url.split("/")[-1]
-        username = authUser(request.environ)
-        authorizedUser = AuthorizedUser(username)
+        authorizedUser = AuthorizedUser()
         if authorizedUser.isAdmin():
             data = request.form
             verify = DataUpdate()

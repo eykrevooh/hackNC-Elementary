@@ -9,9 +9,9 @@ class AuthorizedUser:
     @param prefix   - prefix of the subject being accessed
     '''
 
-    def __init__(self, username, prefix = None):
+    def __init__(self, prefix = None):
         # @private
-        self.username = username
+        self.username = authUser(request.environ)
         self.prefix = prefix
 
     '''

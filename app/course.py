@@ -8,11 +8,10 @@ from app.logic.databaseInterface import getSidebarElements, createInstructorDict
 def courses(tID, prefix):
     page = "courses"
 
-    username = authUser(request.environ)
     # Checking the permissions of the user.
     # we need the subject to know if someone if a division chair or a program
     # chair
-    authorizedUser = AuthorizedUser(username, prefix)
+    authorizedUser = AuthorizedUser(prefix)
 
     # These are the necessary components of the sidebar. Should we move them
     # somewhere else?

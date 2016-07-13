@@ -7,8 +7,7 @@ from app.logic.databaseInterface import addDivisionChairs, createDivision
 def addDivision():
     # get the page
     page = "/" + request.url.split("/")[-1]
-    username = authUser(request.environ)
-    authorizedUser = AuthorizedUser(username)
+    authorizedUser = AuthorizedUser()
 
     if (request.method == "GET"):
         

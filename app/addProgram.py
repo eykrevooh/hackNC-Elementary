@@ -6,8 +6,7 @@ from app.logic.databaseInterface import createProgram, addProgramChairs
 @app.route("/admin/newProgram", methods=["GET", "POST"])
 def addProgram():
     # get username
-    username = authUser(request.environ)
-    authorizedUser = AuthorizedUser(username)
+    authorizedUser = AuthorizedUser()
 
     page = "/" + request.url.split("/")[-1]
     if (request.method == "GET"):

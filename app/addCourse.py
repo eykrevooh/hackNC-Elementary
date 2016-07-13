@@ -17,11 +17,8 @@ adds the course to the course table and to the course change if needed
     methods=["POST"])
 @app.route("/addCourse/<tid>/<page>/<prefix>", methods=["POST"])
 def addCourses(tid, page, prefix):
-    # get the username
-    username = authUser(request.environ)
-
     # check to see if they are authorized to change anything
-    authorizedUser = AuthorizedUser(username, prefix)
+    authorizedUser = AuthorizedUser(prefix)
 
     # only do the bottom if authorized
     if authorizedUser.isAuthorized():

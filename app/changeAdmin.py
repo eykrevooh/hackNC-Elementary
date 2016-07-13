@@ -11,7 +11,7 @@ def changeAdmin():
     username = authUser(request.environ)
 
     # autheticator instance
-    authorizedUser = AuthorizedUser(username)
+    authorizedUser = AuthorizedUser()
     if authorizedUser.isAdmin():
         # get data
         data = request.form
