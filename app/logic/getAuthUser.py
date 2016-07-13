@@ -1,4 +1,4 @@
-from allImports import *
+from app.allImports import *
 
 
 class AuthorizedUser:

@@ -74,10 +74,10 @@ tableLayout:
   Cross Listed: 5
   Notes:        6
   
-columnColors:
-  change:     'danger'
-  added:   'success'
-  default: 'none'
+columnColor:
+  change:   'danger'
+  create:   'success'
+  default:  'none'
   
 DEBUG:
   user: "heggens" #Admin Access

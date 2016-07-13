@@ -1,6 +1,6 @@
 from allImports import *
 from updateCourse import DataUpdate
-from getAuthUser import AuthorizedUser
+from app.logic.getAuthUser import AuthorizedUser
 from app.logic.databaseInterface import addCourseInstructors
 from app.logic.NullCheck import NullCheck
 
