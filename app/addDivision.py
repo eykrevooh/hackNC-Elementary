@@ -7,10 +7,11 @@ from app.logic.databaseInterface import addDivisionChairs, createDivision
 def addDivision():
     # get the page
     page = "/" + request.url.split("/")[-1]
+    username = authUser(request.environ)
+    authorizedUser = AuthorizedUser(username)
 
     if (request.method == "GET"):
-        username = authUser(request.environ)
-        authorizedUser = AuthorizedUser(username)
+        
 
         if authorizedUser.isAdmin():
             # get the users
@@ -32,10 +33,8 @@ def addDivision():
             return render_template("404.html")
 
     if (request.method == "POST"):
-        username = authUser(request.environ)
-        authorizedUser = AuthorizedUser
 
-        if authorizedUser.admin():
+        if authorizedUser.isAdmin():
             # get the data
             data = request.form
 
@@ -43,11 +42,10 @@ def addDivision():
             professors = request.form.getlist('professors[]')
 
             # create division in database
-            createDivision(data['name'])
+            divisionName, divisionID = createDivision(data['divisionName'])
 
             # add professors to the database
-            (divisionName, divisionID) = addDivisionChair(
-                proffessors, division.dID)
+            addDivisionChairs(professors, divisionID)
 
             # log successful queries
             message = "Division: {0} has been added".format(divisionName)
