@@ -75,7 +75,8 @@ tableLayout:
   Notes:        6
   
 columnColor:
-  change:   'danger'
+  edit:   'danger'
+  delete:   'danger'
   create:   'success'
   default:  'none'
   
