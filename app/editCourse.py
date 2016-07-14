@@ -8,7 +8,7 @@ def editCourseModal(tid, prefix, cid, page):
   authorizedUser = AuthorizedUser(prefix)
   
   checkUser = DataUpdate()
-  if AuthorizedUser.isAuthorized():
+  if authorizedUser.isAuthorized():
     
     # Select all schedules
     schedules = BannerSchedule.select()
