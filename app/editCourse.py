@@ -40,7 +40,6 @@ def editCourseModal(tid, prefix, cid, page):
 def editcourse(tid, prefix, page):
   #WE NEED TO CHECK TO ENSURE THE USER HAS THE RIGHT TO EDIT PAGES
   authorizedUser = AuthorizedUser(prefix)
-  editCourse = DataUpdate()
   if authorizedUser.isAuthorized():
     username = authorizedUser.getUsername()
     page1 =  "/" + request.url.split("/")[-1]
@@ -51,7 +50,7 @@ def editcourse(tid, prefix, page):
     if not databaseInterface.isTermEditable(tid):
       created = trackerEdit.make_edit(professors, username)
       #created = editcourse.addCourseChange(data['cid'], "update")
-    editCourse.editCourse(data, prefix, professors)
+    databaseInterface.editCourse(data, prefix, professors)
     message = "Course: course {} has been edited".format(data['cid'])
     log.writer("INFO", page1, message)
     flash("Course information has successfully been modified!")
