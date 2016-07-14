@@ -44,7 +44,7 @@
                   selected 
                 {% endif %}
               >
-                {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%H:%M')}}-{{schedule.endTime.strftime('%H:%M')}}
+                {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%I:%M%p')}}-{{schedule.endTime.strftime('%I:%M%p')}}
               </option>
             {% endfor %}
           </select>
@@ -88,7 +88,7 @@
           </div>
           {# --Notes-- #}
           <h5>Notes</h5>
-          <textarea class="form-control" name="notes">{{course.notes}}</textarea>
+          <textarea class="form-control" name="notes">{% if course.notes is not none %}{{ course.notes }}{% endif %}</textarea>
           {# --Instructors-- #}
           <h5>Edit Instructor</h5>
           <select class="chosen-select" id="professors"  name="professors[]" multiple>

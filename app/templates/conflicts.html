@@ -6,6 +6,7 @@
 {% block body %}
   <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
   <link rel="stylesheet" href="/static/css/Courses.css" type="text/css" />
+  <script src="/static/js/local/popup.js"></script>
   <body>
     <div id="wrapper">
       {%include "snips/courseManagementSidebar.html" %}
@@ -64,7 +65,7 @@
                         <!--SCHEDULE-->
                         <td>
                           {% if course.schedule is not none %}
-                            {{course.schedule.days}}{{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}
+                            {{course.schedule.days}} {{course.schedule.startTime.strftime('%H:%M')}}-{{course.schedule.endTime.strftime('%H:%M')}}
                           {% endif %}
                         </td>
                         <!--CAPACITY-->
@@ -91,7 +92,7 @@
                         </td>
                         <!--NOTES-->
                         <td>
-                            <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a>
+                            <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{% if course.notes is not none %}{{ course.notes }}{% endif %}'>Notes</a>
                         </td>
                         <!--LAST EDITED BY-->
                         <td>

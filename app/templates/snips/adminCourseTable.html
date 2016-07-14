@@ -31,7 +31,7 @@
                 <!--SCHEDULE-->
                 <td>
                     {% if course.schedule is not none %}
-                        {{course.schedule.days}}{{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}
+                        {{course.schedule.days}} {{course.schedule.startTime.strftime('%I:%M%p')}}-{{course.schedule.endTime.strftime('%H:%M%p')}}
                     {% endif %}
                 </td>
                 <!--CAPACITY-->
@@ -50,7 +50,7 @@
                 </td>
                 <!--CROSS LISTED-->
                 <td>
-                    {% if course.crossListed is not none %}
+                    {% if course.crossListed == True %}
                         yes
                     {% else %}
                         no
@@ -58,7 +58,7 @@
                 </td>
                 <!--NOTES-->
                 <td>
-                    <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>Notes</a>
+                    <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{% if course.notes is not none %}{{ course.notes }}{% endif %}'>Notes</a>
                 </td>
                 <!--LAST EDITED BY-->
                 <td>
