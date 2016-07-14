@@ -71,7 +71,7 @@ class TrackerEdit():
             addUser.save(force_insert=True)
     return True
 
-  def find_instructor_changes(self, newInstructors, courseInstructors):
+  def find_instructor_changes(self, newInstructors):
     '''Purpose: To record the newInstructors to InstructorCourseChange
     based off if changes exist. Author --> CDM 20160713
     @param  -newInstructors {{list of strings}}
@@ -139,8 +139,8 @@ class TrackerEdit():
     changeType.Author-> CDM 20160713'''
     if self.courseChangeExist is None:
         return cfg['changeType']['update']
-    elif (self.courseChangeExist.changeType == cfg['changeType']['create']) or (
-      self.courseChangeExist.changeType == cfg['changeType']['create/update']:)
+    elif (self.courseChangeExist.changeType == cfg['changeType']['create']) or \
+      (self.courseChangeExist.changeType == cfg['changeType']['create/update']):
         return cfg['changeType']['create/update']
     else:
         # TODO: Log the error
