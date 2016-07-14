@@ -43,7 +43,7 @@ def addCourses(tid, page, prefix):
                         schedule=values['schedule'],
                         capacity=values['capacity'],
                         specialTopicName=values['specialTopicName'],
-                        notes=data['requests'],
+                        notes=values['requests'],
                         crossListed=int(data['crossListed']),
                         rid=values['rid']
                         )

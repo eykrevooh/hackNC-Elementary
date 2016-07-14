@@ -29,7 +29,7 @@ class NullCheck():
        value['specialTopicName'] = None
     #CHECK DATA FOR EMPTY STRING
     #THESE ARE ALL OF THE VALUES THAT COULD CONTAIN AN EMPTY STRING
-    checkList = ['capacity','schedule','rid'] 
+    checkList = ['capacity','schedule','rid','requests'] 
     for item in checkList:
       if data[item]=="":
         value[item]=None
