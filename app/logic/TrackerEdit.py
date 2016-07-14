@@ -25,6 +25,10 @@ class TrackerEdit():
         #Turn crossListed into bol values
         #Import for comparing the formValue with courseValue
         formData['crossListed'] = True if formData['crossListed']=='1' else False
+        #formData['cid'] = int(formData['cid'])
+        if formData['capacity'] != None:
+          formData['capacity'] = int(formData['capacity'])
+        return formData
     except Exception as e:
         # TODO: Log Error
         return 'Error'
@@ -36,11 +40,12 @@ class TrackerEdit():
     @return -changeExist: if course exist return peewee object of course else 
     return None :Author -> CDM 20160713'''
     try:
-        changeExist = CourseChange.get(
-            CourseChange.cId == self.formData['cid'])
-        # Set the class variable colorList to the current tdcolors
-        self.colorList = changeExist.tdcolors.split(",")
-        return changeExist
+      print type(self.formData)
+      print self.formData['cid']
+      changeExist = CourseChange.get(CourseChange.cId == self.formData['cid'])
+      # Set the class variable colorList to the current tdcolors
+      self.colorList = changeExist.tdcolors.split(",")
+      return changeExist
     except CourseChange.DoesNotExist:
         return None
 
@@ -50,12 +55,11 @@ class TrackerEdit():
       @param -instructors {{PeeWee Object}}
       @return -instrList {{list user's usernames}}
       Author --> CDM 20160713'''
-    instructors = InstructorCourse.select().where(
-        InstructorCourse.course == self.formData['cid'])
+    instructors = InstructorCourse.select().where(InstructorCourse.course == self.formData['cid'])
+    instrList = []
     if instructors:
-        instrList = []
-        for instructor in instructors:
-            instrList.append(instructor.username.username)
+      for instructor in instructors:
+          instrList.append(instructor.username.username)
     return instrList
 
   def add_instructors(self, usernameList):
@@ -122,6 +126,7 @@ class TrackerEdit():
     # Check null before using forgein key
     courseSchedule = course.schedule.sid if course.schedule is not None else None
     courseRoom = course.rid.rID if course.rid is not None else None
+    print self.formData['room']
     # Order the course data to match the order as the formCourseKeys
     courseData = [
         courseSchedule,
@@ -139,6 +144,7 @@ class TrackerEdit():
         color = cfg['columnColor']['edit']
       else:
         color = cfg['columnColor']['default']
+ 
       self.add_color(color, cfg['tableLayout'][tableLayout[index]])
 
   def find_change_type(self):
@@ -166,7 +172,7 @@ class TrackerEdit():
           bannerRef   = course.bannerRef.reFID,
           term        = self.formData['term'],
           schedule    = self.formData['schedule'],
-          capacity    = int(self.formData['capacity']),
+          capacity    = self.formData['capacity'],
           notes       = self.formData['notes'],
           # USERNAME IS PASSED INTO THE METHOD
           lastEditBy  = username,
