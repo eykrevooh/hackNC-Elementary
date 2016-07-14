@@ -1,10 +1,9 @@
 from allImports import *
-from app.log
+from app.logic.getAuthUser import AuthorizedUser
 @app.route("/editProgram", methods=["POST"])
 def editProgram():
-    username = authUser(request.environ)
-    admin = User.get(User.username == username)
-    if admin.isAdmin:
+    authorizedUser = AuthorizedUser()
+    if authorizedUser.isAdmin():
       page        = "/" + request.url.split("/")[-1]
       data        = request.form
       newChairs   = request.form.getlist('professors[]')
