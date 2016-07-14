@@ -1,9 +1,10 @@
 from allImports import *
+from app.logic.getAuthUser import AuthorizedUser
 @app.route("/editDivision", methods=["POST"])
 def editDivision():
-    username = authUser(request.environ)
-    admin = User.get(User.username == username)
-    if admin.isAdmin:
+    authorizedUser = AuthorizedUser()
+    if authorizedUser.isAdmin():
+      
       page        = "/" + request.url.split("/")[-1]
       data        = request.form
       newChairs   = request.form.getlist('professors[]')

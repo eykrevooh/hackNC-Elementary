@@ -1,4 +1,5 @@
 from allImports import *
+from app.log
 @app.route("/editProgram", methods=["POST"])
 def editProgram():
     username = authUser(request.environ)
