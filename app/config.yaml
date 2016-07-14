@@ -45,10 +45,6 @@ adminMenu:
     - title: "Course Management"
       link:  "/courseManagement/crossListed"
 
- 
- 
-    
-
 termInfo:
 #the keys correlate to the last two digits in the term code eg: Fall 2016 = 201611 
     11: 'Fall'                    # e.g. Fall 2016 = 201611
