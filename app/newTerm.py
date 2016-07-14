@@ -1,13 +1,13 @@
 from allImports import *
 from switch import *
 import sys
+from app.logic.getAuthUser import AuthorizedUser
 @app.route("/newTerm", methods=["POST"])
 def newterm():
   page        = request.path  
-  username    = authUser(request.environ)
-  admin       = User.get(User.username == username)
+  authorizedUser = AuthorizedUser()
   try: 
-    if admin.isAdmin:
+    if admin.isAdmin():
       data            = request.form
       info_key        = int(data['keyValue'])
       term_year       = data['year']

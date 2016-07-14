@@ -1,13 +1,13 @@
 from allImports import *
 from updateCourse import DataUpdate
+from app.logic.getAuthUser import AuthorizedUser
 
 
 @app.route("/admin/programManagement/<pid>", methods=["GET", "POST"])
 def adminProgramManagement(pid):
   # if (request.method == "GET"):
-   username = authUser(request.environ)
-   admin = User.get(User.username == username)
-   if admin.isAdmin:
+   authorizedUser = AuthorizedUser()
+   if authorizedUser.isAdmin():
       users = User.select()
       divisions = Division.select()
       programs  = Program.select()
