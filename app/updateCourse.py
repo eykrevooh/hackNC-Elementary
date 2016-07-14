@@ -49,9 +49,10 @@ class DataUpdate():
             # WE DON'T HAVE TO CHECK THIS VALUE BECAUSE IT CAN NEVER BE
             # NULL
             term=course.term.termCode,
-            schedule=values['schedule'],
+            schedule = values['schedule'],
             specialTopicName=course.specialTopicName,
             capacity=course.capacity,
+            
             notes=course.notes,
             lastEditBy=course.lastEditBy,
             changeType=changeType,
@@ -96,7 +97,7 @@ class DataUpdate():
 
 
     def verifyCourseChange(self, data):
-        course = CourseChange.get(CourseChange.cId == int(data['id']))
+        course = CourseChange.get(CourseChange.cId == data['id'])
         course.delete_instance()
         instructors = InstructorCourseChange.select().where(
             InstructorCourseChange.course == int(data['id']))
