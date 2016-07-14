@@ -110,3 +110,8 @@ return terms
 
 def getAllTerms():
     return Term.select().order_by(-Term.termCode)
+    
+    
+def isTermEditable(termID):
+    ''' returns booleans stating whether the term is editable'''
+    return Term.get(Term.termCode == int(termID)).editable

@@ -1,7 +1,7 @@
 from allImports import *
 from updateCourse import DataUpdate
 from app.logic.getAuthUser import AuthorizedUser
-from app.logic.databaseInterface import addCourseInstructors
+from app.logic import databaseInterface
 from app.logic.NullCheck import NullCheck
 
 
@@ -52,10 +52,10 @@ def addCourses(tid, page, prefix):
 
         # we will need to keep the cid to enter the intructors
         cid = course.cId
-        addCourseInstructors(instructors, course.cId)
+        databaseInterface.addCourseInstructors(instructors, course.cId)
 
         newCourse = DataUpdate()
-        if not newCourse.isTermEditable(tid):  # IF THE TERM IS NOT EDITABLE
+        if not databaseInterface.isTermEditable(tid):  # IF THE TERM IS NOT EDITABLE
             # ADD THE COURSE TO THE COURSECHANGE TABLE
             newCourse.addCourseChange(cid, cfg["changeType"]["create"])
 

@@ -2,6 +2,7 @@ from allImports import *
 from updateCourse import DataUpdate
 from app.logic.TrackerEdit import TrackerEdit
 from app.logic.getAuthUser import AuthorizedUser
+from app.logic import databaseInterface
 
 @app.route("/editCourseModal/<tid>/<prefix>/<cid>/<page>", methods=["GET"])
 def editCourseModal(tid, prefix, cid, page):
@@ -47,8 +48,8 @@ def editcourse(tid, prefix, page):
     trackerEdit = TrackerEdit(data)
     professors = request.form.getlist('professors[]')
     
-    if not editCourse.isTermEditable(tid):
-      created = trackerEdit.make_edit(professors,username)
+    if not databaseInterface.isTermEditable(tid):
+      created = trackerEdit.make_edit(professors, username)
       #created = editcourse.addCourseChange(data['cid'], "update")
     editCourse.editCourse(data, prefix, professors)
     message = "Course: course {} has been edited".format(data['cid'])
