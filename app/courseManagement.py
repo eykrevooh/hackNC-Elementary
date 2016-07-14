@@ -120,7 +120,7 @@ def conflictsListed(tid):
 ################
 
 
-@app.route("/courseManagement/tracker/<tid>", methods=["GET"])
+@app.route("/courseManagement/tracker/<tid>/", methods=["GET"])
 def trackerListed(tid):
     # DATA FOR THE NAVBAR AND SIDE BAR
     page = "tracker"
@@ -164,12 +164,13 @@ def verifyChange(tid):
     if (request.method == "POST"):
         page = "/" + request.url.split("/")[-1]
         authorizedUser = AuthorizedUser()
-        
         if authorizedUser.isAdmin():
             data = request.form
+            print data
             verify = DataUpdate()
             verify.verifyCourseChange(data)
             message = "Course Change: {0} has been verified".format(data['id'])
             log.writer("INFO", page, message)
             flash("Your course has been marked verified")
-            return url_for("/courseManagement/tracker/<tid>")
+            return redirect(url_for("trackerListed", tid = tid))
+    
