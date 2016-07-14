@@ -6,8 +6,8 @@ class TrackerEdit():
 
   def __init__(self, data):
     '''@param -colorList will contain the order of color names for the tdColors field'''
-    self.colorList = [cfg['columnColor']['default']]
-    self.formData = self.format_data(data)
+    self.colorList         = [cfg['columnColor']['default']]
+    self.formData          = self.format_data(data)
     self.courseChangeExist = self.check_course_exist()
 
   # Ran On Init
@@ -22,7 +22,9 @@ class TrackerEdit():
         dataKeys = cfg['editForm']['dataKeys']
         for key in dataKeys:
             formData[key] = data[key] if data[key] != '' else None
-        return formData
+        #Turn crossListed into bol values
+        #Import for comparing the formValue with courseValue
+        formData['crossListed'] = True if formData['crossListed']=='1' else False
     except Exception as e:
         # TODO: Log Error
         return 'Error'
@@ -31,8 +33,8 @@ class TrackerEdit():
   def check_course_exist(self):
     '''Purpose to check if the cid exist in courseChange.
     @param  -cid {number} : Course Identification Number
-    @return -changeExist: if course exist return peewee object of course else return None
-    Author -> CDM 20160713'''
+    @return -changeExist: if course exist return peewee object of course else 
+    return None :Author -> CDM 20160713'''
     try:
         changeExist = CourseChange.get(
             CourseChange.cId == self.formData['cid'])
@@ -43,7 +45,8 @@ class TrackerEdit():
         return None
 
   def create_instructor_list(self):
-    '''Purpose: To create a list of instructor usernames from InstructorsCourse matching self.formData['cid']
+    '''Purpose: To create a list of instructor usernames from InstructorsCourse 
+    matching self.formData['cid']
       @param -instructors {{PeeWee Object}}
       @return -instrList {{list user's usernames}}
       Author --> CDM 20160713'''
@@ -52,7 +55,7 @@ class TrackerEdit():
     if instructors:
         instrList = []
         for instructor in instructors:
-            instrList.append(instructor.username)
+            instrList.append(instructor.username.username)
     return instrList
 
   def add_instructors(self, usernameList):
@@ -130,9 +133,13 @@ class TrackerEdit():
     tableLayout = ['Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes']
 
     for index in range(len(formKeys)):
-        color = cfg['columnColor']['edit'] if self.formData[
-            formKeys[index]] != courseData[index] else cfg['columnColor']['default']
-        self.add_color(color, cfg['tableLayout'][tableLayout[index]])
+      formValue   = str(self.formData[formKeys[index]])
+      courseValue = str(courseData[index])
+      if formValue != courseValue:
+        color = cfg['columnColor']['edit']
+      else:
+        color = cfg['columnColor']['default']
+      self.add_color(color, cfg['tableLayout'][tableLayout[index]])
 
   def find_change_type(self):
     '''PURPOSE: To return the correct changeType depending on the current 
@@ -154,18 +161,18 @@ class TrackerEdit():
       if self.courseChangeExist is not None:
           self.courseChangeExist.delete_instance()
       edit = CourseChange(
-          cId=self.formData['cid'],
-          prefix=course.prefix.prefix,
-          bannerRef=course.bannerRef.reFID,
-          term=self.formData['term'],
-          schedule=self.formData['schedule'],
-          capacity=self.formData['capacity'],
-          notes=self.formData['notes'],
+          cId         = self.formData['cid'],
+          prefix      = course.prefix.prefix,
+          bannerRef   = course.bannerRef.reFID,
+          term        = self.formData['term'],
+          schedule    = self.formData['schedule'],
+          capacity    = int(self.formData['capacity']),
+          notes       = self.formData['notes'],
           # USERNAME IS PASSED INTO THE METHOD
-          lastEditBy=username,
-          changeType=self.find_change_type(),
-          rid=self.formData['room'],
-          crossListed=self.formData['crossListed'],
+          lastEditBy  = username,
+          changeType  = self.find_change_type(),
+          rid         = self.formData['room'],
+          crossListed = self.formData['crossListed'],
           # Turn self.colorList into a comma seperated list
           tdcolors=",".join(self.colorList))
       result = edit.save(force_insert=True)

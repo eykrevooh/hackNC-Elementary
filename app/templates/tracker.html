@@ -33,12 +33,9 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Course Name</th>
-                <th>Taught By</th>
-                <th>Schedule</th>
-                <th>Capacity</th>
-                <th>Notes</th>
-                <th>Last Edited By</th>
+                {% for value in cfg['tableLayout']['order'] %}
+                  <th>{{value}}</th>
+                {% endfor %}
                 <th></th>
 				      </tr>
             </thead>
@@ -55,7 +52,7 @@
                   </td>
                   <td id="professors"class="{{classDict[course.cId][1]}}">
                     {% for instructor in instructorsDict[course.cId] %}
-                      {# {{instructor.username}} #}
+                      {{instructor.username.username}} 
                     {% endfor %}
                   </td>
                   <td id="schedule"class="{{classDict[course.cId][2]}}">
@@ -63,14 +60,29 @@
                       {{course.schedule.days}} {{course.schedule.startTime.strftime('%H:%M')}} - {{course.schedule.endTime.strftime('%H:%M')}}
                     {% endif %}
                   </td>
-                  <td id="capacity"class="{{classDict[course.cId][3]}}">
+                  <td id="room" class="{{classDict[course.cId][3]}}">
+                    {% if course.rid is not none %}
+                      {{course.rid.building}}:{{course.rid.number}}
+                    {% else %}
+                      <p> None </p>
+                    {% endif %}
+                  </td>
+                  <td id="capacity"class="{{classDict[course.cId][4]}}">
                     {{course.capacity}}
                   </td>
-                  <td id="notes"class="{{classDict[course.cId][4]}}">
+                  <td id='crossListed' class="{{classDict[course.cId][5]}}">
+                    {% if course.crossListed == 1 %}
+                      <p>Yes</p>
+                    {% else %}
+                      <p>No</p>
+                    {% endif %}
+                  </td>
+                  <td id="notes"class="{{classDict[course.cId][6]}}">
                     <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>
                       Notes
                     </a>
                   </td>
+                  <td id=
                   <td>
                     <a href="" data-toggle="modal" data-id="" data-target="#verifyCourseChange"><span class="glyphicon glyphicon-check" aria-hidden="true" style="color:gray;"></span></a>
                   </td>

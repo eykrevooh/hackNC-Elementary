@@ -26,7 +26,7 @@
             <option value="">---</option>
             {% for room in rooms %}
               <option value="{{room.rID}}"
-                {% if course.rid == room.rID %}
+                {% if course.rid.rID == room.rID %}
                   selected
                 {% endif %} 
               >
@@ -88,9 +88,7 @@
           </div>
           {# --Notes-- #}
           <h5>Notes</h5>
-          <textarea class="form-control" name="notes">
-            {{course.notes}}
-          </textarea>
+          <textarea class="form-control" name="notes">{{course.notes}}</textarea>
           {# --Instructors-- #}
           <h5>Edit Instructor</h5>
           <select class="chosen-select" id="professors"  name="professors[]" multiple>
