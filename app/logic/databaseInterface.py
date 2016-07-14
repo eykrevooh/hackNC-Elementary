@@ -125,29 +125,32 @@ def editInstructors(newInstructors, courseID):
     oldInstructors = InstructorCourse.select().where(
             InstructorCourse.course == courseID)
     for oldInstructor in oldInstructors:
-            if oldInstructor.username.username not in professors:
+            if oldInstructor.username.username not in newInstructors:
                 oldInstructor.delete_instance()
             else:
-                professors.remove(oldInstructor.username.username)
+                newInstructors.remove(oldInstructor.username.username)
     for instructor in newInstructors:
             newInstructor = InstructorCourse(
                 username=instructor, course=courseID)
             newInstructor.save()
             
             
-def editCourse(self, data, prefix, professors):
+def editCourse(data, prefix, professors):
         '''THIS FUNCTION EDITS THE COURSE DATA TABLE'''
         # check to see if the user has privileges to edit
         # get the course object
         course = Course.get(Course.cId == int(data['cid']))
+        course.rid = data['room']
         course.term = data['term']
         if data['capacity']:
             course.capacity = data['capacity']
-        course.schedule = data['schedule']
-        course.notes = data['notes']
+        schedule = data['schedule'] if data['schedule'] else None
+        course.schedule = schedule
+        notes = data['notes'] if data['notes'] else None
+        course.notes = notes
         course.lastEditBy = authUser(request.environ)
         course.save()
-        databaseInterface.editInstructors(professors, data['cid'])    
+        editInstructors(professors, data['cid'])    
     
 def isTermEditable(termID):
     ''' returns booleans stating whether the term is editable'''
