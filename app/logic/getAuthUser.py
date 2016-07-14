@@ -17,7 +17,7 @@ class AuthorizedUser:
     '''
     returns the username of the user
     '''
-    def getUsername():
+    def getUsername(self):
         return self.username
         
         
