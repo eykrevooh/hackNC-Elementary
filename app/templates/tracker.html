@@ -52,7 +52,7 @@
                   </td>
                   <td id="professors"class="{{classDict[course.cId][1]}}">
                     {% for instructor in instructorsDict[course.cId] %}
-                      {# {{instructor.username}} #}
+                      {{instructor.username.username}} 
                     {% endfor %}
                   </td>
                   <td id="schedule"class="{{classDict[course.cId][2]}}">
