@@ -22,5 +22,5 @@ def adminProgramManagement(pid):
                               users         = users,
                               divisions     = divisions,
                               programs      = programs,
-                              isAdmin       = admin.isAdmin)
+                              isAdmin       = authorizedUser.isAdmin())
    
