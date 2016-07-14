@@ -1,11 +1,14 @@
 from allImports import *
 from updateCourse import DataUpdate
 from app.logic.TrackerEdit import TrackerEdit
+from app.logic.getAuthUser import AuthorizedUser
 
 @app.route("/editCourseModal/<tid>/<prefix>/<cid>/<page>", methods=["GET"])
 def editCourseModal(tid, prefix, cid, page):
+  authorizedUser = AuthorizedUser(prefix)
+  
   checkUser = DataUpdate()
-  if checkUser.checkUserLevel(prefix):
+  if AuthorizedUser.isAuthorized():
     
     # Select all schedules
     schedules = BannerSchedule.select()
@@ -35,13 +38,15 @@ def editCourseModal(tid, prefix, cid, page):
 @app.route("/editcourse/<tid>/<prefix>/<page>", methods=["POST"])
 def editcourse(tid, prefix, page):
   #WE NEED TO CHECK TO ENSURE THE USER HAS THE RIGHT TO EDIT PAGES
+  authorizedUser = AuthorizedUser(prefix)
   editCourse = DataUpdate()
-  if editCourse.checkUserLevel(prefix):
-    username = authUser(request.environ)
+  if authorizedUser.isAuthorized():
+    username = authorizedUser.getUsername()
     page1 =  "/" + request.url.split("/")[-1]
     data = request.form
     trackerEdit = TrackerEdit(data)
     professors = request.form.getlist('professors[]')
+    
     if not editCourse.isTermEditable(tid):
       created = trackerEdit.make_edit(professors,username)
       #created = editcourse.addCourseChange(data['cid'], "update")
@@ -56,5 +61,3 @@ def editcourse(tid, prefix, page):
       return redirect(url)
   else:
     return render_template("404.html", cfg=cfg)
-  
-  #Stop hating ishwar, lol

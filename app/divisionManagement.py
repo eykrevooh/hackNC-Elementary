@@ -1,13 +1,13 @@
 from allImports import *
 from updateCourse import DataUpdate
+from app.logic.getAuthUser import AuthorizedUser
 
 
 @app.route("/admin/divisionManagement/<did>", methods=["GET", "POST"])
 def adminDivisionManagement(did):
   if (request.method == "GET"):
-      username = authUser(request.environ)
-      admin = User.get(User.username == username)
-      if admin.isAdmin:
+      authorizedUser = AuthorizedUser()
+      if authorizedUser.isAdmin():
          users = User.select()
          divisions = Division.select()
          division = Division.get(Division.dID == did)
@@ -20,4 +20,4 @@ def adminDivisionManagement(did):
                                  cfg           = cfg,
                                  users         = users,
                                  divisions     = divisions,
-                                 isAdmin       = admin.isAdmin)
+                                 isAdmin       = authorizedUser.isAdmin)

@@ -1,6 +1,6 @@
 from allImports import *
 from updateCourse import DataUpdate
-from getAuthUser import AuthorizedUser
+from app.logic.getAuthUser import AuthorizedUser
 import datetime
 
 
@@ -26,6 +26,6 @@ def deadlineDisplay():
 
     return render_template("deadline.html",
                            cfg=cfg,
-                           isAdmin=admin.isAdmin,
+                           isAdmin=authorizedUser.isAdmin(),
                            deadlines=deadlines,
                            today=today)

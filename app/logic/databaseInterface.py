@@ -70,6 +70,7 @@ def getSidebarElements():
     return (Division.select(), Program.select(), Subject.select())
 
 
+
 ''' gets the instructors belonging to a course
 @param {list} courses - list of courses
 

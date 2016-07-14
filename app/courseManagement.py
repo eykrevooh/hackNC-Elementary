@@ -164,6 +164,7 @@ def verifyChange(tid):
     if (request.method == "POST"):
         page = "/" + request.url.split("/")[-1]
         authorizedUser = AuthorizedUser()
+        
         if authorizedUser.isAdmin():
             data = request.form
             verify = DataUpdate()
