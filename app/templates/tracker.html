@@ -4,6 +4,7 @@
 {% extends "base.html" %} 
 {% set currentPage = "tracker" %}
 {% block body %}
+<script src="/static/js/local/popup.js"></script>
 <body>
   <div id="wrapper">
     {%include "snips/courseManagementSidebar.html" %}
@@ -78,19 +79,20 @@
                     {% endif %}
                   </td>
                   <td id="notes"class="{{classDict[course.cId][6]}}">
-                    <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{course.notes}}'>
+                    <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{% if course.notes is not none %}{{ course.notes }}{% endif %}'>
                       Notes
                     </a>
                   </td>
                   <td id=
                   <td>
-                    <a href="" data-toggle="modal" data-id="" data-target="#verifyCourseChange"><span class="glyphicon glyphicon-check" aria-hidden="true" style="color:gray;"></span></a>
+                    <a href="" data-toggle="modal" data-id="" data-target="#verifyCourseChange{{course.cId}}"><span class="glyphicon glyphicon-check" aria-hidden="true" style="color:gray;"></span></a>
+                    {% include "snips/verifiedCourseChange.html" %}
                   </td>
                 </tr>
               {% endfor %}  
             </tbody>
           </table>
-           {% include "snips/verifiedCourseChange.html" %} 
+            
         </div>
     </div>
   </div>
