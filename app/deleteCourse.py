@@ -1,6 +1,7 @@
 from allImports import *
 from updateCourse import DataUpdate
 from app.logic.getAuthUser import AuthorizedUser
+from app.logic import databaseInterface
 
 
 @app.route("/deletecourse/<tid>/<prefix>/<page>", methods=["POST"])
@@ -19,7 +20,7 @@ def deletecourse(prefix, tid, page):
     course = Course.get(Course.cId == cid)
     # MAKE SURE THE USER HAS THE CORRECT RIGHTS TO DELETE A COURSE
     if authorizedUser.isAuthorized():
-        if not dataUpdateObj.isTermEditable(tid):
+        if not databaseInterface.isTermEditable(tid):
 
             change = CourseChange.select().where(CourseChange.cId == cid)
             # IF THE RECORD ALREADY EXSISTED THEN WE NEED TO UPDATE THE
