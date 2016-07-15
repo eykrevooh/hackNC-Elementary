@@ -139,12 +139,6 @@
     <label for="newDeadline">Add a new deadline</label>
     <form action="/deadline/create" method="post" id="newDeadline" class="form-inline">
       <div class="form-group">
-        <select class="form-control" name="term">
-          {% for term in terms %}
-            <option value="{{term.termCode}}" required>
-              {{term.name}}
-            </option>
-          {% endfor %}
         </select>
          <textarea placeholder="Description" class="form-control" id="exampleTextarea" rows="1" name="deadlineDescription" required></textarea>
     <input type="date" placeholder="Click Me" class="form-control" min="{{today}}" name="deadlineDate" required>

@@ -12,7 +12,6 @@ def deadlineCreate():
         data = request.form
 
         deadline = Deadline.create(
-            term=data['term'],
             description=data['deadlineDescription'],
             date=data['deadlineDate'])
         deadline.save()
