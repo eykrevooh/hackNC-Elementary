@@ -7,7 +7,7 @@ def newterm():
   page        = request.path  
   authorizedUser = AuthorizedUser()
   try: 
-    if admin.isAdmin():
+    if authorizedUser.isAdmin():
       data            = request.form
       info_key        = int(data['keyValue'])
       term_year       = data['year']
