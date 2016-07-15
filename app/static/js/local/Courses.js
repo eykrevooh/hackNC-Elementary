@@ -50,14 +50,16 @@ $(document).ready(function(){
 
 var infoLabel = '<div class="notice alert alert-warning alert-dismissible" role="alert">\
                 <p>Choosing a room does not guarantee that the room will assigned</p>\
-              </div>'
+              </div>';
+console.log('loaded file')
 
-  var selected
+var selected;
 $( document ).ready(
  function()
  { 
   $( '#roomSelect' )
       .mousedown( function(){ 
+         console.log('happened');
          $("#menu-toggle").before(infoLabel);
          selected = $( this ).val(); 
       })
