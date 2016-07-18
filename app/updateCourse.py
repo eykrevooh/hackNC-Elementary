@@ -56,7 +56,7 @@ class DataUpdate():
             capacity=course.capacity,
             
             notes=course.notes,
-            lastEditBy=course.lastEditBy,
+            lastEditBy=self.username,
             changeType=changeType,
             rid=values['rid'],
             crossListed=course.crossListed,
