@@ -61,7 +61,6 @@ changeType:
   create: 'create'
   delete: 'delete'
   update: 'update'
-  create/update: 'create/update'
   
 tableLayout:
   order: ['Course Name', 'Taught By', 'Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes', 'Term']
