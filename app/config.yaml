@@ -75,7 +75,7 @@ tableLayout:
   Term:         7
   
 columnColor:
-  edit:     'danger'
+  edit:     'warning'
   delete:   'danger'
   create:   'success'
   default:  'none'
