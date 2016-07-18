@@ -40,11 +40,7 @@ class TrackerEdit():
     @return -changeExist: if course exist return peewee object of course else 
     return None :Author -> CDM 20160713'''
     try:
-      print type(self.formData)
-      print self.formData['cid']
       changeExist = CourseChange.get(CourseChange.cId == self.formData['cid'])
-      # Set the class variable colorList to the current tdcolors
-      self.colorList = changeExist.tdcolors.split(",")
       return changeExist
     except CourseChange.DoesNotExist:
         return None
@@ -108,8 +104,6 @@ class TrackerEdit():
     if color == cfg['columnColor']['edit']:
         if self.courseChangeExist is None:
             self.colorList.append(color)
-        else:
-            self.colorList[index] = color
     else:
         if self.courseChangeExist is None:
             self.colorList.append(color)
