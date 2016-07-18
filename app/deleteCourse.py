@@ -31,8 +31,6 @@ def deletecourse(prefix, tid, page):
                     updateRecord.delete_instance()
                 else:
                     updateRecord.changeType = cfg["changeType"]["delete"]
-                    updateRecord.tdcolors = tdcolors
-                    updateRecord.lastEditBy = authorizedUser.getUsername()
                     updateRecord.save()
             else:
                 dataUpdateObj.addCourseChange(
