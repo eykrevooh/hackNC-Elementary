@@ -9,3 +9,7 @@
 .glyphicon.disabled {
     color: #d3d3d3;
 }
+
+textarea {
+    resize: vertical;
+}

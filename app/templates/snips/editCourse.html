@@ -26,9 +26,11 @@
             <option value="">---</option>
             {% for room in rooms %}
               <option value="{{room.rID}}"
+              {% if course.rid is not none %}
                 {% if course.rid.rID == room.rID %}
                   selected
-                {% endif %} 
+                {% endif %}
+              {% endif %}
               >
                 {{ room.building }} : {{room.number}}
               </option>
