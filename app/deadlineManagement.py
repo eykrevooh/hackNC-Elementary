@@ -1,6 +1,7 @@
 from allImports import *
 from updateCourse import DataUpdate
 from app.logic.getAuthUser import AuthorizedUser
+from app.logic.redirectBack import redirect_url
 import datetime
 
 
@@ -19,7 +20,7 @@ def deadlineCreate():
         message = "Deadline: {0} has been added".format(deadline.description)
         log.writer("INFO", page, message)
         flash("Your Deadline has been created")
-    return redirect(url_for("systemManagement"))
+    return redirect(redirect_url())
 
 
 @app.route("/deadline/edit", methods=["POST"])
@@ -37,7 +38,7 @@ def deadlineEdit():
             deadline.description)
         log.writer("INFO", page, message)
         flash("Your Deadline has been edited")
-    return redirect(url_for("deadlineDisplay"))
+    return redirect(redirect_url())
 
 
 @app.route("/deleteDeadline", methods=["POST"])
@@ -54,4 +55,4 @@ def deleteDeadline():
         message = "Deadline: {0} has been deleted".format(deadline.description)
         log.writer("INFO", page, message)
         flash("Your Deadline has been deleted")
-    return redirect(url_for("deadlineDisplay"))
+    return redirect(redirect_url())
