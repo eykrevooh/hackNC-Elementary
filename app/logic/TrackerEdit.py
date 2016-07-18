@@ -41,6 +41,8 @@ class TrackerEdit():
     return None :Author -> CDM 20160713'''
     try:
       changeExist = CourseChange.get(CourseChange.cId == self.formData['cid'])
+      # Set the class variable colorList to the current tdcolors
+      self.colorList = changeExist.tdcolors.split(",")
       return changeExist
     except CourseChange.DoesNotExist:
         return None
@@ -104,6 +106,9 @@ class TrackerEdit():
     if color == cfg['columnColor']['edit']:
         if self.courseChangeExist is None:
             self.colorList.append(color)
+        else:
+          if self.courseChangeExist.changeType == cfg['changeType']['update']:
+            self.colorList[index] = color
     else:
         if self.courseChangeExist is None:
             self.colorList.append(color)
@@ -146,12 +151,8 @@ class TrackerEdit():
     changeType.Author-> CDM 20160713'''
     if self.courseChangeExist is None:
         return cfg['changeType']['update']
-    elif (self.courseChangeExist.changeType == cfg['changeType']['create']) or \
-      (self.courseChangeExist.changeType == cfg['changeType']['create/update']):
-        return cfg['changeType']['create/update']
     else:
-        # TODO: Log the error
-        return 'Error'
+      return self.courseChangeExist.changeType
 
   def record_edit(self, username):
       '''Purpose: To delete the current information inside of courseChange, if
