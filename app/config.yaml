@@ -64,7 +64,7 @@ changeType:
   create/update: 'create/update'
   
 tableLayout:
-  order: ['Course Name', 'Taught By', 'Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes']
+  order: ['Course Name', 'Taught By', 'Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes', 'Term']
   Course Name:  0
   Taught By:    1 
   Schedule:     2
