@@ -147,6 +147,7 @@ def editCourse(data, prefix, professors):
         schedule = data['schedule'] if data['schedule'] else None
         notes = data['notes'] if data['notes'] else None
         
+        course.crossListed = int(data["crossListed"])
         course.term = data['term']
         course.capacity = capacity
         course.rid  = room

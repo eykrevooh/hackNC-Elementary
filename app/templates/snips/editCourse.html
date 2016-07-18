@@ -71,7 +71,7 @@
           <div class="radio">
             <label>
               <input type="radio" name="crossListed" id="exampleRadios1" value=1 required
-                {% if course.crossListed is not none %}
+                {% if course.crossListed == 1 %}
                   checked="checked"
                 {% endif %}
               >
@@ -81,7 +81,7 @@
           <div class="radio">
             <label>
               <input type="radio" name="crossListed" id="exampleRadios1" value=0 required
-                {% if course.crossListed == none %}
+                {% if course.crossListed == 0 %}
                   checked="checked"
                 {% endif %}
               >

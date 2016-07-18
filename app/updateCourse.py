@@ -59,7 +59,7 @@ class DataUpdate():
             lastEditBy=self.username,
             changeType=changeType,
             rid=values['rid'],
-            crossListed=course.crossListed,
+            crossListed=int(course.crossListed),
             tdcolors=tdcolors)
         number = newcourse.save(force_insert=True)
         # WHENEVER CERTAINING A NON AUTO INCREMENTED PRIMARY KEY
@@ -73,6 +73,7 @@ class DataUpdate():
             course.term = newcourse.term
             course.capacity = newcourse.capacity
             course.schedule = newcourse.schedule
+            course.crossListed = newcourse.crossListed
             course.notes = newcourse.notes
             course.lastEditBy = newcourse.lastEditBy
             course.changeType = changeType

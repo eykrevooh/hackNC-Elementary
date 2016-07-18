@@ -24,7 +24,7 @@ class TrackerEdit():
             formData[key] = data[key] if data[key] != '' else None
         #Turn crossListed into bol values
         #Import for comparing the formValue with courseValue
-        formData['crossListed'] = True if formData['crossListed']=='1' else False
+      
         #formData['cid'] = int(formData['cid'])
         if formData['capacity'] != None:
           formData['capacity'] = int(formData['capacity'])
@@ -175,7 +175,7 @@ class TrackerEdit():
           lastEditBy  = username,
           changeType  = self.find_change_type(),
           rid         = self.formData['room'],
-          crossListed = self.formData['crossListed'],
+          crossListed = int(self.formData['crossListed']),
           # Turn self.colorList into a comma seperated list
           tdcolors=",".join(self.colorList))
       result = edit.save(force_insert=True)
