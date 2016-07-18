@@ -132,7 +132,7 @@ def trackerListed(tid):
     if (request.method == "GET"):
         if authorizedUser.isAdmin():
 
-            courses = CourseChange.select().where(CourseChange.verified == False)
+            courses = CourseChange.select().where(CourseChange.verified == False).order_by(CourseChange.term)
 
             instructorsDict = databaseInterface.createInstructorDict(courses)
 
