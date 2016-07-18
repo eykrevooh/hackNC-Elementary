@@ -1,7 +1,10 @@
+#Ignore c9 files
+app/.~c9_invoke_*
+.c9/*
+.c9/metadata/tab3
+
 *.pyc
 config.py
 *.log
 *sqlite
-.c9/*
-.c9/metadata/tab3
 venv/*
