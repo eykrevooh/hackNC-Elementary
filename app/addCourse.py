@@ -3,6 +3,7 @@ from updateCourse import DataUpdate
 from app.logic.getAuthUser import AuthorizedUser
 from app.logic import databaseInterface
 from app.logic.NullCheck import NullCheck
+from app.logic.redirectBack import redirect_url
 
 
 '''
@@ -11,12 +12,12 @@ adds the course to the course table and to the course change if needed
 
 
 @app.route(
-    "/addCourse/<tid>/<page>/",
+    "/addCourse/<tid>/",
     defaults={
         'prefix': 0},
     methods=["POST"])
-@app.route("/addCourse/<tid>/<page>/<prefix>", methods=["POST"])
-def addCourses(tid, page, prefix):
+@app.route("/addCourse/<tid>/<prefix>", methods=["POST"])
+def addCourses(tid, prefix):
     # check to see if they are authorized to change anything
     authorizedUser = AuthorizedUser(prefix)
 
@@ -63,10 +64,6 @@ def addCourses(tid, page, prefix):
         message = "Course: #{0} has been added".format(cid)
         log.writer("INFO", current_page, message)
         flash("Course has successfully been added!")
-        if page == "courses":
-            return redirect(url_for("courses", tID=str(tid), prefix=prefix))
-        else:
-            url = "courseManagement/" + page + "/" + str(tid)
-            return redirect(url)
+        return redirect(redirect_url())
     else:
         return render_template("404.html", cfg=cfg)

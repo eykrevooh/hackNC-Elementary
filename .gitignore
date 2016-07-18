@@ -2,7 +2,7 @@
 app/.~c9_invoke_*
 .c9/*
 .c9/metadata/tab3
-
+data/
 *.pyc
 config.py
 *.log
