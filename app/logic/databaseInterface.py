@@ -133,20 +133,24 @@ def editInstructors(newInstructors, courseID):
             newInstructor = InstructorCourse(
                 username=instructor, course=courseID)
             newInstructor.save()
-            
-            
+
 def editCourse(data, prefix, professors):
         '''THIS FUNCTION EDITS THE COURSE DATA TABLE'''
         # check to see if the user has privileges to edit
         # get the course object
+        #TODO: We are not doing null checks on the portion of
+        #the code which is causing crashes on the system 
         course = Course.get(Course.cId == int(data['cid']))
-        course.rid = data['room']
-        course.term = data['term']
-        if data['capacity']:
-            course.capacity = data['capacity']
+        #CHECK VALUES FOR NULL
+        capacity = data['capacity'] if data['capacity'] else None
+        room     = data['room'] if data['room'] else None
         schedule = data['schedule'] if data['schedule'] else None
-        course.schedule = schedule
         notes = data['notes'] if data['notes'] else None
+        
+        course.term = data['term']
+        course.capacity = capacity
+        course.rid  = room
+        course.schedule = schedule
         course.notes = notes
         course.lastEditBy = authUser(request.environ)
         course.save()
