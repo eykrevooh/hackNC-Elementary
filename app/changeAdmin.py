@@ -1,6 +1,6 @@
 from allImports import *
 from app.logic.getAuthUser import AuthorizedUser
-
+from app.logic.redirectBack import redirect_url
 
 @app.route("/changeAdmin", methods=["POST"])
 def changeAdmin():
@@ -41,12 +41,12 @@ def changeAdmin():
             if username == data['admin']:
                 return redirect('/')
             else:
-                return redirect(url_for('systemManagement'))
+                return redirect(redirect_url())
         else:
             message = "A username was not selected during the process."
             log.writer("INFO", page, message)
             flash(message)
-            return redirect(url_for('systemManagement'))
+            return redirect(redirect_url())
     else:
         log.writer("ERROR", page, log.lowPrivilege)
         return render_template("404.html")

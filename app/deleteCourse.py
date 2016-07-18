@@ -2,10 +2,11 @@ from allImports import *
 from updateCourse import DataUpdate
 from app.logic.getAuthUser import AuthorizedUser
 from app.logic import databaseInterface
+from app.logic.redirectBack import redirect_url
 
 
-@app.route("/deletecourse/<tid>/<prefix>/<page>", methods=["POST"])
-def deletecourse(prefix, tid, page):
+@app.route("/deletecourse/<tid>/<prefix>", methods=["POST"])
+def deletecourse(prefix, tid):
 
     current_page = "/" + request.url.split("/")[-1]
 
@@ -42,9 +43,4 @@ def deletecourse(prefix, tid, page):
         course.delete_instance()
 
     flash("Course has been successfully deleted")
-
-    if page == 'courses':
-        return redirect(url_for("courses", tID=tid, prefix=prefix))
-    else:
-        url = "courseManagement/" + page + "/" + tid
-        return redirect(url)
+    return redirect(redirect_url())

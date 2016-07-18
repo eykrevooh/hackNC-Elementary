@@ -4,6 +4,7 @@ from updateCourse import DataUpdate
 from app.logic.getAuthUser import AuthorizedUser
 from app.logic import databaseInterface
 from app.logic import functions
+from app.logic.redirectBack import redirect_url
 import pprint
 
 #CROSS LISTED COURSES#
@@ -159,8 +160,8 @@ def trackerListed(tid):
         return render_template("404.html", cfg=cfg)
 
 
-@app.route("/courseManagement/tracker/<tid>/verified", methods=["POST"])
-def verifyChange(tid):
+@app.route("/courseManagement/tracker/verified", methods=["POST"])
+def verifyChange():
     if (request.method == "POST"):
         page = "/" + request.url.split("/")[-1]
         authorizedUser = AuthorizedUser()
@@ -171,5 +172,5 @@ def verifyChange(tid):
             message = "Course Change: {0} has been verified".format(data['id'])
             log.writer("INFO", page, message)
             flash("Your course has been marked verified")
-            return redirect(url_for("trackerListed", tid = tid))
+            return redirect(redirect_url())
     

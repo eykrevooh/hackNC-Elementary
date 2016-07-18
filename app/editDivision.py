@@ -1,5 +1,6 @@
 from allImports import *
 from app.logic.getAuthUser import AuthorizedUser
+from app.logic.redirectBack import redirect_url
 @app.route("/editDivision", methods=["POST"])
 def editDivision():
     authorizedUser = AuthorizedUser()
@@ -30,4 +31,4 @@ def editDivision():
         log.writer("INFO", page, message)
         
       flash("Division succesfully changed")
-      return redirect(url_for("adminDivisionManagement", did = did))
+      return redirect(redirect_url())

@@ -2,6 +2,8 @@ from allImports import *
 from switch import *
 import sys
 from app.logic.getAuthUser import AuthorizedUser
+from app.logic.redirectBack import redirect_url
+
 @app.route("/newTerm", methods=["POST"])
 def newterm():
   page        = request.path  
@@ -37,4 +39,4 @@ def newterm():
         flash("Term successfully created")
   except Exception as e:
     log.writer("ERROR","newTerm",e)
-  return redirect(url_for("systemManagement"))
+  return redirect(redirect_url())

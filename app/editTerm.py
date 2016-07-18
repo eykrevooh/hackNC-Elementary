@@ -1,5 +1,6 @@
 from allImports import *
 from app.logic.getAuthUser import AuthorizedUser
+from app.logic.redirectBack import redirect_url
 @app.route("/editTerm", methods=["POST"])
 def editterm():
     authorizedUser = AuthorizedUser()
@@ -12,4 +13,4 @@ def editterm():
         
       message = "Term: term {} has been made editable".format(data['termCode'])
       log.writer("INFO", page, message)
-      return redirect(url_for("systemManagement"))
+      return redirect(redirect_url())

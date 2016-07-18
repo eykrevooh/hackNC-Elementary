@@ -1,5 +1,6 @@
 from allImports import *
 from app.logic.getAuthUser import AuthorizedUser
+from app.logic.redirectBack import redirect_url
 @app.route("/editProgram", methods=["POST"])
 def editProgram():
     authorizedUser = AuthorizedUser()
@@ -30,7 +31,7 @@ def editProgram():
         log.writer("INFO", page, message)
         
       flash("Program succesfully changed")
-      return redirect(url_for("adminProgramManagement", pid = pid))
+      return redirect(redirect_url())
         
       
         
