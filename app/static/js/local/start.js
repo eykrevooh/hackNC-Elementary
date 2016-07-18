@@ -16,3 +16,13 @@ $('#deleteDeadline').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('#deadlineid').val(id)
 });
+
+
+$('.deadlineEditTextarea').on('change keyup keydown paste cut', function(e){
+    var that = $(this);
+    while (that.scrollTop()) {
+        $(this).height(function(i,h){
+            return h + 20;
+        });
+    }
+});

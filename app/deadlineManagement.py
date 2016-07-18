@@ -25,7 +25,7 @@ def deadlineCreate():
 @app.route("/deadline/edit", methods=["POST"])
 def deadlineEdit():
     page = "/" + request.url.split("/")[-1]
-    authorizedUser = AuthorizedUser
+    authorizedUser = AuthorizedUser()
     if authorizedUser.isAdmin():
         data = request.form
 

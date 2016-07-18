@@ -251,3 +251,11 @@ instructor = InstructorCourse(  username = "jadudm",
 instructor = InstructorCourse(  username = "myersco",
                                 course   = 3
                               ).save()  
+                              
+#######
+#ROOMS#
+#######
+room = Rooms(building = 'Ag Building', number ='102', maxCapacity=12, roomType="Something").save()
+room = Rooms(building = 'Tech Building', number ='105', maxCapacity=15, roomType="Lecture").save()
+
+room = Rooms(building = 'Ag Building', number ='103A', maxCapacity=12, roomType="Something").save()

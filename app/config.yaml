@@ -82,6 +82,6 @@ columnColor:
   
 DEBUG:
   user: "heggens" #Admin Access
-  #user: "pearcej" #Division Chair Access
-  #user: "jadudm"  #Program Chair Access
-  #user: "myersco" #Professor Access
+  # user: "pearcej" #Division Chair Access
+  # user: "jadudm"  #Program Chair Access
+  # user: "myersco" #Professor Access

@@ -1,59 +1,59 @@
-{% extends "base.html" %}
-{% set currentPage = "systemManagement" %}
-{% block body %}
- {% with messages = get_flashed_messages() %}
-	  {% if messages %}
-	    {% for message in messages %}
-		  <div class="alert alert-success alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-			{{message}}
-		  </div>
-		{% endfor %}
-	  {% endif %}
-	{% endwith %}
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" type="text/css" />
+{% extends "base.html" %} {% set currentPage = "systemManagement" %} {% block body %} {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> {{message}}
+</div>
+{% endfor %} {% endif %} {% endwith %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" type="text/css" />
 <link rel="stylesheet" href="/static/css/systemManagement.css" type="text/css" />
 <div class="panel panel-default">
   <!--TERM MANAGEMENT-->
   <div class="panel-heading">
     <h3 class="panel-title">Term Management</h3>
   </div>
-    <table class="table">
-      <thead>
-       <tr>
+  <table class="table">
+    <thead>
+      <tr>
         <th>Term(s)</th>
         <th></th>
-       </tr> 
-      </thead>
-      <tbody>
+      </tr>
+    </thead>
+    <tbody>
       {% for term in terms %}
-       <tr>
-         <td>{{term.name}}</td>
+      <tr>
+        <td>{{term.name}}</td>
+        {% if term.editable %}
+        <td>
+          <span class="glyphicon glyphicon-edit disabled" aria-hidden="true" style="color:#128f76;"></span>
+          <a href=# data-toggle="modal" data-target="#termModal{{term.termCode}}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></a> {% include "snips/termModal.html" %}
+        </td>
+        <td>
+          <p>Term changes <b>are not</b> being tracked.</p>
+        </td>
+        {% else %}
+        <td>
+          <a href=# data-toggle="modal" data-target="#termModal{{term.termCode}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+          <span class="glyphicon glyphicon-lock disabled" aria-hidden="true" style="color:#d62c1a;"></span> {% include "snips/termModal.html" %}
+        </td>
+        <td>
+          <p>Term changes <b>are</b> being tracked.</p>
+        </td>
+        {% endif %}
+      </tr>
+      <tr>
+        <td>{{term.name}}</td>
+        <td>
           {% if term.editable %}
-            <td>
-              <span class="glyphicon glyphicon-edit disabled" aria-hidden="true" style="color:#128f76;"></span>
-              <a href=# data-toggle="modal" data-target="#termModal{{term.termCode}}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></a>
-              {% include "snips/termModal.html" %}
-            </td>
-            <td>
-              <p>Term changes <b>are not</b> being tracked.</p>
-            </td>
-          {% else %}
-            <td>  
-              <a href=# data-toggle="modal" data-target="#termModal{{term.termCode}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-              <span class="glyphicon glyphicon-lock disabled" aria-hidden="true" style="color:#d62c1a;"></span>
-              {% include "snips/termModal.html" %}
-            </td>
-            <td>
-              <p>Term changes <b>are</b> being tracked.</p>
-            </td>
-          {% endif %}
-       </tr>
+          <span class="glyphicon glyphicon-edit disabled" aria-hidden="true" style="color:#128f76;"></span>
+          <a href=# data-toggle="modal" data-target="#termModal{{term.termCode}}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></a> {% else %}
+          <a href=# data-toggle="modal" data-target="#termModal{{term.termCode}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+          <span class="glyphicon glyphicon-lock disabled" aria-hidden="true" style="color:#d62c1a;"></span> {% endif %} {% include "snips/termModal.html" %}
+        </td>
+      </tr>
       {% endfor %}
-      </tbody>
-     </table>
-    <div class="panel-body">
+    </tbody>
+  </table>
+  <div class="panel-body">
     <!--CREATE A NEW TERM-->
     <label for="newTerm">Create a new term</label>
     <form action="\newTerm" method="post" id="newTerm" class="form-inline">
@@ -67,7 +67,7 @@
         </select>
       </div>
       <div class="form-group">
-          <select class="form-control" name="year">
+        <select class="form-control" name="year">
             {% for year in years %}
               <option value="{{year}}" required>
                 {{year}}
@@ -79,7 +79,7 @@
         <input type="submit" class="btn btn-success" value="Save">
       </div>
     </form>
-    </div>
+  </div>
 </div>
 <!--ADMINISTRATIVE USER MANAGEMENT-->
 <div class="panel panel-default">
@@ -140,24 +140,8 @@
   </div>
 </div>
 <!--DEADLINE MANAGEMENT-->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Deadline Management</h3>
-  </div>
-  <div class="panel-body">
-    <label for="newDeadline">Add a new deadline</label>
-    <form action="/deadline/create" method="post" id="newDeadline" class="form-inline">
-      <div class="form-group">
-        </select>
-         <textarea placeholder="Description" class="form-control" id="exampleTextarea" rows="1" name="deadlineDescription" required></textarea>
-    <input type="date" placeholder="Click Me" class="form-control" min="{{today}}" name="deadlineDate" required>
-
-
+{% include "snips/createDeadline.html" %}
 </div>
-            <input type="submit" class="btn btn-success" value="Add">
-
-        </div>
-    </div>
 
 
 {% endblock %}

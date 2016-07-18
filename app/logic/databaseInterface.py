@@ -143,7 +143,10 @@ def editCourse(data, prefix, professors):
         course = Course.get(Course.cId == int(data['cid']))
         #CHECK VALUES FOR NULL
         capacity = data['capacity'] if data['capacity'] else None
-        room     = data['room'] if data['room'] else None
+        course.rid = room
+        course.term = data['term']
+        if data['capacity']:
+            course.capacity = data['capacity']
         schedule = data['schedule'] if data['schedule'] else None
         notes = data['notes'] if data['notes'] else None
         
