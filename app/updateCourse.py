@@ -15,10 +15,7 @@ class DataUpdate():
         @param -changeType {string} = This should only ever be a type located in the config.yaml
         -->Author: CDM 20160713 '''
         # SET THE COLOR SCHEME FOR THE TD'S
-        if changeType == cfg["changeType"]["create"]:
-            color = cfg["columnColor"]["create"]
-        else:
-            color = cfg["columnColor"]["delete"]
+        color = cfg["columnColor"][changeType]
         colorList = []
         for x in range(len(cfg["tableLayout"]["order"])):
             colorList.append(color)

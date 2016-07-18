@@ -13,7 +13,7 @@ def deletecourse(prefix, tid):
     authorizedUser = AuthorizedUser(prefix)
 
     # DATA NEEDED FOR MANIPULATION
-    tdcolors = 'danger,danger,danger,danger,danger'
+    # TODO: Change the colors when a course is updated
     dataUpdateObj = DataUpdate()
     data = request.form
     cid = int(data['cid'])
@@ -32,6 +32,8 @@ def deletecourse(prefix, tid):
                     updateRecord.delete_instance()
                 else:
                     updateRecord.changeType = cfg["changeType"]["delete"]
+                    colors = dataUpdateObj.createColorString(cfg["changeType"]["delete"])
+                    updateRecord.tdcolors = colors
                     updateRecord.save()
             else:
                 dataUpdateObj.addCourseChange(
