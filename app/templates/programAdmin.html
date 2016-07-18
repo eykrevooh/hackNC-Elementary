@@ -8,7 +8,7 @@
     <div id="wrapper">
         {%include "sidebar.html" %}
         <!-- Psage Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" class='col-md-8'>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for message in messages %}
