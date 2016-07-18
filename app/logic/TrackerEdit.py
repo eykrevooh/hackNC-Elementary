@@ -109,8 +109,6 @@ class TrackerEdit():
         else:
           if self.courseChangeExist.changeType == cfg['changeType']['update']:
             self.colorList[index] = color
-          elif self.courseChangeExist.changeType == cfg['changeType']['delete']:
-            self.colorList[index] = color
     else:
         if self.courseChangeExist is None:
             self.colorList.append(color)
