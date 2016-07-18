@@ -132,9 +132,10 @@ class TrackerEdit():
         courseRoom,
         course.capacity,
         course.crossListed,
-        course.notes]
-    # Order the tableLayout keys to match the order as the formCourseKeys
-    tableLayout = cfg['tableLayout']['order']
+        course.notes,
+        course.term.termCode]
+    # Reduce the Layout headers to only things that can be found in the course model
+    layout = ['Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes', 'Term']
 
     for index in range(len(formKeys)):
       formValue   = str(self.formData[formKeys[index]])
@@ -143,8 +144,8 @@ class TrackerEdit():
         color = cfg['columnColor']['edit']
       else:
         color = cfg['columnColor']['default']
- 
-      self.add_color(color, cfg['tableLayout'][tableLayout[index]])
+      self.add_color(color, cfg['tableLayout'][layout[index]])
+     
 
   def find_change_type(self):
     '''PURPOSE: To return the correct changeType depending on the current 
