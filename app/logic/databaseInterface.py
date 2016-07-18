@@ -142,11 +142,8 @@ def editCourse(data, prefix, professors):
         #the code which is causing crashes on the system 
         course = Course.get(Course.cId == int(data['cid']))
         #CHECK VALUES FOR NULL
+        room     = data["room"] if data["room"] else None
         capacity = data['capacity'] if data['capacity'] else None
-        course.rid = room
-        course.term = data['term']
-        if data['capacity']:
-            course.capacity = data['capacity']
         schedule = data['schedule'] if data['schedule'] else None
         notes = data['notes'] if data['notes'] else None
         
