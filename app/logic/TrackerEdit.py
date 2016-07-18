@@ -144,6 +144,8 @@ class TrackerEdit():
       else:
         color = cfg['columnColor']['default']
       self.add_color(color, cfg['tableLayout'][layout[index]])
+    #Add an additional color for Last Edited By
+    self.add_color(cfg['columnColor']['edit'],cfg['tableLayout']['Last Edited By'])
      
 
   def find_change_type(self):

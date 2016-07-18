@@ -63,15 +63,16 @@ changeType:
   update: 'update'
   
 tableLayout:
-  order: ['Course Name', 'Taught By', 'Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes', 'Term']
-  Course Name:  0
-  Taught By:    1 
-  Schedule:     2
-  Room:         3
-  Capacity:     4
-  Cross Listed: 5
-  Notes:        6
-  Term:         7
+  order: ['Course Name', 'Taught By', 'Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes', 'Term','Last Edited By']
+  Course Name:    0
+  Taught By:      1  
+  Schedule:       2
+  Room:           3
+  Capacity:       4
+  Cross Listed:   5
+  Notes:          6
+  Term:           7
+  Last Edited By: 8
   
 columnColor:
   edit:     'warning'

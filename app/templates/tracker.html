@@ -100,6 +100,10 @@
                   <td id="term"class="{{classDict[course.cId][7]}}">
                     {{course.term.name}}
                   </td>
+                  {# Last Edit should always be the edit color #}
+                  <td id="lastEdit" class="{{classDict[course.cId][8]}}">
+                    {{course.lastEditBy}}
+                  </td>
                   <td>
                     <a href="" data-toggle="modal" data-id="" data-target="#verifyCourseChange{{course.cId}}"><span class="glyphicon glyphicon-check" aria-hidden="true" style="color:gray;"></span></a>
                     {% include "snips/verifiedCourseChange.html" %}
