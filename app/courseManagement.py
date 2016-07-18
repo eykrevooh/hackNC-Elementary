@@ -166,7 +166,6 @@ def verifyChange(tid):
         authorizedUser = AuthorizedUser()
         if authorizedUser.isAdmin():
             data = request.form
-            print data
             verify = DataUpdate()
             verify.verifyCourseChange(data)
             message = "Course Change: {0} has been verified".format(data['id'])
