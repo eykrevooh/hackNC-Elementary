@@ -1,0 +1,17 @@
+#radioLabel {
+  margin-right: 1.5em;
+}
+
+.right{
+  padding-left: 50px;
+  padding-right: 0px;
+}
+
+#createCourseFormJumbo {
+  display: none;
+}
+
+
+.white {
+  color: #fff;
+}

@@ -3,6 +3,9 @@
 {% block body %}
 <div id="wrapper">
 {% include "divisionManagementSidebar.html"%}
+
+{% include "snips/messages.html" %}
+
 <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
 <div id="page-content-wrapper">
   <div class="container-fluid">
@@ -13,7 +16,7 @@
             <h2>{{division.name}}</h2>
             <input value={{division.dID}} id="dID" name="dID" hidden readonly="readonly"/> 
             <h4>Change Division Chair(s)</h4>
-            <select class="chosen-select" id="professors"  name="professors[]" multiple>
+            <select class="selectpicker form-control" id="professors"  name="professors[]" multiple data-live-search="true">
               {% for user in users %}
                 <option value="{{user.username}}" 
                   {% if (division is defined)  %}
@@ -23,8 +26,9 @@
                       {% endif %}
                     {% endfor %}
                   {% endif %}
+                  data-subtext="{{user.username}}"
                 >
-                  {{user.firstName}} {{user.lastName}} ({{user.username}})
+                  {{user.firstName}} {{user.lastName}}
                 </option>
               {% endfor %}
             </select>

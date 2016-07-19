@@ -48,31 +48,3 @@ $(document).ready(function(){
     
 });
 
-var infoLabel = '<div class="notice alert alert-warning alert-dismissible" role="alert">\
-                <p>Choosing a room does not guarantee that the room will assigned</p>\
-              </div>';
-
-var selected;
-$( document ).ready(
- function()
- { 
-  $( '#roomSelect' )
-      .mousedown( function(){ 
-         $("#menu-toggle").before(infoLabel);
-         selected = $( this ).val(); 
-      })
-      .blur( function(){ 
-         $(".notice").remove();
-      })
-      .change( function(){ 
-         $(".notice").remove();
-      })
-      .mouseleave( function(){ 
-         $(".notice").remove();
-      })
-      .mouseup( function(){ 
-         if( $( this ).val() == selected )
-         $(".notice").remove();
-      })
- } // function
-) // ready

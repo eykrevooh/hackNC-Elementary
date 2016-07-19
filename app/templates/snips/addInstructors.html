@@ -1,13 +1,6 @@
-<div class="modal fade" id="instructorModal{% if course is defined %}{{course.cId}}{% endif %}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm">
-    
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Instructors</h4>
-        </div>
-        <div class="modal-body">
-        <select data-placeholder="Add Instructors" multiple class="chosen-select" id="professors"  name="professors[]"   >
+ <div class="form-group col-md-6 right">
+    <div>
+      <select title="Instructors" class=" form-control selectpicker" id="professors"  name="professors[]" data-live-search="true" multiple >
           {% for user in users %}
             <option  value="{{user.username}}" {% if (course is defined)  %}
                                                 {%for instructor in instructors[course.cId] %}
@@ -20,11 +13,5 @@
               </option>
           {% endfor %}
         </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
-        </div>
-
     </div>
   </div>
-</div>

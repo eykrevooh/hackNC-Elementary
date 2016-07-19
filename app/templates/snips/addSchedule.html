@@ -1,0 +1,12 @@
+<div class="form-group col-md-6">
+    <div>
+     <select title="Select schedule" class="form-control selectpicker" name="schedule" data-live-search="true">
+      <option value="">---</option>
+      {% for schedule in schedules %}
+        <option value="{{schedule.sid}}">
+          {{schedule.letter}}: {{schedule.days}} {{schedule.startTime.strftime('%I:%M%p')}}-{{schedule.endTime.strftime('%I:%M%p')}}
+        </option>
+      {% endfor %}
+     </select>
+    </div>
+  </div>
