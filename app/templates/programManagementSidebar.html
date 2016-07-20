@@ -1,6 +1,10 @@
-<div id="sidebar-wrapper">
-  <ul class="nav nav-list sidebar-nav">
-    <li class="sidebar-brand">Programs</li>
+
+<link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
+<script type="text/javascript" src="/static/js/local/sidebar.js"></script>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav nav-list sidebar-nav">
+                <li class="sidebar-brand">Programs</li>
       {% for division in divisions %}
         <li><label class="tree-toggler nav-header" id="did{{division.dID}}" onclick = "toggleArrowIcon(didarrow{{division.dID}},did{{division.dID}})">
           <span  class="glyphicon glyphicon-menu-right" aria-hidden="true" id="didarrow{{division.dID}}" ></span>{{division.name}}</label>
@@ -14,5 +18,5 @@
       </li>
       {% endfor %}
   </ul>
-</div>
-<script type="text/javascript" src="/static/js/local/sidebar.js"></script>
+        </nav>
+        <!-- /#sidebar-wrapper -->

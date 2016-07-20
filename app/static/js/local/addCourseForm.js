@@ -13,7 +13,7 @@ var infoLabel = '<div class="notice alert alert-warning alert-dismissible" role=
               </div>';
 
 $("#roomSelect").on('shown.bs.select', function(e) {
-  $("#createFormContainer").append(infoLabel);
+  $("#createFormContainer").prepend(infoLabel);
 });
 
 $("#roomSelect").on("hidden.bs.select", function(e) {

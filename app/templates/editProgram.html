@@ -6,13 +6,16 @@
 
 {% include "snips/messages.html" %}
 
-<link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
-<div id="page-content-wrapper">
+  <div id="page-content-wrapper">
+          <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+          </button>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12">
         <form action="\editProgram" method="post" id="programEditForm{{program.pID}}">
-          <div class="form-group">
+          <!--<div class="form-group">-->
             <h2>{{program.name}}</h2>
             <h4>Change Program Chair(s)</h4>
             <!--Make a hidden input to pass the program.pID-->
@@ -32,14 +35,13 @@
                 </option>
               {% endfor %}
             </select>
-          </div>
+          <!--</div>-->
           <input type="submit" class="btn btn-success pull-right" value="Submit"/>
         </form>
-      </div>
     </div>
   </div>
   <!-- /#page-content-wrapper -->
 </div>
 <!-- /#wrapper -->
-
+</div>
 {% endblock %}

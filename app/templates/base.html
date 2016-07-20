@@ -43,12 +43,12 @@
   </head>
   <body>
       {% include "navigation.html" %}
-
+    {% block aboveContainer %} {% endblock %}
     <div class="container">
       {# All content should get rendered in here #}
       {% block body %} {% endblock %}  
     </div>
-   
+   {% block belowContainer %} {% endblock %} 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
     
      <link rel = "stylesheet" href = "/static/css/{{currentPage}}.css"/>
