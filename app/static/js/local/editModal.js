@@ -1,4 +1,3 @@
-$(".chosen-select").chosen();
 
 $('#editModal' + cid).modal({
     backdrop: 'static',
