@@ -1,11 +1,12 @@
-<div id="sidebar-wrapper">
+<link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
+<script type="text/javascript" src="/static/js/local/sidebar.js"></script>
+  
+<nav class="navbar navbar-default navbar-fixed-top" id="sidebar-wrapper" role="navigation">
   <ul class="nav nav-list sidebar-nav">
     <li class="sidebar-brand">Programs</li>
     {% for division in divisions %}
       <li><label class="tree-toggler nav-header"><a href="/admin/divisionManagement/{{division.dID}}">{{division.name}}</a></label></li>
     {% endfor %}
   </ul>
-</div>
+</nav>
 
-
-<script type="text/javascript" src="/static/js/local/sidebar.js"></script>

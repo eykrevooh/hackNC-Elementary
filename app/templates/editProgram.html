@@ -15,7 +15,7 @@
   <div class="container-fluid">
     <div class="row">
         <form action="\editProgram" method="post" id="programEditForm{{program.pID}}">
-          <!--<div class="form-group">-->
+          <div class="form-group">
             <h2>{{program.name}}</h2>
             <h4>Change Program Chair(s)</h4>
             <!--Make a hidden input to pass the program.pID-->
@@ -35,8 +35,10 @@
                 </option>
               {% endfor %}
             </select>
-          <!--</div>-->
+          </div>
+          <div>
           <input type="submit" class="btn btn-success pull-right" value="Submit"/>
+          </div>
         </form>
     </div>
   </div>
