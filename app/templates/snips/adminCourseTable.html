@@ -37,6 +37,8 @@
                 <td> 
                     {% if course.capacity is not none  %}
                         {{course.capacity}}
+                    {% else %}
+                        no capacity specified
                     {% endif %}
                 </td>
                 <!-- ROOM -->
