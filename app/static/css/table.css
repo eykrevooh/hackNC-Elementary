@@ -6,14 +6,6 @@ table {
   border-collapse: collapse; 
 }
 /* Zebra striping */
-tr:nth-of-type(odd) { 
-  background: #eee; 
-}
-th { 
-  background: #333; 
-  color: white; 
-  font-weight: bold; 
-}
 td, th { 
   padding: 6px; 
   border: 1px solid #ccc; 
@@ -29,6 +21,21 @@ and also iPads specifically.
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
+	
+	 .container {
+      padding-left: 80px;
+      margin:0;
+    }
+
+    body {
+      padding:0;
+    }
+
+    .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom:0;
+    }
 
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 

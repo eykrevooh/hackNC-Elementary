@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 {% set currentPage = "Division Management" %}
+
+{% block aboveContainer %} 
+  {% include "snips/sidebarButton.html" %}
+{% endblock %}
 {% block body %}
 <div id="wrapper">
 {% include "divisionManagementSidebar.html"%}
 
-{% include "snips/messages.html" %}
 
 <div id="page-content-wrapper">
-  <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-            <span class="hamb-top"></span>
-            <span class="hamb-middle"></span>
-            <span class="hamb-bottom"></span>
-          </button>
+  {% include "snips/messages.html" %}
   <div class="container-fluid">
     <div class="row">
         <form action="\editDivision" method="post" id="divisionEditForm{{division.dID}}">
