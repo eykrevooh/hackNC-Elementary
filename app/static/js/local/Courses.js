@@ -1,6 +1,4 @@
 
-$(".chosen-select").chosen();
-
 function getSelectedCourse(elementId) {
    var selectedCourse = document.getElementById(elementId);
    
@@ -47,4 +45,5 @@ $(document).ready(function(){
     });
     
 });
+
 

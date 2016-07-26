@@ -80,11 +80,11 @@
     <label for="newAdmin">Add a new administrative user</label>
     <form action="\changeAdmin" method="post" id="newAdmin" class="form-inline">
       <div class="form-group">
-        <select class="bootstrap-select form-control" name="admin">
+        <select class="selectpicker form-control" name="admin" data-live-search="true">
         <option value="None">---</option>
         {% for user in users %}
           {% if not user.isAdmin %}
-            <option value="{{user.username}}"> {{user.firstName}} {{user.lastName}} ({{user.username}}) </option>
+            <option value="{{user.username}}" data-subtext="{{user.username}}"> {{user.firstName}} {{user.lastName}}</option>
           {% endif %}
         {% endfor %}
         </select>
@@ -96,11 +96,11 @@
     <label for="newAdmin">Remove an administrative user</label>
     <form action="\changeAdmin" method="post" id="removeAdmin" class="form-inline">
       <div class="form-group">
-        <select class="bootstrap-select form-control" name="admin">
+        <select class="selectpicker form-control" name="admin">
         <option value="None">---</option>
         {% for user in users %}
           {% if user.isAdmin %}
-          <option value="{{user.username}}"> {{user.firstName}} {{user.lastName}} ({{user.username}}) </option>
+          <option value="{{user.username}}" data-subtext="{{user.username}}"> {{user.firstName}} {{user.lastName}}</option>
           {% endif %}
         {% endfor %}
         </select>

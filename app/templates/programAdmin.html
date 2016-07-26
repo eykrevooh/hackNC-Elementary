@@ -1,39 +1,31 @@
-{% extends "base.html" %}
-{% set currentPage = "Courses" %}
-{% block aboveContainer %}<div id="page-content-wrapper">
-          <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+{% extends "base.html" %} {% set currentPage = "Courses" %} {% block aboveContainer %}
+<div id="page-content-wrapper">
+    <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
-          </button> {% endblock %}
-{% block body %}
+          </button> {% endblock %} {% block body %}
 
-           <div id="wrapper">
-    
-{% include "snips/sidebar.html" %}
-{% include "snips/messages.html" %}
+    <div id="wrapper">
+        {% include "snips/sidebar.html" %} {% include "snips/messages.html" %}
         <!-- Page Content -->
-        
-           
-            <h2>{{currentProgram.name}}: {{curTermName.name}}</h2>
-            <div class="container-fluid">
-                <div class="row">
-<table class="table table-striped table-hover">
-                        {% include "snips/adminCourseTable.html" %}
-</table>
-{% include "snips/createCourse.html" %}
-                </div>
+
+
+        <h2>{{currentProgram.name}}: {{curTermName.name}}</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table table-striped table-hover">
+                    {% include "snips/adminCourseTable.html" %}
+                </table>
+                {% include "snips/createCourse.html" %}
             </div>
+        </div>
         <!-- /#page-content-wrapper -->
     </div>
     <!-- /#wrapper -->
-    <!-- Menu Toggle Script -->
-    <script type="text/javascript" src="/static/js/ext/chosen.jquery.min.js"></script>
-        </div>
-        <!-- /#page-content-wrapper -->
+</div>
+<!-- /#page-content-wrapper -->
 
-    <!-- /#wrapper -->
- <script type="text/javascript" src="/static/js/local/sidebar.js"></script>
-{% endblock %}
-
-{% block belowContainer %} </div> {% endblock %}
+<!-- /#wrapper -->
+<script type="text/javascript" src="/static/js/local/sidebar.js"></script>
+{% endblock %} {% block belowContainer %} </div> {% endblock %}

@@ -19,3 +19,20 @@ $("#roomSelect").on('shown.bs.select', function(e) {
 $("#roomSelect").on("hidden.bs.select", function(e) {
     $(".notice").remove();
 })
+
+
+    var $window = $(window),
+        $forms = $('.offset_input');
+
+    function resize() {
+        if ($window.width() < 992) {
+            return $forms.removeClass('right');
+        }
+
+        $forms.addClass('right');
+    }
+
+    $window
+        .resize(resize)
+        .trigger('resize');
+
