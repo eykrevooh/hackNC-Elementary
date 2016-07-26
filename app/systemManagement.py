@@ -21,9 +21,9 @@ def systemManagement():
             if x == 0:
                #APPEND THE ONE YEAR AGO
                years.append(str(year))          
-               year += 1
-               #APPEND CURRENT NUMBER PLUS ONE
-               years.append(str(year))          
+            year += 1
+            #APPEND CURRENT NUMBER PLUS ONE
+            years.append(str(year))          
          return render_template("systemManagement.html",
                                  terms          = terms,
                                  years          = years,
