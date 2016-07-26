@@ -1,12 +1,12 @@
 {% extends "base.html" %} {% set currentPage = "Courses" %} {% block aboveContainer %}
-<div id="page-content-wrapper">
+<div id="wrapper">
     <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
           </button> {% endblock %} {% block body %}
 
-    <div id="wrapper">
+    <div id="page-content-wrapper">
         {% include "snips/sidebar.html" %} {% include "snips/messages.html" %}
         <!-- Page Content -->
 

@@ -4,7 +4,7 @@ import datetime
 
 
 db = MySQLdb.connect(host = '127.0.0.1',
-                     user = 'agarwali',
+                     user = 'memo3301791',
                      passwd = '',
                      db     = 'c9',
                      port = 3306)
@@ -54,7 +54,7 @@ for row in cur.fetchall():
                     pid     = int(row[1]),
                     webname = row[2])
   subject.save(force_insert = True)
-
+# this updates the bannerCourses
 cur.execute("select * from bannerschedules")
 
 for row in cur.fetchall():
@@ -74,6 +74,8 @@ for row in cur.fetchall():
                                 subject = row[1],
                                 number = row[2],
                                 ctitle = row[4]).save(force_insert= True)
+                                
+# this gets the terms
 cur.execute("select * from term")
 
 for row in cur.fetchall():
@@ -81,6 +83,8 @@ for row in cur.fetchall():
   term = Term(name = row[1],
               termCode = row[2],
               editable = row[3]).save(force_insert=True)
+              
+#course
 cur.execute("select * from course")
 cur2 = db.cursor()
 
@@ -98,14 +102,14 @@ for row in cur.fetchall():
   if row[7] is None:
     status = 0
   capacity = row[4]
-  if row[4] is None:
-    capacity = 0
+  # if row[4] is None:
+    # capacity = 0
   schedule = row[3]
-  if row[3] is None:
-    schedule = 'ZZZ'
+  # if row[3] is None:
+    # schedule = 'ZZZ'
   room = row[9]
-  if row[9] is None:
-    room = ''
+  # if row[9] is None:
+    # room = ''
   course = Course(cid = int(row[0]),
                   bannerRef = int(row[1]),
                   term = int(termCode),
@@ -114,6 +118,7 @@ for row in cur.fetchall():
                   specialTopicName = row[6],
                   notes = room,
                   lastEditBy = row[10],
+                  crossListed = 0,
                   prefix = str(sub)).save(force_insert = True) 
 
 cur.execute("select * from program")

@@ -15,3 +15,8 @@
 .white {
   color: #fff;
 }
+
+.notice{
+  /*height: 25px;*/
+  display: block;
+}

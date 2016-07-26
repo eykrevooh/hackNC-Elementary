@@ -1,12 +1,15 @@
 {% extends "base.html" %}
-
+{% block aboveContainer %}
+<div id="wrapper">
+    {% include "snips/sidebarButton.html" %}
+    
+        {%include "snips/sidebar.html" %}
+{% endblock %}
 {% block body %}
 
 <link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
 <body>
 
-    <div id="wrapper">
-        {%include "sidebar.html" %}
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <h2>{{currentProgram.name}}: {{curTermName.name}}</h2>
@@ -39,21 +42,18 @@
                          </tr>
                            {% endfor %}
                        </table>
-                        <!--if you change the name of this button it will break the javascript in toggleMenu.js-->
-                        <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Close Sidebar</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
 
 
-    <!-- Menu Toggle Script -->
-    <script type="text/javascript" src="/static/js/local/toggleMenu.js"></script>
 
 </body>
 
+<script type="text/javascript" src="/static/js/local/sidebar.js"></script>
 {% endblock %}
+
+{% block belowContainer %} </div> {% endblock %}

@@ -49,4 +49,8 @@
 <div class="jumbotron">
   Upcoming deadlines will be posted here.
 </div>
-{% endif %} {% include "snips/createDeadline.html" %} {% endblock %}
+  {% endif %}
+  {% if isAdmin %}
+    {% include "snips/createDeadline.html" %}
+  {% endif %}
+{% endblock %}
