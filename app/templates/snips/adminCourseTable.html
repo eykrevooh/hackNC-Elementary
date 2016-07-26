@@ -10,7 +10,9 @@
             <th>Cross-Listed</th>
             <th>Notes</th>
             <th>Last Edited By</th>
-            <th><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></th>
+            {% if isAdmin or isDivisionChair or isProgramChair %}
+              <th><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></th>
+            {% endif %}
         </tr> 
     </thead>
     <tbody>
@@ -68,15 +70,16 @@
                 <td>
                     {{course.lastEditBy}}
                 </td>
-                <td>
-                    {% if isAdmin or isDivisionChair or isProgramChair %}
-                        <!--EDIT MODAL-->
-                        <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}/{{page}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                        <!--DELETE MODAL-->
-                        <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                        {% include "snips/deleteCourse.html" %}
-                    {% endif %}
-                </td>
+                {% if isAdmin or isDivisionChair or isProgramChair %}
+                    <td>
+                        
+                            <!--EDIT MODAL-->
+                            <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}/{{page}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                            <!--DELETE MODAL-->
+                            <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                            {% include "snips/deleteCourse.html" %}
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
     </tbody>

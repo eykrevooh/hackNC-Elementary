@@ -45,10 +45,9 @@ def courses(tID, prefix):
     rooms = Rooms.select()
 
     instructors = createInstructorDict(courses)
-
-    if authorizedUser.isAuthorized():
-        return render_template(
-            "programAdmin.html",
+    
+    return render_template(
+            "course.html",
             cfg=cfg,
             courses=courses,
             instructors=instructors,
@@ -68,17 +67,3 @@ def courses(tID, prefix):
             prefix=prefix,
             page=page,
             rooms=rooms)
-    else:
-        return render_template("program.html",
-                               cfg=cfg,
-                               courses=courses,
-                               instructors=instructors,
-                               programs=programs,
-                               divisions=divisions,
-                               subjects=subjects,
-                               currentTerm=int(tID),
-                               allTerms=terms,
-                               currentProgram=currentProgram,
-                               curTermName=curTermName,
-                               prefix=prefix
-                               )
