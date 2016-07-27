@@ -8,7 +8,7 @@ def adminDivisionManagement(did):
   if (request.method == "GET"):
       authorizedUser = AuthorizedUser()
       if authorizedUser.isAdmin():
-         users = User.select()
+         users = User.select().order_by(User.lastName)
          divisions = Division.select()
          division = Division.get(Division.dID == did)
          divisionChairs = {}

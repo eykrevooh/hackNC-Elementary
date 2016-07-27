@@ -8,7 +8,7 @@ def adminProgramManagement(pid):
   # if (request.method == "GET"):
    authorizedUser = AuthorizedUser()
    if authorizedUser.isAdmin():
-      users = User.select()
+      users = User.select().order_by(User.lastName)
       divisions = Division.select()
       programs  = Program.select()
       program = Program.get(Program.pID == pid)
