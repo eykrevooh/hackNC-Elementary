@@ -17,8 +17,6 @@ import pprint
 from app import models
 # all the database models
 from models import *     
-# implements switch/case statements
-from app.switch import switch       
 
 
 ''' Creates an Flask object; @app will be used for all decorators.

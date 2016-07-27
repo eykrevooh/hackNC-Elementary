@@ -1,5 +1,4 @@
 from allImports import *
-from switch import *
 import sys
 from app.logic.getAuthUser import AuthorizedUser
 from app.logic.redirectBack import redirect_url
