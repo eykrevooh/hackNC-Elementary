@@ -26,11 +26,6 @@ $("#roomSelect").on('changed.bs.select', function(e) {
 });
 
 
-$('select').change(function(){
-    alert($(this).prev().prop('nodeName'));
-    $(this).css('text-color', 'pink');
-});
-
 
     var $window = $(window),
         $forms = $('.offset_input');
