@@ -13,3 +13,7 @@
 textarea {
     resize: vertical;
 }
+
+.adminSelect {
+    min-width: 200px;
+}

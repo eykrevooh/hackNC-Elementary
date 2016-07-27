@@ -1,8 +1,5 @@
-{% extends "base.html" %} {% set currentPage = "systemManagement" %} {% block body %} {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> {{message}}
-</div>
-{% endfor %} {% endif %} {% endwith %}
+{% extends "base.html" %} {% set currentPage = "systemManagement" %} {% block body %} 
+{% include "snips/messages.html" %}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" type="text/css" />
 <link rel="stylesheet" href="/static/css/systemManagement.css" type="text/css" />
@@ -79,7 +76,7 @@
   <div class="panel-body">
     <label for="newAdmin">Add a new administrative user</label>
     <form action="\changeAdmin" method="post" id="newAdmin" class="form-inline">
-      <div class="form-group">
+      <div class="form-group adminSelect"  >
         <select class="selectpicker form-control" name="admin" data-live-search="true">
         <option value="None">---</option>
         {% for user in users %}
@@ -95,7 +92,7 @@
     </form>
     <label for="newAdmin">Remove an administrative user</label>
     <form action="\changeAdmin" method="post" id="removeAdmin" class="form-inline">
-      <div class="form-group">
+      <div class="form-group adminSelect">
         <select class="selectpicker form-control" name="admin">
         <option value="None">---</option>
         {% for user in users %}
@@ -130,7 +127,7 @@
   </div>
 </div>
 <!--DEADLINE MANAGEMENT-->
-{% include "snips/createDeadline.html" %}
+{% include "snips/deadline/createDeadline.html" %}
 </div>
 
 

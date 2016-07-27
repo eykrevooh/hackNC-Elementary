@@ -1,10 +1,8 @@
 <!--The below line of code is jinja which is a template engine for python-->
 <!-- If you want to learn more about jinja, refer to jinja documentation-->
-{% extends "base.html" %} {% set currentPage = "start" %} {% block body %} {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> {{message}}
-</div>
-{% endfor %} {% endif %} {% endwith %} {% if deadlines %}
+{% extends "base.html" %} {% set currentPage = "start" %} {% block body %} 
+{% include "snips/messages.html" %}
+{% if deadlines %}
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -40,7 +38,7 @@
         </tr>
         {% endfor %}
       </table>
-      {% include "deleteDeadline.html" %} {% include "snips/deadline/editDeadline.html" %}
+      {% include "snips/deadline/deleteDeadline.html" %} {% include "snips/deadline/editDeadline.html" %}
     </td>
   </tr>
   {% endif %} {% endfor %}

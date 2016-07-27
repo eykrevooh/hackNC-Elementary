@@ -9,9 +9,9 @@
                 <textarea placeholder="Description" class="form-control" id="exampleTextarea" rows="2" name="deadlineDescription" required></textarea>
             </div>
             <div class="form-group col-md-4 col-sm-4">
-                <input type="date" placeholder="Click Me" class="form-control" min="{{today}}" name="deadlineDate" required>
-
-
+                {% set currentYear = (today.strftime('%Y'))|int %}
+                {% set maxYear = (currentYear + 2)|string %}
+                <input type="date" placeholder="Click Me" class="form-control" min="{{today}}" max="{{maxYear}}-12-31" name="deadlineDate" required>
             </div>
             <div class="form-group col-md-2 col-md-2">
                 <input type="submit" class="btn btn-success" value="Add">
