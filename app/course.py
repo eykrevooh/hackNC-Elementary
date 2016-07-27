@@ -19,7 +19,7 @@ def courses(tID, prefix):
       tID = 0
       for t in Term.select():
         if t.termCode > currentTerm:
-        tID = t.termCode
+          tID = t.termCode
 
     # Checking the permissions of the user.
     # we need the subject to know if someone if a division chair or a program
