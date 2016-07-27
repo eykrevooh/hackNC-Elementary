@@ -93,7 +93,7 @@
           <textarea class="form-control" name="notes">{% if course.notes is not none %}{{ course.notes }}{% endif %}</textarea>
           {# --Instructors-- #}
           <h5>Edit Instructor</h5>
-          <select class="selectpicker form-control" id="professors"  name="professors[]" multiple>
+          <select class="selectpicker form-control" id="professors"  name="professors[]" multiple data-live-search="true">
             {% for user in users %}
               <option value="{{user.username}}" 
                 {% if (course is defined)  %}
@@ -103,8 +103,9 @@
                     {% endif %}
                   {% endfor %}
                 {% endif %}
+                data-subtext = "{{user.username}}"
               >
-                {{user.firstName}} {{user.lastName}} ({{user.username}})
+                {{user.firstName}} {{user.lastName}}
               </option>
             {% endfor %}
           </select>

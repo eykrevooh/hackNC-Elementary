@@ -18,7 +18,7 @@ def editCourseModal(tid, prefix, cid, page):
     # Select the course informations
     course = Course.get(Course.cId == cid)
     # Select all users
-    users = User.select()
+    users = User.select().order_by(User.lastName)
     # Select instructors for the course
     instructors = {}
     instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
