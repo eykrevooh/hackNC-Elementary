@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/static/css/Courses.css" type="text/css" />
     <body>
         <div id="wrapper">
-            {%include "snips/courseManagementSidebar.html" %}
+            {%include "snips/sidebars/courseManagementSidebar.html" %}
             <div id="page-content-wrapper">
                 {% include "snips/messages.html" %} {% for term in allTerms %} {% if term.termCode == currentTerm|int %}
                 <h2> {{term.name}}: Cross Listed Courses </h2> {% endif %} {% endfor %}

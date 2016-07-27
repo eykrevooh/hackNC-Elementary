@@ -1,8 +1,8 @@
 from app.models import *
 import MySQLdb
 import datetime
-
-
+# this function populates the database with the information found in the old system of cas
+# change this to cas server if working outside of c9
 db = MySQLdb.connect(host = '127.0.0.1',
                      user = 'memo3301791',
                      passwd = '',
@@ -36,12 +36,15 @@ for row in cur.fetchall():
   admin = 0
   if int(row[5]) == 4:
     admin = 1
+  program = row[4]
+  if row[4] == 0:
+    program = None
   users = User(username = row[0],
               firstName = row[1],
               lastName = row[2],
               email    = row[3],
               isAdmin  = admin,
-              program = row[4])
+              program = program)
               
   users.save(force_insert = True)
 
@@ -65,7 +68,7 @@ for row in cur.fetchall():
                             endTime = (datetime.datetime.min + row[3]).time(),
                             sid = row[4],
                             order = int(row[5])).save(force_insert=True)
-
+#this populates the banner courses
 cur.execute("select * from bannercourses")
 
 for row in cur.fetchall():
@@ -84,7 +87,7 @@ for row in cur.fetchall():
               termCode = row[2],
               editable = row[3]).save(force_insert=True)
               
-#course
+# This populates the courses
 cur.execute("select * from course")
 cur2 = db.cursor()
 
@@ -120,7 +123,7 @@ for row in cur.fetchall():
                   lastEditBy = row[10],
                   crossListed = 0,
                   prefix = str(sub)).save(force_insert = True) 
-
+# this populates the programs
 cur.execute("select * from program")
 cur3 = db.cursor()
 for row in cur.fetchall():
@@ -130,7 +133,7 @@ for row in cur.fetchall():
   print row[1], username
   programChair = ProgramChair(username = username,
                               pid = row[0]).save()
-                              
+# this populates the divisions                             
 cur.execute("select * from division")
 cur4 = db.cursor()
 for row in cur.fetchall():
@@ -140,7 +143,7 @@ for row in cur.fetchall():
   print row[1], username
   divisionChair = DivisionChair(username = username,
                                 did   = row[0]).save()
-
+# this populates the instructs
 cur.execute("select * from instructors2")
 cur5 = db.cursor()
 for row in cur.fetchall():
@@ -149,6 +152,14 @@ for row in cur.fetchall():
     username = user[0]
   instructorCourse = InstructorCourse(username = username,
                                       course = row[2]).save()
+                                      
+cur.execute("select * from rooms")
+for row in cur.fetchall():
+  room = Rooms(rID = row[0],
+              building = row[1],
+              number = row[2],
+              maxCapacity = row[3],
+              roomType = row[4]).save(force_insert = True)
                             
 db.close()
 

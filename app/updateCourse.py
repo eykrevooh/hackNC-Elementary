@@ -63,37 +63,7 @@ class DataUpdate():
         # IT IS REQUIRED TO PUT force_insert=True
         return True
 
-    def editCourseChange(self, cid, prefix, changeType):
-        if self.checkUserLevel(prefix):
-            newcourse = Course.get(Course.cId == cid)
-            course = CourseChange.get(CourseChange.cId == cid)
-            course.term = newcourse.term
-            course.capacity = newcourse.capacity
-            course.schedule = newcourse.schedule
-            course.crossListed = newcourse.crossListed
-            course.notes = newcourse.notes
-            course.lastEditBy = newcourse.lastEditBy
-            course.changeType = changeType
-            course.save()
-            newInstructors = InstructorCourse.select().where(InstructorCourse.course == cid)
-            professors = InstructorCourseChange.select().where(
-                InstructorCourseChange.course == cid)
-            instructors = []
-            for professor in professors:
-                instructors.append(professor)
-            for newInstructor in newInstructors:
-                professor = InstructorCourseChange.select().where(
-                    InstructorCourseChange.course == cid).where(
-                    InstructorCourseChange.username == newInstructor.username)
-                if professor.exists():
-                    instructors.remove(professor[0])
-                else:
-                    InstructorChange(
-                        username=oldInstructor.username, cid=cid).save()
-            for instructor in instructors:
-                instructor.delete_instance()
-            course.verified = False
-            course.save()
+    
 
 
     def verifyCourseChange(self, data):

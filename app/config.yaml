@@ -81,8 +81,8 @@ columnColor:
   default:  'none'
   
 DEBUG:
-  user: "heggens" #Admin Access
+  # user: "heggens" #Admin Access
   # user: "pearcej" #Division Chair Access
   # user: "jadudm"  #Program Chair Access
-  # user: "kramera" #Professor Access
+  user: "kramera" #Professor Access
 

@@ -73,7 +73,7 @@ class User(dbModel):
   lastName     = CharField()
   email        = CharField()
   isAdmin      = BooleanField()
-  program      = ForeignKeyField(Program)
+  program      = ForeignKeyField(Program, null=True)
   
 class Subject(dbModel):
   prefix        = CharField(primary_key=True)

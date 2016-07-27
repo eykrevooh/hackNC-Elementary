@@ -6,8 +6,8 @@ import pprint
 def redirectCourses():
    username = authUser(request.environ)
    user = User.get(User.username == username)
-   if user.program != 0 and user.program is not None:
-      subject = Subject.get(Subject.pid == user.program)
+   if user.program is not None:
+      subject = Subject.get(Subject.pid.pid == user.program.pid)
    else:
       subject = Subject.get()
    prefix = subject.prefix

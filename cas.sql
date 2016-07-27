@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 16, 2016 at 01:45 PM
--- Server version: 5.5.47-0ubuntu0.14.04.1
+-- Generation Time: Jul 27, 2016 at 11:22 AM
+-- Server version: 5.5.46-0ubuntu0.14.04.2
 -- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `bannercourses` (
   `ctitle` varchar(50) NOT NULL,
   PRIMARY KEY (`refID`),
   KEY `subject_idx` (`subject`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1411 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1417 ;
 
 --
 -- Dumping data for table `bannercourses`
@@ -750,7 +750,7 @@ INSERT INTO `bannercourses` (`refID`, `subject`, `number`, `section`, `ctitle`) 
 (845, 'HLT', '210', NULL, 'Health in Appalachia (APS)'),
 (846, 'HLT', '221', NULL, 'Hlt & Movement for Young Child'),
 (847, 'HLT', '222', NULL, 'Hlt & Movement Elem Age Child'),
-(848, 'HLT', '224', NULL, 'Addiction & Violence/Fam (WGS)'),
+(848, 'HLT', '224', NULL, 'Addiction & Violence (WGS)'),
 (849, 'HLT', '236', NULL, 'Women and Health (WGS)'),
 (850, 'HLT', '286', NULL, 'Special Topics'),
 (851, 'HLT', '315', NULL, 'Health Education and Promotion'),
@@ -1250,7 +1250,13 @@ INSERT INTO `bannercourses` (`refID`, `subject`, `number`, `section`, `ctitle`) 
 (1407, 'PSY', '326', NULL, 'Preparing for Careers in Psy.'),
 (1408, 'EDS', '324', NULL, 'Methds I Teach. Middle Grades'),
 (1409, 'EDS', '338', NULL, 'Methds II STEM Disciplines'),
-(1410, 'EDS', '339', NULL, 'Methds II Teachg in Humanities');
+(1410, 'EDS', '339', NULL, 'Methds II Teachg in Humanities'),
+(1411, 'MAT', '012S', NULL, 'MAT 012 Supplemental Course'),
+(1412, 'MUS', '130C', NULL, 'Women''s Chorus'),
+(1413, 'MUS', '130K', NULL, 'Folk Roots Ensemble'),
+(1414, 'MUS', '130M', NULL, 'Mariachi Ensemble'),
+(1415, 'MUS', '130N', NULL, 'Clarinet Ensemble'),
+(1416, 'WGS', '224', NULL, 'Addiction & Violence (HLT)');
 
 -- --------------------------------------------------------
 
@@ -1319,19 +1325,19 @@ CREATE TABLE IF NOT EXISTS `course` (
   `specialtopicsname` varchar(300) DEFAULT NULL,
   `status` int(11) DEFAULT NULL COMMENT 'Originally "not null"',
   `reason` longtext,
-  `notes` longtext COMMENT 'originally "not null"',
+  `roomPref` longtext COMMENT 'originally "not null"',
   `lastEditBy` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`CID`),
   KEY `term_idx` (`term`),
   KEY `banCrse_idx` (`bannerRef`),
   KEY `schedule` (`schedule`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1641 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1660 ;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomAsn`, `specialtopicsname`, `status`, `reason`, `notes`, `lastEditBy`) VALUES
+INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomAsn`, `specialtopicsname`, `status`, `reason`, `roomPref`, `lastEditBy`) VALUES
 (533, 8, 6, 'P', 20, NULL, NULL, 1, NULL, '16 seats reserved for incoming freshmen.', NULL),
 (534, 526, 6, 'B', 16, NULL, NULL, 1, NULL, 'Section A, in addition to Std B will have lab time at 9-11:30 on Thurs', NULL),
 (535, 526, 6, 'B', 16, NULL, NULL, 1, NULL, 'Section B, in addition to Std B will meet for lab Thurs 12-12:30 ', NULL),
@@ -1671,7 +1677,6 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (970, 20, 7, 'J', 20, NULL, NULL, NULL, NULL, 'AB 210', NULL),
 (971, 26, 7, 'Z', 15, NULL, NULL, NULL, NULL, '', NULL),
 (972, 28, 7, 'Y', 18, NULL, NULL, NULL, NULL, '9:00-11:50 AM', NULL),
-(973, 488, 7, 'Y', 15, NULL, NULL, NULL, NULL, '', NULL),
 (974, 29, 7, 'R', 15, NULL, NULL, NULL, NULL, '8:00-10:50 AM', NULL),
 (975, 29, 7, 'N', 15, NULL, NULL, NULL, NULL, '', NULL),
 (976, 31, 7, 'N', 12, NULL, NULL, NULL, NULL, '', NULL),
@@ -1763,9 +1768,9 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1091, 768, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1092, 177, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1093, 771, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1095, 180, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(1095, 180, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
 (1096, 182, 7, 'K', NULL, NULL, NULL, NULL, NULL, '', 'legera'),
-(1097, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
+(1097, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
 (1098, 182, 7, 'C', NULL, NULL, NULL, NULL, NULL, 'Draper 215 or 205', 'steeles'),
 (1099, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1100, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
@@ -1773,22 +1778,22 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1102, 182, 7, 'F', NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
 (1103, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1104, 182, 7, 'B', NULL, NULL, NULL, NULL, NULL, '', NULL),
-(1105, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, 'Draper 116 or 215', 'steeles'),
+(1105, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, 'Draper 116 or 215', 'steeles@berea.edu'),
 (1106, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1107, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1108, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1109, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1110, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1111, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
-(1112, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
-(1113, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
-(1114, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(1112, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
+(1113, 182, 7, 'E', NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
+(1114, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
 (1115, 182, 7, 'P', NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1116, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1117, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
-(1118, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1119, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1120, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1118, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
+(1119, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
+(1120, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
 (1121, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1122, 182, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1123, 209, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
@@ -1799,7 +1804,7 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1128, 209, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1129, 209, 7, 'K', NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
 (1130, 209, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
-(1131, 209, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(1131, 209, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
 (1132, 209, 7, 'ZZZ', NULL, NULL, NULL, NULL, NULL, 'MW 6:30-8:20', 'steeles'),
 (1133, 209, 7, 'J', NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1134, 221, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
@@ -1807,18 +1812,16 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1136, 221, 7, 'ZZZ', NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
 (1137, 221, 7, 'F', NULL, NULL, NULL, NULL, NULL, 'This course will have a stand-alone lab...scheduled from 8:30-11:30 on Tues', 'steeles'),
 (1138, 221, 7, 'I', NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
-(1139, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
+(1139, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
 (1140, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1141, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
-(1142, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+(1142, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', 'steeles@berea.edu'),
 (1143, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1144, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
 (1145, 226, 7, NULL, 14, NULL, NULL, NULL, NULL, 'HARD limit', 'steeles'),
 (1146, 226, 7, 'P', NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
 (1147, 226, 7, 'K', NULL, NULL, NULL, NULL, NULL, '', 'steeles'),
 (1148, 226, 7, 'P', NULL, NULL, NULL, NULL, NULL, 'P 402', 'legera'),
-(1149, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1150, 226, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1153, 239, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1154, 240, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1155, 265, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1967,7 +1970,7 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1329, 1249, 7, 'ZZZ', 10, NULL, NULL, 0, NULL, 'Meeting with faculty once a week. Time to be determined with student and faculty.', NULL),
 (1330, 1235, 6, 'D', 20, NULL, NULL, 0, NULL, 'lecture is in room 101 \nlab on R 9:00 - 11:30\nroom 027  of SC', 'veillettem'),
 (1331, 390, 7, 'E', 24, NULL, NULL, 0, NULL, 'Lab on T from 9:00 to 11:30 \nroom 027 SC', 'veillettem');
-INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomAsn`, `specialtopicsname`, `status`, `reason`, `notes`, `lastEditBy`) VALUES
+INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomAsn`, `specialtopicsname`, `status`, `reason`, `roomPref`, `lastEditBy`) VALUES
 (1332, 1232, 6, 'A1', 24, NULL, NULL, 0, NULL, 'lecture in room 027\nlab on R from 12:00 to 2:30 in room 027\ntaught by albert dearden\n', 'veillettem'),
 (1333, 1249, 6, 'ZZZ', 10, NULL, NULL, 0, NULL, 'Time to be arranged with student and faculty\nNo room is allocated', 'veillettem'),
 (1334, 1374, 6, 'C', 17, NULL, NULL, 0, NULL, '', 'steeles'),
@@ -2048,11 +2051,8 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1421, 566, 6, 'P', 20, NULL, NULL, 0, NULL, 'AB 211\nInternational West', NULL),
 (1422, 562, 6, 'P', 14, NULL, NULL, 0, NULL, 'Archaeolgy lab\r\nTitle: Introduction to Archaeological Methods\r\nsave 7 spots for incoming', NULL),
 (1423, 572, 6, 'Q', 15, NULL, NULL, 0, NULL, 'AB room 2', NULL),
-(1424, 22, 7, 'P', 20, NULL, NULL, 0, NULL, '249 is a topics class: The Arts of Buddhism\r\n', NULL),
 (1425, 564, 7, 'Q', 20, NULL, NULL, 0, NULL, 'AB 210\r\nWestern History and Arts persepctives', NULL),
 (1426, 563, 7, 'J', 20, NULL, NULL, 0, NULL, 'AB 210\r\ntopic: Modern Art in the Islamic World\r\nReligion and Arts', NULL),
-(1427, 487, 7, 'Q', 20, NULL, NULL, 0, NULL, 'Topic: Archaeology of Ritual Spaces\r\nclass to be cross-listed with Religion\r\nReligion perspective will be requested', NULL),
-(1428, 487, 7, 'J', 20, NULL, NULL, 0, NULL, 'Topic: Bioarchaeology of Violence', NULL),
 (1429, 27, 7, 'Y', 12, NULL, NULL, 0, NULL, '', NULL),
 (1431, 39, 7, 'Z', 8, NULL, NULL, 0, NULL, '', NULL),
 (1432, 44, 7, 'Z', 5, NULL, NULL, 0, NULL, '', NULL),
@@ -2225,7 +2225,7 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1625, 1405, 6, 'Q', 15, NULL, NULL, 0, NULL, '', NULL),
 (1626, 1406, 6, 'Q', 15, NULL, NULL, 0, NULL, '', NULL),
 (1627, 612, 7, 'F', 30, NULL, NULL, 0, NULL, '', NULL),
-(1628, 1, 7, NULL, NULL, NULL, NULL, 0, NULL, '', NULL),
+(1628, 1, 7, 'ZZZ', 75, NULL, NULL, 0, NULL, 'MW 7:00-8:30pm\nPresser 128', 'legera@berea.edu'),
 (1629, 1294, 7, 'P', 20, NULL, NULL, 0, NULL, '', NULL),
 (1630, 51, 7, NULL, NULL, NULL, NULL, 0, NULL, '', NULL),
 (1631, 52, 6, NULL, NULL, NULL, NULL, 0, NULL, '', NULL),
@@ -2236,8 +2236,24 @@ INSERT INTO `course` (`CID`, `bannerRef`, `term`, `schedule`, `capacity`, `roomA
 (1636, 550, 7, 'P', NULL, NULL, NULL, 0, NULL, 'P 223', NULL),
 (1637, 1128, 6, 'C', NULL, NULL, NULL, 0, NULL, 'P 223', NULL),
 (1638, 349, 7, 'F', NULL, NULL, NULL, 0, NULL, 'P 223', NULL),
-(1639, 56, 7, 'C', 1, NULL, NULL, 0, NULL, '', NULL),
-(1640, 56, 6, 'I', 3, NULL, NULL, 0, NULL, 'khgdjhtd', NULL);
+(1639, 518, 7, 'O', 20, NULL, NULL, 0, NULL, '', 'baskina@berea.edu'),
+(1640, 4, 7, 'P', NULL, NULL, NULL, 0, NULL, 'Presser 223', NULL),
+(1642, 52, 7, NULL, 20, NULL, NULL, 0, NULL, '', NULL),
+(1643, 54, 7, 'P', 20, NULL, NULL, 0, NULL, '', NULL),
+(1644, 499, 7, 'C', 24, NULL, NULL, 0, NULL, '', NULL),
+(1645, 277, 7, 'P', 201, NULL, NULL, 0, NULL, '', NULL),
+(1646, 347, 7, NULL, NULL, NULL, NULL, 0, NULL, '', NULL),
+(1647, 1255, 7, NULL, 20, NULL, NULL, 0, NULL, '', NULL),
+(1648, 415, 7, 'O', 20, NULL, NULL, 0, NULL, '', NULL),
+(1649, 1306, 7, 'Q', 15, NULL, NULL, 0, NULL, '', NULL),
+(1650, 1312, 7, NULL, NULL, NULL, NULL, 0, NULL, '', NULL),
+(1651, 1317, 7, 'J', 18, NULL, NULL, 0, NULL, 'DT 112', NULL),
+(1652, 455, 7, NULL, NULL, NULL, NULL, 0, NULL, '', NULL),
+(1653, 1366, 7, 'I', 16, NULL, NULL, 0, NULL, '', NULL),
+(1654, 1377, 7, NULL, NULL, NULL, NULL, 0, NULL, '', NULL),
+(1655, 477, 7, NULL, NULL, NULL, NULL, 0, NULL, '', NULL),
+(1658, 351, 7, 'ZZZ', 60, NULL, NULL, 0, NULL, '12:00-12:50 MWF \r\nPresser 128', NULL),
+(1659, 180, 7, NULL, NULL, NULL, NULL, 0, NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -2260,7 +2276,7 @@ CREATE TABLE IF NOT EXISTS `division` (
 
 INSERT INTO `division` (`DID`, `name`, `chair`) VALUES
 (1, 'Division I', 10143),
-(2, 'Division II', 1),
+(2, 'Division II', 10099),
 (3, 'Division III', 10154),
 (4, 'Division IV', 10054),
 (5, 'Division V', 10094),
@@ -2314,7 +2330,7 @@ CREATE TABLE IF NOT EXISTS `instructors2` (
   PRIMARY KEY (`pair`),
   KEY `CID` (`course`),
   KEY `instructor` (`instructor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1907 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1927 ;
 
 --
 -- Dumping data for table `instructors2`
@@ -2329,7 +2345,6 @@ INSERT INTO `instructors2` (`pair`, `instructor`, `course`) VALUES
 (648, 10521, 1342),
 (650, 10611, 641),
 (657, 10277, 697),
-(686, 10346, 1095),
 (702, 10486, 1347),
 (707, 10195, 1099),
 (708, 10267, 1100),
@@ -2347,12 +2362,9 @@ INSERT INTO `instructors2` (`pair`, `instructor`, `course`) VALUES
 (728, 10321, 1126),
 (730, 10094, 1128),
 (732, 10486, 1130),
-(733, 10486, 1131),
 (737, 10033, 1141),
 (738, 10351, 1140),
-(739, 10053, 1142),
 (743, 10016, 750),
-(749, 10193, 1114),
 (762, 10469, 945),
 (766, 10649, 1355),
 (767, 10102, 1337),
@@ -2474,11 +2486,8 @@ INSERT INTO `instructors2` (`pair`, `instructor`, `course`) VALUES
 (985, 10554, 970),
 (986, 10554, 551),
 (987, 10554, 552),
-(988, 10554, 1424),
 (989, 10457, 1425),
 (990, 10293, 1426),
-(991, 10563, 1427),
-(992, 10563, 1428),
 (996, 10190, 974),
 (997, 10558, 975),
 (998, 10025, 976),
@@ -2490,7 +2499,6 @@ INSERT INTO `instructors2` (`pair`, `instructor`, `course`) VALUES
 (1004, 10444, 985),
 (1005, 10558, 984),
 (1006, 10558, 986),
-(1007, 10444, 973),
 (1008, 10558, 987),
 (1009, 10025, 1429),
 (1011, 10606, 1431),
@@ -2990,7 +2998,6 @@ INSERT INTO `instructors2` (`pair`, `instructor`, `course`) VALUES
 (1824, 10088, 1497),
 (1825, 10434, 1625),
 (1826, 10434, 1626),
-(1827, 10317, 1628),
 (1828, 10439, 1080),
 (1829, 10303, 1629),
 (1830, 10013, 1632),
@@ -3059,10 +3066,28 @@ INSERT INTO `instructors2` (`pair`, `instructor`, `course`) VALUES
 (1900, 10319, 837),
 (1901, 10208, 856),
 (1902, 10312, 702),
-(1903, 10137, 1639),
-(1904, 10534, 1639),
-(1905, 10534, 1640),
-(1906, 10092, 1640);
+(1903, 10317, 1628),
+(1904, 10483, 1640),
+(1906, 10554, 1643),
+(1907, 10017, 1645),
+(1908, 10059, 1647),
+(1909, 10013, 1648),
+(1910, 10415, 1649),
+(1911, 10079, 1651),
+(1912, 10649, 1655),
+(1913, 10427, 1658),
+(1914, 10044, 1114),
+(1915, 10481, 1095),
+(1916, 10321, 1131),
+(1917, 10571, 1659),
+(1918, 10063, 1639),
+(1919, 10351, 1139),
+(1920, 10528, 1097),
+(1921, 10012, 1113),
+(1922, 10301, 1118),
+(1923, 10012, 1105),
+(1925, 10053, 1119),
+(1926, 10053, 1120);
 
 -- --------------------------------------------------------
 
@@ -3086,13 +3111,13 @@ CREATE TABLE IF NOT EXISTS `program` (
 --
 
 INSERT INTO `program` (`PID`, `name`, `chair`, `division`) VALUES
-(11, 'Biology', 1, 1),
+(11, 'Biology', 10011, 1),
 (12, 'Chemistry', 10358, 1),
 (13, 'Mathematics', 10029, 1),
 (14, 'Nursing', 10604, 1),
 (15, 'Physics', 10372, 1),
 (16, 'Agriculture and Natural Resources', 10490, 2),
-(17, 'Computer Science', 10099, 2),
+(17, 'Computer Science', 10022, 2),
 (18, 'Economics and Business', 10135, 2),
 (19, 'Sustainability & Environmental Studies', 10514, 2),
 (20, 'Technology and Applied Design', 10418, 2),
@@ -3117,6 +3142,145 @@ INSERT INTO `program` (`PID`, `name`, `chair`, `division`) VALUES
 (39, 'Peace and Social Justice Studies', 10326, 6),
 (40, 'Womens and Gender Studies', 10102, 6),
 (41, 'General Studies', 10302, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `rID` int(11) NOT NULL AUTO_INCREMENT,
+  `building` varchar(255) NOT NULL,
+  `number` varchar(255) NOT NULL,
+  `maxCapacity` int(11) DEFAULT NULL,
+  `roomType` varchar(255) NOT NULL,
+  PRIMARY KEY (`rID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=119 ;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`rID`, `building`, `number`, `maxCapacity`, `roomType`) VALUES
+(1, 'Agriculture', '106', 10, 'Lab-Nutrition'),
+(2, 'Agriculture', '123', 15, 'Lab-Agronomy'),
+(3, 'Agriculture', '203', 24, 'Lecture'),
+(4, 'Agriculture', '207', 18, 'Lecture'),
+(5, 'Agriculture', '304', 32, 'Lab-Horticulture'),
+(6, 'Art', '115', 12, 'Lab-Fiber'),
+(7, 'Art', '200', 10, 'Lab-Print'),
+(8, 'Art', '210', 24, 'Lecture'),
+(9, 'Art', '211', 18, 'Lecture'),
+(10, 'Art', '301', 25, 'Lab-Drawing'),
+(11, 'Art', '302', 12, 'Lab-Painting'),
+(12, 'Art', '303', 36, 'Lab-Design'),
+(13, 'Draper', '100', 44, 'Lecture'),
+(14, 'Draper', '101', 10, 'CLS'),
+(15, 'Draper', '103', 28, 'Lecture'),
+(16, 'Draper', '108', 4, 'Kitchen'),
+(17, 'Draper', '109', 12, 'Lounge'),
+(18, 'Draper', '114', 33, 'Lecture'),
+(19, 'Draper', '115', 24, 'Lecture'),
+(20, 'Draper', '116/117', 20, 'Lecture'),
+(21, 'Draper', '205', 20, 'Lecture'),
+(22, 'Draper', '206', 30, 'Lecture'),
+(23, 'Draper', '214', 24, 'Lecture'),
+(24, 'Draper', '215/216', 22, 'Lecture'),
+(25, 'Draper', '302', 24, 'Lecture'),
+(26, 'Draper', '303', 18, 'Lecture'),
+(27, 'Draper', '308', 34, 'Lecture'),
+(28, 'Draper', '309', 10, 'Lab-Language'),
+(29, 'Draper', '310', 21, 'Lecture'),
+(30, 'Draper', '311', 24, 'Lecture'),
+(31, 'Emery', '100', 37, 'Lecture'),
+(32, 'Emery', '101', 26, 'Lecture'),
+(33, 'Emery', '102', 34, 'Lecture'),
+(34, 'Emery', '103', 20, 'Lecture'),
+(35, 'Emery', '202', 22, 'Lecture'),
+(36, 'Emery', '203', 18, 'Lecture'),
+(37, 'Frost', '101', 27, 'Lecture'),
+(38, 'Frost', '103', 30, 'Lecture'),
+(39, 'Frost', '106', 15, 'Seminar'),
+(40, 'Frost', '210', 10, 'Seminar'),
+(41, 'Frost', '211', 9, 'Seminar'),
+(42, 'Frost', '216', 22, 'Lecture'),
+(43, 'Frost', '217', 6, 'Lab-Sociology'),
+(44, 'Frost', '218', 40, 'Lecture'),
+(45, 'Frost', '8', 20, 'Lecture'),
+(46, 'Industrial Arts', '108A', 12, 'Multi-Purpose Room'),
+(47, 'Industrial Arts', '112B', 20, 'Lab-Drafting'),
+(48, 'Industrial Arts', 'B10', 25, 'Lab-Graphics'),
+(49, 'Industrial Arts', '104', 24, 'Dept Only'),
+(50, 'Industrial Arts', 'B16', 20, 'Lab-Crafts'),
+(51, 'Industrial Arts', 'B18', 22, 'Lab-Electronics'),
+(52, 'Industrial Arts', 'B30', 12, 'Lab-Pottery'),
+(53, 'Knapp', '104', 18, 'Lecture'),
+(54, 'Knapp', '204', 12, 'Lecture'),
+(55, 'Knapp', 'BSMT', 10, 'Lecture'),
+(56, 'Nursing', '103', 30, 'Lab-Nursing'),
+(57, 'Nursing', '104', 16, 'Lecture'),
+(58, 'Nursing', '127', 24, 'Lecture'),
+(59, 'Nursing', '128', 72, 'Auditorium'),
+(60, 'Nursing', '129', 22, 'Lecture'),
+(61, 'Phelps Stokes', '204', 32, 'Lecture'),
+(62, 'Phelps Stokes', 'GREE', 12, 'Seminar'),
+(63, 'Presser', '126', 12, 'Lab-Percussion'),
+(64, 'Presser', '128', 75, 'Lab-Choir'),
+(65, 'Presser', '204', 6, 'Lab-Piano'),
+(66, 'Presser', '213', 16, 'Lecture'),
+(67, 'Presser', '223', 32, 'Lecture'),
+(68, 'Presser', '302', 15, 'Lecture'),
+(69, 'Presser', '402', 24, 'Lecture'),
+(70, 'Presser', '407', 18, 'Lecture'),
+(71, 'Science', '101', 85, 'Auditorium'),
+(72, 'Science', '104', 34, 'Lecture'),
+(73, 'Science', '106', 173, 'Auditorium'),
+(74, 'Science', '17', 32, 'Lecture'),
+(75, 'Science', '203', 28, 'Lab-Zoology'),
+(76, 'Science', '204', 28, 'Lab-Microbiology'),
+(77, 'Science', '212', 30, 'Lab-Botany'),
+(78, 'Science', '27', 24, 'Lab-Physics'),
+(79, 'Science', '305', 15, 'Lab-Chemistry'),
+(80, 'Science', '306', 33, 'Lab-Chemistry'),
+(81, 'Science', '313', 32, 'Lab-Chemistry'),
+(82, 'Science', '401', 30, 'Lecture'),
+(83, 'Seabury Center', '205', 200, 'Multi-Purpose Room'),
+(84, 'Seabury Center', '212', 12, 'Conference Room'),
+(85, 'Seabury Center', 'Alumni Field', 1500, 'Outdoor Space'),
+(86, 'Seabury Center', 'Arena', 2000, 'Gymnasium'),
+(87, 'Seabury Center', 'BS FD', 500, 'Baseball Field'),
+(88, 'Seabury Center', 'CC Trail', 250, 'CC Trail'),
+(89, 'Seabury Center', 'Concession Complex', 4, 'Concession Stand'),
+(90, 'Seabury Center', 'Concession Seabury', 4, 'Concession Stand'),
+(91, 'Seabury Center', 'CRS', 500, 'Golf Course'),
+(92, 'Seabury Center', 'CTS', 100, 'Tennis Courts'),
+(93, 'Seabury Center', 'CTS1', 4, 'Tennis Courts'),
+(94, 'Seabury Center', 'CTS2', 4, 'Tennis Courts'),
+(95, 'Seabury Center', 'CTS3', 4, 'Tennis Courts'),
+(96, 'Seabury Center', 'CTS4', 4, 'Tennis Courts'),
+(97, 'Seabury Center', 'CTS5', 4, 'Tennis Courts'),
+(98, 'Seabury Center', 'CTS6', 4, 'Tennis Courts'),
+(99, 'Seabury Center', 'CTS7', 4, 'Tennis Courts'),
+(100, 'Seabury Center', 'CTS8', 4, 'Tennis Courts'),
+(101, 'Seabury Center', 'DA ST', 50, 'Lab-Dance'),
+(102, 'Seabury Center', 'ID Track', 500, 'Track'),
+(103, 'Seabury Center', 'LCL', 60, 'Lecture'),
+(104, 'Seabury Center', 'OG', 600, 'Gymnasium'),
+(105, 'Seabury Center', 'POOL', 200, 'Pool'),
+(106, 'Seabury Center', 'PRFLB', 40, 'Lab-Performance'),
+(107, 'Seabury Center', 'RB CT', 4, 'Racquetball Court'),
+(108, 'Seabury Center', 'RBC1', 4, 'Racquetball Court'),
+(109, 'Seabury Center', 'RBC2', 4, 'Racquetball Court'),
+(110, 'Seabury Center', 'RBC3', 4, 'Racquetball Court'),
+(111, 'Seabury Center', 'RBC4', 4, 'Racquetball Court'),
+(112, 'Seabury Center', 'RBC5', 4, 'Racquetball Court'),
+(113, 'Seabury Center', 'SB FD', 500, 'Softball Field'),
+(114, 'Seabury Center', 'SCL', 40, 'Lecture'),
+(115, 'Seabury Center', 'S-CL', 20, 'CLS'),
+(116, 'Seabury Center', 'SF', 150, 'Soccer Field'),
+(117, 'Seabury Center', 'TR', 500, 'Track'),
+(118, 'Seabury Center', 'WGHT', 35, 'Lab-Weight');
 
 -- --------------------------------------------------------
 
@@ -3226,7 +3390,7 @@ CREATE TABLE IF NOT EXISTS `userprofile` (
 --
 
 INSERT INTO `userprofile` (`username`, `firstName`, `lastName`, `email`, `program`, `userLevel`, `UID`) VALUES
-('studentlabor', 'Student', 'Labor', 'heggens@berea.edu', 0, 2, 1),
+('studentlabor', 'Student', 'Labor', 'heggens@berea.edu', 0, 1, 1),
 ('keelso', 'Oliver', 'Keels', 'Oliver_Keels@berea.edu', 0, 1, 2),
 ('warshawskyn', 'Nora', 'Warshawsky', 'Nora_Warshawsky@berea.edu', 0, 1, 4),
 ('ruizc', 'Carey', 'Ruiz', 'Carey_Ruiz@berea.edu', 0, 1, 5),
@@ -3288,7 +3452,7 @@ INSERT INTO `userprofile` (`username`, `firstName`, `lastName`, `email`, `progra
 ('leekl', 'Linda', 'Leek', 'Linda_Leek@berea.edu', 0, 1, 10050),
 ('poffj', 'Jamie', 'Poff', 'Jamie_Poff@berea.edu', 0, 1, 10051),
 ('smithsonp', 'Paul', 'Smithson', 'Paul_Smithson@berea.edu', 0, 1, 10052),
-('pulsfords', 'Steve', 'Pulsford', 'Steve_Pulsford@berea.edu', 0, 1, 10053),
+('pulsfords', 'Steve', 'Pulsford', 'Steve_Pulsford@berea.edu', 41, 1, 10053),
 ('wootenb', 'Billy', 'Wooten', 'Billy_Wooten@berea.edu', 25, 3, 10054),
 ('millerc', 'Christopher', 'Miller', 'Christopher_Miller@berea.edu', 0, 1, 10055),
 ('crawforda', 'Aaron', 'Crawford', 'Aaron_Crawford@berea.edu', 0, 1, 10056),
@@ -3309,7 +3473,7 @@ INSERT INTO `userprofile` (`username`, `firstName`, `lastName`, `email`, `progra
 ('barnette', 'Elizabeth', 'Barnett', 'Elizabeth_Barnett@berea.edu', 0, 1, 10071),
 ('mattinglyg', 'Gary', 'Mattingly', 'Gary_Mattingly@berea.edu', 0, 1, 10072),
 ('mitchells', 'Sharyn', 'Mitchell', 'Sharyn_Mitchell@berea.edu', 0, 1, 10073),
-('vazzanac', 'Caryn', 'Vazzana', 'Caryn_Vazzana@berea.edu', 18, 1, 10074),
+('vazzanac', 'Caryn', 'Vazzana', 'Caryn_Vazzana@berea.edu', 24, 1, 10074),
 ('livesays', 'Sarah', 'Livesays', 'Sarah_Livesays@berea.edu', 0, 1, 10075),
 ('weinerm', 'Mike', 'Weiner', 'Mike_Weiner@berea.edu', 0, 1, 10076),
 ('cooperm', 'Melvin', 'Cooper', 'Melvin_Cooper@berea.edu', 0, 1, 10077),
@@ -3334,7 +3498,7 @@ INSERT INTO `userprofile` (`username`, `firstName`, `lastName`, `email`, `progra
 ('heyrmanj', 'John', 'Heyrman', 'John_Heyrman@berea.edu', 34, 2, 10096),
 ('ayerss', 'Shan', 'Ayers', 'Shan_Ayers@berea.edu', 29, 1, 10097),
 ('gonzalesfr', 'Fred', 'Gonzales', 'Fred_Gonzales2@berea.edu', 0, 1, 10098),
-('pearcej', 'Jan', 'Pearce', 'Jan_Pearce@berea.edu', 0, 3, 10099),
+('pearcej', 'Jan', 'Pearce', 'Jan_Pearce@berea.edu', 17, 3, 10099),
 ('edwardse', 'Gena', 'Edwards', 'Gena_Edwards@berea.edu', 0, 1, 10100),
 ('tarterp', 'Patty', 'Tarter', 'Patty_Tarter@berea.edu', 0, 1, 10101),
 ('rivage-seulp', 'Peggy', 'Rivage-Seul', 'Peggy_Rivage-Seul@berea.edu', 40, 2, 10102),
@@ -3523,7 +3687,7 @@ INSERT INTO `userprofile` (`username`, `firstName`, `lastName`, `email`, `progra
 ('thomasca', 'Carl', 'Thomas', 'Carl_Thomas@berea.edu', 0, 1, 10285),
 ('clementsn', 'Nathaniel', 'Clements', 'Nathaniel_Clements@berea.edu', 0, 1, 10286),
 ('johnsonsh', 'Shareese', 'Arnold', 'Shareese_Arnold@berea.edu', 0, 1, 10287),
-('rosenr', 'Ron', 'Rosen', 'Ron_Rosen@berea.edu', 0, 1, 10288),
+('rosenr', 'Ron', 'Rosen', 'Ron_Rosen@berea.edu', 11, 1, 10288),
 ('jonesl', 'Libby', 'Jones', 'Libby_Jones@berea.edu', 0, 1, 10289),
 ('watkinsm', 'Mylene', 'Watkins', 'Mylene_Watkins@berea.edu', 0, 1, 10290),
 ('graetzerm', 'Margarita', 'Graetzer', 'Margarita_Graetzer@berea.edu', 0, 1, 10291),

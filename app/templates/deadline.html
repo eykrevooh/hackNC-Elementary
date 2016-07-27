@@ -40,7 +40,7 @@
         </tr>
         {% endfor %}
       </table>
-      {% include "deleteDeadline.html" %} {% include "editDeadline.html" %}
+      {% include "deleteDeadline.html" %} {% include "snips/deadline/editDeadline.html" %}
     </td>
   </tr>
   {% endif %} {% endfor %}
@@ -51,6 +51,6 @@
 </div>
   {% endif %}
   {% if isAdmin %}
-    {% include "snips/createDeadline.html" %}
+    {% include "snips/deadline/createDeadline.html" %}
   {% endif %}
 {% endblock %}

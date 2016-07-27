@@ -24,7 +24,7 @@ def editCourseModal(tid, prefix, cid, page):
     instructors[course.cId] = InstructorCourse.select().where(InstructorCourse.course == course.cId)
     # SELECT ALL ROOMS
     rooms     = Rooms.select()
-    return render_template("snips/editCourse.html",
+    return render_template("snips/courseElements/editCourse.html",
                             schedules = schedules,
                             cfg = cfg,
                             terms     = terms,
