@@ -7,7 +7,7 @@ def redirectCourses():
    username = authUser(request.environ)
    user = User.get(User.username == username)
    if user.program is not None:
-      subject = Subject.get(Subject.pid.pid == user.program.pid)
+      subject = Subject.get(Subject.pid == user.program)
    else:
       subject = Subject.get()
    prefix = subject.prefix
