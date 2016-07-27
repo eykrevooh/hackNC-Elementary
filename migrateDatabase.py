@@ -3,11 +3,18 @@ import MySQLdb
 import datetime
 # this function populates the database with the information found in the old system of cas
 # change this to cas server if working outside of c9
-db = MySQLdb.connect(host = '127.0.0.1',
-                     user = 'memo3301791',
-                     passwd = '',
-                     db     = 'c9',
-                     port = 3306)
+try: 
+  db = MySQLdb.connect(host = '127.0.0.1',
+                       user = 'memo3301791',
+                       passwd = '',
+                       db     = 'c9',
+                       port = 3306)
+except:
+  db = MySQLdb.connect(host = '127.0.0.1',
+                       user = 'cody_myers',
+                       passwd = '',
+                       db     = 'c9',
+                       port = 3306)
                      
 cur = db.cursor()
 #This updates the division
