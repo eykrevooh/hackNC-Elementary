@@ -17,4 +17,4 @@ pip install peewee  --upgrade
 pip install pyyaml  --upgrade
 
 # needed to migrate the cas.sql
-sudo easy_install-2.7 mysql-python
+pip install MySQL-python
