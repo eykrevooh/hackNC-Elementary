@@ -26,7 +26,6 @@ from app import changeAdmin
 from app import programManagement
 from app import divisionManagement
 from app import systemManagement
-from app import redirect_courses
 from app import redirectAdminProgram
 from app import deadlineManagement
 from app import deadlineDisplay
