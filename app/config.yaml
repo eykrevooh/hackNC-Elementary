@@ -57,6 +57,9 @@ termInfo:
 editForm:
   dataKeys: ['cid','term','schedule','room','capacity','crossListed','notes']
 
+specialSchedule:
+  sidList: ['A1','ZZZ']
+
 changeType:
   create: 'create'
   delete: 'delete'
@@ -81,8 +84,8 @@ columnColor:
   default:  'none'
   
 DEBUG:
-  # user: "heggens" #Admin Access
-  user: "pearcej" #Division Chair Access
+  user: "heggens" #Admin Access
+  # user: "pearcej" #Division Chair Access
   # user: "jadudm"  #Program Chair Access
   # user: "kramera" #Professor Access
 

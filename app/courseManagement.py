@@ -86,7 +86,7 @@ def conflictsListed(tid):
             # and filters ones special scheduleID ZZZ
             specialScheduleCourseList, courseList = functions.getCoursesByRoom(
                 room.rID, tid)
-
+            
             while len(courseList):
                 current_course = courseList.pop()
 
@@ -94,7 +94,7 @@ def conflictsListed(tid):
                 if len(courseList):
                     buildingConflicts += functions.getConflicts(
                         current_course, courseList)
-
+            buildingConflicts+=specialScheduleCourseList
         instructors = {}
         if len(buildingConflicts):
 
@@ -106,6 +106,7 @@ def conflictsListed(tid):
             # DATA FOR THE CONFLICTS TABLE
             instructors = databaseInterface.createInstructorDict(
                 buildingConflicts)
+                
     return render_template("conflicts.html",
                            cfg=cfg,
                            isAdmin=authorizedUser.isAdmin(),
