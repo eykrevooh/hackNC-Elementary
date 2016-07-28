@@ -5,9 +5,9 @@ import os
 from app.loadConfig import *
 here = os.path.dirname(__file__)
 cfg       = load_config(os.path.join(here, 'config.yaml'))
-
+db	  = os.path.join(here,'../',cfg['databases']['dev']) 
 # mainDB    = SqliteDatabase(cfg['databases']['dev'])
-mainDB    = SqliteDatabase(cfg['databases']['dev'],
+mainDB    = SqliteDatabase(db,
                           pragmas = ( ('busy_timeout',  100),
                                       ('journal_mode', 'WAL')
                                   ),
