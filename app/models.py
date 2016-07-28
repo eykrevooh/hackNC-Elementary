@@ -67,18 +67,18 @@ class Program(dbModel):
   name          = CharField()
   division      = ForeignKeyField(Division)
 
+class Subject(dbModel):
+  prefix        = CharField(primary_key=True)
+  pid           = ForeignKeyField(Program, related_name='subjects')
+  webname       = TextField()
+
 class User(dbModel):
   username     = CharField(primary_key=True)
   firstName    = CharField()
   lastName     = CharField()
   email        = CharField()
   isAdmin      = BooleanField()
-  lastVisited  = ForeignKeyField(Program, null=True)
-  
-class Subject(dbModel):
-  prefix        = CharField(primary_key=True)
-  pid           = ForeignKeyField(Program, related_name='subjects')
-  webname       = TextField()
+  lastVisited  = ForeignKeyField(Subject, null=True)
   
 class BannerCourses(dbModel):
   reFID         = PrimaryKeyField()
