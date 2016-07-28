@@ -101,3 +101,44 @@ def createColorString(changeType):
         tdcolors = ",".join(colorList)
 
         return tdcolors
+
+''' Author-> CDM 20160728
+Purpose: If tid and prefix exsist, we store the prefix as lastVisted and 
+return a list containing tid and prefix, otherwise create some default values
+and return them.
+@param -tid      {{integer}} -> term identification number
+@param -prefix   {{string}}  -> course prefix
+@param -username {{string}}  -> unique id for users
+
+@return -list [tid,prefix]   -> contains the value sets
+'''
+
+def checkRoute(tID,prefix,username,data):
+    user = User.get(User.username == username)
+    #First Check to see if data was posted from the course sidebar
+    try:
+        prefix = data['prefix']
+        tID    = int(data['term'])
+    except:
+        pass
+    #Set default values if no values were found
+    if tID == None and prefix == None:
+        if user.lastVisited is not None:
+            prefix = user.lastVisited.prefix
+        else:
+            subject = Subject.get()
+            prefix = subject.prefix
+        
+        currentTerm = 0
+        for term in Term.select():
+            if term.termCode > currentTerm:
+                currentTerm = term.termCode
+        pathList = [currentTerm,str(prefix)]
+    #If a prefix is found then store the prefix and return path    
+    else:
+        user.lastVisited = prefix
+        user.save()
+        pathList = [tID,str(prefix)]
+    return pathList
+  
+    

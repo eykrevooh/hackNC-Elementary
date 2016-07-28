@@ -2,24 +2,18 @@ from allImports import *
 from updateCourse import DataUpdate
 from app.logic.getAuthUser import AuthorizedUser
 from app.logic.databaseInterface import getSidebarElements, createInstructorDict
-
+from app.logic import functions
 @app.route("/courses/",defaults={'tID': None,'prefix': None}, methods=["GET", "POST"] )
 @app.route("/courses/<tID>/<prefix>", methods=["GET", "POST"])
 def courses(tID, prefix):
     page = "courses"
+    authorizedUser = AuthorizedUser(prefix)
+    username       = authorizedUser.getUsername()
+    data = None
+    if request.method == "POST":
+      data = request.form
+    tID, prefix = functions.checkRoute(tID,prefix,username,data)
     
-    if prefix == None:
-      if user.program != 0 and user.program is not None:
-        subject = Subject.get(Subject.pid == user.program)
-      else:
-        subject = Subject.get()
-      prefix = subject.prefix
-      
-    if tID == None: 
-      tID = 0
-      for t in Term.select():
-        if t.termCode > currentTerm:
-          tID = t.termCode
 
     # Checking the permissions of the user.
     # we need the subject to know if someone if a division chair or a program
