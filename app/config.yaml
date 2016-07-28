@@ -32,7 +32,7 @@ mainMenu:
   - title: "Home"
     link: "/"
   - title: "Courses"
-    link: "/redirect/courses"
+    link: "/courses"
 
 adminMenu:
   Administration:
