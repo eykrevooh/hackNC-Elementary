@@ -34,8 +34,19 @@
                 </td>
                 <!--SCHEDULE-->
                 <td>
+                    {# Needed to move special to the top for scoping issue #}
+                    {% set special = [] %}
                     {% if course.schedule is not none %}
-                        {{course.schedule.days}} {{course.schedule.startTime.strftime('%I:%M%p')}}-{{course.schedule.endTime.strftime('%H:%M%p')}}
+                        {% for sid in cfg['specialSchedule']['sidList'] %}
+                            {% if sid == course.schedule.sid %}
+                                {% set special = special.append(sid) %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if special != [] %}
+                            <p>See Notes</p>                            
+                        {% else %}
+                            {{course.schedule.days}} {{course.schedule.startTime.strftime('%I:%M%p')}}-{{course.schedule.endTime.strftime('%H:%M%p')}}
+                        {% endif %}
                     {% endif %}
                 </td>
                 <!--CAPACITY-->
