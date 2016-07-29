@@ -21,3 +21,5 @@ def adminDivisionManagement(did):
                                  users         = users,
                                  divisions     = divisions,
                                  isAdmin       = authorizedUser.isAdmin)
+      else:
+         return render_template("404.html", cfg=cfg)

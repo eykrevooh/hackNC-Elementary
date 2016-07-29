@@ -6,8 +6,8 @@ from app.logic.getAuthUser import AuthorizedUser
 @app.route("/admin/programManagement/<pid>", methods=["GET", "POST"])
 def adminProgramManagement(pid):
   # if (request.method == "GET"):
-   authorizedUser = AuthorizedUser()
-   if authorizedUser.isAdmin():
+    authorizedUser = AuthorizedUser()
+    if authorizedUser.isAdmin():
       users = User.select().order_by(User.lastName)
       divisions = Division.select()
       programs  = Program.select()
@@ -23,4 +23,5 @@ def adminProgramManagement(pid):
                               divisions     = divisions,
                               programs      = programs,
                               isAdmin       = authorizedUser.isAdmin())
-   
+    else:
+        return render_template("404.html", cfg=cfg)

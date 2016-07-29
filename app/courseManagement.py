@@ -177,4 +177,6 @@ def verifyChange():
             log.writer("INFO", page, message)
             flash("Your course has been marked verified")
             return redirect(redirect_url())
+        return render_template("404.html", cfg=cfg)
+    return render_template("404.html", cfg=cfg)
     
