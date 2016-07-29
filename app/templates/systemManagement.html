@@ -25,7 +25,7 @@
           <a href=# data-toggle="modal" data-target="#termModal{{term.termCode}}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></a> {% include "snips/termModal.html" %}
         </td>
         <td>
-          <p>Term changes <b>are not</b> being tracked.</p>
+          <p>Term changes <b>are not</b> being <a href="/courseManagement/tracker/">tracked</a>.</p>
         </td>
         {% else %}
         <td>
@@ -33,7 +33,7 @@
           <span class="glyphicon glyphicon-lock disabled" aria-hidden="true" style="color:#d62c1a;"></span> {% include "snips/termModal.html" %}
         </td>
         <td>
-          <p>Term changes <b>are</b> being tracked.</p>
+          <p>Term changes <b>are</b> being <a href="/courseManagement/tracker/">tracked</a>.</p>
         </td>
         {% endif %}
       </tr>
