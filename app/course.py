@@ -43,7 +43,7 @@ def courses(tID, prefix):
         BannerCourses.subject == prefix).order_by(
         BannerCourses.number)
 
-    schedules = BannerSchedule.select()
+    schedules = BannerSchedule.select().order_by(BannerSchedule.order)
 
     courses = Course.select().where(
         Course.prefix == prefix).where(

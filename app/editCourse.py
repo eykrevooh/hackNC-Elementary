@@ -12,7 +12,7 @@ def editCourseModal(tid, prefix, cid, page):
   if authorizedUser.isAuthorized():
     
     # Select all schedules
-    schedules = BannerSchedule.select()
+    schedules = BannerSchedule.select().order_by(BannerSchedule.order)
     # Select all terms
     terms = Term.select()
     # Select the course informations
