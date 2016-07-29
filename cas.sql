@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 27, 2016 at 11:22 AM
+-- Generation Time: Jul 29, 2016 at 01:18 PM
 -- Server version: 5.5.46-0ubuntu0.14.04.2
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -1307,7 +1307,7 @@ INSERT INTO `bannerschedules` (`letter`, `days`, `startTime`, `endTime`, `sid`, 
 ('TR Experiential Lab Block A-3', 'TR', '09:00:00', '11:30:00', 'X', 25),
 ('Advanced Art Studio A-2', 'MW', '09:00:00', '11:50:00', 'Y', 26),
 ('Advanced Art Studio A-3', 'TR', '09:00:00', '11:50:00', 'Z', 27),
-('Other (Enter times in Special Comments below)', 'N/A', '00:00:00', '00:00:00', 'ZZZ', 100);
+('Other (Enter times in Notes below)', 'N/A', '00:00:00', '00:00:00', 'ZZZ', 100);
 
 -- --------------------------------------------------------
 
