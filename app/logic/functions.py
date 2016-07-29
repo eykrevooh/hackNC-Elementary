@@ -33,7 +33,7 @@ def getCoursesByRoom(roomID, termID):
                                     Course.rid == roomID,
                                     Course.term == termID).order_by(Course.rid)
     for course in courses:
-        if course.schedule.sid in cfg['specialSchedule']['sidList']:
+        if course.schedule.sid in cfg['specialSchedule']['conflicts']:
             specialScheduleCourseList.append(course)
         else:
             courseList.append(course)

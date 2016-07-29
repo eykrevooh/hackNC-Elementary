@@ -37,7 +37,7 @@
                     {# Needed to move special to the top for scoping issue #}
                     {% set special = [] %}
                     {% if course.schedule is not none %}
-                        {% for sid in cfg['specialSchedule']['sidList'] %}
+                        {% for sid in cfg['specialSchedule']['unknownTime'] %}
                             {% if sid == course.schedule.sid %}
                                 {% set special = special.append(sid) %}
                             {% endif %}

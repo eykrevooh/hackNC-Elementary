@@ -58,7 +58,10 @@ editForm:
   dataKeys: ['cid','term','schedule','room','capacity','crossListed','notes']
 
 specialSchedule:
-  sidList: ['A1','ZZZ']
+  # Times that needed to be automatically added on the conflicts.html
+  conflicts: ['A1','ZZZ']
+  # Times you have to find in the notes section
+  unknownTime: ['ZZZ']
 
 changeType:
   create: 'create'
