@@ -121,14 +121,17 @@ def conflictsListed(tid):
 #CHANGE TRACKER#
 ################
 
-
-@app.route("/courseManagement/tracker/<tid>/", methods=["GET"])
-def trackerListed(tid):
+@app.route("/courseManagement/tracker/", defaults={'tID':0}, methods=["GET"])
+@app.route("/courseManagement/tracker/<tID>/", methods=["GET"])
+def trackerListed(tID):
     # DATA FOR THE NAVBAR AND SIDE BAR
     page = "tracker"
     terms = Term.select().order_by(-Term.termCode)
     authorizedUser = AuthorizedUser()
-
+    if tID == 0:
+      for term in terms:
+        if term.termCode > tID:
+          tID = term.termCode
     # DATA FOR THE CHANGE TRACKER PAGE
     # ALL OF THIS CAME FROMT HE COURSECHANGE.PY
     if (request.method == "GET"):
@@ -152,7 +155,7 @@ def trackerListed(tid):
                                isAdmin=authorizedUser.isAdmin(),
                                allTerms=terms,
                                page=page,
-                               currentTerm=int(tid),
+                               currentTerm=int(tID),
                                courses=courses,
                                instructorsDict=instructorsDict,
                                classDict=colorClassDict
