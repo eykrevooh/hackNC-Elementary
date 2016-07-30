@@ -15,6 +15,6 @@ fi
 pip install Flask   --upgrade
 pip install peewee  --upgrade
 pip install pyyaml  --upgrade
-
+pip install XlsxWriter
 # needed to migrate the cas.sql
 pip install MySQL-python

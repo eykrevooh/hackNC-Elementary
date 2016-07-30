@@ -31,3 +31,4 @@ from app import deadlineManagement
 from app import deadlineDisplay
 from app import courseManagement
 from app import addCourse
+from app import excelDownload
