@@ -5,19 +5,16 @@
 
 <!--area before container-->
 {% block aboveContainer %}
-  {% include "snips/sidebars/sidebarButton.html" %}
 {% endblock %}
 
 <!--Page content-->
 {% block body %}
-<link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
 <link rel="stylesheet" href="/static/css/Courses.css" type="text/css" />
 <script src="/static/js/local/popup.js"></script>
 
 <body>
   <div id="wrapper">
-    {%include "snips/sidebars/courseManagementSidebar.html" %}
-    <div id="page-content-wrapper">
+    <div id="page-wrapper">
       <!--Messages that need to be displayed-->
       {% include "snips/messages.html" %} 
       

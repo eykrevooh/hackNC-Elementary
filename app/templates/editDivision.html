@@ -1,17 +1,11 @@
 {% extends "base.html" %}
-{% set currentPage = "Division Management" %}
+{% set currentPage = "divisionManagement" %}
 
-{% block aboveContainer %} 
-  {% include "snips/sidebars/sidebarButton.html" %}
-{% endblock %}
-{% block body %}
 <div id="wrapper">
-{% include "snips/sidebars/divisionManagementSidebar.html"%}
+{% block body %}
 
-
-<div id="page-content-wrapper">
+<div id="page-wrapper">
   {% include "snips/messages.html" %}
-  <div class="container-fluid">
     <div class="row">
         <form action="\editDivision" method="post" id="divisionEditForm{{division.dID}}">
           <div class="form-group">
@@ -40,9 +34,10 @@
           </div>
         </form>
     </div>
-  </div>
+
   <!-- /#page-content-wrapper -->
 </div>
 <!-- /#wrapper -->
-</div>
+
 {% endblock %}
+ {% block belowContainer %} </div> {% endblock %}

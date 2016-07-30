@@ -1,8 +1,6 @@
 {% extends "base.html" %} {% set currentPage = "systemManagement" %} {% block body %} 
 {% include "snips/messages.html" %}
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" type="text/css" />
-<link rel="stylesheet" href="/static/css/systemManagement.css" type="text/css" />
+<div class="container">
 <div class="panel panel-default">
   <!--TERM MANAGEMENT-->
   <div class="panel-heading">
@@ -129,6 +127,5 @@
 <!--DEADLINE MANAGEMENT-->
 {% include "snips/deadline/createDeadline.html" %}
 </div>
-
-
+</div>
 {% endblock %}

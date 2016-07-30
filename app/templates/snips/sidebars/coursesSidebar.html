@@ -1,0 +1,54 @@
+  <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        
+                        <li class="sidebar-brand">
+                            <a href="#" class='text-center head'> Menu</a>
+                        </li>
+                        {% for division in divisions %}
+                        <li>
+                            <a href="#">{{division.name}}<span class="fa arrow"></span></a>
+                            {% for program in programs %} 
+                            {% if program.division.dID == division.dID %}
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">{{program.name}} <span class="fa arrow"></span></a>
+                                     
+                                    <ul class="nav nav-third-level">
+                                      {% for subject in subjects %} 
+                                     {% if subject.pid.pID == program.pID %}
+                                        <li>
+                                            <a href="/courses/{{currentTerm}}/{{subject.prefix}}">{{subject.prefix}}</a>
+                                        </li>
+                                        
+                                        {% endif %}
+                                    {% endfor %}
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                    
+                                </li>
+                            </ul>
+                            {% endif %}
+                            {% endfor %}
+                            <!-- /.nav-second-level -->
+                        </li>
+                        {% endfor %}
+
+                        <li class="active">
+                            <a class="termSelect head2" href="#">Term</a>
+                           
+                            <ul class="nav nav-second-level">
+                                {% for term in allTerms %}
+                                <li>
+                                    <a href="/courses/{{term.termCode}}/{{prefix}}">{{term.name}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+        

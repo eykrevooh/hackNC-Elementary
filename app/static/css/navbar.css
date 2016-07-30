@@ -1,15 +1,33 @@
-.navbar-collapse.collapse {
-  display: block!important;
+.navbar-top-links {
+    margin-right: 0;
 }
 
-.navbar-nav>li, .navbar-nav {
-  float: left !important;
+.navbar-top-links li {
+    display: inline-block;
 }
 
-.navbar-nav.navbar-right:last-child {
-  margin-right: -15px !important;
+.navbar-top-links li:last-child {
+    margin-right: 15px;
 }
 
-.navbar-right {
-  float: right!important;
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
+}
+
+.navbar-top-links .dropdown-menu li {
+    display: block;
+}
+
+.navbar-top-links .dropdown-menu li:last-child {
+    margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+    white-space: normal;
 }

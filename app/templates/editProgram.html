@@ -1,17 +1,11 @@
 {% extends "base.html" %}
-{% set currentPage = "Program Management" %}
+{% set currentPage = "programManagement" %}
 {% block body %}
 <div id="wrapper">
-{% include "snips/sidebars/programManagementSidebar.html"%}
 
 {% include "snips/messages.html" %}
 
-  <div id="page-content-wrapper">
-          <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-            <span class="hamb-top"></span>
-            <span class="hamb-middle"></span>
-            <span class="hamb-bottom"></span>
-          </button>
+  <div id="page-wrapper">
   <div class="container-fluid">
     <div class="row">
         <form action="\editProgram" method="post" id="programEditForm{{program.pID}}">

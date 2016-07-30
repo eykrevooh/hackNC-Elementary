@@ -10,10 +10,10 @@
     
     <!-- Optional theme -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="/static/css/chosen.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css"/>
-    
-    
+   
+   <!--styling for the menu-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.min.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel = "stylesheet" href = "/static/css/jquery.bootstrap-touchspin.css" />
     <script src = "/static/js/ext/jquery.bootstrap-touchspin.js"> </script>
-    
+    <link rel="stylesheet" href="" type="text/css" />
     <!-- AJA, Sweetalert, Dropzone -->
     <script src = "/static/js/ext/aja.min.js"> </script>
     <script src = "/static/js/ext/sweetalert.min.js"> </script>
@@ -39,20 +39,22 @@
     <!-- Bootrstrap X-editable -->
     <link href="/static/css/bootstrap-editable.css" rel="stylesheet">
     <script src="/static/js/ext/bootstrap-editable.min.js"></script>
+    
 
     <!--custom styling-->
-    <link rel="stylesheet" href="/static/css/containerShift.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/custom.css" type="text/css" />
   </head>
   <body>
       {% include "navigation.html" %}
     {% block aboveContainer %} {% endblock %}
-    <div class="container">
+    <!--<div class="container">-->
       {# All content should get rendered in here #}
       {% block body %} {% endblock %}  
-    </div>
+    <!--</div>-->
    {% block belowContainer %} {% endblock %} 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.min.js"></script>
+    <script type="text/javascript" src="/static/js/local/app.js"></script>
      <link rel = "stylesheet" href = "/static/css/{{currentPage}}.css"/>
      <script type = "text/javascript"
             src  = "/static/js/local/{{currentPage}}.js"> 

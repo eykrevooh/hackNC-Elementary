@@ -1,6 +1,7 @@
 <!--The below line of code is jinja which is a template engine for python-->
 <!-- If you want to learn more about jinja, refer to jinja documentation-->
-{% extends "base.html" %} {% set currentPage = "start" %} {% block body %} 
+{% extends "base.html" %} {% set currentPage = "deadline" %} {% block body %} 
+<div class='container'>
 {% include "snips/messages.html" %}
 {% if deadlines %}
 <table class="table table-bordered">
@@ -51,4 +52,5 @@
   {% if isAdmin %}
     {% include "snips/deadline/createDeadline.html" %}
   {% endif %}
+  </div>
 {% endblock %}

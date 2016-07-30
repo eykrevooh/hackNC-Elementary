@@ -1,16 +1,11 @@
-{% extends "base.html" %} {% set currentPage = "Courses" %} {% block aboveContainer %}
+{% extends "base.html" %} {% set currentPage = "courses" %} {% block aboveContainer %}
 <div id="wrapper">
-    <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-            <span class="hamb-top"></span>
-            <span class="hamb-middle"></span>
-            <span class="hamb-bottom"></span>
-          </button> {% endblock %} {% block body %}
+    {# include 'snips/sidebars/sidebarButton.html' #} {% endblock %} {% block body %}
 
-    <div id="page-content-wrapper">
-        {% include "snips/sidebars/courseSidebar.html" %} {% include "snips/messages.html" %}
+    <div id="page-wrapper">
+        <div class="row">
+        {% include "snips/messages.html" %}
         <!-- Page Content -->
-
-
         <h2>{{currentProgram.name}}: {{curTermName.name}}</h2>
         <div class="container-fluid">
             <div class="row">
@@ -21,6 +16,8 @@
                     {% include "snips/courseElements/createCourse.html" %}
                 {% endif %}
             </div>
+            </div>
+            <!--/.row-->
         </div>
         <!-- /#page-content-wrapper -->
     </div>
@@ -29,5 +26,4 @@
 <!-- /#page-content-wrapper -->
 
 <!-- /#wrapper -->
-<script type="text/javascript" src="/static/js/local/sidebar.js"></script>
 {% endblock %} {% block belowContainer %} </div> {% endblock %}

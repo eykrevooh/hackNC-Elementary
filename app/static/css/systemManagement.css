@@ -17,3 +17,6 @@ textarea {
 .adminSelect {
     min-width: 200px;
 }
+body {
+    background-color: #fff;
+}

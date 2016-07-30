@@ -1,26 +1,24 @@
-<!--PURPOSE: THIS IS THE SIDEBAR FOR THE COURSEMANAGEMENT.HTML-->
-<link rel="stylesheet" href="/static/css/sidebar.css" type="text/css" />
-<script type="text/javascript" src="/static/js/local/sidebar.js"></script>
-<nav class="navbar navbar-default navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-    <ul class="nav nav-list sidebar-nav">
-        <li class="sidebar-brand">Course Management</li>
-        <li>
-            <a id = "crossListedLink" href="">Cross Listed Courses</a>
-        </li>
-        <li>
-             <a id = "conflictsLink" href="">Schedule and Room Conflicts</a>
-        </li>
-        <li>
-            <a id = "trackerLink" href="">Change Tracker</a>
-        </li>
-        {% if page == "tracker" %}
-            {# We need a hidden input for our javascript #}
-            <input type="hidden" value="{{currentTerm}}" id="termSelect"> 
-        {% else %}
-            <li class="sidebar-brand">Current Term</li>
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+
+            <li class="head2">
+                <a href="#" class='text-center'> Menu</a>
+            </li>
             <li>
-                <form class="navbar-form" method="post">
-                    <select id="termSelect" class="form-control col-md-1" onchange="buildURL('{{page}}')">
+                <a id="crossListedLink" href="">Cross Listed Courses</a>
+            </li>
+            <li>
+                <a id="conflictsLink" href="">Schedule and Room Conflicts</a>
+            </li>
+            <li>
+                <a id="trackerLink" href="">Change Tracker</a>
+            </li>
+            {% if page == "tracker" %} {# We need a hidden input for our javascript #}
+            <input type="hidden" value="{{currentTerm}}" id="termSelect"> {% else %}
+            <li class="head2"><a>Current Term</a></li>
+            <li id="sidebarSelect">
+                <select id="termSelect" class="form-control col-md-1" onchange="buildURL('{{page}}')">
                         {% for term in allTerms %}
                             <option value ="{{term.termCode}}"
                                 {% if term.termCode|int == currentTerm|int %}
@@ -31,10 +29,10 @@
                             </option>
                         {% endfor %}
                     </select>
-                </form>
             </li>
-        {% endif %}
-    </ul>
-        </nav>
-
+            {% endif %}
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
 <script type="text/javascript" src="/static/js/local/courseManagementSidebar.js"></script>
