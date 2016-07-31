@@ -10,7 +10,10 @@ def editterm():
       term = Term.get(Term.termCode == data['termCode'])
       term.editable = not term.editable
       term.save()
-        
-      message = "Term: term {} has been made editable".format(data['termCode'])
+      
+      editability = "not editable"  
+      if term.editable:
+        editability = "editable"
+      message = "Term: term {0} has been made {1}".format(data['termCode'], editability)
       log.writer("INFO", page, message)
       return redirect(redirect_url())
