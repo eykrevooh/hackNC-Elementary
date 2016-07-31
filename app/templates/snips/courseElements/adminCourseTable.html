@@ -82,7 +82,7 @@
                     {{course.lastEditBy}}
                 </td>
                 {% if isAdmin or isDivisionChair or isProgramChair %}
-                    <td>
+                    <td style="display: inline;">
                         
                             <!--EDIT MODAL-->
                             <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}/{{page}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
