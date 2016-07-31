@@ -66,4 +66,4 @@ def addCourses(tid, prefix):
         flash("Course has successfully been added!")
         return redirect(redirect_url())
     else:
-        return render_template("404.html", cfg=cfg)
+        abort(404) 

@@ -142,27 +142,28 @@ def trackerListed(tID):
             instructorsDict = databaseInterface.createInstructorDict(courses)
 
             colorClassDict = functions.getColorClassDict(courses)
-        '''
-      DATA STRUCTURES
-      NOTE: The keys for both dictionaries the course identification number
-        classDict[cId] = [className,className,className,className,className]
-        *Then it will return a list of classnames that can be accessed through an index
-
-        instructorsDict[cid] = intructorCourseChange peewee object
-      '''
-        return render_template("tracker.html",
-                               cfg=cfg,
-                               isAdmin=authorizedUser.isAdmin(),
-                               allTerms=terms,
-                               page=page,
-                               currentTerm=int(tID),
-                               courses=courses,
-                               instructorsDict=instructorsDict,
-                               classDict=colorClassDict
-                               )
+            '''
+            DATA STRUCTURES
+            NOTE: The keys for both dictionaries the course identification number
+            classDict[cId] = [className,className,className,className,className]
+            *Then it will return a list of classnames that can be accessed through an index
+            
+            instructorsDict[cid] = intructorCourseChange peewee object
+            '''
+            return render_template("tracker.html",
+                                   cfg=cfg,
+                                   isAdmin=authorizedUser.isAdmin(),
+                                   allTerms=terms,
+                                   page=page,
+                                   currentTerm=int(tID),
+                                   courses=courses,
+                                   instructorsDict=instructorsDict,
+                                   classDict=colorClassDict
+                                   )
+        else:
+            abort(404)
     else:
-        return render_template("404.html", cfg=cfg)
-
+        abort(404)
 
 @app.route("/courseManagement/tracker/verified", methods=["POST"])
 def verifyChange():
