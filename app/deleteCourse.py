@@ -42,7 +42,10 @@ def deletecourse(prefix, tid):
             InstructorCourseChange.course == cid)
         for instructor in instructors:
             instructor.delete_instance()
+        message = "Course: course {} has been deleted".format(course.cId)
         course.delete_instance()
+        
+        log.writer("INFO", current_page, message)
 
     flash("Course has been successfully deleted")
     return redirect(redirect_url())
