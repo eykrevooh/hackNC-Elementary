@@ -20,7 +20,7 @@ cur = db.cursor()
 #This updates the division
 cur.execute("SELECT * FROM division")
 for row in cur.fetchall():
-  print row[1]
+  # print row[1]
   division = Division(dID = row[0],
                       name = row[1])
   division.save(force_insert= True)  
@@ -30,7 +30,7 @@ for row in cur.fetchall():
 cur.execute("select * FROM program")
 
 for row in cur.fetchall():
-  print row[1], row[3]
+  # print row[1], row[3]
   program = Program(pID = row[0],
                       name = row[1],
                     division = row[3])
@@ -39,7 +39,7 @@ for row in cur.fetchall():
 cur.execute("SELECT * FROM userprofile")
 
 for row in cur.fetchall():
-  print row[0], row[1], row[2], row[3], row[4]
+  # print row[0], row[1], row[2], row[3], row[4]
   admin = 0
   if int(row[5]) == 4:
     admin = 1
@@ -56,7 +56,7 @@ for row in cur.fetchall():
 cur.execute("SELECT * FROM subjects")
 
 for row in cur.fetchall():
-  print row[0], row[1], row[2]
+  # print row[0], row[1], row[2]
   subject = Subject(prefix  = row[0],
                     pid     = int(row[1]),
                     webname = row[2])
@@ -65,7 +65,7 @@ for row in cur.fetchall():
 cur.execute("select * from bannerschedules")
 
 for row in cur.fetchall():
-  print row[0], row[1], row[2], row[3], row[4], row[5]
+  # print row[0], row[1], row[2], row[3], row[4], row[5]
   schedule = BannerSchedule(letter = row[0],
                             days   = row[1],
                             startTime = (datetime.datetime.min + row[2]).time(),
@@ -76,7 +76,7 @@ for row in cur.fetchall():
 cur.execute("select * from bannercourses")
 
 for row in cur.fetchall():
-  print row[0], row[1], row[2], row[4]
+  # print row[0], row[1], row[2], row[4]
   bannercourse = BannerCourses(reFID = row[0],
                                 subject = row[1],
                                 number = row[2],
@@ -86,7 +86,7 @@ for row in cur.fetchall():
 cur.execute("select * from term")
 
 for row in cur.fetchall():
-  print row[0], row[1], row[2], row[3]
+  # print row[0], row[1], row[2], row[3]
   term = Term(name = row[1],
               termCode = row[2],
               editable = row[3]).save(force_insert=True)
@@ -97,7 +97,7 @@ cur2 = db.cursor()
 
 
 for row in cur.fetchall():
-  # print row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]
+  #print row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]
   cur2.execute("select subject from bannercourses where refID = {0}".format(row[1]))
   for subject in cur2.fetchall():
     sub = subject[0]
@@ -105,9 +105,6 @@ for row in cur.fetchall():
   cur2.execute("select term_code from term where TID = {}".format(row[2]))
   for term in cur2.fetchall():
     termCode = term[0]
-  status = 1
-  if row[7] is None:
-    status = 0
   capacity = row[4]
   # if row[4] is None:
     # capacity = 0
@@ -117,7 +114,8 @@ for row in cur.fetchall():
   room = row[9]
   # if row[9] is None:
     # room = ''
-  course = Course(cid = int(row[0]),
+  print row[0]
+  course = Course(cId = int(row[0]),
                   bannerRef = int(row[1]),
                   term = int(termCode),
                   schedule = schedule,
@@ -134,7 +132,7 @@ for row in cur.fetchall():
   cur3.execute("select username from userprofile where UID = {}".format(row[2]))
   for user in cur3.fetchall():
     username = user[0]
-  print row[1], username
+  # print row[1], username
   programChair = ProgramChair(username = username,
                               pid = row[0]).save()
 # this populates the divisions                             
@@ -144,7 +142,7 @@ for row in cur.fetchall():
   cur4.execute("select username from userprofile where UID = {}".format(row[2]))
   for user in cur4.fetchall():
     username = user[0]
-  print row[1], username
+  # print row[1], username
   divisionChair = DivisionChair(username = username,
                                 did   = row[0]).save()
 # this populates the instructs

@@ -14,7 +14,6 @@ def makeExcelFile(term):
     row = 2
     master_row = 2
     subjects = Subject.select().order_by(Subject.prefix)
-    
     # add values 
     master_worksheet.write('A1','Prefix')
     master_worksheet.write('B1','Number')
@@ -34,7 +33,7 @@ def makeExcelFile(term):
         current_sheet.write('E1','Block')
         current_sheet.write('F1', 'Capacity')
         
-        courses = Course.select().where(Course.prefix == subject).order_by(Course.bannerRef)
+        courses = Course.select().where(Course.prefix == subject.prefix).where(Course.term == term).order_by(Course.bannerRef)
         
         for course in courses:
             
