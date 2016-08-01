@@ -82,13 +82,16 @@
                     {{course.lastEditBy}}
                 </td>
                 {% if isAdmin or isDivisionChair or isProgramChair %}
-                    <td style="display: inline;">
-                        
+                    <td>
+                        <div class="child">
                             <!--EDIT MODAL-->
                             <a href="/editCourseModal/{{currentTerm}}/{{course.prefix.prefix}}/{{course.cId}}/{{page}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                        </div>
+                        <div class="child">
                             <!--DELETE MODAL-->
                             <a href=# data-toggle="modal" data-target="#deleteModal{{course.cId}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                             {% include "snips/courseElements/deleteCourse.html" %}
+                        </div>
                     </td>
                 {% endif %}
             </tr>
