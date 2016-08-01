@@ -111,7 +111,11 @@
               </div>
             </div>
           </div>
-        {% endfor %} 
+        {% endfor %}
+      {% else %}
+      <div class="jumbotron">
+        <p>There are currently no schedule and room conflicts.</p>
+      </div>
       {% endif %}
     </div>
   </div>
