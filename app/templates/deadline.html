@@ -17,7 +17,7 @@
         </tr>
       </thead>
       {% for deadline in deadlines %}
-        {% if deadline[0] >= today.strftime() %}
+        {% if deadline[0] >= today %}
           <tr>
             <td>
               {% if deadline[0] == today %}
