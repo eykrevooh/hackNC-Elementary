@@ -25,6 +25,7 @@ def deadlineDisplay():
         today = datetime.date.today()
         
         isAdmin = authorizedUser.isAdmin()
+        print isAdmin
         attributeDict = dict
         if isAdmin == None:
             attributeDict = authorizedUser.not_user()
@@ -34,4 +35,4 @@ def deadlineDisplay():
                            isAdmin=isAdmin,
                            deadlines=deadlines,
                            today=today,
-                           attributeDict = attributedict)
+                           attributeDict = attributeDict)
