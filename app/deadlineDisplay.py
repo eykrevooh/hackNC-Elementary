@@ -24,7 +24,7 @@ def deadlineDisplay():
 
         # we don't want to show deadlines past today
         today = datetime.date.today()
-        today = (today, "utf-8")
+        #today = (today, "utf-8")
         isAdmin = authorizedUser.isAdmin()
         print isAdmin
         attributeDict = dict
