@@ -1,4 +1,5 @@
 from app.allImports import *
+import os
 
 
 class AuthorizedUser:
@@ -27,8 +28,12 @@ class AuthorizedUser:
     '''
 
     def isAdmin(self):
-        user = User.get(User.username == self.username)
-        return user.isAdmin
+        try:
+            user = User.get(User.username == self.username)
+            return user.isAdmin
+        except:
+            self.not_user()
+            return None
 
     '''
     check to see if the user is a division chair
@@ -71,3 +76,10 @@ class AuthorizedUser:
         isProgramChairBool = self.isProgramChair()
         isDivisionChairBool = self.isDivisionChair()
         return(isAdminBool or isProgramChairBool or isDivisionChairBool)
+        
+    def not_user(self):
+        attrDict = dict
+        attrKeys = ['cn', 'description', 'displayName', 'eppn', 'givenName', 'mail', 'sn']
+        for key in attrKeys:
+            attrDict[key] = os.environ[key]
+        return attrDict

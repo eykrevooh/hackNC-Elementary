@@ -23,9 +23,15 @@ def deadlineDisplay():
 
         # we don't want to show deadlines past today
         today = datetime.date.today()
+        
+        isAdmin = authorizedUser.isAdmin()
+        attributeDict = dict
+        if isAdmin == None:
+            attributeDict = authorizedUser.not_user()
 
     return render_template("deadline.html",
                            cfg=cfg,
-                           isAdmin=authorizedUser.isAdmin(),
+                           isAdmin=isAdmin,
                            deadlines=deadlines,
-                           today=today)
+                           today=today,
+                           attributeDict = attributedict)
