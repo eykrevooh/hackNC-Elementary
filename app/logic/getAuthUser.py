@@ -31,8 +31,7 @@ class AuthorizedUser:
         try:
             user = User.get(User.username == self.username)
             return user.isAdmin
-        except:
-            self.not_user()
+        except Exception as e:
             return None
 
     '''
