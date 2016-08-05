@@ -29,8 +29,11 @@ class AuthorizedUser:
 
     def isAdmin(self):
         try:
-            user = User.get(User.username == self.username)
-            return user.isAdmin
+	    user = User.select().where(User.username == self.username)
+	    if user:
+		return user.isAdmin
+	    else:
+		return None
         except Exception as e:
             return None
 
@@ -77,8 +80,8 @@ class AuthorizedUser:
         return(isAdminBool or isProgramChairBool or isDivisionChairBool)
         
     def not_user(self):
-        attrDict = dict
+        attrDict = {}
         attrKeys = ['cn', 'description', 'displayName', 'eppn', 'givenName', 'mail', 'sn']
         for key in attrKeys:
-            attrDict[key] = os.environ[key]
+            attrDict[key] = request.environ[key]
         return attrDict
