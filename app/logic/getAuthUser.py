@@ -28,14 +28,14 @@ class AuthorizedUser:
     '''
 
     def isAdmin(self):
-        try:
-	    user = User.select().where(User.username == self.username)
-	    if user:
-		return user.isAdmin
-	    else:
-		return None
-        except Exception as e:
+        print self.username
+        user = User.select().where(User.username == self.username)
+        if user.exists():
+            user = user.get()
+            return user.isAdmin
+        else:
             return None
+        
 
     '''
     check to see if the user is a division chair
