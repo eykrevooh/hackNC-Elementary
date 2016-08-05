@@ -16,8 +16,8 @@
           <td class='tableHead'>Deadline</td>
         </tr>
       </thead>
-      {% for deadline in deadlines %} 
-        {% if deadline[0] >= today %}
+      {% for deadline in deadlines %}
+        {% if deadline[0] >= today.strftime() %}
           <tr>
             <td>
               {% if deadline[0] == today %}

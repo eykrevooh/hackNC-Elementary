@@ -20,10 +20,11 @@ def deadlineDisplay():
             deadlines.append(
                 (date.date, Deadline.select().where(
                     Deadline.date == date.date)))
+                    
 
         # we don't want to show deadlines past today
         today = datetime.date.today()
-        
+        today = (today, "utf-8")
         isAdmin = authorizedUser.isAdmin()
         print isAdmin
         attributeDict = dict
