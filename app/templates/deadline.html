@@ -2,67 +2,58 @@
 <!-- If you want to learn more about jinja, refer to jinja documentation-->
 {% extends "base.html" %} {% set currentPage = "deadline" %} {% block body %} 
 <div class='container'>
-{% include "snips/messages.html" %}
-{% if deadlines %}
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      {% if isAdmin != None %}
-        <td class='tableHead'>Date</td>
-        <td class='tableHead'>Deadline</td>
-      {% else %}
-        {% for key in attributeDict %}
-          <td class='tableHead'> {{key}} </td>
-        {% endfor %}
-      {% endif %}
-    </tr>
-  </thead>
-  {% if isAdmin != None %}
-    {% for deadline in deadlines %} {% if deadline[0] >= today %}
-    <tr>
-      <td>
-        {% if deadline[0] == today %}
-        <p>today</p>
-        {% endif %}
-        <div>
-          <p class="day">{{deadline[0].strftime('%d')}}</p>
-        </div>
-        <div class="month">
-          <p>{{deadline[0].strftime('%b')}}</p>
-        </div>
-      </td>
-      <td>
-        <table class="table table-hover table-bordered">
-          {% for description in deadline[1] %}
-          <tr>
-            <td>
-              <div class='deadlineDisplay'>{{description.description}}</div>
-              {% if isAdmin %}
-              <a href="" data-toggle="modal" data-id="{{description.id}}" data-target="#deleteDeadline"><span class="glyphicon glyphicon glyphicon glyphicon-trash pull-right" aria-hidden="true"></span></a>
-              <a href="" data-toggle="modal" data-description="{{description.description}}" data-id="{{description.id}}" data-target="#editDeadline"><span  class="glyphicon glyphicon glyphicon-edit pull-right" aria-hidden="true"></span></a> 
-              {% endif %}
-            </td>
-          </tr>
-          {% endfor %}
-        </table>
-        {% include "snips/deadline/deleteDeadline.html" %} {% include "snips/deadline/editDeadline.html" %}
-      </td>
-    </tr>
-    {% endif %} {% endfor %}
-  {% else %}
-    <tr>
-      {% for key in attributeDict %}
-        <td>{{attributeDict[key]}}</td>
+  {% include "snips/messages.html" %}
+  {% if isAdmin == Non %}
+    {% for key in attributeDict %}
+      <p>{{key}}:{{attributeDict[key]}}</p>
+    {% endfor %}
+  {% endif %}
+  {% if deadlines %}
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <td class='tableHead'>Date</td>
+          <td class='tableHead'>Deadline</td>
+        </tr>
+      </thead>
+      {% for deadline in deadlines %} {% if deadline[0] >= today %}
+        <tr>
+          <td>
+            {% if deadline[0] == today %}
+              <p>today</p>
+            {% endif %}
+            <div>
+              <p class="day">{{deadline[0].strftime('%d')}}</p>
+            </div>
+            <div class="month">
+              <p>{{deadline[0].strftime('%b')}}</p>
+            </div>
+          </td>
+          <td>
+            <table class="table table-hover table-bordered">
+              {% for description in deadline[1] %}
+                <tr>
+                  <td>
+                    <div class='deadlineDisplay'>{{description.description}}</div>
+                    {% if isAdmin %}
+                      <a href="" data-toggle="modal" data-id="{{description.id}}" data-target="#deleteDeadline"><span class="glyphicon glyphicon glyphicon glyphicon-trash pull-right" aria-hidden="true"></span></a>
+                      <a href="" data-toggle="modal" data-description="{{description.description}}" data-id="{{description.id}}" data-target="#editDeadline"><span  class="glyphicon glyphicon glyphicon-edit pull-right" aria-hidden="true"></span></a> 
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </table>
+            {% include "snips/deadline/deleteDeadline.html" %} {% include "snips/deadline/editDeadline.html" %}
+          </td>
+        </tr>
       {% endfor %}
-    </tr>  
-</table>
-{% else %}
-<div class="jumbotron">
-  Upcoming deadlines will be posted here.
+    </table>
+  {% else %}
+    <div class="jumbotron">Upcoming deadlines will be posted here.</div>
+    {% if isAdmin %}
+      {% include "snips/deadline/createDeadline.html" %}
+    {% endif %}
+  {% endif %}
 </div>
-  {% endif %}
-  {% if isAdmin %}
-    {% include "snips/deadline/createDeadline.html" %}
-  {% endif %}
-  </div>
+    
 {% endblock %}
