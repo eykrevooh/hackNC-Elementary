@@ -15,7 +15,6 @@ class AuthorizedUser:
         # @private
         self.username = authUser(request.environ)
         self.prefix = prefix
-        self.user   = checkIfUser()
 
     '''
     returns the username of the user
@@ -36,7 +35,7 @@ class AuthorizedUser:
         else: 
             result = self.isUser()
             if result == False:
-                return render_template("404.html", cfg=cfg)
+                return result
             else:
                 return result
             

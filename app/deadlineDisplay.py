@@ -8,7 +8,9 @@ import datetime
 def deadlineDisplay():
     if (request.method == "GET"):
         authorizedUser = AuthorizedUser()
-
+        checkIfUser    = authorizedUser.checkIfUser()
+        if checkIfUser == False:
+            return render_template("404.html", cfg=cfg)
         # we don't want show repeated dates
         dates = Deadline.select(
             Deadline.date).distinct().order_by(
