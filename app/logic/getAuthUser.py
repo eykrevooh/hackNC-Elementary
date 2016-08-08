@@ -1,4 +1,5 @@
 from app.allImports import *
+from app.logic.redirectBack import redirect_url
 import os
 
 
@@ -28,7 +29,6 @@ class AuthorizedUser:
     '''
 
     def isAdmin(self):
-        print self.username
         user = User.select().where(User.username == self.username)
         if user.exists():
             user = user.get()
@@ -80,8 +80,22 @@ class AuthorizedUser:
         return(isAdminBool or isProgramChairBool or isDivisionChairBool)
         
     def not_user(self):
-        attrDict = {}
-        attrKeys = ['cn', 'description', 'displayName', 'eppn', 'givenName', 'mail', 'sn']
-        for key in attrKeys:
-            attrDict[key] = request.environ[key]
-        return attrDict
+        #Grab their user level
+        description = request.environ['description']
+        if description != 'student':
+            try:
+                addUser = User(username   = self.username,
+                               firstname  = request.environ['givenName'],
+                               lastname   = request.environ['sn'],
+                               email      = request.environ['mail'],
+                               isAdmin    = 0,
+                               lastVisted = None)
+                addUser.save(force_insert = True)
+                #TODO: Add a redirect
+            except:
+                message = "Could not make account for username: {}".format(self.username)
+                #TODO: Log here
+                # redirect to 404
+        else: 
+            # redirect to 404
+            return None

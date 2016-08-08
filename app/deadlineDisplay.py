@@ -20,16 +20,14 @@ def deadlineDisplay():
             deadlines.append(
                 (date.date, Deadline.select().where(
                     Deadline.date == date.date)))
-                    
 
         # we don't want to show deadlines past today
         today = datetime.date.today()
-        #today = (today, "utf-8")
         isAdmin = authorizedUser.isAdmin()
-        print isAdmin
         attributeDict = dict
         if isAdmin == None:
-            attributeDict = authorizedUser.not_user()
+            #attributeDict = authorizedUser.not_user()
+            pass
 
     return render_template("deadline.html",
                            cfg=cfg,
