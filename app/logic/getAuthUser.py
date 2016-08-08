@@ -15,6 +15,7 @@ class AuthorizedUser:
         # @private
         self.username = authUser(request.environ)
         self.prefix = prefix
+        self.user   = checkIfUser()
 
     '''
     returns the username of the user
@@ -28,6 +29,17 @@ class AuthorizedUser:
     @public
     '''
 
+    def checkIfUser(self):
+        user = User.select().where(User.username == self.username)
+        if user.exists():
+            return user
+        else: 
+            result = self.isUser()
+            if result == False:
+                return render_template("404.html", cfg=cfg)
+            else:
+                return result
+            
     def isAdmin(self):
         user = User.select().where(User.username == self.username)
         if user.exists():
@@ -79,8 +91,9 @@ class AuthorizedUser:
         isDivisionChairBool = self.isDivisionChair()
         return(isAdminBool or isProgramChairBool or isDivisionChairBool)
         
-    def not_user(self):
+    def isUser(self):
         #Grab their user level
+        page = "getAuthUser.py"
         description = request.environ['description']
         if description != 'student':
             try:
@@ -91,11 +104,14 @@ class AuthorizedUser:
                                isAdmin    = 0,
                                lastVisted = None)
                 addUser.save(force_insert = True)
-                #TODO: Add a redirect
+                message = "Added user to db with username:({})".format(self.username)
+                log.writer("INFO",page,message)
+                return True  
             except:
-                message = "Could not make account for username: {}".format(self.username)
-                #TODO: Log here
-                # redirect to 404
+                message = "Could not make account for username:({})".format(self.username)
+                log.writer("ERROR", page,message)
+                return False
         else: 
-            # redirect to 404
-            return None
+            message = "Student with username:({}) tried to access the system".format(self.username)
+            log.writer("WARNING",page,message)
+            return False
