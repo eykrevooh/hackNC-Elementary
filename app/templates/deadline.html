@@ -3,11 +3,6 @@
 {% extends "base.html" %} {% set currentPage = "deadline" %} {% block body %} 
 <div class='container'>
   {% include "snips/messages.html" %}
-  {% if isAdmin == None %}
-    {% for key in attributeDict %}
-      <p>{{key}}:{{attributeDict[key]}}</p>
-    {% endfor %}
-  {% endif %}
   {% if deadlines %}
     <table class="table table-bordered">
       <thead>
