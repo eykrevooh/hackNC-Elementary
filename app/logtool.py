@@ -6,7 +6,8 @@ import os
 class Log():
     
     def __init__(self, logfile = 'urcpp.log'):
-        self.logfile = logfile
+	here 	     = os.path.dirname(__file__)
+	self.logfile = os.path.join(os.path.join(here,logfile))
         self.lowPrivilege = "User does not have enough access privileges for this operation"
     
     
