@@ -9,8 +9,6 @@ def deadlineDisplay():
     if (request.method == "GET"):
         authorizedUser = AuthorizedUser()
         checkIfUser    = authorizedUser.checkIfUser()
-        if checkIfUser == False:
-            abort(403)
         # we don't want show repeated dates
         dates = Deadline.select(
             Deadline.date).distinct().order_by(

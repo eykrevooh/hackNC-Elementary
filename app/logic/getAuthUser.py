@@ -16,6 +16,7 @@ class AuthorizedUser:
         self.username = authUser(request.environ)
         self.prefix = prefix
 
+
     '''
     returns the username of the user
     '''
@@ -34,10 +35,9 @@ class AuthorizedUser:
             return user
         else: 
             result = self.isUser()
-            if result == False:
-                return result
-            else:
-                return result
+            return result
+            
+                
             
     def isAdmin(self):
         user = User.select().where(User.username == self.username)
@@ -106,11 +106,13 @@ class AuthorizedUser:
                 message = "Added user to db with username:({})".format(self.username)
                 log.writer("INFO",page,message)
                 return True  
-            except:
+            except Exception as e:
                 message = "Could not make account for username:({})".format(self.username)
-                log.writer("ERROR", page,message)
+                log.writer("ERROR", page, e)
+                abort(404)
                 return False
         else: 
             message = "Student with username:({}) tried to access the system".format(self.username)
             log.writer("WARNING",page,message)
+            abort(403)
             return False
