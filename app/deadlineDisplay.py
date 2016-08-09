@@ -10,7 +10,7 @@ def deadlineDisplay():
         authorizedUser = AuthorizedUser()
         checkIfUser    = authorizedUser.checkIfUser()
         if checkIfUser == False:
-            return render_template("404.html", cfg=cfg)
+            return render_template("403.html", cfg=cfg)
         # we don't want show repeated dates
         dates = Deadline.select(
             Deadline.date).distinct().order_by(
