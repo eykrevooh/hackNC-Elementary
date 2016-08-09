@@ -10,7 +10,7 @@ def deadlineDisplay():
         authorizedUser = AuthorizedUser()
         checkIfUser    = authorizedUser.checkIfUser()
         if checkIfUser == False:
-            app.abort(403)
+            abort(403)
         # we don't want show repeated dates
         dates = Deadline.select(
             Deadline.date).distinct().order_by(
