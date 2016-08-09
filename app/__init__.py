@@ -17,7 +17,7 @@ from allImports import *
 from app import course
 from app import editCourse
 from app import deleteCourse
-from app import NotFound
+from app import errorHandler
 from app import editProgram
 from app import editDivision
 from app import editTerm
