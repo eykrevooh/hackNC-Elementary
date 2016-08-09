@@ -93,7 +93,9 @@ class AuthorizedUser:
     def isUser(self):
         #Grab their user level
         page = "getAuthUser.py"
-        description = request.environ['description']
+        description = request.environ['description'].lower()
+	message =  "This is decription {}".format(description)
+	log.writer("DEBUG",page,message)
         if description != 'student':
             try:
                 addUser = User(username   = self.username,
