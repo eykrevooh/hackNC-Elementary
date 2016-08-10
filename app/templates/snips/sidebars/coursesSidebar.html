@@ -7,12 +7,12 @@
                         </li>
                         {% for division in divisions %}
                         <li>
-                            <a href="#">{{division.name}}<span class="fa arrow"></span></a>
+                            <a class="first-level" href="#">{{division.name}}<span class="arrow pull-right glyphicon glyphicon-chevron-down"></span></a>
                             {% for program in programs %} 
                             {% if program.division.dID == division.dID %}
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">{{program.name}} <span class="fa arrow"></span></a>
+                                    <a href="#">{{program.name}}</a>
                                      
                                     <ul class="nav nav-third-level">
                                       {% for subject in subjects %} 
