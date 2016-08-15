@@ -90,17 +90,28 @@ class AuthorizedUser:
         isDivisionChairBool = self.isDivisionChair()
         return(isAdminBool or isProgramChairBool or isDivisionChairBool)
         
+    
+    '''
+    checks to see if the user is currently in our database, if they are not in the database
+    the method will also add them using environ variables. Only if their decscription lvl is 
+    not a student. If it is a student it will provide a 403 error
+    @public
+    '''
     def isUser(self):
         #Grab their user level
         page = "getAuthUser.py"
         description = request.environ['description'].lower()
 	message =  "This is decription {}".format(description)
 	log.writer("DEBUG",page,message)
-        if description != 'student':
+        if description != 'student': 
             try:
+		#DEBUG STATEMENTS
+		#log.writer("DEBUG",page,str(request.environ['givenName']))
+		#log.writer("DEBUG",page,str(request.environ['sn']))
+		#log.writer("DEBUG",page,str(request.environ['mail']))
                 addUser = User(username   = self.username,
-                               firstname  = request.environ['givenName'],
-                               lastname   = request.environ['sn'],
+                               firstName  = request.environ['givenName'],
+                               lastName   = request.environ['sn'],
                                email      = request.environ['mail'],
                                isAdmin    = 0,
                                lastVisted = None)
@@ -109,7 +120,7 @@ class AuthorizedUser:
                 log.writer("INFO",page,message)
                 return True  
             except Exception as e:
-                message = "Could not make account for username:({})".format(self.username)
+                message = "Could not make account for username:({0}). {1}".format(self.username,e)
                 log.writer("ERROR", page, e)
                 abort(404)
                 return False
