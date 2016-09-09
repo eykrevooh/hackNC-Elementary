@@ -23,7 +23,7 @@ class NullCheck():
     bannerCourse = bannerCourse[0] 
     value['bannerRef']=bannerCourse.reFID
     #THE SPECIAL TOPICS FELD
-    if int(number) % 100 == 86:
+    if len(str(number).split('86')) > 1:
        value['specialTopicName'] = data['specialTopicName']
     else:
        value['specialTopicName'] = None
