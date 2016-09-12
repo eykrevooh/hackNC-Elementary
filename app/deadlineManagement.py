@@ -11,10 +11,11 @@ def deadlineCreate():
     authorizedUser = AuthorizedUser()
     if authorizedUser.isAdmin():
         data = request.form
-
+        
+        date = datetime.datetime.strptime(data['deadlineDate'],"%m/%d/%Y").date()
         deadline = Deadline.create(
             description=data['deadlineDescription'],
-            date=data['deadlineDate'])
+            date=date)
         deadline.save()
 
         message = "Deadline: {0} has been added".format(deadline.description)

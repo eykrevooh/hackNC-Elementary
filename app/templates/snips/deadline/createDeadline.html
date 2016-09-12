@@ -11,7 +11,7 @@
             <div class="form-group col-md-4 col-sm-4">
                 {% set currentYear = (today.strftime('%Y'))|int %}
                 {% set maxYear = (currentYear + 2)|string %}
-                <input type="date" placeholder="Click Me" class="form-control" min="{{today}}" max="{{maxYear}}-12-31" name="deadlineDate" required>
+                <input type="text" id="datepicker" class="form-control" name="deadlineDate">
             </div>
             <div class="form-group col-md-2 col-md-2">
                 <input type="submit" class="btn btn-success" value="Add">

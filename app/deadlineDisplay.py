@@ -9,29 +9,13 @@ def deadlineDisplay():
     if (request.method == "GET"):
         authorizedUser = AuthorizedUser()
         checkIfUser    = authorizedUser.checkIfUser()
-        # we don't want show repeated dates
-        dates = Deadline.select(
-            Deadline.date).distinct().order_by(
-            Deadline.date)
-
-        deadlines = []
-        for date in dates:
-            # assign the deadline object to a date for easy access
-            deadlines.append(
-                (date.date, Deadline.select().where(
-                    Deadline.date == date.date)))
-
-        # we don't want to show deadlines past today
-        today = datetime.date.today()
         isAdmin = authorizedUser.isAdmin()
-        attributeDict = dict
-        if isAdmin == None:
-            #attributeDict = authorizedUser.not_user()
-            pass
-
+        today = datetime.date.today()
+        dates=Deadline.select().where(Deadline.date > today).distinct().order_by(
+            Deadline.date)
+        
     return render_template("deadline.html",
                            cfg=cfg,
                            isAdmin=isAdmin,
-                           deadlines=deadlines,
-                           today=today,
-                           attributeDict = attributeDict)
+                           deadlines=dates,
+                           today=today)
