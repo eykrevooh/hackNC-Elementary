@@ -8,7 +8,9 @@ databases:
   dev: "data/db.sqlite"
   # stage: ""
   # prod: ""
-
+databaseAdmin:
+  user: 'heggens'
+  
 # For every table in the database, add an item here
 models:
   mainDB:

@@ -18,3 +18,5 @@ pip install pyyaml  --upgrade
 pip install XlsxWriter
 # needed to migrate the cas.sql
 pip install MySQL-python
+pip install flask-admin
+pip install wtf-peewee

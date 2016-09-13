@@ -39,6 +39,9 @@ class Division(dbModel):
   dID           = PrimaryKeyField()
   name          = CharField()
   
+  def __str__(self):
+    return str(self.name)
+  
 class BannerSchedule(dbModel):
   letter        = CharField()
   days          = CharField(null = True)
@@ -46,6 +49,9 @@ class BannerSchedule(dbModel):
   endTime       = TimeField(null = True)
   sid           = CharField(primary_key = True)
   order         = IntegerField(unique = True)
+  
+  def __str__(self):
+    return self.letter
 
 class Term(dbModel):
   termCode          = IntegerField(primary_key = True)     #This line will result in an autoincremented number, which will not allow us to enter in our own code
@@ -53,6 +59,9 @@ class Term(dbModel):
   year              = IntegerField(null = True)
   name              = CharField()
   editable          = BooleanField()
+  
+  def __str__(self):
+    return self.name
   
 class Rooms(dbModel):
   rID            = PrimaryKeyField()
@@ -66,11 +75,17 @@ class Program(dbModel):
   pID           = PrimaryKeyField()
   name          = CharField()
   division      = ForeignKeyField(Division)
-
+  
+  def __str__(self):
+    return str(self.name)
+    
 class Subject(dbModel):
   prefix        = CharField(primary_key=True)
   pid           = ForeignKeyField(Program, related_name='subjects')
   webname       = TextField()
+  
+  def __str__(self):
+    return self.prefix
 
 class User(dbModel):
   username     = CharField(primary_key=True)
@@ -80,12 +95,18 @@ class User(dbModel):
   isAdmin      = BooleanField()
   lastVisited  = ForeignKeyField(Subject, null=True)
   
+  def __str__(self):
+    return self.username
+  
 class BannerCourses(dbModel):
   reFID         = PrimaryKeyField()
   subject       = ForeignKeyField(Subject)
   number        = CharField(null = False)
   section       = CharField(null = True)
   ctitle        = CharField(null = False)
+  
+  def __str__(self):
+    return '{0} {1}'.format(self.subject, self.number)
 
 class Course(dbModel):
   cId               = PrimaryKeyField()
@@ -99,6 +120,9 @@ class Course(dbModel):
   lastEditBy        = CharField(null = True)
   crossListed       = BooleanField()
   rid               = ForeignKeyField(Rooms, null = True)
+  
+  def __str__(self):
+    return '{0} {1} {2}'.format(self.bannerRef.subject, self.bannerRef.number, self.bannerRef.ctitle)
 
 class ProgramChair(dbModel):
   username     = ForeignKeyField(User)
