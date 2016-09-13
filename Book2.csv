@@ -1,0 +1,468 @@
+CRN,Sub,Course,Sec,TITLE,Max,X-group,X-Max,Prim. Last,Prim. First,Last,First,Begin,End,Bldg,Room,Mon,Tues,Wed,Thurs,Fri,BEGIN_TIME2,END_TIME2,BLDG_CODE2,ROOM_CODE2,MONDAY_IND2,TUESDAY_IND2,WEDNESDAY_IND2,THURSDAY_IND2,FRIDAY_IND2,SATURDAY_IND2,SUNDAY_IND2,BEGIN_TIME3,END_TIME3,BLDG_CODE3,ROOM_CODE3,ROOM_DESC3,MONDAY_IND3,TUESDAY_IND3,WEDNESDAY_IND3,THURSDAY_IND3,FRIDAY_IND3,SATURDAY_IND3,SUNDAY_IND3,BU ADDRESS ST LINE 1
+20001,AFR,138,0,Black Music Ensemble (MUS 135),75,M2,75,Bullock,Kathy,,,1900,2030,P,128,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20002,AFR,230,0,African Americans-Appal (APS),0,A1,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20003,AFR,234,0,Afri-Amer Mus:Overview (MUS),0,M1,0,DiSavino,Elizabeth,,,1000,1150,P,223,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20004,AFR,245,0,Black Urban History (HIS),20,H2,20,Mack,Dwayne,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2027
+20005,AFR,260,0,Survey of African His (HIS),20,H7,20,Pimienta-Bey,Jose,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1903
+20006,AFR,286,0,Special Topics,15,,,Pimienta-Bey,Jose,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1903
+20007,AFR,286,0,Special Topics,0,,,Parr,Mary,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2161
+20008,ANR,100,0,Intr to Agr & Natural Resource,20,,,Baptiste,Quinn,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2161
+20009,ANR,130,0,Plant Science,16,,,Hall,Sarah,,,1040,1230,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2161
+20010,ANR,130,0,Plant Science,16,,,Hall,Sarah,,,1440,1630,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2161
+20011,ANR,286,0,Special Topics,20,,,Parr,Mary,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2161
+20012,ANR,318,0,Food Policy (CFS),20,C4,20,Woodward,Andrea,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2156
+20013,ANR,342,0,Soil & Water Conservation,16,,,Parr,Mary,,,830,1130,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2161
+20014,ANR,350,0,Horticulture,16,,,Clark,Michael,,,1040,1230,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1743
+20015,APS,121,0,Appalachian Cultures,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20016,APS,140,0,Appalachian Literature (ENG),20,E1,20,Green,Christopher,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2166
+20469,APS,209,0,Appalachian Foodways (CFS),0,C1,0,Rivers Thompson,Katrina,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1964
+20017,APS,210,0,Health in Appalachia (HLT),0,H3,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20018,APS,213,0,Appalachian Crafts (TAD),0,T1,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20019,APS,215,0,Sustainable Appal Comm (SENS),0,S1,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20020,APS,229,0,Contemporary Issues-Appalachia,20,,,House,Silas,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2166
+20021,APS,230,0,African Americans-Appal (AFR),0,A1,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20023,APS,286,0,Special Topics,15,,,Starnes,Bobby,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2195
+20022,APS,286,0,Special Topics,12,,,Wilkinson,Crystal,,,1600,1750,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20024,ARH,124,0,Survey of Western Art II,20,,,Elston,Ashley,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20025,ARH,210,0,Topics in Islamic Art & Archit,20,,,McKiernan-Gonzalez,Eileen,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20026,ARH,215,0,History of Printmaking,20,,,Doherty,Meghan,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20027,ARH,220,0,Topics in Indian Art H (AST),0,A3,0,Elston,Ashley,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20028,ARH,249,0,Modern Art in India (AST),20,A4,20,Elston,Ashley,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20030,ARH,286,0,Special Topics,20,,,Anderson,Christine,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20029,ARH,286,0,Special Topics,20,,,Anderson,Christine,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20031,ARH,340,0,Seminar in Art History,8,,,Elston,Ashley,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20032,ARH,450,0,Adv Research in Art History,4,,,Elston,Ashley,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20033,ART,110,0,Design,15,,,Kriner,Lisa,,,900,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20034,ART,111,0,Printmaking I,12,,,Kriner,Lisa,,,900,1150,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20035,ART,115,0,Drawing Fundamentals,18,,,Gonzalez,Raymond,,,900,1150,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20036,ART,116,0,Painting I,15,,,Gardner,Kevin,,,900,1150,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20037,ART,123,A,Ceramics I,15,,,Wiggs,Philip,,,830,1130,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,864 Big Hill
+20038,ART,123,B,Ceramics I,15,,,Gonzalez,Raymond,,,1440,1730,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20039,ART,125,0,Fibers I,12,,,Kriner,Lisa,,,1440,1730,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20040,ART,206,0,Drawing II,15,,,Gardner,Kevin,,,1200,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20041,ART,216,0,Painting II,8,,,Gardner,Kevin,,,900,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20042,ART,223,0,Ceramics II,8,,,Gonzalez,Raymond,,,1200,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20043,ART,230,0,Sculpture II,8,,,Feinberg,Daniel,,,900,1150,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20044,ART,316,0,Painting III,10,,,Gardner,Kevin,,,900,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20045,ART,323,0,Ceramics III,8,,,Gonzalez,Raymond,,,1200,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20046,ART,330,0,Sculpture III,8,,,Feinberg,Daniel,,,900,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20047,ART,411,0,Printmaking IV,4,,,Kriner,Lisa,,,900,1150,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20048,ART,416,0,Painting IV,8,,,Gardner,Kevin,,,900,1150,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20049,ART,423,0,Ceramics IV,8,,,Gonzalez,Raymond,,,1200,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20050,ART,425,0,Fibers IV,4,,,Kriner,Lisa,,,900,1150,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20051,ART,430,0,Sculpture IV,5,,,Feinberg,Daniel,,,900,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20052,ART,493,0,Senior Seminar,12,,,Gonzalez,Raymond,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20053,AST,102,A,Intro to Japanese II (JPN),25,J1,25,Patton,Nathan,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20054,AST,102,B,Intro to Japanese II (JPN),25,J2,25,Patton,Nathan,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20055,AST,104,0,Intro to Japanese IV (JPN),20,J3,20,Patton,Nathan,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20056,AST,123,0,History of Japan (HIS),20,H4,20,Foster,Robert,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1793
+20057,AST,204,0,Yoga (HHP),20,H9,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20058,AST,205,0,Tai Chi (HHP),20,H8,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20059,AST,220,0,Topics in Indian Art H (ARH),0,A3,0,Elston,Ashley,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20060,AST,229,0,Modern Imperialism (HIS),20,H5,20,Bates,Rebecca,,,1600,1710,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1826
+20061,AST,249,0,Modern Art in India (ARH),20,A4,20,Elston,Ashley,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20062,AST,286,0,Special Topics,15,,,Foster,Robert,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1793
+20063,AST,322,0,Sem in Chinese History (HIS),15,H6,15,Foster,Robert,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1793
+20064,BIO,102,A,Human Anatomy & Physiology II,24,,,Blank,Sarah,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20065,BIO,102,B,Human Anatomy & Physiology II,24,,,Blank,Sarah,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20066,BIO,110,0,Modern Biology,24,,,Hoffman,Megan,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1816
+20067,BIO,113,A,Experimental Zoology,20,,,Rosen,Ronald,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1954
+20068,BIO,113,B,Experimental Zoology,20,,,Rosen,Ronald,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1954
+20069,BIO,114,0,Botany,24,,,Adams,Christopher,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20070,BIO,222,0,Microbiology,24,,,Anderson,Dawn,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1683
+20071,BIO,323,0,Principles of Physiology,24,,,Mineo,Patrick,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20072,BIO,331,0,Developmental Biology,24,,,Hoffman,Megan,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1816
+20073,BIO,386,0,Special Topics,16,,,Mineo,Patrick,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20074,BIO,441,0,Cell and Molecular Biology,24,,,Anderson,Dawn,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1683
+20075,BIO,494,0,Evolution,24,,,Scudder-Davis,Roy,,,800,950,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1997
+20076,BUS,114,A,Business App & Prog (CSC),24,C2,24,,,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20077,BUS,114,B,Business App & Prog (CSC),24,C3,30,,,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20078,BUS,120,A,Accounting I,30,,,Caldwell,Anthony,,,1900,2050,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20079,BUS,120,B,Accounting I,30,,,Caldwell,Anthony,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20080,BUS,130,0,Accounting II,30,,,McCormack,G,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20081,BUS,240,0,Business Law,25,,,Caldwell,Anthony,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20082,BUS,286,0,Special Topics,0,,,,,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20083,BUS,315,0,Management,25,,,,,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20084,BUS,327,0,Intermediate Accounting II,25,,,McCormack,G,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20085,BUS,345,0,Human Resources Management,25,,,Reid,Maurice,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20086,BUS,346,0,Investment Analysis,25,,,Sowers,Nancy,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20087,BUS,363,0,Marketing,25,,,Norris,John,,,800,950,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20088,BUS,366,0,Financial Management,25,,,Sowers,Nancy,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20089,BUS,367,0,Marketing Research,25,,,Norris,John,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20090,BUS,368,0,Intermediate Corporate Finance,25,,,Sowers,Nancy,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20091,BUS,437,0,Introduction to Auditing,25,,,McCormack,G,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20092,BUS,475,0,Strategic Management,25,,,Reid,Maurice,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20093,CFS,130,0,Lifespan Human Development,20,,,Mecham,Neil,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2192
+20094,CFS,145,0,Consumer Decision Making,25,,,Burke,Ellen,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2192
+20095,CFS,207,0,Family Relations (WGS),25,W2,25,Burke,Ellen,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2192
+20468,CFS,209,0,Appalachian Foodways (APS),0,C1,0,Rivers Thompson,Katrina,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1964
+20096,CFS,210,0,Found of Early Childhood Edu,20,,,,,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20097,CFS,221,0,Fundamentals of Nutrition,30,,,Baptiste,Quinn,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2161
+20098,CFS,231,0,Social Gerontology (PSY),20,P2,20,Burke,Ellen,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2192
+20099,CFS,238,0,Human Environments II,16,,,Rivers Thompson,Katrina,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1964
+20100,CFS,286,0,Special Topics,25,,,Mecham,Neil,,,1440,1730,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2192
+20101,CFS,315,0,Middle Childhood & Adolescence,20,,,,,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,
+20102,CFS,318,0,Food Policy (ANR),20,C4,20,Woodward,Andrea,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2156
+20103,CFS,362,0,Cont Family Issues & Poverty,20,,,,,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,
+20104,CFS,441,0,Family Resource Management,16,,,Rivers Thompson,Katrina,,,1440,1730,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1964
+20105,CFS,480,A,Senior Seminar,8,,,Mecham,Neil,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2192
+20106,CFS,480,B,Senior Seminar,8,,,,,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20107,CHI,102,A,Intro to Chinese II,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20108,CHI,102,B,Intro to Chinese II,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20109,CHM,113,0,Allied Health Chemistry,32,,,,,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20110,CHM,131,A,Accelerated General Chemistry,25,,,Baltisberger,Jay,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1722
+20111,CHM,131,B,Accelerated General Chemistry,25,,,,,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20112,CHM,221,0,Organic Chemistry I,30,,,Marshall,Nicholas,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20113,CHM,222,A,Organic Chemistry II,16,,,Marshall,Nicholas,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20114,CHM,222,B,Organic Chemistry II,16,,,Marshall,Nicholas,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20115,CHM,345,0,Biochemistry,40,,,Saderholm,Matthew,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20116,CHM,361,0,Thermochemistry,25,,,Baltisberger,Jay,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1722
+20117,CHM,371,0,Advanced Lab - Spectroscopy,25,,,Saderholm,Matthew,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20118,CHM,451,0,Inorganic Chemistry,25,,,Kovacevic,Anes,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20119,CHM,471,0,Adv Lab - Synthesis Lab,25,,,Kovacevic,Anes,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20120,COM,100,0,Intro to Communication,20,,,McDonald,Verlaine,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1893
+20121,COM,103,0,Competitive Debate Practicum,0,,,Wooten,Billy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2073
+20122,COM,186,0,Special Topics,20,,,Brown,Kennaria,,,1600,1750,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1884
+20123,COM,203,0,Persuasion,20,,,McDonald,Verlaine,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1893
+20124,COM,207,0,Intercultural Communication,20,,,McDonald,Verlaine,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1893
+20125,COM,220,0,Theories of Communication,0,,,Brown,Kennaria,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1884
+20126,COM,286,0,Special Topics,15,,,Dickerson,Jacob,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2073
+20127,COM,302,0,Organizational Communication,20,,,Wooten,Billy,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2073
+20128,COM,311,0,Broadcast Journalism II,16,,,Wooten,Billy,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2073
+20129,CSC,114,A,Business App & Prog (BUS),24,C2,24,,,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20130,CSC,114,B,Business App & Prog (BUS),30,C3,30,,,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20132,CSC,124,0,Building Better Apps,24,,,Jadud,Matthew,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20133,CSC,126,0,Intro to Robotics,24,,,,,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20453,CSC,186,0,Special Topics,24,,,,,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20134,CSC,226,A,Software Design & Implement,24,,,Heggen,Scott,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20135,CSC,226,B,Software Design & Implement,24,,,Heggen,Scott,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20136,CSC,226,C,Software Design & Implement,24,,,Heggen,Scott,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20137,CSC,412,0,Networking,18,,,,,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20138,CSC,420,0,Programming Languages,18,,,Jadud,Matthew,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20139,CSC,440,0,Design & Analysis of Algorithm,18,,,Nakazawa,Mario,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2017
+20140,CSC,486,0,Special Topics,18,,,,,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20141,ECO,101,A,Principles of Macroeconomics,30,,,Vazzana,Caryn,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2036
+20142,ECO,101,B,Principles of Macroeconomics,30,,,Cupidon,Jean,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20143,ECO,102,0,Principles of Microeconomics,30,,,Grzimek,Volker,,,1600,1750,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20144,ECO,248,0,Economics of Immigration,25,,,Vazzana,Caryn,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2036
+20145,ECO,250,0,Applied Statistics,25,,,Grzimek,Volker,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20146,ECO,301,0,Intermediate Macroeconomics,25,,,Cupidon,Jean,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20147,ECO,310,0,Research in Economics I,25,,,Grzimek,Volker,,,1900,2050,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20148,EDS,150,A,"Int-Ed:Think About Lrng,Tchg",20,,,,,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20149,EDS,150,B,"Int-Ed:Think About Lrng,Tchg",20,,,,,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20150,EDS,215,0,Science for Teachers,15,,,,,,,1200,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20151,EDS,227,0,Child Dev & School Structure,15,,,,,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20152,EDS,228,0,Adolescent Dev & School Struct,15,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20153,EDS,249,0,Middle Grde Culture&Philosophy,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20154,EDS,316,0,STEM Teaching Methods,15,,,,,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,
+20155,EDS,318,0,Teaching in the Humanities,15,,,,,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,
+20156,EDS,347,0,"Literacy: Primary, P-3",15,,,,,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,
+20157,EDS,349,0,Education and Culture,15,,,,,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20158,EDS,435,0,Integrated Curriculum II,15,,,,,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20159,EDS,440,0,Integrated Curriculum III,15,,,,,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20160,EDS,479,0,MethdsIII Learning & Assessmnt,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20161,EDS,480,0,Stdts with Special Needs - Sec,15,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20162,ENG,110,0,Intro to Literature in English,15,,,Pulsford,Stephen,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1926
+20163,ENG,124,A,Intro to Creative Writing,15,,,Egerton,Katherine,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2014
+20164,ENG,124,B,Intro to Creative Writing,15,,,Wilkinson,Crystal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20165,ENG,140,0,Appalachian Literature (APS),20,E1,20,Green,Christopher,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2166
+20166,ENG,200,0,Studies in Time,20,,,Egerton,Katherine,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2014
+20167,ENG,205,0,Studies in Cultures,20,,,Roberts,Randall,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1992
+20168,ENG,210,0,Studies in Authors,20,,,Gift,Nancy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2025
+20169,ENG,240,0,Studies in Questions,20,,,Ortquist-Ahrens,Leslie,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2157
+20170,ENG,242,0,Intro to Non-Western Lit,20,,,Roberts,Randall,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1992
+20171,ENG,280,0,Workshop-Professional Writing,15,,,Marciniak,Jennifer,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2157
+20172,ENG,286,0,Special Topics,20,,,Wilkinson,Crystal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20173,ENG,340,0,Seminar in Questions,15,,,Pulsford,Stephen,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1926
+20174,ENG,382,0,Advanced Creative Writing,12,,,Bruder,Anne,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20175,ENG,485,0,Seminar in English,10,,,Bruder,Anne,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20176,FRN,102,A,Intro to Frn Lang & Culture II,22,,,Watkins,Marie-Madeleine,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2053
+20177,FRN,102,B,Intro to Frn Lang & Culture II,22,,,Watkins,Marie-Madeleine,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2053
+20178,FRN,300,0,Intermediate French IV,20,,,Watkins,Marie-Madeleine,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2053
+20179,GER,102,A,Introduction to German II,22,,,Hoch,Jeanne,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1824
+20180,GER,102,B,Introduction to German II,22,,,Hoch,Jeanne,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1824
+20181,GER,140,0,German Civilization,22,,,Jones,Douglas,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20182,GER,186,0,Special Topics,22,,,Jones,Douglas,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20183,GER,325,0,German Narrative Prose,15,,,Hoch,Jeanne,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1824
+20184,GST,101,0,Strategies - Academic Success,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20185,GST,150,0,College Composition,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20462,GST,186,A,Financial Literacy,45,,,Norris,John,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20463,GST,186,B,Financial Literacy,45,,,Norris,John,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20186,GST,235,0,Intro to Behavioral Sciences,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20187,GSTR,110,0,Writing Sem I:Critical Think,0,,,Egerton,Katherine,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2014
+20188,GSTR,210,A,Writing Sem II:Ident&Diversity,0,,,Anderson,Christine,,,1600,1750,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20189,GSTR,210,AA,Writing Sem II:Ident&Diversity,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20190,GSTR,210,B,Writing Sem II:Ident&Diversity,12,,,Mason,Qrescent,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2198
+20191,GSTR,210,C,Writing Sem II:Ident&Diversity,12,,,Brown,Kennaria,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1884
+20192,GSTR,210,D,Writing Sem II:Ident&Diversity,12,,,Brown,Jarrod,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20193,GSTR,210,E,Writing Sem II:Ident&Diversity,12,,,de Rosset,Carol,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1774
+20194,GSTR,210,F,Writing Sem II:Ident&Diversity,12,,,Doherty,Meghan,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20195,GSTR,210,G,Writing Sem II:Ident&Diversity,12,,,Dickerson,Jacob,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2073
+20196,GSTR,210,H,Writing Sem II:Ident&Diversity,12,,,Heyrman,John,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1831
+20197,GSTR,210,I,Writing Sem II:Ident&Diversity,12,,,Mack,Dwayne,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2027
+20198,GSTR,210,J,Writing Sem II:Ident&Diversity,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20199,GSTR,210,K,Writing Sem II:Ident&Diversity,12,,,McKee,Lauren,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2135
+20200,GSTR,210,L,Writing Sem II:Ident&Diversity,12,,,Mendel-Reyes,Meta,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2104
+20201,GSTR,210,M,Writing Sem II:Ident&Diversity,12,,,Roberts,Randall,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1992
+20202,GSTR,210,N,Writing Sem II:Ident&Diversity,12,,,Howard,Jason,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2166
+20203,GSTR,210,O,Writing Sem II:Ident&Diversity,12,,,Turley,Alicestyne,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2106
+20204,GSTR,210,P,Writing Sem II:Ident&Diversity,12,,,Webb,Althea,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2195
+20205,GSTR,210,Q,Writing Sem II:Ident&Diversity,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20206,GSTR,210,R,Writing Sem II:Ident&Diversity,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20207,GSTR,210,S,Writing Sem II:Ident&Diversity,12,,,Ortquist-Ahrens,Leslie,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2157
+20208,GSTR,210,T,Writing Sem II:Ident&Diversity,12,,,McKiernan-Gonzalez,Eileen,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20209,GSTR,210,U,Writing Sem II:Ident&Diversity,12,,,Brown,Jarrod,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20210,GSTR,210,V,Writing Sem II:Ident&Diversity,12,,,Hoag,Robert,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2153
+20211,GSTR,210,W,Writing Sem II:Ident&Diversity,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20212,GSTR,210,X,Writing Sem II:Ident&Diversity,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20213,GSTR,210,Y,Writing Sem II:Ident&Diversity,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20214,GSTR,210,Z,Writing Sem II:Ident&Diversity,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20215,GSTR,310,A,Understandings of Christianity,13,,,Pimienta-Bey,Jose,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1903
+20216,GSTR,310,B,Understandings of Christianity,13,,,Pimienta-Bey,Jose,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1903
+20217,GSTR,310,C,Understandings of Christianity,13,,,Broadhead,Edwin,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1733
+20218,GSTR,310,D,Understandings of Christianity,13,,,Broadhead,Edwin,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1733
+20219,GSTR,310,E,Understandings of Christianity,13,,,Christensen,Katherine,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1756
+20220,GSTR,310,F,Understandings of Christianity,13,,,Gowler,Ronald,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20221,GSTR,310,G,Understandings of Christianity,13,,,Smith,Duane,,,1600,1750,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1981
+20222,GSTR,310,H,Understandings of Christianity,13,,,Sergent,Tyler,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1973
+20223,GSTR,310,I,Understandings of Christianity,13,,,Sergent,Tyler,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1973
+20224,GSTR,310,J,Understandings of Christianity,13,,,Guthman,Joshua,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1866
+20225,GSTR,310,J,Understandings of Christianity,13,,,Reynolds,Loretta,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2165
+20226,GSTR,332,A,Scientific Knowledge& Inquiry,13,,,Berheide,Michael,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1701
+20227,GSTR,332,B,Scientific Knowledge& Inquiry,13,,,Jones,Sarah,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2125
+20228,GSTR,332,C,Scientific Knowledge& Inquiry,13,,,Kovacevic,Anes,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20229,GSTR,332,D,Scientific Knowledge& Inquiry,13,,,Adams,Christopher,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20230,GSTR,332,E,Scientific Knowledge& Inquiry,13,,,Scudder-Davis,Roy,,,1440,1630,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1997
+20454,GSTR,332,F,Scientific Knowledge& Inquiry,12,,,Strange,Jason,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1956
+20231,GSTR,410,A,Sem-Contemporary Global Issues,14,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20232,GSTR,410,B,Sem-Contemporary Global Issues,14,,,Starnes,Bobby,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2195
+20233,GSTR,410,C,Sem-Contemporary Global Issues,14,,,Meadows,Richard,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1985
+20234,GSTR,410,D,Sem-Contemporary Global Issues,14,,,Pulsford,Stephen,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1926
+20235,GSTR,410,E,Sem-Contemporary Global Issues,14,,,Clark,Michael,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1743
+20236,GSTR,410,F,Sem-Contemporary Global Issues,14,,,Pearson,Eric,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1933
+20237,GSTR,410,G,Sem-Contemporary Global Issues,14,,,Olson,Richard,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1921
+20238,GSTR,410,H,Sem-Contemporary Global Issues,14,,,Vazzana,Caryn,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2036
+20239,GSTR,410,I,Sem-Contemporary Global Issues,14,,,Reid,Maurice,,,1600,1750,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20240,GSTR,410,J,Sem-Contemporary Global Issues,14,,,Clavere,Javier,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20241,GSTR,410,K,Sem-Contemporary Global Issues,14,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20242,GSTR,410,L,Sem-Contemporary Global Issues,14,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20243,HHP,204,0,Yoga (AST),20,H9,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20244,HHP,205,0,Tai Chi (AST),20,H8,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20257,HHP,206P,0,Middle Eastern Dance Ensemble,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20258,HHP,206Y,0,Modern Dance Troupe,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20245,HHP,207,0,Track & Field,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20246,HHP,209,0,Adv Begin & Intermediate Swim,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20247,HHP,214,0,Badminton - Tennis,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20248,HHP,215,0,Aerobic Dance,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20249,HHP,222,0,Water Fitness,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20250,HHP,223,0,Outdoor Adventure Activities,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20251,HHP,226,0,Racquetball,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20252,HHP,230,0,Beginning Ballet,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20253,HHP,245,0,Dance Education,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20254,HHP,260,0,Care & Prevent Athletic Injury,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20255,HHP,315,0,Motor Behavior Across Lifespan,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20256,HHP,340,0,Integ Biomec & Exercise Phy II,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20259,HIS,102,0,West Civ II:Std in Gendr (WGS),20,W4,20,Bates,Rebecca,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1826
+20260,HIS,123,0,History of Japan (AST),20,H4,20,Foster,Robert,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1793
+20261,HIS,130,0,Albion & Eire: British Isles,20,,,Christensen,Katherine,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1756
+20262,HIS,162,0,American History Since 1865,25,,,Mack,Dwayne,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2027
+20263,HIS,200,0,Intro to Historical Study,20,,,Guthman,Joshua,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1866
+20264,HIS,202,0,Christians & Pagans (REL),20,R1,20,Christensen,Katherine,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1756
+20265,HIS,210,0,Classical Roman Civ (LAT),30,L1,30,Carlevale,John,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20266,HIS,229,0,Modern Imperialism (AST),20,H5,20,Bates,Rebecca,,,1600,1710,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1826
+20267,HIS,245,0,Black Urban History (AFR),20,H2,20,Mack,Dwayne,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2027
+20268,HIS,260,0,Survey of African His (AFR),20,H7,20,Pimienta-Bey,Jose,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1903
+20269,HIS,286,0,Special Topics,20,,,Foster,Robert,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1793
+20465,HIS,286C,TS,His Viking Age Norse Rel (REL),15,H1,15,Sergent,Tyler,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1973
+20270,HIS,322,0,Sem in Chinese History (AST),15,H6,15,Foster,Robert,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1793
+20271,HIS,335,0,Topic Sem-Modern European His,15,,,Bates,Rebecca,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1826
+20272,HIS,355,0,Sem in American Rel Hist (REL),15,R2,15,Guthman,Joshua,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1866
+20273,HLT,100,A,Int to Lifetime Hlt & Wellness,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20274,HLT,100,B,Int to Lifetime Hlt & Wellness,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20275,HLT,100,C,Int to Lifetime Hlt & Wellness,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20276,HLT,100,D,Int to Lifetime Hlt & Wellness,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20277,HLT,100,E,Int to Lifetime Hlt & Wellness,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20278,HLT,100,F,Int to Lifetime Hlt & Wellness,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20279,HLT,100,G,Int to Lifetime Hlt & Wellness,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20280,HLT,100,H,Int to Lifetime Hlt & Wellness,20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20281,HLT,210,0,Health in Appalachia (APS),0,H3,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20282,HLT,215,0,Significant Issues in Health,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20283,HLT,224,0,Addiction & Violence/Fam (WGS),0,W1,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20284,HLT,236,0,Women and Health (WGS),0,W3,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20285,JPN,102,A,Intro to Japanese II (AST),25,J1,25,Patton,Nathan,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20286,JPN,102,B,Intro to Japanese II (AST),25,J2,25,Patton,Nathan,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20287,JPN,104,0,Intro to Japanese IV (AST),20,J3,20,Patton,Nathan,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20288,LAT,102,0,Introduction to Latin II,20,,,Carlevale,John,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20289,LAT,117,0,Classical Etymology,40,,,Carlevale,John,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20290,LAT,210,0,Classical Roman Civ (HIS),30,L1,30,Carlevale,John,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20291,MAT,11,A,Elementary Algebra I,15,,,Thesing,Theresa,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20466,MAT,11,B,Elementary Algebra I,0,,,Thesing,Theresa,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20292,MAT,12,A,Elementary Algebra II,15,,,Bolster,Sandra,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1712
+20293,MAT,12,B,Elementary Algebra II,15,,,Bolster,Sandra,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1712
+20294,MAT,12,C,Elementary Algebra II,15,,,Thesing,Theresa,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20295,MAT,12,D,Elementary Algebra II,15,,,,,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20296,MAT,12,E,Elementary Algebra II,15,,,,,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20313,MAT,012S,A,MAT 012-Supplemental Course,8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20314,MAT,012S,B,MAT 012-Supplemental Course,8,,,Thesing,Theresa,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20297,MAT,104,0,Introduction to Statistics,25,,,Kelly,Elizabeth,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20298,MAT,105,0,Intro to Discrete Math,25,,,Barnard,Kristen,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20299,MAT,115,A,College Algebra with Modeling,25,,,Barnard,Kristen,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20300,MAT,115,B,College Algebra with Modeling,25,,,Barnard,Kristen,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20301,MAT,125,0,Trigonometry with Applications,25,,,Blackburn-Lynch,James,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20302,MAT,135,A,Calculus I,25,,,Gratton,Larry,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1934
+20303,MAT,135,B,Calculus I,25,,,Gratton,Larry,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1934
+20304,MAT,202,0,Found/Tchg of Elem Math II,25,,,Rector,Judy,,,1040,1230,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1953
+20305,MAT,214,0,Linear Algebra,25,,,Kelly,Elizabeth,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20306,MAT,225,0,Calculus II,25,,,Gratton,Larry,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1934
+20307,MAT,308,0,Teaching of Mathematics,25,,,Rector,Judy,,,1440,1630,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1953
+20308,MAT,321,0,Foundations of Geometry,25,,,Rector,Judy,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1953
+20309,MAT,330,0,Calculus III,25,,,Blackburn-Lynch,James,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20310,MAT,415,0,Combinatorics,25,,,Kelly,Elizabeth,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20311,MAT,438,0,Statistics,25,,,Cupidon,Jean,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20312,MAT,492,0,Senior Mathematics Seminar,5,,,Blackburn-Lynch,James,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2146
+20315,MUA,105A,A,Appalachian Instruments,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20316,MUA,105A,B,Appalachian Instruments,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20317,MUA,105A,C,Appalachian Instruments,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20318,MUA,105A,D,Appalachian Instruments,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20319,MUA,105B,0,Baritone Horn/Euphonium,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20320,MUA,105C,0,Clarinet,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20321,MUA,105F,0,Flute,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20322,MUA,105G,0,Guitar: Classical/Electric,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20323,MUA,105K,0,Carillon,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20324,MUA,105O,0,Organ,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20327,MUA,105P,0,Piano,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20326,MUA,105P,0,Piano,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20325,MUA,105P,0,Piano,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20328,MUA,105Q,0,French Horn,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20329,MUA,105R,0,Recorder,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20330,MUA,105S,0,Saxophone,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20331,MUA,105T,0,Trombone,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20332,MUA,105U,0,Tuba,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20333,MUA,105V,0,Voice,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20334,MUA,105V,0,Voice,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20335,MUA,105V,0,Voice,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20336,MUA,105X,0,Trumpet,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20337,MUA,105Y,0,Percussion,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20338,MUA,105Z,0,Other Music Instruments,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20339,MUS,100,A,Class Piano,0,,,Clavere,Lindsay,,,1000,1050,P,302,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20340,MUS,100,B,Class Piano,0,,,Clavere,Lindsay,,,1100,1150,P,302,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20341,MUS,101,0,Class Piano II,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20342,MUS,103,0,Class Voice,0,,,Calkins,Mark,,,1300,1350,P,128,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20460,MUS,115,0,Intro to Music Literature,0,,,,,,,1440,1550,P,223,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20355,MUS,118B,0,"Fundamentals of Music, Part II",0,,,Bolster,Stephen,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20356,MUS,130A,0,Chamber Singers,0,,,Bolster,Stephen,,,1600,1650,P,128,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20357,MUS,130B,0,Jazz Ensemble,0,,,Talbert,Matthew,,,1600,1650,P,GRAY,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20456,MUS,130C,0,Women's Chorus,60,,,Calkins,Mark,,,1200,1250,P,128,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20358,MUS,130F,0,Bluegrass Music Ensemble,0,,,White,Al,,,2000,2230,P,126,,T,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20359,MUS,130H,0,African-Latin Percussion Ensmb,0,,,Bratton,William,,,2000,2200,P,126,,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20360,MUS,130I,0,Contemp Percussion Ensemble,0,,,Bratton,William,,,2000,2200,P,126,,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20457,MUS,130K,0,Folk Roots Ensemble,15,,,DiSavino,Elizabeth,,,1800,2000,P,126,M,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20459,MUS,130M,0,Mariachi Ensemble,15,,,White,Al,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20458,MUS,130N,0,Clarinet Ensemble,15,,,Stevens,Dwana,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20343,MUS,131,0,Concert Choir,0,,,Bolster,Stephen,,,1700,1810,P,128,M,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20344,MUS,132,0,Wind Ensemble,0,,,Talbert,Matthew,,,1700,1850,P,GRAY,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20345,MUS,135,0,Black Music Ensemble (AFR 138),75,M2,75,Bullock,Kathy,,,1900,2030,P,128,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20346,MUS,222,0,Materials of Music II,0,,,Clavere,Javier,,,1330,1430,P,402,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20347,MUS,223,0,Aural Harmony II,0,,,Clavere,Javier,,,1330,1430,P,402,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20348,MUS,234,0,Afri-Amer Mus:Overview (AFR),0,M1,0,DiSavino,Elizabeth,,,1000,1150,P,223,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20349,MUS,322,0,Materials of Music IV,0,,,Bullock,Kathy,,,1330,1430,P,407,,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20350,MUS,323,0,Aural & Keyboard Harmony IV,0,,,Bullock,Kathy,,,1330,1430,P,407,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20351,MUS,328,0,Tchg Brass & Percussion Instru,0,,,Talbert,Matthew,,,800,910,P,213,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20352,MUS,331,0,Music History II,0,,,,,,,1040,1230,P,223,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20353,MUS,400,A,Senior Seminar,0,,,Bolster,Stephen,,,1240,1350,P,213,,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20354,MUS,400,B,Senior Seminar,0,,,Bolster,Stephen,,,1240,1350,P,213,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2194
+20467,NUR,110,0,Certified Nurse Aide Prep.,10,,,,,,,700,1400,,,,,,,,800,950,,,M,,W,,,,,,,,,,,,,,,,,
+20361,NUR,342,0,Essential-Hlt Assess & Nurs II,30,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20362,NUR,352,0,Research in Nursing,30,,,Kennison,Monica,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2190
+20363,NUR,353,0,Nursg of Children & Adults II,30,,,Lamb,Connie,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2190
+20364,NUR,354,0,Pharmacology,30,,,Lamb,Connie,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2190
+20365,NUR,355,0,Pediatric Nursing,30,,,Ponder,Judy,,,800,950,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2190
+20366,NUR,449,0,Nursing Leadership,30,,,Turner,Lisa,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2190
+20367,NUR,450,0,Synthesis in Nursing Practice,30,,,Kennison,Monica,Kirby,Carol,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2190
+20368,PHI,106,0,Introductory Reasoning,25,,,Brown,Jarrod,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2193
+20369,PHI,186,0,Special Topics,20,,,Polish,Jessica,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2016
+20370,PHI,209,0,"Freedom,Law,&Modern State(PSC)",20,P1,20,Hoag,Robert,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2153
+20371,PHI,215,0,Thinking About God,20,,,Pearson,Eric,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1933
+20372,PHI,310,0,Philosophy: Descartes to Kant,15,,,Pearson,Eric,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1933
+20373,PHI,380,0,Philosophy Seminar I,15,,,Hoag,Robert,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2153
+20374,PHI,480,0,Philosophy Seminar II,15,,,Hoag,Robert,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2153
+20375,PHY,127,0,General Physics I with Algebra,24,,,Hodge,Tracy,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2007
+20376,PHY,128,0,Gen. Physics II with Algebra,24,,,Veillette,Martin,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2015
+20377,PHY,221,0,Intro Physics I with Calculus,24,,,Messina,Troy,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20378,PHY,320,0,Modern Physics,20,,,Veillette,Martin,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2015
+20379,PHY,386,0,Special Topics,20,,,Messina,Troy,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2191
+20380,PHY,460,0,Electromagnetic Theory,20,,,Hodge,Tracy,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2007
+20381,PHY,492,0,Physics Seminar,10,,,Veillette,Martin,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2015
+20382,PSC,100,0,Intro to Study of Politics,25,,,Berheide,Michael,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1701
+20383,PSC,110,0,American Government,25,,,Heyrman,John,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1831
+20384,PSC,209,0,"Freedom,Law,&Modern State(PHI)",20,P1,20,Hoag,Robert,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2153
+20385,PSC,220,0,Comparative Political Systems,15,,,McKee,Lauren,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2135
+20386,PSC,235,0,Research Methods,15,,,Berheide,Michael,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1701
+20387,PSC,286,0,Special Topics,15,,,McKee,Lauren,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2135
+20388,PSY,100,A,General Psychology,25,,,Porter,David,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1995
+20389,PSY,100,B,General Psychology,25,,,Jones,Sarah,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2125
+20390,PSY,100,C,General Psychology,25,,,Wyrick,Amanda,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2125
+20391,PSY,209,0,Social Psychology w/ Lab,0,,,Williams,Wendy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1973
+20392,PSY,210,0,Ind/Org Psy with Lab,0,,,Porter,David,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1995
+20393,PSY,211,0,Abnormal Psychology,0,,,Wyrick,Amanda,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2125
+20394,PSY,215,0,Health Psychology,0,,,Messer,Wayne,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1885
+20395,PSY,231,0,Social Gerontology (CFS),20,P2,20,Burke,Ellen,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2192
+20396,PSY,325,0,Stats & Rsrch Meth-Behav Sc II,0,,,Jones,Sarah,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2125
+20397,PSY,420,0,His & Systems of Psychology,12,,,Messer,Wayne,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1885
+20398,PSY,424,0,Senior Research,10,,,Williams,Wendy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1973
+20399,REL,100,A,Religion in Global Context,20,,,Pool,Jeff,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20400,REL,100,B,Religion in Global Context,20,,,Pool,Jeff,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20401,REL,102,0,Intro to Study of Spirituality,20,,,Pool,Jeff,,,800,950,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20402,REL,107,0,Intro to the New Testament,20,,,Smith,Duane,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1981
+20405,REL,202,0,Christians & Pagans (HIS),20,R1,20,Christensen,Katherine,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1756
+20403,REL,225,0,Images of Jesus,20,,,Smith,Duane,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1981
+20464,REL,286,TS,His Viking Age Norse Rel (HIS),15,H1,15,Sergent,Tyler,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1973
+20404,REL,355,0,Sem in American Rel Hist (HIS),15,R2,15,Guthman,Joshua,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1866
+20406,SENS,100,0,Intro-Sustainability & Environ,20,,,Gift,Nancy,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2025
+20407,SENS,215,0,Sustainable Appal Comm (APS),0,S1,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20408,SENS,286,0,Special Topics,20,,,Olson,Richard,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1921
+20409,SENS,340,0,Intro to Ecological Design,20,,,Olson,Richard,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1921
+20410,SENS,345,0,Ecological Architecture (TAD),18,T2,18,Mills,Alan,,,1240,1430,DT,112,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20411,SOC,100,0,Sociology of Everyday Life,20,,,Woodward,Andrea,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2156
+20412,SOC,215,0,Juvenile Delinquency,20,,,Bouma,Jill,,,1040,1150,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1727
+20413,SOC,220,0,Cultural Anthropology,20,,,Gray,Gordon,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2124
+20414,SOC,341,0,Soc of Dev & Social Change,20,,,Woodward,Andrea,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2156
+20452,SOC,350,0,Theories Guiding Sociology,14,,,Burnside,Jackie,,,800,950,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1706
+20415,SOC,436,0,Sociological Methods in Action,16,,,Bouma,Jill,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1727
+20416,SPN,101,A,Introduction to Spanish I,24,,,de Rosset,Carol,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1774
+20417,SPN,101,B,Introduction to Spanish I,24,,,Marte,Ivonne,,,1600,1710,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,3900 Crosby Drive #1705
+20418,SPN,102,A,Introduction to Spanish II,24,,,de Rosset,Frederick,,,800,910,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20419,SPN,102,B,Introduction to Spanish II,24,,,de Rosset,Carol,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1774
+20420,SPN,102,C,Introduction to Spanish II,24,,,Marte,Ivonne,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,3900 Crosby Drive #1705
+20421,SPN,103,0,Introduction to Spanish III,18,,,Graetzer,Margarita,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1805
+20422,SPN,186,0,Special Topics,20,,,Graetzer,Margarita,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1805
+20423,SPN,310,0,Advanced Grammar & Composition,15,,,de Rosset,Frederick,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20424,SPN,315,0,Intro to Spanish Literature,15,,,Graetzer,Margarita,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1805
+20425,SPN,321,0,Peninsular Literature II,10,,,de Rosset,Frederick,,,1200,1310,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2134
+20426,TAD,130,0,Design and Documentation,18,,,Mills,Alan,,,1300,1450,DT,112,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20427,TAD,140,0,Design Prod. in Woods,16,,,Mahoney,Gary,,,1040,1230,DT,112,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20428,TAD,180,0,Graphic Com and Design,18,,,Feinberg,Daniel,,,1240,1430,DT,B10,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20429,TAD,202,0,Photography,18,,,Mills,Alan,,,1000,1150,DT,B10,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20430,TAD,213,0,Appalachian Crafts (APS),0,T1,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20431,TAD,245,0,Materials/Processing/Testing,16,,,Mahoney,Mark,,,1040,1150,DT,B16,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20432,TAD,265,0,Electricity and Electronics,18,,,Jadud,Matthew,,,1000,1150,DT,104,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20433,TAD,345,0,Ecological Architecture (SENS),18,T2,18,Mills,Alan,,,1240,1430,DT,112,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20434,TAD,382,0,Advanced Graphics,18,,,Feinberg,Daniel,,,1300,1450,DT,B10,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2162
+20435,TAD,470,0,Advanced Power and Energy,16,,,Mahoney,Mark,,,830,1130,DT,B16,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20436,TAD,488,0,Research in Technology,20,,,Mahoney,Gary,,,1320,1430,DT,111,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2188
+20437,THR,105,0,Script Analysis,20,,,Ayers,Shan,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1812
+20438,THR,115,0,Principles of Acting,18,,,,,,,1300,1450,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20439,THR,213,0,First Theatre in Human Culture,20,,,Ayers,Shan,,,1320,1430,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1812
+20440,THR,220,0,Seminar in Design & Production,20,,,Shupe,Ami,,,1000,1150,,,,T,,R,,,,,,,,,,,,,,,,,,,,,,,,,
+20441,THR,317,0,Principles of Directing,16,,,,,,,1440,1630,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20442,THR,321,0,Seminar in Theatre Management,20,,,,,,,1040,1230,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,
+20443,THR,327,0,Seminar in Advanced Acting,12,,,,,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,
+20444,THR,331,0,Film Production: Documentary,16,,,Dickerson,Jacob,,,1240,1430,,,M,,W,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2073
+20445,WGS,102,0,West Civ II:Std in Gendr (HLT),20,W4,20,Bates,Rebecca,,,1440,1550,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 1826
+20446,WGS,124,0,Intro to Women's & Gender Stds,18,,,Williams,Wendy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1973
+20447,WGS,207,0,Family Relations (CFS),25,W2,25,Burke,Ellen,,,920,1030,,,M,,W,,F,,,,,,,,,,,,,,,,,,,,,,,,CPO 2192
+20448,WGS,224,0,Addiction & Violence/Fam (HLT),0,W1,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20449,WGS,236,0,Women and Health (HLT),0,W3,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20455,WGS,286,0,Special Topics,0,,,Mason,Qrescent,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2198
+20450,WGS,315,0,Classic Texts in Women's & Gen,15,,,Mason,Qrescent,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 2198
+20451,WGS,486,0,Special Topics,12,,,Rivage-Seul,Marguerite,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CPO 1963

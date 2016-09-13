@@ -136,4 +136,8 @@ class InstructorCourseChange(dbModel):
   username     = ForeignKeyField(User)
   course       = ForeignKeyField(CourseChange)
   
+class CoursesInBanner(dbModel):
+  CIBID        = PrimaryKeyField()
+  bannerRef    = ForeignKeyField(BannerCourses)
+  instructor   = ForeignKeyField(User, null=True)
 
