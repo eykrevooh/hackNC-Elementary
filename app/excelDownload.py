@@ -3,6 +3,9 @@ from app.logic.getAuthUser import AuthorizedUser
 from app.logic.redirectBack import redirect_url
 from app.logic.excelMaker import makeExcelFile
 from flask import send_file
+from os.path import basename
+import os
+
 @app.route("/excel/<tid>", methods=["GET"])
 def makeExcel(tid):
     authorizedUser = AuthorizedUser()
@@ -11,7 +14,14 @@ def makeExcel(tid):
       page        = "/" + request.url.split("/")[-1]
       term = Term.get(Term.termCode == tid)
       makeExcelFile(term)
-      return send_file('/home/ubuntu/workspace/cas-{}-courses.xlsx'.format(tid),as_attachment=True)
+      
+      filename = "cas-{}-courses.xlsx".format(tid)
+      currentLocation = os.path.dirname(os.path.dirname(__file__))
+      currentLocation = os.path.join(currentLocation, "data/tmp")
+      completePath = os.path.join(currentLocation, filename)
+      print completePath
+      
+      return send_file(completePath,as_attachment=True)
         
     #   flash("Division succesfully changed")
     #   return redirect(redirect_url())
