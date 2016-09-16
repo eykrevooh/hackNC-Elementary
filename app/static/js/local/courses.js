@@ -24,7 +24,7 @@ function specialTopicsName(){
    console.log(courseTitle)
    if (courseTitle != "---"){
       var course = courseTitle.split("86");
-      if ((course.length > 1){
+      if (course.length > 1){
          $('#courseSelect').append('<input onchange="changeInput()" type="text" id="specialTopics" class="form-control specialTopics" placeholder="enter special topics name" value=""/>')
       }
    }
