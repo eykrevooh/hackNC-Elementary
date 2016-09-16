@@ -1,6 +1,13 @@
-#import xlsxwriter
+import xlsxwriter
 from app.allImports import *
 
+
+def getExcelPath(term):
+    filename = "cas-{}-courses.xlsx".format(term.termCode)
+    currentLocation = os.path.dirname(os.path.dirname(__file__))
+    currentLocation = os.path.join(currentLocation, "data/tmp")
+    completePath = os.path.join(currentLocation, filename)
+    print completePath
 
 def makeExcelFile(term):
     workbook = xlsxwriter.Workbook('cas-{}-courses.xlsx'.format(term.termCode))

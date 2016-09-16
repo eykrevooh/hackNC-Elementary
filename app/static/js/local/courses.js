@@ -10,21 +10,21 @@ function getSelectedCourse(elementId) {
 
 function specialTopicsName(){
    var courseTitle = getSelectedCourse('courseInfo');
-   //DO THE WORK TO DISABLE AND ABLE THE BUTTON
    if (courseTitle === "---"){
       document.getElementById("submitAdd").disabled = true;
-      document.getElementById("submitAdd").className = "btn btn-default btn"; 
    }
    else{
       document.getElementById("submitAdd").disabled = false;
-      document.getElementById("submitAdd").className = "btn btn-success btn"; 
    }
-   //THEN DO THE WORK FOR SPECIAL TOPICS NAMES
    $(".specialTopics").remove();
-   console.log(courseTitle)
    if (courseTitle != "---"){
-      var course = courseTitle.split("86");
-      if (course.length > 1){
+      //The code below removes everything that isn't a number from the string
+      var course = courseTitle.match(/\d/g).join("");
+      //Then remove the numbers 86 from the string
+      course = course.split("86").join("");
+      console.log(course)
+      if (course.length == 1){
+         console.log("Made it into the conditional")
          $('#courseSelect').append('<input onchange="changeInput()" type="text" id="specialTopics" class="form-control specialTopics" placeholder="enter special topics name" value=""/>')
       }
    }
