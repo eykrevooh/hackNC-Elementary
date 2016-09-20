@@ -1,52 +1,57 @@
 <link rel="stylesheet" href="/static/css/addCourseForm.css" type="text/css" />
-<div>
+  <div>
     <a class="createCourseText btn btn-sm btn-default" id="showForm"><span class="glyphicon glyphicon-plus white" aria-hidden="true"></span> Create a course</a>
-</div>
-<div id="createFormContainer">
-<div class="jumbotron" id='createCourseFormJumbo'>
-    <a class="createCourseText btn btn-sm btn-default" id="hideForm"><span class="glyphicon glyphicon-plus white" aria-hidden="true"></span> Hide</a>
-    <h3 class="display-3">Create Course</h3>
-     <hr class="m-y-2">
-<form class="form-horizontal" method="post" id="createCourseForm" action="/addCourse/{{currentTerm}}/{{prefix}}">
-    <div class="form-group col-md-6">
-        <select title="Course title" class="form-control selectpicker" data-live-search="true" name="ctitle" id="courseInfo"  onchange="specialTopicsName()" required>
-      <option value="">---</option>
-      {% for ctitle in courseInfo %}
-        <option>
-          {{ctitle.subject.prefix}} {{ctitle.number}} {{ctitle.ctitle}}
-        </option>
-      {% endfor %}
-    </select>
-    </div>
-    {% include "snips/courseElements/addInstructors.html"%}
-    {% include "snips/courseElements/addSchedule.html" %}
-    
-    <div class="form-group col-md-6 offset_input right">
-    <div>
-     <input placeholder="Enter course capacity" type="number" name ="capacity" class="form-control"  /> 
+  </div>
+  <div id="createFormContainer">
+    <div class="jumbotron" id='createCourseFormJumbo'>
+      <a class="createCourseText btn btn-sm btn-default" id="hideForm"><span class="glyphicon glyphicon-plus white" aria-hidden="true"></span> Hide</a>
+      <h3 class="display-3">Create Course</h3>
+      <hr class="m-y-2">
+      <form class="form-horizontal" method="post" id="createCourseForm" action="/addCourse/{{currentTerm}}/{{prefix}}">
+        <div class="form-group col-md-6">
+          <select title="Course title" class="form-control selectpicker" data-live-search="true" name="ctitle" id="courseInfo" onchange="stn()" required>
+            <option value="">---</option>
+            {% for ctitle in courseInfo %}
+              <option>
+                {{ctitle.subject.prefix}} {{ctitle.number}} {{ctitle.ctitle}}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group col-md-6 offset_input right" id="newInput">
+          <input type="text" id="specialTopicsName" class="form-control specialTopics" placeholder="Enter special topics name" required disabled/>
+        </div>
+        {% include "snips/courseElements/addRoom.html" %}
+        {% include "snips/courseElements/addInstructors.html"%}
+        {% include "snips/courseElements/addSchedule.html" %}
+       
+        <div class="form-group col-md-2 offset_input right">
+          <div>
+            <input placeholder="Enter course capacity" type="number" name ="capacity" class="form-control"  /> 
+          </div>
+        </div>
+        
+        <div class=" col-md-2 offset_input right">
+          <label id="radioLabel" for="radios">Crosslisted</label>
+          <div class="radio-inline" id=radios>
+            <label>
+              <input type="radio" name="crossListed" id="exampleRadios1" value=1 required>
+              Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="crossListed" id="exampleRadios1" value=0 required>
+              No
+            </label>
+          </div>
+        </div>
+        
+        <div>
+          <textarea rows="4" class="form-control" id="notesText" name="requests" cols="50" placeholder="Please indicate any special needs for this course, including..."></textarea>
+        </div>
+      </form>
+      <button form="createCourseForm" type="submit" class="btn btn-primary pull-right" id="submitAdd">Submit</button>
     </div>
   </div>
- {% include "snips/courseElements/addRoom.html" %}
-     <div class=" col-md-6 offset_input right">
-         <label id="radioLabel" for="radios">Crosslisted</label>
-             <div class="radio-inline" id=radios>
-        <label>
-          <input type="radio" name="crossListed" id="exampleRadios1" value=1 required>
-          Yes
-        </label>
-      </div>
-      <div class="radio-inline">
-        <label>
-          <input type="radio" name="crossListed" id="exampleRadios1" value=0 required>
-          No
-        </label>
-      </div>
-    </div>
-    <div>
-         <textarea rows="4" class="form-control" id="notesText" name="requests" cols="50" placeholder="Please indicate any special needs for this course, including..."></textarea>
-         </div>
-</form>
-<button form="createCourseForm" type="submit" class="btn btn-primary pull-right" id="submitAdd">Submit</button>
-</div>
-</div>
 <script type="text/javascript" src="/static/js/local/addCourseForm.js"></script>
