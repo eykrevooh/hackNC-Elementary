@@ -13,6 +13,7 @@ from flask import flash
 from flask import abort
 from flask_admin import Admin
 import time
+import sys,os
 
 import pprint
 from app import models
@@ -35,6 +36,11 @@ def authUser(env):
         return cfg["DEBUG"]["user"]
     else:
         return None
+        
+def getAbsolutePath(relaitivePath,filename):
+    filepath = os.path.join(sys.path[0],relaitivePath)
+    filepath = os.path.join(filepath,filename)
+    return filepath
 
 from app import logtool
 log = logtool.Log()

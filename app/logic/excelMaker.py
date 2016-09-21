@@ -1,16 +1,12 @@
 import xlsxwriter
 from app.allImports import *
+import sys,os
 
-
-def getExcelPath(term):
-    filename = "cas-{}-courses.xlsx".format(term.termCode)
-    currentLocation = os.path.dirname(os.path.dirname(__file__))
-    currentLocation = os.path.join(currentLocation, "data/tmp")
-    completePath = os.path.join(currentLocation, filename)
-    print completePath
 
 def makeExcelFile(term):
-    workbook = xlsxwriter.Workbook('cas-{}-courses.xlsx'.format(term.termCode))
+    filename = "cas-{}-courses.xlsx".format(term.termCode)
+    path = getAbsolutePath(cfg['filepath']['tmp'],filename)
+    workbook = xlsxwriter.Workbook(path)
     workbook.set_properties({
     'title':    'Course Schedule for {}'.format(term.name),
     'author':   'Cas System',
@@ -71,3 +67,4 @@ def makeExcelFile(term):
             master_row += 1
             
     workbook.close()
+    return path

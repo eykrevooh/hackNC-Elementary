@@ -13,15 +13,17 @@ def makeExcel(tid):
       
       page        = "/" + request.url.split("/")[-1]
       term = Term.get(Term.termCode == tid)
-      makeExcelFile(term)
+      completePath = makeExcelFile(term)
       
-      filename = "cas-{}-courses.xlsx".format(tid)
-      currentLocation = os.path.dirname(os.path.dirname(__file__))
-      currentLocation = os.path.join(currentLocation, "data/tmp")
-      completePath = os.path.join(currentLocation, filename)
-      print completePath
+      #filename = "cas-{}-courses.xlsx".format(tid)
+      #currentLocation = os.path.dirname(os.path.dirname(__file__))
+      #currentLocation = os.path.join(currentLocation, "data/tmp")
+      #completePath = os.path.join(currentLocation, filename)
+      #print completePath
+      #completePath = filename
       
       return send_file(completePath,as_attachment=True)
+      
         
     #   flash("Division succesfully changed")
     #   return redirect(redirect_url())
