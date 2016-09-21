@@ -39,6 +39,10 @@ def authUser(env):
         
 def getAbsolutePath(relaitivePath,filename):
     filepath = os.path.join(sys.path[0],relaitivePath)
+    try:
+        os.makedirs(filepath)
+    except:
+        pass
     filepath = os.path.join(filepath,filename)
     return filepath
 
