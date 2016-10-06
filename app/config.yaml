@@ -10,6 +10,7 @@ databases:
   # prod: ""
 databaseAdmin:
   user: 'heggens'
+  user: 'myersco'
 
 filepath:
   tmp: "data/tmp"
