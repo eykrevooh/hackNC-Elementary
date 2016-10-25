@@ -9,3 +9,4 @@ config.py
 *sqlite
 venv/*
 *.xlsx
+*.csv

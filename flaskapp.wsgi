@@ -5,6 +5,7 @@ import sys
 import logging
 
 logging.basicConfig(stream=sys.stderr)
+#This should be be the base location for the app on the server
 sys.path.insert(0,"/var/www/html/cas-flask/")
 from app import app as application
 
