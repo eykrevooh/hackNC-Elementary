@@ -49,7 +49,7 @@ def courses(tID, prefix):
         Course.prefix == prefix).where(
         Course.term == tID)
 
-    rooms = Rooms.select()
+    rooms = Rooms.select().order_by(Rooms.building)
 
     instructors = createInstructorDict(courses)
     
