@@ -8,17 +8,7 @@ databases:
   dev: "data/db.sqlite"
   # stage: ""
   # prod: ""
-databaseAdmin:
-  user: 'heggens'
 
-filepath:
-  tmp: "data/tmp"
-  data: "data"
-  app: "app"
-  logic: "app/logic"
-  css: "app/static/css"
- 
-  
 # For every table in the database, add an item here
 models:
   mainDB:

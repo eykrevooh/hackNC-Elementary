@@ -13,6 +13,8 @@ To rename the app, you need to make three changes:
 import os,sys
 
 from app import app
+
+'''Insert the base location for the app in Cloud9'''
 sys.path.insert(0,'/home/ubuntu/workspace/')
 
 # Builds the server configuration
