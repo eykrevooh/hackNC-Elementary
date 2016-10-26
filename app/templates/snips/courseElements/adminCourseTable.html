@@ -75,7 +75,11 @@
                 </td>
                 <!--NOTES-->
                 <td>
-                    <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{% if course.notes is not none %}{{ course.notes }}{% endif %}'>Notes</a>
+                    {% if course.notes is not none %}
+                        <a href='javascript:;'  data-toggle='popover' title='Course Notes' data-content='{{ course.notes }}'>Notes</a>
+                    {% else %}
+                        <p>Notes</p>
+                    {% endif %}
                 </td>
                 <!--LAST EDITED BY-->
                 <td>

@@ -145,7 +145,10 @@ def editCourse(data, prefix, professors):
         room     = data["room"] if data["room"] else None
         capacity = data['capacity'] if data['capacity'] else None
         schedule = data['schedule'] if data['schedule'] else None
-        notes = data['notes'] if data['notes'] else None
+        if data['notes'].replace(" ", "") == "":
+            notes = None
+        else:
+            notes = data['notes']
         
         course.crossListed = int(data["crossListed"])
         course.term = data['term']

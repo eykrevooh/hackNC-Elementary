@@ -31,7 +31,7 @@ class NullCheck():
     #THESE ARE ALL OF THE VALUES THAT COULD CONTAIN AN EMPTY STRING
     checkList = ['capacity','schedule','rid','requests'] 
     for item in checkList:
-      if data[item]=="":
+      if (data[item].replace(" ",""))=="":
         value[item]=None
       else:
         value[item]=data[item]
