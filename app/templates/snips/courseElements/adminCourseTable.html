@@ -45,7 +45,7 @@
                         {% if special != [] %}
                             <p>See Notes</p>                            
                         {% else %}
-                            {{course.schedule.days}} {{course.schedule.startTime.strftime('%I:%M%p')}}-{{course.schedule.endTime.strftime('%H:%M%p')}}
+                            {{course.schedule.days}} {{course.schedule.startTime.strftime('%I:%M%p')}}-{{course.schedule.endTime.strftime('%I:%M%p')}}
                         {% endif %}
                     {% endif %}
                 </td>

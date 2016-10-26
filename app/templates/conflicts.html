@@ -63,7 +63,7 @@
                     <td>
                       {% if course.schedule is not none %} 
                         {{course.schedule.days}} 
-                        {{course.schedule.startTime.strftime('%H:%M')}}-{{course.schedule.endTime.strftime('%H:%M')}} 
+                        {{course.schedule.startTime.strftime('%I:%M%p')}}-{{course.schedule.endTime.strftime('%I:%M%p')}} 
                       {% endif %}
                     </td>
                     <!--CAPACITY-->
