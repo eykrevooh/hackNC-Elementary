@@ -13,3 +13,9 @@ databases:
 models:
   mainDB:
     - User
+    - Ta
+    - Student
+    - Question
+    - Course
+    - TaCRelation
+    - SCRelation

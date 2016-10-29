@@ -47,8 +47,112 @@ def get_classes (db):
     c = class_from_name(sys.modules[__name__], str)
     classes.append(c)
   return classes
-
   
 mainDB.create_tables(get_classes('mainDB'))
 
+User(username = "admin",
+     password = "1234",
+     role     = 0,
+     year     = 7,
+     sex      = 0,
+     race     = "Cacuasian").save()
 
+User(username = "ta1",
+     password = "1234",
+     role     = 1,
+     year     = 4,
+     sex      = 1,
+     race     = "African-American").save()
+
+User(username = "ta2",
+     password = "1234",
+     role     = 1,
+     year     = 3,
+     sex      = 0,
+     race     = "Asian").save()
+
+User(username = "stu1",
+     password = "1234",
+     role     = 2,
+     year     = 1,
+     sex      = 1,
+     race     = "Cacuasian").save()
+
+User(username = "stu2",
+     password = "1234",
+     role     = 2,
+     year     = 7,
+     sex      = 0,
+     race     = "Asian").save()
+
+Ta(  uID = 2,
+     bio = "Senior Computer Science major, experienced in Python, Java, and relational databases",
+     pict = "/some/file/path",
+     working = 0).save()
+
+Ta(  uID = 3,
+     bio = "Junior Computer Science major, expert in Asp.net",
+     pict = "/some/file/path",
+     working = 1).save()
+
+Student(uID = 4,
+        need_help = 1).save()
+
+Student(uID = 5,
+        need_help = 0).save()
+
+Course( course_num = "CSC 236",
+        course_title = "Software Engineering",
+        course_dec = "An intorduction the implementation of full stack engineering",
+        python = True,
+        c = False,
+        cplus = False,
+        c_sharp = False,
+        java = False,
+        racket = True,
+        haskell = False).save()
+
+Course( course_num = "CSC 486",
+        course_title = "Programming Languages",
+        course_dec = "Learn a variety of programming languages and develop your own in Racket",
+        python = True,
+        c = False,
+        cplus = False,
+        c_sharp = False,
+        java = False,
+        racket = True,
+        haskell = False).save()
+
+Question(
+        sID = 1,
+        cID = 1,
+        status = "PENDING",
+        assignment = "A10",
+        title = "Linked List Issue",
+        question = "Kye is tired and is not thinking of a question").save()
+
+SCRelation(
+        sID = 1,
+        cID = 1).save()
+
+SCRelation(
+        sID = 2,
+        cID = 1).save()
+
+SCRelation(
+        sID = 1,
+        cID = 2).save()
+
+TaCRelation(
+        taID = 1,
+        cID = 2).save()
+
+TaCRelation(
+        taID = 2,
+        cID = 1).save()
+
+TaCRelation(
+        taID = 2,
+        cID = 2).save()
+
+print "Database populated with values"

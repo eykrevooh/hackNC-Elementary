@@ -4,6 +4,7 @@ app/.~c9_invoke_*
 .c9/metadata/tab3
 data/
 *.pyc
+*.swp
 config.py
 *.log
 *sqlite

@@ -33,11 +33,80 @@ class tableName (dbModel):
 For more information look at peewee documentation
 """
 
-
 #MODELS WITHOUT A FOREIGN KEY
 class User(dbModel):
   uID           = PrimaryKeyField()
-  food          = CharField()
+  username      = TextField()
+  password      = TextField()
+  role          = IntegerField()
+  year          = IntegerField()
+  sex           = IntegerField()
+  race          = TextField()
 
   def __str__(self):
     return str(self.name)
+
+
+class Ta(dbModel):
+    taID        = PrimaryKeyField()
+    uID         = ForeignKeyField(User)
+    bio         = TextField()
+    pict        = TextField()
+    working     = IntegerField()
+
+    def __str__(self):
+        return str(self.name)
+
+class Student(dbModel):
+    sID         = PrimaryKeyField()
+    uID         = ForeignKeyField(User)
+    need_help   = IntegerField()
+
+    def __str__(self):
+        return str(self.name)
+
+class Course(dbModel):
+    cID         = PrimaryKeyField()
+    course_num  = TextField()
+    course_title= TextField()
+    course_dec  = TextField()
+    python      = IntegerField()
+    c           = IntegerField()
+    cplus       = IntegerField()
+    c_sharp     = IntegerField()
+    java        = IntegerField()
+    racket      = IntegerField()
+    haskell     = IntegerField()
+
+    def __str__(self):
+        return str(self.name)
+
+class Question(dbModel):
+    qID         = PrimaryKeyField()
+    sID         = ForeignKeyField(Student)
+    cID         = ForeignKeyField(Course)
+    taID        = ForeignKeyField(Ta, default=0)
+    status      = TextField()
+    assignment  = TextField()
+    title       = TextField()
+    question    = TextField()
+
+    def __str__(self):
+        return str(self.name)
+
+class SCRelation(dbModel):
+    scrID       = PrimaryKeyField()
+    sID         = ForeignKeyField(Student)
+    cID         = ForeignKeyField(Course)
+
+    def __str__(self):
+        return str(self.name)
+
+class TaCRelation(dbModel):
+    tacID       = PrimaryKeyField()
+    taID        = ForeignKeyField(Ta)
+    cID         = ForeignKeyField(Course)
+
+    def __str__(self):
+        return str(self.name)
+
