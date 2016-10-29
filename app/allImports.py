@@ -11,13 +11,11 @@ from flask import g
 from flask import url_for
 from flask import flash
 from flask import abort
-from flask_admin import Admin
 import time
 import sys,os
 
 import pprint
 from app import models
-# all the database models
 from models import *     
 
 
@@ -28,30 +26,6 @@ returns a replacement function. See start.py for an example"
 '''
 
 
-def authUser(env):
-    envK = "eppn"
-    if (envK in env):
-        return env[envK].split("@")[0]
-    elif ("DEBUG" in app.config) and app.config["DEBUG"]:
-        return cfg["DEBUG"]["user"]
-    else:
-        return None
-
-'''Creates the AbsolutePath based off of the relative path.
-Also creates the directories in path if they are not found.
-@param {string} relaitivePath - a string of directories found in config.yaml
-@param {string} filename - the name of the file that should be in that directory
-@return {string} filepath -returns the absolute path of the directory'''
-'''TODO: ADD @PARAm for make dirs'''
-def getAbsolutePath(relaitivePath,filename):
-    filepath = os.path.join(sys.path[0],relaitivePath)
-    try:
-        os.makedirs(filepath)
-    except:
-        pass
-    if filename != None:
-        filepath = os.path.join(filepath,filename)
-    return filepath
 
 from app import logtool
 log = logtool.Log()
@@ -61,8 +35,6 @@ app = Flask(__name__)
 app.config.from_object('settings')
 # Builds all the database connections on app run
 # Don't panic, if you need clarification ask.
-admin = Admin(app)
-
 
 
 @app.before_request

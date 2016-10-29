@@ -1,98 +1,15 @@
 
-# The log file location   
+# The log file location
 log:
-filename: "urcpp.log"
+filename: "food-calc.log"
 
 # All the databases used by the system
 databases:
   dev: "data/db.sqlite"
   # stage: ""
   # prod: ""
-databaseAdmin:
-  user: 'heggens'
 
 # For every table in the database, add an item here
 models:
   mainDB:
     - User
-    - Division
-    - Program
-    - Subject
-    - BannerSchedule
-    - BannerCourses
-    - Term
-    - Course
-    - ProgramChair
-    - DivisionChair
-    - InstructorCourse
-    - Deadline
-    - CourseChange
-    - InstructorCourseChange
-    - Rooms
-# this makes the navigation bar
-mainMenu:
-  - title: "Home"
-    link: "/"
-  - title: "Courses"
-    link: "/courses"
-  - title: "Log Out"
-    link: "http://login.berea.edu/idp/profile/Logout"
-
-adminMenu:
-  Administration:
-    - title: "Program Management"
-      link:  "/redirect/program_management"
-    - title: "Division Management"
-      link:  "/redirect/division_management"
-    - title: "System Management"
-      link:  "/admin/systemManagement"
-    - title: "Course Management"
-      link:  "/courseManagement/crossListed"
-
-termInfo:
-#the keys correlate to the last two digits in the term code eg: Fall 2016 = 201611 
-    11: 'Fall'                    # e.g. Fall 2016 = 201611
-    12: 'Spring'                  # e.g. Spring 2017 = 201612 (note the different year)
-    13: '8 Week Summer'       # e.g. 8 Week Summer 2017 = 201613 (note the different year)
-    14: '1st 4 Week Summer'
-    15: '2nd 4 Week Summer'
-    #10: 'Berea Bridge Program'   # e.g. Berea Bridge Program 2016 = 201610    
-
-editForm:
-  dataKeys: ['cid','term','schedule','room','capacity','crossListed','notes']
-
-specialSchedule:
-  # Times that needed to be automatically added on the conflicts.html
-  conflicts: ['A1','ZZZ']
-  # Times you have to find in the notes section
-  unknownTime: ['ZZZ']
-
-changeType:
-  create: 'create'
-  delete: 'delete'
-  update: 'update'
-  
-tableLayout:
-  order: ['Course Name', 'Taught By', 'Schedule', 'Room', 'Capacity', 'Cross Listed', 'Notes', 'Term','Last Edited By']
-  Course Name:    0
-  Taught By:      1  
-  Schedule:       2
-  Room:           3
-  Capacity:       4
-  Cross Listed:   5
-  Notes:          6
-  Term:           7
-  Last Edited By: 8
-  
-columnColor:
-  edit:     'warning'
-  delete:   'danger'
-  create:   'success'
-  default:  'none'
-  
-DEBUG:
-  user: "heggens" #Admin Access
-  # user: "pearcej" #Division Chair Access
-  # user: "jadudm"  #Program Chair Access
-  # user: "kramera" #Professor Access
-

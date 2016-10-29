@@ -52,9 +52,3 @@ def get_classes (db):
 mainDB.create_tables(get_classes('mainDB'))
 
 
-try:
-  os.system('mysql-ctl start')
-  os.system('python migrateDatabase.py')
-except:
-  print "Migration failed"
-  raise

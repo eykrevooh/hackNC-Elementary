@@ -13,23 +13,4 @@ from allImports import *
 # import your new python files here. It is not a part of the module until
 # it is imported
 
-
-from app import course
-from app import editCourse
-from app import deleteCourse
-from app import errorHandler
-from app import editProgram
-from app import editDivision
-from app import editTerm
-from app import newTerm
-from app import changeAdmin
-from app import programManagement
-from app import divisionManagement
-from app import systemManagement
-from app import redirectAdminProgram
-from app import deadlineManagement
-from app import deadlineDisplay
-from app import courseManagement
-from app import addCourse
-from app import excelDownload
-from app import databaseAdmin
+from start import start
