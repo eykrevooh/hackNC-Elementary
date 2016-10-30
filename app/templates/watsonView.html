@@ -1,23 +1,18 @@
 {% extends "base.html" %}
 {% set currentPage = "wastsonView" %}
   {% block body %}
-<style>
-.ans-block {
-  background-color: white;
-  padding: 10px;
-} 
 </style>
   <div class="container">
   <div class="jumbotron">
       <h2>Hello, I'm your virtual TA!</h2>
-     <p class="ans-block">So, you wanted to know "{{question.question}}"</p>
-     <p class="ans-block">{{answer | safe}}</p>
+     <p class="well">So, you wanted to know "{{question.question}}"</p>
+     <p class="well">{{answer | safe}}</p>
      <p>
      Was this helpful?
      </p>
      <p>
-     <button class="btn btn-success btn-lg" href="/dash/stu"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Yes</button>
-     <button class="btn btn-danger btn-lg" href="/dash/stu"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>No</button>
+     <a class="btn btn-success btn-lg" href="/dashboard/stu"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Yes</a>
+     <a class="btn btn-danger btn-lg" href="/dashboard/stu"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>No</a>
      </p>
   </div>
   </div>

@@ -1,6 +1,7 @@
 #Post question controller
 
 from app.allImports import *
+from app.watson_api import Watson
 
 @app.route('/post/', methods=["GET","POST"])
 def postQuestion():
@@ -8,6 +9,13 @@ def postQuestion():
         title = request.form["title"]
         quest = request.form["question"]
         course = request.form["courses"]
+
+        myWatson = Watson()
+        myWatson.set_username(cfg['watson']['conversation'],\
+                                cfg['watson']['translator'])
+        lang = myWatson.identify_lang(quest)
+        quest = myWatson.translate(quest, lang, "en")
+        
         cId = Course.select().where(Course.course_num == course).get()
         Question(
              sID = 1,

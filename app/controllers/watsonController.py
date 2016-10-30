@@ -18,7 +18,3 @@ def watsonGetQuestion(qID):
         return render_template('watsonView.html',\
                                 question = question,\
                                 answer = answer)
-    else:
-        courses = Course.select()
-        return render_template('postView.html',
-                               courses = courses)
