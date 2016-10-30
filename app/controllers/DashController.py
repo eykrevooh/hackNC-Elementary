@@ -8,7 +8,7 @@ from flask import \
     redirect, \
     request
 
-@app.route('/dash/', methods=["GET"])
+@app.route('/dashboard/', methods=["GET"])
 def dash():
     working = Ta.select()\
             .join(User, on=(Ta.uID_id == User.uID))\
