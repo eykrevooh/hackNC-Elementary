@@ -14,4 +14,4 @@ from app.controllers import *
 # import your new python files here. It is not a part of the module until
 # it is imported
 
-from start import *
+from watson_api import Watson

@@ -19,3 +19,13 @@ models:
     - Course
     - TaCRelation
     - SCRelation
+
+watson:
+  conversation:
+      - 8a9ded6d-8130-4d2f-938a-77299633e497
+      - sFqr0eofA22w
+      - 1e9c006c-5435-43fd-9921-30c5ff96ee16
+  translator:
+      - 4454222a-b333-48e6-a8ee-0e7d5aa8a929
+      - sJkfneX7xR6e
+

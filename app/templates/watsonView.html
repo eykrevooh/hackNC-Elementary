@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+  {% block body %}
+  <div class="container">
+  <div class="jumbotron">
+      <h2>Hello, I'm your virtual TA!</h2>
+     <p>So, you wanted to know "{{question.question}}"</p>
+     <p>{{answer | safe}}</p>
+     <p>
+     Was this helpful?
+     </p>
+     <p>
+     <button class="btn btn-success btn-lg" href="/dash/stu"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Yes</button>
+     <button class="btn btn-danger btn-lg" href="/dash/stu"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>No</button>
+     </p>
+  </div>
+  </div>
+  {% endblock %}

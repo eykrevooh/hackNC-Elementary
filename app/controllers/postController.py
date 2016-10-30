@@ -17,7 +17,11 @@ def postQuestion():
              title = title,
              question = quest
         ).save()
-        return render_template('index.html')
+        question = Question.select(Question.qID)\
+                    .where(Question.question == quest)\
+                    .get()
+
+        return redirect(url_for('watsonGetQuestion', qID = question.qID))
     else:
         courses = Course.select()
         return render_template('postView.html',
