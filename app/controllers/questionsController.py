@@ -8,12 +8,11 @@ from flask import \
     redirect, \
     request
 
-@app.route('/questions/<user>/', methods=["GET"])
-def questions(user):
-    claimedQs = Question.select().where(Question.taID == user)
-    unclaimedQs = Question.select().where(Question.taID != user) 
+@app.route('/questions/', methods=["GET"])
+def questions():
+    questions = Question.select()
+    classes = Course.select()
     #two queries 2) all questions NOT associated with 'signed in user' and 1) all questions ONLY associated with 'signed in user'
     return render_template('questionsView.html',
-                           user = user,
-                           claimedQs = claimedQs,
-                           unclaimedQs = unclaimedQs)
+                           questions = questions,
+                           classes = classes)

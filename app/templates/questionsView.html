@@ -4,13 +4,33 @@
 
 {% block body %}
 
-<div class="container-fluid">
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#"
-    <div class="panel-group" id="unclaimed" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-        
-        </div>
+<div class="clearfix">
+<div class="container">
+    <div id="allQs" class="tab-pane fade in active">
+        <div class="panel-group" id="unclaimedAccordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                {% for class in classes %}
+                    <div class="panel-heading" role="tab" id="{{class.cID}}Tab">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#unclaimedAccordion" href="#{{class.cID}}" aria-expanded="true" aria-controls="{{class.cID}}">
+                                {{class.course_num}}({{class.course_title}})
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="{{class.cID}}" role="tabpanel" aria-labelledby="{{class.cID}}">
+                        <div class="panel-body">
+                            <p>{{unclaimedQs}}</p>
+                            {% for question in unclaimedQs %}
+                                {% if question.cID == class.cID %}
+                                    <p>fuck</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>        
     </div>
+</div>
 
 {% endblock %}
