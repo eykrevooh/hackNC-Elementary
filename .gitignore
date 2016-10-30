@@ -10,6 +10,8 @@ config.py
 venv/*
 *.xlsx
 *.csv
+data/*shm
+data/*wal
 =======
 # Byte-compiled / optimized / DLL files
 __pycache__/
