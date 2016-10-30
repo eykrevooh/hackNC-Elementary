@@ -19,12 +19,18 @@
                     </div>
                     <div class="panel-collapse collapse" id="{{class.cID}}" role="tabpanel" aria-labelledby="{{class.cID}}">
                         <div class="panel-body">
-                            <p>{{unclaimedQs}}</p>
-                            {% for question in unclaimedQs %}
-                                {% if question.cID == class.cID %}
-                                    <p>fuck</p>
-                                {% endif %}
-                            {% endfor %}
+                            <table class="table table-striped">
+                                <tbody> 
+                            {% for question in questions %}
+                                {% if question.cID.cID == class.cID %}
+                                    <tr class = 'clickable-row' data-href="www.imgur.com">
+                                        <u><h4>{{question.title}}</h4></u>
+                                        <p>{{question.question}}<p>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 {% endfor %}
