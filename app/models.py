@@ -1,5 +1,6 @@
 from peewee import *
 import os
+import datetime
 
 # Create a database
 from app.loadConfig import *
@@ -44,10 +45,6 @@ class User(dbModel):
   sex           = IntegerField()
   race          = TextField()
 
-  def __str__(self):
-    return str(self.name)
-
-
 class Ta(dbModel):
     taID        = PrimaryKeyField()
     uID         = ForeignKeyField(User)
@@ -55,16 +52,10 @@ class Ta(dbModel):
     pict        = TextField()
     working     = IntegerField()
 
-    def __str__(self):
-        return str(self.name)
-
 class Student(dbModel):
     sID         = PrimaryKeyField()
     uID         = ForeignKeyField(User)
     need_help   = IntegerField()
-
-    def __str__(self):
-        return str(self.name)
 
 class Course(dbModel):
     cID         = PrimaryKeyField()
@@ -79,9 +70,6 @@ class Course(dbModel):
     racket      = IntegerField()
     haskell     = IntegerField()
 
-    def __str__(self):
-        return str(self.name)
-
 class Question(dbModel):
     qID         = PrimaryKeyField()
     sID         = ForeignKeyField(Student)
@@ -91,23 +79,14 @@ class Question(dbModel):
     assignment  = TextField()
     title       = TextField()
     question    = TextField()
-
-    def __str__(self):
-        return str(self.name)
+    created_date = DateTimeField(default=datetime.datetime.now)
 
 class SCRelation(dbModel):
     scrID       = PrimaryKeyField()
     sID         = ForeignKeyField(Student)
     cID         = ForeignKeyField(Course)
 
-    def __str__(self):
-        return str(self.name)
-
 class TaCRelation(dbModel):
     tacID       = PrimaryKeyField()
     taID        = ForeignKeyField(Ta)
     cID         = ForeignKeyField(Course)
-
-    def __str__(self):
-        return str(self.name)
-

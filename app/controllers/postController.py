@@ -1,12 +1,6 @@
 #Post question controller
 
-from app import app
-from app.models import *
-
-from flask import \
-    render_template, \
-    redirect, \
-    request
+from app.allImports import *
 
 @app.route('/post/', methods=["GET","POST"])
 def postQuestion():

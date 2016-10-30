@@ -1,12 +1,6 @@
 # Questions Controller
 
-from app import app
-from app.models import *
-
-from flask import \
-    render_template, \
-    redirect, \
-    request
+from app.allImports import *
 
 @app.route('/questions/', methods=["GET"])
 def questions():
