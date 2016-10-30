@@ -16,4 +16,4 @@ def homeReroute():
 def login():
     print "You hit me bitch"
     #Dummy form that just passes the username because we don't feel like actually implementing a login system
-    return render_template('loginView.html')
+    return render_template('loginView.html', user = None)
