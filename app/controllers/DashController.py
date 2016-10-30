@@ -8,10 +8,11 @@ from flask import \
     redirect, \
     request
 
-@app.route('/dashboard/', methods=["GET"])
-def dash():
+@app.route('/dashboard/<perm>', methods=["GET"])
+def dash(perm):
+    print perm
     working = Ta.select()\
             .join(User, on=(Ta.uID_id == User.uID))\
             .where(Ta.working == 1)
-    return render_template('index.html',
-                           working = working)
+    return render_template('dash.html',
+                           working = working,user=perm)

@@ -6,7 +6,8 @@ from app.models import *
 from flask import \
     render_template, \
     redirect, \
-    request
+    request, \
+    url_for
 
 @app.route('/', methods=["GET","POST"])
 def homeReroute():
@@ -14,6 +15,18 @@ def homeReroute():
 
 @app.route('/login/', methods=["GET", "POST"])
 def login():
-    print "You hit me bitch"
-    #Dummy form that just passes the username because we don't feel like actually implementing a login system
-    return render_template('loginView.html', user = None)
+    print request.method
+    if request.method == "POST": 
+        username = request.form["username"]
+        print(request.form)
+        working = Ta.select()\
+                .join(User, on=(Ta.uID_id == User.uID))\
+                .where(Ta.working == 1)
+        if "ta" in username:
+            return redirect(url_for('dash',perm=username))
+        elif "stu" in username:
+           return redirect(url_for('dash',perm=username))
+        else:
+            return render_template('loginView.html', user = None)
+    else:
+        return render_template('loginView.html', user = None)
