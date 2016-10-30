@@ -1,7 +1,6 @@
 {# questionsView.html #}
 
 {% extends "base.html" %}
-
 {% block body %}
 <script type="text\javascript" src="static/local/js/claim.js"></script>
 
@@ -27,7 +26,10 @@
                                             {% if question.cID.cID == class.cID %}
                                                 <tr>
                                                     <td><a data-toggle="modal" data-target="#questionModal" data-question="{{question.qID}}" data-user="{{user}}"><h4>{{question.title}}</h4>
-                                                    <p>{{question.question}}<p></a></td>
+                                                    <a style="float:right" class="glyphlink" data-toggle="modal" data-target="#resolveQuestionModal" data-question="{{question.qID}}">
+                                                        <span class="glyphicon glyphicon-ok">Resolve</span>
+                                                    </a> 
+                                                    <p>{{question.question}}<p></td>
                                                 </tr>
                                             {% endif %}
                                         {% endif %}
@@ -37,6 +39,25 @@
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resolveQuestionModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-labeledby="resolveModalLabel">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center" id="resolveModalLabel">
+                <h4>Would you like to resolve this question?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No thank you.</button>
+                <button type="button" data-question="" id="resolveClaimButton" class="btn btn-success" onclick="resolve(this);">Yes!</button>
             </div>
         </div>
     </div>
@@ -60,7 +81,32 @@
         </div>
     </div>
 </div>
+<!--Resolve-->
   <script>
+    $( document ).ready(function() {
+    $("#resolveQuestionModal").on('show.bs.modal', function(event){
+    var link = $(event.relatedTarget);
+    var question = link.data('question');
+    var modal = $(this);
+    console.log(question)
+    $('#resolveClaimButton').attr('data-question', question)
+    });
+    });
+
+function resolve(){
+  var question = $('#resolveClaimButton').data('question');
+    $.ajax({
+        url: "/resolve/",
+      data: {user : '{{user}}', question : question},
+        type: "GET",
+        success: function(data){
+            },
+        error: function(){
+            console.log("Error");
+            }
+        });
+    };
+<!--Claim-->
     $( document ).ready(function() {
     $("#questionModal").on('show.bs.modal', function(event){
     var link = $(event.relatedTarget);
