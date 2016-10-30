@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+  {% block body %}
+  <div class="container">
+    <form class = "form" method="POST"> 
+      <div class = "form-group">
+        <label for = "title">Title</label>
+        <input class = "form-control" type = "text" id="title" name = "title"></textarea>
+        <label for = "name">Question</label>
+        <textarea class = "form-control" type ="text" rows = "3" name = "question" id="question"></textarea>
+      </div>
+    <div>
+      <select name = "courses">
+        <option value="" disabled selected>Select Course</option>
+        {% for course in courses %}
+        <option {{course.cID}}>{{course.course_num}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <br>
+    <button type = "submit" class = "btn btn-primary btn-md" id="submit" name="title">Submit</button> 
+    </form>
+  </div>
+  {% endblock %}

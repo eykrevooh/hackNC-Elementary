@@ -10,13 +10,13 @@
                 </button>
                 <a class="navbar-brand" href="/dashboard/">Watson TA Assistant</a>
             </div>
-        {% if user == "ta1" or user == "ta2" %}
+            {% if user == "ta1" or user == "ta2" %}
             <div class="collapse navbar-collapse" id="navbar-collapse-section">
                 <ul class="nav navbar-nav">
                     <li><a href="/questions/{{ user }}/">Student Questions</a>
                 </ul>
             </div>
-        {% else %}
+            {% else %}
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/post/">Ask a Question</a>
