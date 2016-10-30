@@ -1,12 +1,6 @@
 # Dashboard Controller
+from app.allImports import *
 
-from app import app
-from app.models import *
-
-from flask import \
-    render_template, \
-    redirect, \
-    request
 
 @app.route('/dashboard/<perm>', methods=["GET"])
 def dash(perm):
