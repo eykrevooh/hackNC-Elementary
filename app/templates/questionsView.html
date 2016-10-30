@@ -3,6 +3,7 @@
 {% extends "base.html" %}
 
 {% block body %}
+<script src="static/local/js/claim.js"></script>
 
 <div class="clearfix">
 <div class="container">
@@ -21,14 +22,16 @@
                         <div class="panel-body">
                             <table class="table table-striped">
                                 <tbody> 
-                            {% for question in questions %}
-                                {% if question.cID.cID == class.cID %}
-                                    <tr class = 'clickable-row' data-href="www.imgur.com">
-                                        <u><h4>{{question.title}}</h4></u>
-                                        <p>{{question.question}}<p>
-                                    </tr>
-                                    {% endif %}
-                                {% endfor %}
+                                    {% for question in questions %}
+                                        {% if question.status != "resolved" %}
+                                            {% if question.cID.cID == class.cID %}
+                                                <tr>
+                                                    <td><a data-toggle="modal" data-target="#questionModal" data-question="{{question.qID}}" data-user="{{user}}"><h4>{{question.title}}</h4>
+                                                    <p>{{question.question}}<p></a></td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -36,6 +39,25 @@
                 {% endfor %}
             </div>
         </div>        
+    </div>
+</div>
+
+<div class="modal fade" id="questionModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-labeledby="modalLabel">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center" id="modalLabel">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Ignore</button>
+                <button type="button" class="btn btn-success" onclick="claim()">Claim</button>
+            </div>
+        </div>
     </div>
 </div>
 

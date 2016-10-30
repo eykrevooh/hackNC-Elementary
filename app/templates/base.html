@@ -15,9 +15,7 @@
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename = 'css/round-about.css') }}" rel="stylesheet">
 
-    <!-- Jquery -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  </head>
+    </head>
  
   <body>
    {% include "navigation.html" %}
@@ -27,12 +25,11 @@
       {% block body %} {% endblock %}  
     <!--</div>-->
    {% block belowContainer %} {% endblock %} 
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.min.js"></script>
+     <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
     
-    <!-- <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-    <script type="text/javascript" src="/static/js/local/app.js"></script>
-     <link rel = "stylesheet" href = "/static/css/{{currentPage}}.css"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
      <script type = "text/javascript"
             src  = "/static/js/local/{{currentPage}}.js"> 
     </script>
