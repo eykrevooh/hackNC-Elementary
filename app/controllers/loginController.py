@@ -11,13 +11,12 @@ def login():
     print request.method
     if request.method == "POST": 
         username = request.form["username"]
-        print(request.form)
         working = Ta.select()\
                 .join(User, on=(Ta.uID_id == User.uID))\
                 .where(Ta.working == 1)
-        if "ta" in username:
+        if username == "ta1":
             return redirect(url_for('dash',perm=username))
-        elif "stu" in username:
+        elif username == "stu1":
            return redirect(url_for('dash',perm=username))
         else:
             return render_template('loginView.html', user = None)

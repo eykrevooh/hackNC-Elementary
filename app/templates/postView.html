@@ -8,8 +8,8 @@
         <label for = "name">Question</label>
         <textarea class = "form-control" type ="text" rows = "3" name = "question" id="question"></textarea>
       </div>
-    <div>
-      <select name = "courses">
+    <div class="form-group">
+      <select class = "form-control"name = "courses">
         <option value="" disabled selected>Select Course</option>
         {% for course in courses %}
         <option {{course.cID}}>{{course.course_num}}</option>

@@ -4,7 +4,8 @@ from app.allImports import *
 from app.watson_api import Watson
 
 @app.route('/watson/<qID>', methods=["GET"])
-def watsonGetQuestion(qID):
+@app.route('/watson/<qID>/<param>', methods=["GET"])
+def watsonGetQuestion(qID,param="ta1"):
     if request.method == "GET":
         
         question = Question.select()\
@@ -17,4 +18,10 @@ def watsonGetQuestion(qID):
         answer = myWatson.parse_response(res)
         return render_template('watsonView.html',\
                                 question = question,\
-                                answer = answer)
+                                answer = answer,
+                                user = param)
+    else:
+        courses = Course.select()
+        return render_template('postView.html',
+                               courses = courses,
+                               user = param)
