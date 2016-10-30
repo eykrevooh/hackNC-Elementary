@@ -155,6 +155,23 @@ Question(
         title = "Linked List Issue",
         question = "Kye is tired and is not thinking of a question").save()
 
+Question(
+        sID = 1,
+        cID = 1,
+        status = "PENDING",
+        assignment = "A10",
+        title = "Strange numbers on printf",
+        question = "When I try to print a variable with printf, I am only seeing a hexidecimal number.").save()
+
+Question(
+        sID = 1,
+        cID = 2,
+        status = "PENDING",
+        assignment = "L4",
+        title = "Can't compile code",
+        question = "My code won't compile").save()
+
+
 SCRelation(
         sID = 1,
         cID = 1).save()
