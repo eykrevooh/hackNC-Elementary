@@ -1,4 +1,4 @@
-function claim (event){
+function claim(event){
     var link = $(event.relatedTarget);
     var question = link.data('question');
     var user = link.data('user');
@@ -15,4 +15,4 @@ function claim (event){
             console.log("Error");
             }
         });
-    });
+    };

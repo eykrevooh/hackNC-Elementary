@@ -18,24 +18,22 @@
     </head>
  
   <body>
-   {% include "navigation.html" %}
+     <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+
+    {% include "navigation.html" %}
     {% block aboveContainer %} {% endblock %}
     <!--<div class="container">-->
       {# All content should get rendered in here #}
       {% block body %} {% endblock %}  
     <!--</div>-->
    {% block belowContainer %} {% endblock %} 
-     <!-- Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
      <script type = "text/javascript"
             src  = "/static/js/local/{{currentPage}}.js"> 
     </script>
-
-    <!-- jQuery -->
-    <script src="{{ url_for('static', filename = 'js/jquery.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>

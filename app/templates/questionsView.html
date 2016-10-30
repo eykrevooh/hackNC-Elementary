@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-<script src="static/local/js/claim.js"></script>
+<script type="text\javascript" src="static/local/js/claim.js"></script>
 
 <div class="clearfix">
 <div class="container">
@@ -21,7 +21,7 @@
                     <div class="panel-collapse collapse" id="{{class.cID}}" role="tabpanel" aria-labelledby="{{class.cID}}">
                         <div class="panel-body">
                             <table class="table table-striped">
-                                <tbody> 
+                                <tbody>
                                     {% for question in questions %}
                                         {% if question.status != "resolved" %}
                                             {% if question.cID.cID == class.cID %}
@@ -38,7 +38,7 @@
                     </div>
                 {% endfor %}
             </div>
-        </div>        
+        </div>
     </div>
 </div>
 
@@ -51,14 +51,38 @@
                 </button>
             </div>
             <div class="modal-body text-center" id="modalLabel">
-
+                <h4>Would you like to help this student with their question?</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Ignore</button>
-                <button type="button" class="btn btn-success" onclick="claim()">Claim</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No, Someone else would be more helpful.</button>
+                <button type="button" data-question="" id="claimButton" class="btn btn-success" onclick="claim(this);">Yes, Claim the question!</button>
             </div>
         </div>
     </div>
 </div>
+  <script>
+    $( document ).ready(function() {
+    $("#questionModal").on('show.bs.modal', function(event){
+    var link = $(event.relatedTarget);
+    var question = link.data('question');
+    var modal = $(this);
+    console.log(question)
+    $('#claimButton').attr('data-question', question)
+    });
+    });
 
+function claim(){
+  var question = $('#claimButton').data('question');
+    $.ajax({
+        url: "/claim/",
+      data: {user : '{{user}}', question : question},
+        type: "GET",
+        success: function(data){
+            return 0;
+            },
+        error: function(){
+            console.log("Error");
+            }
+        });
+    };</script>
 {% endblock %}

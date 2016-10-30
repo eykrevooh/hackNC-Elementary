@@ -8,14 +8,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/dashboard/">Watson TA Assistant</a>
+                <a class="navbar-brand" href="/dashboard/{{user}}">Watson TA Assistant</a>
             </div>
             {% if user == "ta1" or user == "ta2" %}
             <div class="collapse navbar-collapse" id="navbar-collapse-section">
-                <ul class="nav navbar-nav">
-                    <li><a href="/questions/{{ user }}/">Student Questions</a>
+                <ul class="nav navbar-nav" style="width:85%">
+                  <li><a href="/questions/{{ user }}/">Student Questions</a></li>
+                  <li style="float:right"><a href="/dashboard/{{ user }}">In Lab</a>
                 </ul>
-            </div>
+              </div> 
             {% else %}
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">

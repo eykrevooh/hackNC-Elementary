@@ -2,15 +2,17 @@
 
 from app.allImports import *
 
-@app.route('/questions/', methods=["GET"])
-def questions():
+from flask import jsonify
+
+@app.route('/questions/<user>/', methods=["GET"])
+def questions(user):
     questions = Question.select()
-    print questions
     classes = Course.select()
     #two queries 2) all questions NOT associated with 'signed in user' and 1) all questions ONLY associated with 'signed in user'
     return render_template('questionsView.html',
                            questions = questions,
-                           classes = classes)
+                           classes = classes,
+                           user = user)
 
 @app.route('/claim/', methods=["GET"])
 def claim():
@@ -20,7 +22,17 @@ def claim():
     user = User.get(User.username == username)
     questionThing = Question.get(Question.qID == question)
 
-    questionThing.taID = user
-    questinThing.save()
+    questionThing.taID_id = user
+    questionThing.update()
 
-    return 0
+    return jsonify({'result': 'success'})
+
+@app.route('/resolve/', methods=['GET'])
+def resolve():
+    question = request.args.get('question')
+
+    questionQuery = Question.get(Question.qID == question)
+
+    questionQuery.delete_instance()
+
+    return jsonify({'result': 'success'})
