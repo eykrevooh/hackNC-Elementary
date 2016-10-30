@@ -16,4 +16,4 @@ pip install Flask   --upgrade
 pip install peewee  --upgrade
 pip install pyyaml  --upgrade
 pip install wtf-peewee
-pip install --upgrade google-api-python-client
+pip install watson-developer-cloud --upgrade
