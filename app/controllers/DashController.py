@@ -10,6 +10,6 @@ from flask import \
 
 @app.route('/dash/', methods=["GET"])
 def dash():
-    working = Ta.select().where(working = 1)
+    working = Ta.select().where(Ta.working == 1)
     return render_template('dashView.html',
                            working = working)
