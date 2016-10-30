@@ -3,7 +3,7 @@
 from app import app
 from app.models import *
 
-from Flask import \
+from flask import \
     render_template, \
     redirect, \
     request
