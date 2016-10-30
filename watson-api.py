@@ -63,4 +63,7 @@ def main():
         print translation
         response = watson.ask_question(translation)
         print watson.parse_response(response)
-main()
+
+
+if __name__ == "__main__":
+    main()
