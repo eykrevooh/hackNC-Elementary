@@ -51,6 +51,7 @@ def get_classes (db):
 mainDB.create_tables(get_classes('mainDB'))
 
 User(username = "admin",
+     name     = "Matt Jadud",
      password = "1234",
      role     = 0,
      year     = 7,
@@ -58,6 +59,7 @@ User(username = "admin",
      race     = "Cacuasian").save()
 
 User(username = "ta1",
+     name     = "Kye Hoover",
      password = "1234",
      role     = 1,
      year     = 4,
@@ -65,6 +67,7 @@ User(username = "ta1",
      race     = "African-American").save()
 
 User(username = "ta2",
+     name     = "Zach Ball",
      password = "1234",
      role     = 1,
      year     = 3,
@@ -72,6 +75,7 @@ User(username = "ta2",
      race     = "Asian").save()
 
 User(username = "stu1",
+     name     = "Steve Morris",
      password = "1234",
      role     = 2,
      year     = 1,
@@ -79,6 +83,7 @@ User(username = "stu1",
      race     = "Cacuasian").save()
 
 User(username = "stu2",
+     name     = "John Hellfung",
      password = "1234",
      role     = 2,
      year     = 7,
@@ -87,12 +92,12 @@ User(username = "stu2",
 
 Ta(  uID = 2,
      bio = "Senior Computer Science major, experienced in Python, Java, and relational databases",
-     pict = "/some/file/path",
-     working = 0).save()
+     pict = "/static/photos/hooverk.jpg",
+     working = 1).save()
 
 Ta(  uID = 3,
      bio = "Junior Computer Science major, expert in Asp.net",
-     pict = "/some/file/path",
+     pict = "/static/photos/hooverk.jpg",
      working = 1).save()
 
 Student(uID = 4,
