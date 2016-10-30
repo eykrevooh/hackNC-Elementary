@@ -100,6 +100,8 @@ function resolve(){
       data: {user : '{{user}}', question : question},
         type: "GET",
         success: function(data){
+            $('#resolveQuestionModal').hide()
+            window.location.reload(true)
             },
         error: function(){
             console.log("Error");

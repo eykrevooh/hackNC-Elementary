@@ -1,4 +1,4 @@
-# Questions Controller
+#Questions Controller
 
 from app.allImports import *
 
@@ -36,4 +36,4 @@ def resolve():
 
     questionQuery.delete_instance()
 
-    return redirect("/questions/%s/" %(user))
+    return redirect("/questions/" + user + "/")
