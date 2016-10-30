@@ -2,7 +2,7 @@
 
 from app.allImports import *
 
-from flask import jsonify
+from flask import jsonify, redirect
 
 @app.route('/questions/<user>/', methods=["GET"])
 def questions(user):
@@ -30,9 +30,10 @@ def claim():
 @app.route('/resolve/', methods=['GET'])
 def resolve():
     question = request.args.get('question')
+    user = request.args.get('user')
 
     questionQuery = Question.get(Question.qID == question)
 
     questionQuery.delete_instance()
 
-    return jsonify({'result': 'success'})
+    return redirect("/questions/%s/" %(user))
