@@ -94,14 +94,12 @@
     });
 
 function resolve(){
-  console.log("FUCKITY")
   var question = $('#resolveClaimButton').data('question');
     $.ajax({
         url: "/resolve/",
       data: {user : '{{user}}', question : question},
         type: "GET",
         success: function(data){
-            console.log("FUCK");
             },
         error: function(){
             console.log("Error");
