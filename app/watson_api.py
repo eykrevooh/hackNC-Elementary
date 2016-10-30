@@ -46,7 +46,7 @@ class Watson:
         translation = self.lt.translate(
                 text = text, 
                 source = src,
-                target = trgt
+                target = 'en'
                 )
         return str(translation)
 
@@ -54,8 +54,7 @@ def main():
     auth1 = ("8a9ded6d-8130-4d2f-938a-77299633e497", "sFqr0eofA22w", "1e9c006c-5435-43fd-9921-30c5ff96ee16")
     auth2 = ("4454222a-b333-48e6-a8ee-0e7d5aa8a929", "sJkfneX7xR6e") 
     watson = Watson()
-    watson.set_username(cfg['watson']['conversation'],\
-                                            cfg['watson']['translator'])
+    watson.set_username(auth1, auth2)
     while True:
         question = raw_input("What's your question: ")
         lang = watson.identify_lang(question)

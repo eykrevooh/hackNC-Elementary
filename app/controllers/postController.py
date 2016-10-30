@@ -12,8 +12,9 @@ def postQuestion(perm=None):
         course = request.form["courses"]
 
         myWatson = Watson()
-        myWatson.set_username(cfg['watson']['conversation'],\
-                                cfg['watson']['translator'])
+        auth1 = ("8a9ded6d-8130-4d2f-938a-77299633e497", "sFqr0eofA22w", "1e9c006c-5435-43fd-9921-30c5ff96ee16")
+        auth2 = ("4454222a-b333-48e6-a8ee-0e7d5aa8a929", "sJkfneX7xR6e") 
+        myWatson.set_username(auth1, auth2)
         lang = myWatson.identify_lang(quest)
         quest = myWatson.translate(quest, lang, "en")
         
