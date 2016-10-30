@@ -8,6 +8,7 @@ It also includes all the application files that are used as "pages" in the app
 
 from app import allImports
 from allImports import *
+from app.controllers import *
 
 # Include an import for every python file that is serving a webpage
 # import your new python files here. It is not a part of the module until

@@ -1,24 +1,31 @@
-<!DOCTYPE html>
-<html>
+{% include "base.html" %}
 
-  <head>
-    <title>Python Flask Starter Application</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="static/stylesheets/style.css">
-  </head>
+<body>
+    <!-- Page Content -->
+    <div class="container">
 
-  <body>
-    <table>
-      <tr>
-        <td style= "width:30%;">
-          <img class = "newappIcon" src="static/images/newapp-icon.png">
-        <td>
-            <h1>Hi there!</h1>
-          <p>Thanks for creating a
-            <span class = "blue">Python <a href = "http://flask.pocoo.org/">Flask</a> Starter Application</span>.
-    </table>
-  </body>
+        <!-- Introduction Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Welcome to the Computer Science Lab!
+                </h1>
+                <p>If you have any questions please feel free to ask any questions. If all the TA's are busy please submit your question to gain some help from Watson while you wait.</p>
+            </div>
+        </div>
 
-</html>
+        <!-- Team Members Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Computer Science Teaching Assistants</h2>
+            </div>
+            {% for ta in working %}
+            <div class="col-lg-4 col-sm-6 text-center">
+              <img class="img-circle img-responsive img-center" src={{ta.pict}} alt="" style >
+                <h3>{{ta.uID.name}}</h3>        
+                <p>{{ta.bio}}</p>
+            </div> 
+           {% endfor %}         
+        </div>
+        <hr>
+</body>

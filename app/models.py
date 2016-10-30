@@ -37,6 +37,7 @@ For more information look at peewee documentation
 class User(dbModel):
   uID           = PrimaryKeyField()
   username      = TextField()
+  name          = TextField()
   password      = TextField()
   role          = IntegerField()
   year          = IntegerField()

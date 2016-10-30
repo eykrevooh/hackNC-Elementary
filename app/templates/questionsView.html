@@ -1,0 +1,42 @@
+{# questionsView.html #}
+
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="clearfix">
+<div class="container">
+    <div id="allQs" class="tab-pane fade in active">
+        <div class="panel-group" id="unclaimedAccordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                {% for class in classes %}
+                    <div class="panel-heading" role="tab" id="{{class.cID}}Tab">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#unclaimedAccordion" href="#{{class.cID}}" aria-expanded="true" aria-controls="{{class.cID}}">
+                                {{class.course_num}}({{class.course_title}})
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="{{class.cID}}" role="tabpanel" aria-labelledby="{{class.cID}}">
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <tbody> 
+                            {% for question in questions %}
+                                {% if question.cID.cID == class.cID %}
+                                    <tr class = 'clickable-row' data-href="www.imgur.com">
+                                        <u><h4>{{question.title}}</h4></u>
+                                        <p>{{question.question}}<p>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>        
+    </div>
+</div>
+
+{% endblock %}
