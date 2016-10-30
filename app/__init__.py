@@ -13,4 +13,4 @@ from allImports import *
 # import your new python files here. It is not a part of the module until
 # it is imported
 
-from start import start
+from start import *
